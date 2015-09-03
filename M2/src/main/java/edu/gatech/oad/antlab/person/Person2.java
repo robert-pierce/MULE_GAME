@@ -37,15 +37,17 @@ public class Person2 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  //Person 2 put your implementation here
 		Random rand = new Random();
 		List<Character> charList = new ArrayList<Character>();
-        for(char c:input.toCharArray()){
+
+        for(char c : input.toCharArray()){
             charList.add(c);
         }
+
         StringBuilder out = new StringBuilder(input.length());
-        while(charList.size()!=0){
-            int randInt = (int)(Math.random()*charList.size());
+
+        while(charList.size() != 0) {
+            int randInt = (int)(Math.random() * charList.size());
             out.append(charList.remove(randInt));
         }
         return (out.toString());
