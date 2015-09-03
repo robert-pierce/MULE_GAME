@@ -2,4 +2,4 @@
 Name: Robert Pierce
 GTID: 901554418
 
-Extra Credit:
+Extra Credit: Enhanced graphics, additional random events, music, original artwork, and additional difficulty settings.
