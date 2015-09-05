@@ -37,20 +37,15 @@ public class Person2 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-		Random rand = new Random();
-		List<Character> charList = new ArrayList<Character>();
-
-        for(char c : input.toCharArray()){
-            charList.add(c);
+		String output = ""; 
+        while (input.length() != 0)
+        {
+            int index = (int) Math.floor(Math.random() * input.length());
+            char c = input.charAt(index);
+            input = input.substring(0, index) + input.substring(index + 1);
+            output += c;
         }
-
-        StringBuilder out = new StringBuilder(input.length());
-
-        while(charList.size() != 0) {
-            int randInt = (int)(Math.random() * charList.size());
-            out.append(charList.remove(randInt));
-        }
-        return (out.toString());
+        return output;
 	}
 	/**
 	 * Return a string rep of this object
