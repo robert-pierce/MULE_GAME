@@ -1,0 +1,6 @@
+*.iml
+M2/.idea/*
+M2/build/*
+M2/src/main/.gradle/*
+M2/src/main/build/*
+M2/.gradle/*
