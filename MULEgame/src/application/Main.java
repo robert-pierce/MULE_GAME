@@ -15,9 +15,9 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/StartScreen.fxml"));
 			//loader.setRoot("Anchor");
 			Parent root = loader.load();
-			Scene scene = new Scene(root);
+			Scene startScene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
+			primaryStage.setScene(startScene);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
