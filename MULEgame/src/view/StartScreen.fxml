@@ -7,18 +7,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="root" prefHeight="1166.0" prefWidth="1999.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.Controller">
+<AnchorPane id="root" prefHeight="705.0" prefWidth="1140.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.startScreenController">
   <children>
     <BorderPane prefHeight="1166.0" prefWidth="1999.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
-        <Button fx:id="startBTN" mnemonicParsing="false" onAction="#startGame" prefHeight="71.0" prefWidth="333.0" text="Start" BorderPane.alignment="CENTER">
+        <Button fx:id="startBTN" minHeight="53.0" mnemonicParsing="false" onAction="#startGame" prefHeight="53.000099999997474" prefWidth="293.0" text="Start" BorderPane.alignment="CENTER">
           <font>
-            <Font size="48.0" />
+            <Font size="30.0" />
           </font>
         </Button>
       </center>
       <top>
-        <ImageView fitHeight="479.0" fitWidth="986.0" BorderPane.alignment="CENTER">
+        <ImageView fitHeight="337.0" fitWidth="982.0" BorderPane.alignment="CENTER">
           <image>
             <Image url="@../../images/White%20MULE%20logo.png" />
           </image>

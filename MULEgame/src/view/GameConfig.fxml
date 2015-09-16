@@ -1,8 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.gameConfigController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <BorderPane prefHeight="570.0" prefWidth="923.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+          <children>
+            <Label prefHeight="76.0" prefWidth="716.0" text="                      Game Settings" textAlignment="CENTER" textFill="WHITE">
+              <font>
+                <Font size="35.0" />
+              </font>
+            </Label>
+          </children>
+        </HBox>
+      </center>
+      <left>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+          <children>
+            <Label prefHeight="140.0" prefWidth="100.0" text="How &#10;Many &#10;Players?" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+              <font>
+                <Font size="20.0" fx:id="x2" />
+              </font>
+            </Label>
+            <RadioButton mnemonicParsing="false" prefHeight="76.0" prefWidth="100.0" selected="false" text="1 Player" textFill="WHITE">
+              <font>
+                <Font size="15.0" fx:id="x1" />
+              </font>
+              <toggleGroup>
+                <ToggleGroup fx:id="numPlayersGrp" />
+              </toggleGroup>
+            </RadioButton>
+            <RadioButton font="$x1" mnemonicParsing="false" prefHeight="76.0" prefWidth="100.0" text="2 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
+            <RadioButton font="$x1" mnemonicParsing="false" prefHeight="76.0" prefWidth="100.0" text="3 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
+            <RadioButton font="$x1" mnemonicParsing="false" prefHeight="76.0" prefWidth="100.0" text="4 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
+          </children>
+        </VBox>
+      </left>
+      <right>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+          <children>
+            <Label font="$x2" prefHeight="48.0" prefWidth="100.0" text="Difficulty" textFill="WHITE" />
+            <RadioButton font="$x1" mnemonicParsing="false" prefHeight="113.0" prefWidth="100.0" text="Beginner" textFill="WHITE">
+              <toggleGroup>
+                <ToggleGroup fx:id="difficultyGrp" />
+              </toggleGroup>
+            </RadioButton>
+            <RadioButton font="$x1" mnemonicParsing="false" prefHeight="99.0" prefWidth="100.0" text="Normal" textFill="WHITE" toggleGroup="$difficultyGrp" />
+          </children>
+        </VBox>
+      </right>
+      <top>
+        <MenuBar>
+          <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Close" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Delete" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" text="About" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+      </top>
+    </BorderPane>
+  </children>
 </AnchorPane>
-
