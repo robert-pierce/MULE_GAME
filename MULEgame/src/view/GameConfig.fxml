@@ -11,51 +11,61 @@
   <children>
     <BorderPane prefHeight="570.0" prefWidth="923.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
-        <HBox prefHeight="100.0" prefWidth="200.0">
-          <children>
-            <Label prefHeight="76.0" prefWidth="716.0" text="                      Game Settings" textAlignment="CENTER" textFill="WHITE">
+        <BorderPane prefHeight="200.0" prefWidth="200.0">
+          <left>
+            <GridPane>
+              <children>
+                <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <children>
+                    <Label alignment="CENTER" prefHeight="134.0" prefWidth="470.0" text="NUMBER OF PLAYERS" textFill="WHITE">
+                      <font>
+                        <Font size="30.0" fx:id="x2" />
+                      </font>
+                    </Label>
+                    <RadioButton fx:id="onePlayersBTN" alignment="CENTER" mnemonicParsing="false" onAction="#setOnePlayers" prefHeight="56.0" prefWidth="470.0" text="1  Player" textAlignment="LEFT" textFill="WHITE">
+                      <font>
+                        <Font size="20.0" fx:id="x1" />
+                      </font>
+                      <toggleGroup>
+                        <ToggleGroup fx:id="numPlayersGrp" />
+                      </toggleGroup>
+                    </RadioButton>
+                    <RadioButton fx:id="twoPlayersBTN" alignment="CENTER" font="$x1" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="56.0" prefWidth="470.0" text="2 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
+                    <RadioButton fx:id="threePlayersBTN" alignment="CENTER" font="$x1" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="56.0" prefWidth="470.0" text="3 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
+                    <RadioButton fx:id="fourPlayersBTN" alignment="CENTER" font="$x1" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="56.0" prefWidth="470.0" text="4 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
+                  </children>
+                </FlowPane>
+                <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                  <children>
+                    <Label alignment="CENTER" font="$x2" prefHeight="134.0" prefWidth="470.0" text="DIFFICULTY" textFill="WHITE" />
+                    <RadioButton id="difficultyBeginner" fx:id="difficultyBeginnerBTN" alignment="CENTER" font="$x1" mnemonicParsing="false" onAction="#setBeginnerDifficulty" prefHeight="99.0" prefWidth="470.0" text="Beginner" textFill="WHITE">
+                      <toggleGroup>
+                        <ToggleGroup fx:id="difficultyGrp" />
+                      </toggleGroup>
+                    </RadioButton>
+                    <RadioButton fx:id="difficultyNormalBTN" alignment="CENTER" contentDisplay="TOP" font="$x1" mnemonicParsing="false" onAction="#setNormalDifficulty" prefHeight="89.0" prefWidth="470.0" text="Normal" textFill="WHITE" toggleGroup="$difficultyGrp" />
+                  </children>
+                </FlowPane>
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="371.0" minHeight="10.0" prefHeight="371.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="227.0" minHeight="10.0" prefHeight="227.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+          </left>
+          <top>
+            <Label alignment="CENTER" prefHeight="56.0" prefWidth="940.0" text="GAME CONFIGURATIONS" textFill="WHITE">
               <font>
-                <Font size="35.0" />
+                <Font size="40.0" />
               </font>
             </Label>
-          </children>
-        </HBox>
+          </top>
+        </BorderPane>
       </center>
-      <left>
-        <VBox prefHeight="200.0" prefWidth="100.0">
-          <children>
-            <Label prefHeight="140.0" prefWidth="100.0" text="How &#10;Many &#10;Players?" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
-              <font>
-                <Font size="20.0" fx:id="x2" />
-              </font>
-            </Label>
-            <RadioButton mnemonicParsing="false" prefHeight="76.0" prefWidth="100.0" selected="false" text="1 Player" textFill="WHITE">
-              <font>
-                <Font size="15.0" fx:id="x1" />
-              </font>
-              <toggleGroup>
-                <ToggleGroup fx:id="numPlayersGrp" />
-              </toggleGroup>
-            </RadioButton>
-            <RadioButton font="$x1" mnemonicParsing="false" prefHeight="76.0" prefWidth="100.0" text="2 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
-            <RadioButton font="$x1" mnemonicParsing="false" prefHeight="76.0" prefWidth="100.0" text="3 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
-            <RadioButton font="$x1" mnemonicParsing="false" prefHeight="76.0" prefWidth="100.0" text="4 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
-          </children>
-        </VBox>
-      </left>
-      <right>
-        <VBox prefHeight="200.0" prefWidth="100.0">
-          <children>
-            <Label font="$x2" prefHeight="48.0" prefWidth="100.0" text="Difficulty" textFill="WHITE" />
-            <RadioButton font="$x1" mnemonicParsing="false" prefHeight="113.0" prefWidth="100.0" text="Beginner" textFill="WHITE">
-              <toggleGroup>
-                <ToggleGroup fx:id="difficultyGrp" />
-              </toggleGroup>
-            </RadioButton>
-            <RadioButton font="$x1" mnemonicParsing="false" prefHeight="99.0" prefWidth="100.0" text="Normal" textFill="WHITE" toggleGroup="$difficultyGrp" />
-          </children>
-        </VBox>
-      </right>
       <top>
         <MenuBar>
           <menus>
