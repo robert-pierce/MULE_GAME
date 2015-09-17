@@ -6,65 +6,59 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="705.0" prefWidth="1140.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.gameConfigController">
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.gameConfigController">
   <!-- TODO Add Nodes -->
   <children>
-    <BorderPane prefHeight="570.0" prefWidth="923.0" style="-fx-background-color: blue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <BorderPane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <bottom>
+        <FlowPane alignment="CENTER" prefHeight="134.0" prefWidth="1140.0">
+          <children>
+            <Button fx:id="continueBTN" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nextScreen" prefHeight="61.0" prefWidth="466.0" text="CONTINUE" />
+          </children>
+        </FlowPane>
+      </bottom>
       <center>
-        <BorderPane prefHeight="200.0" prefWidth="200.0">
-          <left>
-            <GridPane>
+        <GridPane>
+          <children>
+            <TilePane alignment="CENTER" orientation="VERTICAL" prefHeight="440.0" prefWidth="580.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
               <children>
-                <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                  <children>
-                    <Label alignment="CENTER" prefHeight="134.0" prefWidth="470.0" text="NUMBER OF PLAYERS" textFill="WHITE">
-                      <font>
-                        <Font size="30.0" fx:id="x2" />
-                      </font>
-                    </Label>
-                    <RadioButton fx:id="onePlayersBTN" alignment="CENTER" mnemonicParsing="false" onAction="#setOnePlayers" prefHeight="56.0" prefWidth="470.0" text="1  Player" textAlignment="LEFT" textFill="WHITE">
-                      <font>
-                        <Font size="20.0" fx:id="x1" />
-                      </font>
-                      <toggleGroup>
-                        <ToggleGroup fx:id="numPlayersGrp" />
-                      </toggleGroup>
-                    </RadioButton>
-                    <RadioButton fx:id="twoPlayersBTN" alignment="CENTER" font="$x1" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="56.0" prefWidth="470.0" text="2 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
-                    <RadioButton fx:id="threePlayersBTN" alignment="CENTER" font="$x1" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="56.0" prefWidth="470.0" text="3 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
-                    <RadioButton fx:id="fourPlayersBTN" alignment="CENTER" font="$x1" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="56.0" prefWidth="470.0" text="4 Players" textFill="WHITE" toggleGroup="$numPlayersGrp" />
-                  </children>
-                </FlowPane>
-                <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                  <children>
-                    <Label alignment="CENTER" font="$x2" prefHeight="134.0" prefWidth="470.0" text="DIFFICULTY" textFill="WHITE" />
-                    <RadioButton id="difficultyBeginner" fx:id="difficultyBeginnerBTN" alignment="CENTER" font="$x1" mnemonicParsing="false" onAction="#setBeginnerDifficulty" prefHeight="99.0" prefWidth="470.0" text="Beginner" textFill="WHITE">
-                      <toggleGroup>
-                        <ToggleGroup fx:id="difficultyGrp" />
-                      </toggleGroup>
-                    </RadioButton>
-                    <RadioButton fx:id="difficultyNormalBTN" alignment="CENTER" contentDisplay="TOP" font="$x1" mnemonicParsing="false" onAction="#setNormalDifficulty" prefHeight="89.0" prefWidth="470.0" text="Normal" textFill="WHITE" toggleGroup="$difficultyGrp" />
-                  </children>
-                </FlowPane>
+                <Label alignment="CENTER" text="NUMBER OF PLAYERS" textFill="WHITE">
+                  <font>
+                    <Font size="30.0" fx:id="x1" />
+                  </font>
+                </Label>
+                <RadioButton fx:id="onePlayersBTN" alignment="CENTER_LEFT" contentDisplay="LEFT" mnemonicParsing="false" onAction="#setOnePlayers" prefHeight="84.0" prefWidth="192.0" text="1 Players" textFill="WHITE">
+                  <toggleGroup>
+                    <ToggleGroup fx:id="NumPlayersGRP" />
+                  </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="twoPlayersBTN" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="84.0" prefWidth="192.0" text="2 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
+                <RadioButton fx:id="threePlayersBTN" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="84.0" prefWidth="192.0" text="3 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
+                <RadioButton fx:id="fourPlayersBTN" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="84.0" prefWidth="192.0" text="4 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
               </children>
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="371.0" minHeight="10.0" prefHeight="371.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="227.0" minHeight="10.0" prefHeight="227.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-          </left>
-          <top>
-            <Label alignment="CENTER" prefHeight="56.0" prefWidth="940.0" text="GAME CONFIGURATIONS" textFill="WHITE">
-              <font>
-                <Font size="40.0" />
-              </font>
-            </Label>
-          </top>
-        </BorderPane>
+            </TilePane>
+            <TilePane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+              <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" prefHeight="84.0" prefWidth="313.0" text="DIFFICULTY" textFill="WHITE" />
+                <RadioButton fx:id="difficultyBeginnerBTN" mnemonicParsing="false" onAction="#setBeginnerDifficulty" text="Beginner" textFill="WHITE">
+                  <toggleGroup>
+                    <ToggleGroup fx:id="DificultyGRP" />
+                  </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="difficultyNormalBTN" mnemonicParsing="false" onAction="#setNormalDifficulty" text="Normal" textFill="WHITE" toggleGroup="$DificultyGRP" />
+              </children>
+            </TilePane>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints maxHeight="452.0" minHeight="10.0" prefHeight="452.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="283.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="217.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
       </center>
       <top>
         <MenuBar>

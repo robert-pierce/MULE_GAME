@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 
 public class gameConfigController implements Initializable, ControlledScreen {
@@ -14,7 +15,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	public enum Difficulty {BEGINNER, NORMAL};
 	
 	//--------------Instance Variables---------------------------------
-	ScreensController mycontroller;
+	ScreensController myController;
 	Difficulty difficulty;
 	int numPlayers;
 	//-----------------------------------------------------------------
@@ -28,7 +29,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
-		mycontroller = screenParent;
+		myController = screenParent;
 	}
 	
 	//---------------FXML IDs------------------------------------------
@@ -50,6 +51,9 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	@FXML 
 	private RadioButton difficultyNormalBTN;
+	
+	@FXML 
+	private Button continueBTN;
 	
 	//-----------------------------------------------------------------
 	
@@ -100,5 +104,11 @@ public class gameConfigController implements Initializable, ControlledScreen {
 		}
 	}
 	
+	
+	public void nextScreen(ActionEvent event) {
+		System.out.println("Coninue Button Pressed");
+		myController.setScreen(application.Main.playerConfigID);
+		
+	}
 
 }
