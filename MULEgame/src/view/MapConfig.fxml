@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.mapConfigController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <Label layoutX="411.0" layoutY="91.0" text="SELECT MAP" textFill="WHITE">
+      <font>
+        <Font size="50.0" />
+      </font>
+    </Label>
+    <RadioButton fx:id="mapOneBTN" layoutX="122.0" layoutY="274.0" mnemonicParsing="false" onAction="#setMapOne" text="Map 1" textFill="WHITE">
+      <font>
+        <Font size="30.0" fx:id="x1" />
+      </font>
+      <toggleGroup>
+        <ToggleGroup fx:id="mapSelectGRP" />
+      </toggleGroup>
+    </RadioButton>
+    <VBox layoutX="0.0" layoutY="7.0" prefHeight="65.0" prefWidth="1126.0">
+      <children>
+        <MenuBar>
+          <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Close" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Delete" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" text="About" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+      </children>
+    </VBox>
+    <RadioButton fx:id="mapTwoBTN" font="$x1" layoutX="775.0" layoutY="274.0" mnemonicParsing="false" onAction="#setMapTwo" text="Map 2" textFill="WHITE" toggleGroup="$mapSelectGRP" />
+    <Button fx:id="continueBTN" font="$x1" layoutX="293.0" layoutY="547.0" mnemonicParsing="false" onAction="#nextScreen" prefHeight="78.0" prefWidth="513.0" text="CONTINUE" />
+  </children>
+</AnchorPane>

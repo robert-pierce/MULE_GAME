@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.playerConfigController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1140.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.playerConfigController">
   <children>
     <TextField layoutX="56.0" layoutY="71.0" promptText="Name" />
     <RadioButton layoutX="125.0" layoutY="190.0" mnemonicParsing="false" selected="true" text="Race 1">
@@ -36,5 +36,6 @@
     <RadioButton layoutX="384.0" layoutY="105.0" mnemonicParsing="false" text="Green" toggleGroup="$chooseColor" />
     <RadioButton layoutX="384.0" layoutY="135.0" mnemonicParsing="false" text="Pink" toggleGroup="$chooseColor" />
     <RadioButton layoutX="384.0" layoutY="165.0" mnemonicParsing="false" text="Purple" toggleGroup="$chooseColor" />
+    <Button layoutX="735.0" layoutY="369.0" mnemonicParsing="false" text="Button" />
   </children>
 </Pane>

@@ -107,8 +107,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	public void nextScreen(ActionEvent event) {
 		System.out.println("Coninue Button Pressed");
-		myController.setScreen(application.Main.playerConfigID);
-		
+		myController.setScreen(application.Main.mapConfigID);	
 	}
 
 }

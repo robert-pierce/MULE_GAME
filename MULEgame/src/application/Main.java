@@ -17,6 +17,8 @@ public class Main extends Application {
 	public static String startScreenFile = "/view/StartScreen.fxml";
 	public static String gameConfigID = "gameConfigScreen";
 	public static String gameConfigFile = "/view/GameConfig.fxml";
+	public static String mapConfigID = "mapConfigScreen";
+	public static String mapConfigFile = "/view/MapConfig.fxml";
 	public static String playerConfigID = "playerConfigScreen";
 	public static String playerConfigFile = "/view/PlayerConfig.fxml";
 	
@@ -26,6 +28,7 @@ public class Main extends Application {
 		ScreensController mainContainer = new ScreensController();
 		mainContainer.loadScreen(startScreenID, startScreenFile);
 		mainContainer.loadScreen(gameConfigID, gameConfigFile);
+		mainContainer.loadScreen(mapConfigID, mapConfigFile);
 		mainContainer.loadScreen(playerConfigID, playerConfigFile);
 		
 		mainContainer.setScreen(startScreenID);

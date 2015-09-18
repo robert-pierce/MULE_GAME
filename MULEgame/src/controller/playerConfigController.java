@@ -25,4 +25,5 @@ public class playerConfigController implements Initializable, ControlledScreen{
 
 	//---------------FXML IDs------------------------------------------
 
+	//--------------Event Handler Methods------------------------------
 }
