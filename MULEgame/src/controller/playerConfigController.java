@@ -1,9 +1,10 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-
+import application.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,12 +14,15 @@ import javafx.scene.control.TextField;
 
 public class playerConfigController implements Initializable, ControlledScreen{
 	
+	private static int numPlayers;
 	
 	private application.Player.Race race;
 	private application.Player.Color color;
-	private int numPlayers, playerINDEX;
-	String playerName;
-	int playerNum;
+	private int playerINDEX = 1;
+	private String playerName;
+	
+	private ArrayList<Player.Race> takenRaceList = new ArrayList<Player.Race>();
+	private ArrayList<Player.Color> takenColorList = new ArrayList<Player.Color>();
 	
 	
 	//--------------Instance Variables---------------------------------
@@ -40,8 +44,6 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	@FXML
 	private Label playerConfigLabel;
 	
-	@FXML
-	private TextField txtFldTEST;
 	
 	@FXML
 	private TextField playerNameTXTFLD;
@@ -125,10 +127,32 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	}
 	
 	public void nextScreen(ActionEvent event) {
-		
-		
 		System.out.println("Continue Button Pressed");
-		//myController.setScreen(application.Main.mapConfigID);	
+		
+		if (takenRaceList.contains(race)) {
+			System.out.println(race.toString() + " has already been chosen. Please pick another race.");
+			return;
+		} else if (takenColorList.contains(color)) {
+			System.out.println(color.toString() + " has already been chosen. Please pick another color.");
+			return;
+		} else {
+			takenRaceList.add(race);
+			takenColorList.add(color);
+		}
+		
+		
+		
+		if (playerINDEX != numPlayers) {
+			Player player = new Player(race, color, playerName, playerINDEX );
+			application.Main.game.addPlayer(player);
+			System.out.println("Player " + playerINDEX + " created and added to game");
+			playerINDEX++;
+			
+			playerNameTXTFLD.setText("");
+			
+		} else {
+			myController.setScreen(application.Main.mapConfigID);
+		}
 	}
 	
 	
@@ -137,7 +161,6 @@ public class playerConfigController implements Initializable, ControlledScreen{
 		numPlayers = numPlyrs;
 	}
 	
-	// application.Player player = new application.Player(race, color, playerName, playerNum );
 	
 	
 }

@@ -21,7 +21,7 @@ public class Main extends Application {
 	public static String mapConfigFile = "/view/MapConfig.fxml";
 	public static String playerConfigID = "playerConfigScreen";
 	public static String playerConfigFile = "/view/PlayerConfig.fxml";
-	
+	public static GameRunner game;
 	 
 	
 	@Override
@@ -40,6 +40,8 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		//primaryStage.setResizable(false);
 		primaryStage.show();
+		
+		 game = new GameRunner();
 	}
 	
 	
