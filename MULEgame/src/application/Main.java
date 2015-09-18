@@ -22,6 +22,7 @@ public class Main extends Application {
 	public static String playerConfigID = "playerConfigScreen";
 	public static String playerConfigFile = "/view/PlayerConfig.fxml";
 	
+	 
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -29,7 +30,7 @@ public class Main extends Application {
 		mainContainer.loadScreen(startScreenID, startScreenFile);
 		mainContainer.loadScreen(gameConfigID, gameConfigFile);
 		mainContainer.loadScreen(mapConfigID, mapConfigFile);
-		mainContainer.loadScreen(playerConfigID, playerConfigFile);
+		mainContainer.loadScreen(playerConfigID,  playerConfigFile);
 		
 		mainContainer.setScreen(startScreenID);
 		
@@ -40,6 +41,7 @@ public class Main extends Application {
 		//primaryStage.setResizable(false);
 		primaryStage.show();
 	}
+	
 	
 	public static void main(String[] args) {
 		launch(args);

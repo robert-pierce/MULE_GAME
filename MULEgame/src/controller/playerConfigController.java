@@ -3,11 +3,24 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import controller.gameConfigController.Difficulty;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 
 public class playerConfigController implements Initializable, ControlledScreen{
-
+	
+	
+	private application.Player.Race race;
+	private application.Player.Color color;
+	private int numPlayers, playerINDEX;
+	String playerName;
+	int playerNum;
+	
+	
 	//--------------Instance Variables---------------------------------
 		ScreensController myController;
 	//-----------------------------------------------------------------
@@ -24,6 +37,107 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	}
 
 	//---------------FXML IDs------------------------------------------
-
+	@FXML
+	private Label playerConfigLabel;
+	
+	@FXML
+	private TextField txtFldTEST;
+	
+	@FXML
+	private TextField playerNameTXTFLD;
+	
+	@FXML
+	private RadioButton raceOneBTN;
+	
+	@FXML
+	private RadioButton raceTwoBTN;
+	
+	@FXML
+	private RadioButton raceThreeBTN;
+	
+	@FXML
+	private RadioButton raceFourBTN;
+	
+	@FXML
+	private RadioButton colorRedBTN;
+	
+	@FXML
+	private RadioButton colorGreenBTN;
+	
+	@FXML
+	private RadioButton colorPinkBTN;
+	
+	@FXML
+	private RadioButton colorPurpleBTN;
+	
+	
+	
+	
 	//--------------Event Handler Methods------------------------------
+
+	public void testText(ActionEvent event) {
+		System.out.println("Yes");
+	}
+	
+	public void getPlayerName(ActionEvent event) {
+		playerName = playerNameTXTFLD.getText();
+		System.out.println("Player name set to: " + playerName);
+	}
+	
+	public void setRaceOne(ActionEvent event) {
+		race = application.Player.Race.RACE1;
+		System.out.println("Player race set to: " + race.toString());
+	}
+	
+	public void setRaceTwo(ActionEvent event) {
+		race = application.Player.Race.RACE2;
+		System.out.println("Player race set to: " + race.toString());
+	}
+	
+	public void setRaceThree(ActionEvent event) {
+		race = application.Player.Race.RACE3;
+		System.out.println("Player race set to: " + race.toString());
+	}
+	
+	public void setRaceFour(ActionEvent event) {
+		race = application.Player.Race.RACE4;
+		System.out.println("Player race set to: " + race.toString());
+	}
+	
+	public void setColorRed(ActionEvent event) {
+		color = application.Player.Color.RED;
+		System.out.println("Player color set to: " + color.toString());
+	}
+	
+	public void setColorGreen(ActionEvent event) {
+		color = application.Player.Color.GREEN;
+		System.out.println("Player color set to: " + color.toString());
+	}
+	
+	public void setColorPink(ActionEvent event) {
+		color = application.Player.Color.PINK;
+		System.out.println("Player color set to: " + color.toString());
+	}
+	
+	public void setColorPurple(ActionEvent event) {
+		color = application.Player.Color.PURPLE;
+		System.out.println("Player color set to: " + color.toString());
+	}
+	
+	public void nextScreen(ActionEvent event) {
+		
+		
+		System.out.println("Continue Button Pressed");
+		//myController.setScreen(application.Main.mapConfigID);	
+	}
+	
+	
+	//---------------Getters and Setters-------------------------------
+	public void setNumPlayers(int numPlyrs) {
+		numPlayers = numPlyrs;
+	}
+	
+	// application.Player player = new application.Player(race, color, playerName, playerNum );
+	
+	
 }

@@ -5,7 +5,9 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 
@@ -15,8 +17,8 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	public enum Difficulty {BEGINNER, NORMAL};
 	
 	//--------------Instance Variables---------------------------------
-	ScreensController myController;
-	Difficulty difficulty;
+	private ScreensController myController;
+	private Difficulty difficulty;
 	int numPlayers;
 	//-----------------------------------------------------------------
 	
@@ -106,8 +108,25 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	
 	public void nextScreen(ActionEvent event) {
-		System.out.println("Coninue Button Pressed");
-		myController.setScreen(application.Main.mapConfigID);	
+		System.out.println("Continue Button Pressed");
+		
+		
+		// This block will get the playerConfigController and pass to it the number of players
+		try{
+			FXMLLoader loader = new FXMLLoader( getClass().getResource("/view/PlayerConfig.fxml"));
+			Parent loadScreen = (Parent) loader.load();
+			playerConfigController playerController = loader.getController();
+			playerController.setNumPlayers(numPlayers);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		// close this screena and open the next screen
+		myController.setScreen(application.Main.playerConfigID);	
 	}
+	
+	//------------------Getter Methods--------------------------------
+	
+	
 
 }

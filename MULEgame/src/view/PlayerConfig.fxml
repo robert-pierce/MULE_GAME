@@ -1,41 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1140.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.playerConfigController">
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.playerConfigController">
+  <!-- TODO Add Nodes -->
   <children>
-    <TextField layoutX="56.0" layoutY="71.0" promptText="Name" />
-    <RadioButton layoutX="125.0" layoutY="190.0" mnemonicParsing="false" selected="true" text="Race 1">
-      <toggleGroup>
-        <ToggleGroup fx:id="chooseRace" />
-      </toggleGroup>
-    </RadioButton>
-    <RadioButton layoutX="125.0" layoutY="220.0" mnemonicParsing="false" text="Race 2" toggleGroup="$chooseRace" />
-    <RadioButton layoutX="125.0" layoutY="261.0" mnemonicParsing="false" text="Race 3" toggleGroup="$chooseRace" />
-    <RadioButton layoutX="125.0" layoutY="293.0" mnemonicParsing="false" text="Race 4" toggleGroup="$chooseRace" />
-    <Label layoutX="56.0" layoutY="40.0" text="Player Name">
-      <font>
-        <Font size="17.0" fx:id="x1" />
-      </font>
-    </Label>
-    <Label font="$x1" layoutX="369.0" layoutY="40.0" text="Color" />
-    <Label font="$x1" layoutX="56.0" layoutY="162.0" text="Race" />
-    <Button layoutX="388.0" layoutY="293.0" mnemonicParsing="false" text="Accept" />
-    <RadioButton fx:id="redRadio" layoutX="384.0" layoutY="75.0" mnemonicParsing="false" selected="true" text="Red">
-      <toggleGroup>
-        <ToggleGroup fx:id="chooseColor" />
-      </toggleGroup>
-    </RadioButton>
-    <RadioButton layoutX="384.0" layoutY="105.0" mnemonicParsing="false" text="Green" toggleGroup="$chooseColor" />
-    <RadioButton layoutX="384.0" layoutY="135.0" mnemonicParsing="false" text="Pink" toggleGroup="$chooseColor" />
-    <RadioButton layoutX="384.0" layoutY="165.0" mnemonicParsing="false" text="Purple" toggleGroup="$chooseColor" />
-    <Button layoutX="735.0" layoutY="369.0" mnemonicParsing="false" text="Button" />
+    <BorderPane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <Pane prefHeight="200.0" prefWidth="200.0">
+          <children>
+            <Label fx:id="playerConfigLabel" alignment="CENTER" layoutX="405.0" layoutY="55.0" prefHeight="36.9609375" prefWidth="236.0" text="LABEL" textAlignment="LEFT" textFill="WHITE">
+              <font>
+                <Font size="40.0" />
+              </font>
+            </Label>
+            <Button fx:id="continueBTN" layoutX="452.0" layoutY="572.0" mnemonicParsing="false" onAction="#nextScreen" prefHeight="36.0" prefWidth="236.0" text="CONTINUE" />
+            <Label layoutX="94.0" layoutY="165.0" text="PLAYER NAME" textFill="WHITE">
+              <font>
+                <Font size="20.0" fx:id="x1" />
+              </font>
+            </Label>
+            <Label font="$x1" layoutX="474.0" layoutY="170.0" text="RACE" textFill="WHITE" />
+            <RadioButton id="Ra" fx:id="raceOneBTN" font="$x1" layoutX="453.0" layoutY="226.0" mnemonicParsing="false" onAction="#setRaceOne" text="Race 1" textFill="WHITE">
+              <toggleGroup>
+                <ToggleGroup fx:id="RaceSelectGRP" />
+              </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="raceTwoBTN" font="$x1" layoutX="452.0" layoutY="281.0" mnemonicParsing="false" onAction="#setRaceTwo" text="Race 2" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
+            <RadioButton fx:id="raceThreeBTN" font="$x1" layoutX="452.0" layoutY="341.0" mnemonicParsing="false" onAction="#setRaceThree" text="Race 3" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
+            <RadioButton fx:id="raceFourBTN" font="$x1" layoutX="452.0" layoutY="397.0" mnemonicParsing="false" onAction="#setRaceFour" text="Race 4" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
+            <Label font="$x1" layoutX="936.0" layoutY="170.0" text="COLOR" textFill="WHITE" />
+            <RadioButton id="co" fx:id="colorRedBTN" font="$x1" layoutX="928.0" layoutY="226.0" mnemonicParsing="false" onAction="#setColorRed" text="Red" textFill="RED">
+              <toggleGroup>
+                <ToggleGroup fx:id="ColorSelectGRP" />
+              </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="colorGreenBTN" font="$x1" layoutX="926.0" layoutY="281.0" mnemonicParsing="false" onAction="#setColorGreen" text="Green" textFill="#00ff29" toggleGroup="$ColorSelectGRP" />
+            <RadioButton fx:id="colorPinkBTN" font="$x1" layoutX="927.0" layoutY="341.0" mnemonicParsing="false" onAction="#setColorPink" text="Pink" textFill="#eb99ff" toggleGroup="$ColorSelectGRP" />
+            <RadioButton fx:id="colorPurpleBTN" font="$x1" layoutX="924.0" layoutY="397.0" mnemonicParsing="false" onAction="#setColorPurple" text="Purple" textFill="#cc00ff" toggleGroup="$ColorSelectGRP" />
+            <TextField fx:id="playerNameTXTFLD" layoutX="59.0" layoutY="215.0" onAction="#getPlayerName" prefWidth="200.0" />
+          </children>
+        </Pane>
+      </center>
+      <top>
+        <MenuBar>
+          <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Close" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Delete" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" text="About" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+      </top>
+    </BorderPane>
   </children>
-</Pane>
+</AnchorPane>
