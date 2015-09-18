@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.Player;
+import application.Player.Color;
+import application.Player.Race;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,8 +18,8 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	
 	private static int numPlayers;
 	
-	private application.Player.Race race;
-	private application.Player.Color color;
+	private application.Player.Race race = Race.RACE1;
+	private application.Player.Color color = Color.RED;
 	private int playerINDEX = 1;
 	private String playerName;
 	
@@ -151,6 +153,9 @@ public class playerConfigController implements Initializable, ControlledScreen{
 			playerNameTXTFLD.setText("");
 			
 		} else {
+			Player player = new Player(race, color, playerName, playerINDEX );
+			application.Main.game.addPlayer(player);
+			System.out.println("Player " + playerINDEX + " created and added to game");
 			myController.setScreen(application.Main.mapConfigID);
 		}
 	}

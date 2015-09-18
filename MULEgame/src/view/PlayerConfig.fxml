@@ -13,7 +13,7 @@
       <center>
         <Pane prefHeight="200.0" prefWidth="200.0">
           <children>
-            <Label fx:id="playerConfigLabel" alignment="CENTER" layoutX="405.0" layoutY="55.0" prefHeight="36.9609375" prefWidth="236.0" text="LABEL" textAlignment="LEFT" textFill="WHITE">
+            <Label fx:id="playerConfigLabel" alignment="CENTER" layoutX="283.0" layoutY="55.0" prefHeight="61.203125" prefWidth="500.0" text="CREATE PLAYERS" textAlignment="LEFT" textFill="WHITE">
               <font>
                 <Font size="40.0" />
               </font>
@@ -25,7 +25,7 @@
               </font>
             </Label>
             <Label font="$x1" layoutX="474.0" layoutY="170.0" text="RACE" textFill="WHITE" />
-            <RadioButton id="Ra" fx:id="raceOneBTN" font="$x1" layoutX="453.0" layoutY="226.0" mnemonicParsing="false" onAction="#setRaceOne" text="Race 1" textFill="WHITE">
+            <RadioButton id="Ra" fx:id="raceOneBTN" font="$x1" layoutX="453.0" layoutY="226.0" mnemonicParsing="false" onAction="#setRaceOne" selected="true" text="Race 1" textFill="WHITE">
               <toggleGroup>
                 <ToggleGroup fx:id="RaceSelectGRP" />
               </toggleGroup>
@@ -34,7 +34,7 @@
             <RadioButton fx:id="raceThreeBTN" font="$x1" layoutX="452.0" layoutY="341.0" mnemonicParsing="false" onAction="#setRaceThree" text="Race 3" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
             <RadioButton fx:id="raceFourBTN" font="$x1" layoutX="452.0" layoutY="397.0" mnemonicParsing="false" onAction="#setRaceFour" text="Race 4" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
             <Label font="$x1" layoutX="936.0" layoutY="170.0" text="COLOR" textFill="WHITE" />
-            <RadioButton id="co" fx:id="colorRedBTN" font="$x1" layoutX="928.0" layoutY="226.0" mnemonicParsing="false" onAction="#setColorRed" text="Red" textFill="RED">
+            <RadioButton id="co" fx:id="colorRedBTN" font="$x1" layoutX="928.0" layoutY="226.0" mnemonicParsing="false" onAction="#setColorRed" selected="true" text="Red" textFill="RED">
               <toggleGroup>
                 <ToggleGroup fx:id="ColorSelectGRP" />
               </toggleGroup>

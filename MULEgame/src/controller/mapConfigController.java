@@ -11,12 +11,12 @@ import javafx.scene.control.RadioButton;
 
 public class mapConfigController implements Initializable, ControlledScreen {
 	//-----------------Enum--------------------------------------------
-		private enum MapType {MAP1, MAP2};
+		public enum MapSelection {MAP1, MAP2, MAP3};
 		
 	
 	//--------------Instance Variables---------------------------------
 			ScreensController myController;
-			MapType mapType = MapType.MAP1;
+			MapSelection map = MapSelection.MAP1;
 	//-----------------------------------------------------------------
 			
 	//--------------Interface Overrides--------------------------------
@@ -37,6 +37,9 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	@FXML
 	private RadioButton mapTwoBTN;
 	
+	@FXML
+	private RadioButton mapThreeBTN;
+	
 	@FXML 
 	private Button continueBTN;
 	
@@ -44,21 +47,34 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	
 	public void setMapOne(ActionEvent event) {
 		if (mapOneBTN.isSelected()) {
-			mapType = MapType.MAP1;
+			map = MapSelection.MAP1;
 			System.out.println("Map 1 selected");
 		}
 	}
 	
 	public void setMapTwo(ActionEvent event) {
 		if (mapTwoBTN.isSelected()) {
-			mapType = MapType.MAP2;
+			map = MapSelection.MAP2;
 			System.out.println("Map 2 selected");
+		}
+	}
+	
+	public void setMapThree(ActionEvent event) {
+		if (mapThreeBTN.isSelected()) {
+			map = MapSelection.MAP3;
+			System.out.println("Map 3 selected");
 		}
 	}
 	
 	
 	public void nextScreen(ActionEvent event) {
 		System.out.println("Coninue Button Pressed");
-		myController.setScreen(application.Main.playerConfigID);	
+		
+		// add the map to the game
+		application.Main.game.addMap(map);
+		System.out.println("Map set to " + map.toString() + ".");
+		
+		
+		myController.setScreen(application.Main.placeHolderID);	
 	}
 }

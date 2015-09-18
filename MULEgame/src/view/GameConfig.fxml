@@ -13,7 +13,11 @@
       <bottom>
         <FlowPane alignment="CENTER" prefHeight="134.0" prefWidth="1140.0">
           <children>
-            <Button fx:id="continueBTN" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nextScreen" prefHeight="61.0" prefWidth="466.0" text="CONTINUE" />
+            <Button fx:id="continueBTN" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nextScreen" prefHeight="61.0" prefWidth="466.0" text="CONTINUE">
+              <font>
+                <Font size="20.0" fx:id="x2" />
+              </font>
+            </Button>
           </children>
         </FlowPane>
       </bottom>
@@ -27,25 +31,25 @@
                     <Font size="30.0" fx:id="x1" />
                   </font>
                 </Label>
-                <RadioButton fx:id="onePlayersBTN" alignment="CENTER_LEFT" contentDisplay="LEFT" mnemonicParsing="false" onAction="#setOnePlayers" prefHeight="84.0" prefWidth="192.0" text="1 Players" textFill="WHITE">
+                <RadioButton fx:id="onePlayersBTN" alignment="CENTER_LEFT" contentDisplay="LEFT" font="$x2" mnemonicParsing="false" onAction="#setOnePlayers" prefHeight="84.0" prefWidth="192.0" selected="true" text="1 Players" textFill="WHITE">
                   <toggleGroup>
                     <ToggleGroup fx:id="NumPlayersGRP" />
                   </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="twoPlayersBTN" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="84.0" prefWidth="192.0" text="2 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
-                <RadioButton fx:id="threePlayersBTN" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="84.0" prefWidth="192.0" text="3 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
-                <RadioButton fx:id="fourPlayersBTN" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="84.0" prefWidth="192.0" text="4 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
+                <RadioButton fx:id="twoPlayersBTN" font="$x2" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="84.0" prefWidth="192.0" text="2 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
+                <RadioButton fx:id="threePlayersBTN" font="$x2" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="84.0" prefWidth="192.0" text="3 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
+                <RadioButton fx:id="fourPlayersBTN" font="$x2" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="84.0" prefWidth="192.0" text="4 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
               </children>
             </TilePane>
             <TilePane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
               <children>
                 <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" prefHeight="84.0" prefWidth="313.0" text="DIFFICULTY" textFill="WHITE" />
-                <RadioButton fx:id="difficultyBeginnerBTN" mnemonicParsing="false" onAction="#setBeginnerDifficulty" text="Beginner" textFill="WHITE">
+                <RadioButton fx:id="difficultyBeginnerBTN" font="$x2" mnemonicParsing="false" onAction="#setBeginnerDifficulty" selected="true" text="Beginner" textFill="WHITE">
                   <toggleGroup>
                     <ToggleGroup fx:id="DificultyGRP" />
                   </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="difficultyNormalBTN" mnemonicParsing="false" onAction="#setNormalDifficulty" text="Normal" textFill="WHITE" toggleGroup="$DificultyGRP" />
+                <RadioButton fx:id="difficultyNormalBTN" font="$x2" mnemonicParsing="false" onAction="#setNormalDifficulty" text="Normal" textFill="WHITE" toggleGroup="$DificultyGRP" />
               </children>
             </TilePane>
           </children>

@@ -9,21 +9,30 @@
 <AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.mapConfigController">
   <!-- TODO Add Nodes -->
   <children>
-    <Label layoutX="411.0" layoutY="91.0" text="SELECT MAP" textFill="WHITE">
-      <font>
-        <Font size="50.0" />
-      </font>
-    </Label>
-    <RadioButton fx:id="mapOneBTN" layoutX="122.0" layoutY="274.0" mnemonicParsing="false" onAction="#setMapOne" text="Map 1" textFill="WHITE">
-      <font>
-        <Font size="30.0" fx:id="x1" />
-      </font>
-      <toggleGroup>
-        <ToggleGroup fx:id="mapSelectGRP" />
-      </toggleGroup>
-    </RadioButton>
-    <VBox layoutX="0.0" layoutY="7.0" prefHeight="65.0" prefWidth="1126.0">
-      <children>
+    <BorderPane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <Pane prefHeight="200.0" prefWidth="200.0">
+          <children>
+            <Label layoutX="487.0" layoutY="71.0" text="SELECT MAP" textFill="WHITE">
+              <font>
+                <Font size="30.0" />
+              </font>
+            </Label>
+            <RadioButton fx:id="mapOneBTN" layoutX="183.0" layoutY="205.0" mnemonicParsing="false" onAction="#setMapOne" selected="true" text="Map 1" textFill="WHITE">
+              <font>
+                <Font size="20.0" fx:id="x1" />
+              </font>
+              <toggleGroup>
+                <ToggleGroup fx:id="MapSelectGRP" />
+              </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="mapThreeBTN" font="$x1" layoutX="860.0" layoutY="213.0" mnemonicParsing="false" onAction="#setMapThree" text="Map 3" textFill="WHITE" toggleGroup="$MapSelectGRP" />
+            <RadioButton fx:id="mapTwoBTN" font="$x1" layoutX="512.0" layoutY="205.0" mnemonicParsing="false" onAction="#setMapTwo" text="Map 2" textFill="WHITE" toggleGroup="$MapSelectGRP" />
+            <Button fx:id="continueBTN" contentDisplay="LEFT" font="$x1" layoutX="324.0" layoutY="513.0" mnemonicParsing="false" onAction="#nextScreen" prefHeight="61.0" prefWidth="466.0" text="Continue" />
+          </children>
+        </Pane>
+      </center>
+      <top>
         <MenuBar>
           <menus>
             <Menu mnemonicParsing="false" text="File">
@@ -43,9 +52,7 @@
             </Menu>
           </menus>
         </MenuBar>
-      </children>
-    </VBox>
-    <RadioButton fx:id="mapTwoBTN" font="$x1" layoutX="775.0" layoutY="274.0" mnemonicParsing="false" onAction="#setMapTwo" text="Map 2" textFill="WHITE" toggleGroup="$mapSelectGRP" />
-    <Button fx:id="continueBTN" font="$x1" layoutX="293.0" layoutY="547.0" mnemonicParsing="false" onAction="#nextScreen" prefHeight="78.0" prefWidth="513.0" text="CONTINUE" />
+      </top>
+    </BorderPane>
   </children>
 </AnchorPane>

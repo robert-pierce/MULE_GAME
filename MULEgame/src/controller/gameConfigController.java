@@ -18,8 +18,8 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	//--------------Instance Variables---------------------------------
 	private ScreensController myController;
-	private Difficulty difficulty;
-	int numPlayers;
+	private Difficulty difficulty = Difficulty.NORMAL;
+	int numPlayers = 1;
 	//-----------------------------------------------------------------
 	
 	
@@ -121,7 +121,11 @@ public class gameConfigController implements Initializable, ControlledScreen {
 			System.out.println(e.getMessage());
 		}
 		
-		// close this screena and open the next screen
+		// add the difficulty to the game
+		application.Main.game.addDifficulty(difficulty);
+		System.out.println("Game set to " + difficulty.toString() + " difficulty.");
+		
+		// close this screens and open the next screen
 		myController.setScreen(application.Main.playerConfigID);	
 	}
 	
