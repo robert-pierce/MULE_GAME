@@ -131,6 +131,11 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	public void nextScreen(ActionEvent event) {
 		System.out.println("Continue Button Pressed");
 		
+	//	if (playerName.isEmpty()) {
+		//	System.out.println("Please enter a player name!");
+		//	return;
+		//} else 	
+			
 		if (takenRaceList.contains(race)) {
 			System.out.println(race.toString() + " has already been chosen. Please pick another race.");
 			return;

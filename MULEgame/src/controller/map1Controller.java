@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 
-public class placeHolderController implements Initializable, ControlledScreen {
+public class map1Controller  implements Initializable, ControlledScreen {
 
 	ScreensController myController;
 	
@@ -20,7 +20,4 @@ public class placeHolderController implements Initializable, ControlledScreen {
 	public void setScreenParent(ScreensController screenParent) {
 		myController = screenParent;
 	}
-	
-
-	
 }

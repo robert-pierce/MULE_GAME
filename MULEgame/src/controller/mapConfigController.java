@@ -74,7 +74,15 @@ public class mapConfigController implements Initializable, ControlledScreen {
 		application.Main.game.addMap(map);
 		System.out.println("Map set to " + map.toString() + ".");
 		
-		
-		myController.setScreen(application.Main.placeHolderID);	
+		if (map == MapSelection.MAP1) {
+			System.out.println("Loading " + map);
+			myController.setScreen(application.Main.map1ID);	
+		} else if (map == MapSelection.MAP2) {
+			System.out.println("Loading " + map);
+			myController.setScreen(application.Main.map1ID);
+		} else if (map == MapSelection.MAP3) {
+			System.out.println("Loading " + map);
+			myController.setScreen(application.Main.map1ID);
+		}
 	}
 }

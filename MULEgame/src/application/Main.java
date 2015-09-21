@@ -21,11 +21,9 @@ public class Main extends Application {
 	public static String mapConfigFile = "/view/MapConfig.fxml";
 	public static String playerConfigID = "playerConfigScreen";
 	public static String playerConfigFile = "/view/PlayerConfig.fxml";
+	public static String map1ID = "map1Screen";
+	public static String map1File = "/view/Map1.fxml";
 	
-	//--------PLACE HOLDER SCREEN --- DELETE
-	public static String placeHolderID = "placeHolder";
-	public static String placeHolderFile = "/view/PlaceHolder.fxml";
-	//--------------------------------------------
 	public static GameRunner game;
 	 
 	
@@ -36,10 +34,9 @@ public class Main extends Application {
 		mainContainer.loadScreen(gameConfigID, gameConfigFile);
 		mainContainer.loadScreen(mapConfigID, mapConfigFile);
 		mainContainer.loadScreen(playerConfigID,  playerConfigFile);
+		mainContainer.loadScreen(map1ID, map1File);
 		
-		//------PLACE HOLDER SCREEN --- DELETE 
-		mainContainer.loadScreen(placeHolderID,  placeHolderFile);
-		//-------------------------------------------------------
+		
 		
 		mainContainer.setScreen(startScreenID);
 		

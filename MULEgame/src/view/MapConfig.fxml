@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.mapConfigController">
+<AnchorPane prefHeight="1410.0" prefWidth="2280.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.mapConfigController">
   <!-- TODO Add Nodes -->
   <children>
     <BorderPane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
