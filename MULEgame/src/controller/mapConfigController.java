@@ -9,14 +9,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 
+import application.Map.MapSelection;
+
 public class mapConfigController implements Initializable, ControlledScreen {
 	//-----------------Enum--------------------------------------------
-		public enum MapSelection {MAP1, MAP2, MAP3};
+
 		
 	
 	//--------------Instance Variables---------------------------------
 			ScreensController myController;
-			MapSelection map = MapSelection.MAP1;
+			MapSelection map = MapSelection.STANDARD;
 	//-----------------------------------------------------------------
 			
 	//--------------Interface Overrides--------------------------------
@@ -32,7 +34,7 @@ public class mapConfigController implements Initializable, ControlledScreen {
 
 	//---------------FXML IDs------------------------------------------
 	@FXML
-	private RadioButton mapOneBTN;
+	private RadioButton mapStandardBTN;
 	
 	@FXML
 	private RadioButton mapTwoBTN;
@@ -45,10 +47,10 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	
 	//--------------Event Handler Methods------------------------------
 	
-	public void setMapOne(ActionEvent event) {
-		if (mapOneBTN.isSelected()) {
-			map = MapSelection.MAP1;
-			System.out.println("Map 1 selected");
+	public void setMapStandard(ActionEvent event) {
+		if (mapStandardBTN.isSelected()) {
+			map = MapSelection.STANDARD;
+			System.out.println("STANDARD map selected");
 		}
 	}
 	
@@ -74,14 +76,14 @@ public class mapConfigController implements Initializable, ControlledScreen {
 		application.Main.game.addMap(map);
 		System.out.println("Map set to " + map.toString() + ".");
 		
-		if (map == MapSelection.MAP1) {
-			System.out.println("Loading " + map);
+		if (map == MapSelection.STANDARD) {
+			System.out.println("Loading " + map + " map");
 			myController.setScreen(application.Main.map1ID);	
 		} else if (map == MapSelection.MAP2) {
-			System.out.println("Loading " + map);
+			System.out.println("Loading " + map + " map");
 			myController.setScreen(application.Main.map1ID);
 		} else if (map == MapSelection.MAP3) {
-			System.out.println("Loading " + map);
+			System.out.println("Loading " + map + " map");
 			myController.setScreen(application.Main.map1ID);
 		}
 	}

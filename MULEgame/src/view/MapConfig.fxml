@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="1410.0" prefWidth="2280.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.mapConfigController">
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.mapConfigController">
   <!-- TODO Add Nodes -->
   <children>
     <BorderPane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -18,7 +18,7 @@
                 <Font size="30.0" />
               </font>
             </Label>
-            <RadioButton fx:id="mapOneBTN" layoutX="183.0" layoutY="205.0" mnemonicParsing="false" onAction="#setMapOne" selected="true" text="Map 1" textFill="WHITE">
+            <RadioButton id="mapOneBTN" fx:id="mapStandardBTN" layoutX="183.0" layoutY="205.0" mnemonicParsing="false" onAction="#setMapStandard" selected="true" text="STANDARD" textFill="WHITE">
               <font>
                 <Font size="20.0" fx:id="x1" />
               </font>

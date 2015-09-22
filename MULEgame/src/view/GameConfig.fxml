@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="1410.0" prefWidth="2280.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.gameConfigController">
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.gameConfigController">
   <!-- TODO Add Nodes -->
   <children>
     <BorderPane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -44,12 +44,13 @@
             <TilePane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
               <children>
                 <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" prefHeight="84.0" prefWidth="313.0" text="DIFFICULTY" textFill="WHITE" />
-                <RadioButton fx:id="difficultyBeginnerBTN" font="$x2" mnemonicParsing="false" onAction="#setBeginnerDifficulty" selected="true" text="Beginner" textFill="WHITE">
+                <RadioButton fx:id="difficultyBeginnerBTN" font="$x2" mnemonicParsing="false" onAction="#setBeginnerDifficulty" selected="true" text="BEGINNER" textFill="WHITE">
                   <toggleGroup>
                     <ToggleGroup fx:id="DificultyGRP" />
                   </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="difficultyNormalBTN" font="$x2" mnemonicParsing="false" onAction="#setNormalDifficulty" text="Normal" textFill="WHITE" toggleGroup="$DificultyGRP" />
+                <RadioButton id="difficultyNormalBTN" fx:id="difficultyStandardBTN" font="$x2" mnemonicParsing="false" onAction="#setStandardDifficulty" text="STANDARD" textFill="WHITE" toggleGroup="$DificultyGRP" />
+                <RadioButton fx:id="difficultyTournamentBTN" font="$x2" mnemonicParsing="false" onAction="#setTournamentDifficulty" text="TOURNAMENT" textFill="WHITE" />
               </children>
             </TilePane>
           </children>

@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import application.GameRunner.Difficulty;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -11,14 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 
-public class gameConfigController implements Initializable, ControlledScreen {
-
-	//----------------ENUM --------------------------------------------
-	public enum Difficulty {BEGINNER, NORMAL};
-	
+public class gameConfigController implements Initializable, ControlledScreen {	
 	//--------------Instance Variables---------------------------------
 	private ScreensController myController;
-	private Difficulty difficulty = Difficulty.NORMAL;
+	private Difficulty difficulty = Difficulty.STANDARD;
 	int numPlayers = 1;
 	//-----------------------------------------------------------------
 	
@@ -52,7 +49,10 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	private RadioButton difficultyBeginnerBTN;
 	
 	@FXML 
-	private RadioButton difficultyNormalBTN;
+	private RadioButton difficultyStandardBTN;
+	
+	@FXML 
+	private RadioButton difficultyTournamentBTN;
 	
 	@FXML 
 	private Button continueBTN;
@@ -99,10 +99,17 @@ public class gameConfigController implements Initializable, ControlledScreen {
 		}
 	}
 	
-	public void setNormalDifficulty(ActionEvent event) {
-		if (difficultyNormalBTN.isSelected()) {
-			difficulty = Difficulty.NORMAL;
-			System.out.println("Normal Difficulty Set");
+	public void setStandardDifficulty(ActionEvent event) {
+		if (difficultyStandardBTN.isSelected()) {
+			difficulty = Difficulty.STANDARD;
+			System.out.println("Standard Difficulty Set");
+		}
+	}
+	
+	public void setTournamentDifficulty(ActionEvent event) {
+		if (difficultyTournamentBTN.isSelected()) {
+			difficulty = Difficulty.TOURNAMENT;
+			System.out.println("Tournament Difficulty Set");
 		}
 	}
 	

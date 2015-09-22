@@ -18,7 +18,7 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	
 	private static int numPlayers;
 	
-	private application.Player.Race race = Race.RACE1;
+	private application.Player.Race race = Race.HUMAN;
 	private application.Player.Color color = Color.RED;
 	private int playerINDEX = 1;
 	private String playerName;
@@ -51,16 +51,20 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	private TextField playerNameTXTFLD;
 	
 	@FXML
-	private RadioButton raceOneBTN;
+	private RadioButton raceHumanBTN;
 	
 	@FXML
-	private RadioButton raceTwoBTN;
+	private RadioButton raceFlapperBTN;
 	
 	@FXML
-	private RadioButton raceThreeBTN;
+	private RadioButton raceBonziodBTN;
 	
 	@FXML
-	private RadioButton raceFourBTN;
+	private RadioButton raceUgaiteBTN;
+	
+	@FXML
+	private RadioButton raceBuzziteBTN;
+	
 	
 	@FXML
 	private RadioButton colorRedBTN;
@@ -85,28 +89,35 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	
 	public void getPlayerName(ActionEvent event) {
 		playerName = playerNameTXTFLD.getText();
+		playerNameTXTFLD.setStyle("-fx-text-fill: green");
 		System.out.println("Player name set to: " + playerName);
 	}
 	
-	public void setRaceOne(ActionEvent event) {
-		race = application.Player.Race.RACE1;
+	public void setRaceHuman(ActionEvent event) {
+		race = application.Player.Race.HUMAN;
 		System.out.println("Player race set to: " + race.toString());
 	}
 	
-	public void setRaceTwo(ActionEvent event) {
-		race = application.Player.Race.RACE2;
+	public void setRaceFlapper(ActionEvent event) {
+		race = application.Player.Race.FLAPPER;
 		System.out.println("Player race set to: " + race.toString());
 	}
 	
-	public void setRaceThree(ActionEvent event) {
-		race = application.Player.Race.RACE3;
+	public void setRaceBonzoid(ActionEvent event) {
+		race = application.Player.Race.BONZOID;
 		System.out.println("Player race set to: " + race.toString());
 	}
 	
-	public void setRaceFour(ActionEvent event) {
-		race = application.Player.Race.RACE4;
+	public void setRaceUgaite(ActionEvent event) {
+		race = application.Player.Race.UGAITE;
 		System.out.println("Player race set to: " + race.toString());
 	}
+	
+	public void setRaceBuzzite(ActionEvent event) {
+		race = application.Player.Race.BUZZITE;
+		System.out.println("Player race set to: " + race.toString());
+	}
+	
 	
 	public void setColorRed(ActionEvent event) {
 		color = application.Player.Color.RED;
@@ -136,9 +147,9 @@ public class playerConfigController implements Initializable, ControlledScreen{
 		//	return;
 		//} else 	
 			
-		if (takenRaceList.contains(race)) {
-			System.out.println(race.toString() + " has already been chosen. Please pick another race.");
-			return;
+		if (playerName == null || playerName.equals("")) {
+			System.out.println("Please enter a player name!");
+				return;
 		} else if (takenColorList.contains(color)) {
 			System.out.println(color.toString() + " has already been chosen. Please pick another color.");
 			return;
@@ -153,14 +164,18 @@ public class playerConfigController implements Initializable, ControlledScreen{
 			Player player = new Player(race, color, playerName, playerINDEX );
 			application.Main.game.addPlayer(player);
 			System.out.println("Player " + playerINDEX + " created and added to game");
+			System.out.println(player);
 			playerINDEX++;
 			
 			playerNameTXTFLD.setText("");
+			playerNameTXTFLD.setStyle("-fx-text-fill: red");
+			playerName = "";
 			
 		} else {
 			Player player = new Player(race, color, playerName, playerINDEX );
 			application.Main.game.addPlayer(player);
 			System.out.println("Player " + playerINDEX + " created and added to game");
+			System.out.println(player);
 			myController.setScreen(application.Main.mapConfigID);
 		}
 	}

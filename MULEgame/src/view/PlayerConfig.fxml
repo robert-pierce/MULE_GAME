@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="1410.0" prefWidth="2280.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.playerConfigController">
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.playerConfigController">
   <!-- TODO Add Nodes -->
   <children>
     <BorderPane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -25,14 +25,14 @@
               </font>
             </Label>
             <Label font="$x1" layoutX="474.0" layoutY="170.0" text="RACE" textFill="WHITE" />
-            <RadioButton id="Ra" fx:id="raceOneBTN" font="$x1" layoutX="453.0" layoutY="226.0" mnemonicParsing="false" onAction="#setRaceOne" selected="true" text="Race 1" textFill="WHITE">
+            <RadioButton id="Ra" fx:id="raceHumanBTN" font="$x1" layoutX="455.0" layoutY="226.0" mnemonicParsing="false" onAction="#setRaceHuman" selected="true" text="HUMAN" textFill="WHITE">
               <toggleGroup>
                 <ToggleGroup fx:id="RaceSelectGRP" />
               </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="raceTwoBTN" font="$x1" layoutX="452.0" layoutY="281.0" mnemonicParsing="false" onAction="#setRaceTwo" text="Race 2" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
-            <RadioButton fx:id="raceThreeBTN" font="$x1" layoutX="452.0" layoutY="341.0" mnemonicParsing="false" onAction="#setRaceThree" text="Race 3" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
-            <RadioButton fx:id="raceFourBTN" font="$x1" layoutX="452.0" layoutY="397.0" mnemonicParsing="false" onAction="#setRaceFour" text="Race 4" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
+            <RadioButton id="raceTwoBTN" fx:id="raceFlapperBTN" font="$x1" layoutX="453.0" layoutY="268.0" mnemonicParsing="false" onAction="#setRaceFlapper" text="FLAPPER" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
+            <RadioButton id="raceThreeBTN" fx:id="raceBonziodBTN" font="$x1" layoutX="453.0" layoutY="308.0" mnemonicParsing="false" onAction="#setRaceBonzoid" text="BONZOID" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
+            <RadioButton id="raceFourBTN" fx:id="raceUgaiteBTN" font="$x1" layoutX="453.0" layoutY="348.0" mnemonicParsing="false" onAction="#setRaceUgaite" text="UGAITE" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
             <Label font="$x1" layoutX="936.0" layoutY="170.0" text="COLOR" textFill="WHITE" />
             <RadioButton id="co" fx:id="colorRedBTN" font="$x1" layoutX="928.0" layoutY="226.0" mnemonicParsing="false" onAction="#setColorRed" selected="true" text="Red" textFill="RED">
               <toggleGroup>
@@ -42,7 +42,8 @@
             <RadioButton fx:id="colorGreenBTN" font="$x1" layoutX="926.0" layoutY="281.0" mnemonicParsing="false" onAction="#setColorGreen" text="Green" textFill="#00ff29" toggleGroup="$ColorSelectGRP" />
             <RadioButton fx:id="colorPinkBTN" font="$x1" layoutX="927.0" layoutY="341.0" mnemonicParsing="false" onAction="#setColorPink" text="Pink" textFill="#eb99ff" toggleGroup="$ColorSelectGRP" />
             <RadioButton fx:id="colorPurpleBTN" font="$x1" layoutX="924.0" layoutY="397.0" mnemonicParsing="false" onAction="#setColorPurple" text="Purple" textFill="#cc00ff" toggleGroup="$ColorSelectGRP" />
-            <TextField fx:id="playerNameTXTFLD" layoutX="59.0" layoutY="215.0" onAction="#getPlayerName" prefWidth="200.0" />
+            <TextField fx:id="playerNameTXTFLD" layoutX="59.0" layoutY="215.0" onAction="#getPlayerName" prefWidth="200.0" style="-fx-text-fill: red" />
+            <RadioButton fx:id="raceUgaiteBTN" font="$x1" layoutX="453.0" layoutY="384.0" mnemonicParsing="false" onAction="#setRaceBuzzite" text="BUZZITE" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
           </children>
         </Pane>
       </center>

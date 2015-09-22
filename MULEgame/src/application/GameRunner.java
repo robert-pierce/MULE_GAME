@@ -2,13 +2,14 @@ package application;
 
 import java.util.ArrayList;
 
-import com.sun.prism.PhongMaterial.MapType;
-import controller.gameConfigController.Difficulty;
-import controller.mapConfigController.MapSelection;
-
+import application.Map.MapSelection;
 
 
 public class GameRunner {
+	//---------Enum----------------------------------------
+	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT};
+	//-----------------------------------------------------
+	
 	//----------------Instance Variables-------------------
 	private ArrayList<Player> playerList;
 	private Difficulty difficulty;

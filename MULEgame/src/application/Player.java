@@ -2,7 +2,7 @@ package application;
 
 public class Player {
 	//-------------enums-----------------------------
-	public enum Race {RACE1, RACE2, RACE3, RACE4};
+	public enum Race {HUMAN, FLAPPER, BONZOID, UGAITE, BUZZITE};
 	public enum Color {RED, GREEN, PINK, PURPLE};
 	
 	
@@ -22,6 +22,10 @@ public class Player {
 		playerNum = plyrNum;
 	}
 	
+	public String toString() {
+		String str =  "Player " + playerNum + "\n Name: " + playerName + "\n" + "Race: " + race + "\n" + "Color: " + color;
+		return str;
+	}
 	
 
 }
