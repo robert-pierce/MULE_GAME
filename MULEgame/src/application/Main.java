@@ -1,13 +1,17 @@
 package application;
 	
+import javafx.scene.input.MouseEvent;
+
 import controller.ScreensController;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.event.Event;
 
 
 public class Main extends Application {
@@ -47,7 +51,19 @@ public class Main extends Application {
 		//primaryStage.setResizable(false);
 		primaryStage.show();
 		
-		 game = new GameRunner();
+		game = new GameRunner();
+		 
+	
+		 scene.setOnMousePressed(new EventHandler<MouseEvent>() { 
+			@Override
+			public void handle(MouseEvent mouseEvent) {
+				game.setXCoord(mouseEvent.getX());
+				game.setYCoord(mouseEvent.getY());
+			}
+		 });
+		 
+		 
+		 
 	}
 	
 	

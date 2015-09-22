@@ -13,6 +13,8 @@ public class GameRunner {
 	private ArrayList<Player> playerList;
 	private Difficulty difficulty;
 	private MapSelection map;
+	private double xMouseCoord, yMouseCoord;
+	
 	
 	//-----------------------------------------------------
 	
@@ -36,4 +38,16 @@ public class GameRunner {
 	public void addMap(MapSelection mapTyp) {
 		map = mapTyp;
 	}
+	
+	
+	public void setXCoord(double xCor) {
+		System.out.println("X: " + xCor);
+		xMouseCoord = xCor;
+	}
+	
+	public void setYCoord(double yCor) {
+		System.out.println("Y: " + yCor);
+		yMouseCoord = yCor;
+	}
+	
 }
