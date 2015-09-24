@@ -27,9 +27,12 @@ public class Main extends Application {
 	public static String playerConfigFile = "/view/PlayerConfig.fxml";
 	public static String standardMapID = "StandardScreen";
 	public static String standardMapFile = "/view/StandardMap.fxml";
+	public static String eastWestMapID = "EastWestScreen";
+	public static String eastWestMapFile = "/view/EastWestMap.fxml";
 	
 	public static GameRunner game;
 	private ScreensController mainContainer;
+	private Scene scene;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -39,31 +42,26 @@ public class Main extends Application {
 		mainContainer.loadScreen(mapConfigID, mapConfigFile);
 		mainContainer.loadScreen(playerConfigID,  playerConfigFile);
 		mainContainer.loadScreen(standardMapID, standardMapFile);
-		
+		mainContainer.loadScreen(eastWestMapID, eastWestMapFile);
 		
 		
 		mainContainer.setScreen(startScreenID);
 		
 		Group root = new Group();
 		root.getChildren().addAll(mainContainer);
-		Scene scene = new Scene(root);
+		scene = new Scene(root);
 		primaryStage.setScene(scene);
-		//primaryStage.setResizable(false);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 		
 		// create a GameRunner object
-		game = new GameRunner(mainContainer);
+		game = new GameRunner(mainContainer, scene);
 		 
 	
-		// listen for mouse clicks
-		 scene.setOnMousePressed(new EventHandler<MouseEvent>() { 
-			@Override
-			public void handle(MouseEvent mouseEvent) {
-				game.setXCoord(mouseEvent.getX());
-				game.setYCoord(mouseEvent.getY());
-			}
-		 }); 
 	}
+	
+	
+	
 	
 	
  	public static String getPlayerConfigID() {

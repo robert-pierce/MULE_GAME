@@ -1,68 +1,61 @@
 package application;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 import application.Map.MapSelection;
 import controller.ScreensController;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 
 
 public class GameRunner {
 	//---------Enum----------------------------------------
-	private enum GameState{LANDPURCHASE} ;
+	private enum GameState{LANDPURCHASE, MULEPURCHASE, ENDROUND};
 	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT};
+	private enum ActivePlayer{PLAYER1, PLAYER2, PLAYER3, PLAYER4}; 
 	//-----------------------------------------------------
 	
 	//----------------Instance Variables-------------------
+	private GameState gameState;
+	private Difficulty difficulty;
+	private boolean FirstTwoRounds = true;
+	private Scene scene;
+	private ActivePlayer activePlayer;
 	private ArrayList<Player> playerList;
 	private ArrayList<Turn> turnList = new ArrayList<Turn>();
-	private Difficulty difficulty;
-	private MapSelection map;
-	private double xMouseCoord, yMouseCoord;
 	private ScreensController mainController;
 	private int numRounds;
 	private Map gameMap;
-	
+	private int round = 1;
+	int xCor, yCor;
+	final private int XOFFSET = 127;
+	final private int YOFFSET = 141;
 	
 	//-----------------------------------------------------
 	
 	//--------------Constructor----------------------------
-	public GameRunner(ScreensController mainCntrl) {
+	public GameRunner(ScreensController mainCntrl, Scene scne) {
+		scene = scne;
 		playerList = new ArrayList<Player>();
 		mainController = mainCntrl;
+		activePlayer = ActivePlayer.PLAYER1;
 		numRounds = 6;
+		
+		
 		
 	}
 	//-----------------------------------------------------
 	
-	//----------------Main GameRunner Class----------------
-	 public void runGame() {
-		 Turn thisTurn;
-		 //load difficulty
-		 
-		 // load map
-		 gameMap = loadMap(map);
-		 
-		 
-		 System.out.println("Made it to turn loop");
-		 for (int i = 0; i < numRounds; i++) {
-			 System.out.println("Loop");
-			 if (i == 0 || i == 1) {
-				 thisTurn = new Turn(this, playerList, gameMap, true);
-			     thisTurn.runTurn();
-			} else {
-					 thisTurn = new Turn(this, playerList, gameMap, false);
-					 thisTurn.runTurn();
-				 }
-			}
-		  
-		 System.out.println("End of runGame method");
-	 }
-	//-----------------------------------------------------
-	public Map loadMap(MapSelection map) {
-		return new Map(map, mainController);
-	}
+	
+	
 	
 	//-----------Getters and Setters-----------------------
+	
+	public Scene getScene() {
+		return scene;
+	}
 	
 	public void addDifficulty(Difficulty diffclt) {
 		difficulty = diffclt;
@@ -73,21 +66,53 @@ public class GameRunner {
 	}
 	
 	public void addMap(MapSelection mapTyp) {
-		map = mapTyp;
+		gameMap = new Map(mapTyp, mainController);
 	}
 	
 	public ScreensController getMainController() {
 		return mainController;
 	}
 	
-	public void setXCoord(double xCor) {
-		System.out.println("X: " + xCor);
-		xMouseCoord = xCor;
+	public int setXCoord(double xCor) {
+		int xMouseCoord;
+		
+		xMouseCoord = (int) (xCor / XOFFSET); 
+		System.out.println("X: " + xMouseCoord);
+		
+		return xMouseCoord;
 	}
 	
-	public void setYCoord(double yCor) {
-		System.out.println("Y: " + yCor);
-		yMouseCoord = yCor;
+	public int setYCoord(double yCor) {
+		int yMouseCoord;
+		
+		yMouseCoord = (int) (yCor / YOFFSET); 
+		System.out.println("Y: " + yMouseCoord);
+		
+		return yMouseCoord;
 	}
+	
+
+	
+	//----------------Main GameRunner Class----------------
+		 public void LandPurchaseState() {
+			 Point plotKey;
+			 gameState=GameState.LANDPURCHASE;
+			 System.out.println("Reached LandPurchase State");
+			
+			 while(true) {
+				 // Player One Select Plot
+				 if (activePlayer.equals(ActivePlayer.PLAYER1)) {
+					 plotKey = new Point(xCor, yCor);
+					// System.out.println("Player 1 chose plot:" + plotKey); 
+				 }
+					 
+					
+			 }
+			
+				
+			
+		 }
+		//-----------------------------------------------------
+	
 	
 }

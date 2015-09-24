@@ -30,7 +30,8 @@ public class Turn {
 	
 	
 	private void buyLandPhase() {
-		
+		//gameMap.showMap();
+		System.out.println("Map loaded in Turn Obj");
 	}
 	
 	private void buyMulesPhase() {

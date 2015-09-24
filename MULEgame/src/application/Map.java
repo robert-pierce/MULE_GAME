@@ -8,36 +8,60 @@ import javafx.scene.Parent;
 
 public class Map {
 	//----------Enum--------------------------------------
-	public enum MapSelection {STANDARD, MAP2, MAP3};
+	public enum MapSelection {STANDARD, EASTWEST, MAP3};
 	//----------------------------------------------------
 	
 	//--------------Instance Variables--------------------
 	private ScreensController mainController;
-	private MapSelection gameMap;
+	final private MapSelection mapSelection;
+	final private int XOFFSET = 127;
+	final private int YOFFSET = 141;
+	
 	//----------------------------------------------------
 	
 	
 	//------------Constructor------------------------------
 	public Map(MapSelection map, ScreensController mainCntrl) {
 		mainController = mainCntrl;
-		gameMap = map;
-		showMap(gameMap);
+		mapSelection = map;
+		showMap(mapSelection);
+		
 	}
 	
 	
 	
-	private void showMap(MapSelection mapSlct) {
-			if (mapSlct == MapSelection.STANDARD) {
-				System.out.println("Loading " + mapSlct + " map");
+	public void showMap(MapSelection mapSlct) {
+			if (mapSelection == MapSelection.STANDARD) {
+				System.out.println("Loading " + mapSelection + " map");
 				mainController.setScreen(application.Main.standardMapID);	
-			} else if (mapSlct == MapSelection.MAP2) {
-				System.out.println("Loading " + mapSlct + " map");
-				mainController.setScreen(application.Main.standardMapID);
-			} else if (mapSlct == MapSelection.MAP3) {
-				System.out.println("Loading " + mapSlct + " map");
+			} else if (mapSelection == MapSelection.EASTWEST) {
+				System.out.println("Loading " + mapSelection + " map");
+				mainController.setScreen(application.Main.eastWestMapID);
+			} else if (mapSelection == MapSelection.MAP3) {
+				System.out.println("Loading " + mapSelection + " map");
 				mainController.setScreen(application.Main.standardMapID);
 			}
 		}
+	
+	
+	public int setXCoord(double xCor) {
+		int xMouseCoord;
+		
+		xMouseCoord = (int) (xCor / XOFFSET); 
+		System.out.println("X: " + xMouseCoord);
+		
+		return xMouseCoord;
+	}
+	
+	public int setYCoord(double yCor) {
+		int yMouseCoord;
+		
+		yMouseCoord = (int) (yCor / YOFFSET); 
+		System.out.println("Y: " + yMouseCoord);
+		
+		return yMouseCoord;
+	}
+	
 									
 	}
 	

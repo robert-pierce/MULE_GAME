@@ -37,7 +37,7 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	private RadioButton mapStandardBTN;
 	
 	@FXML
-	private RadioButton mapTwoBTN;
+	private RadioButton mapEastWestBTN;
 	
 	@FXML
 	private RadioButton mapThreeBTN;
@@ -54,10 +54,10 @@ public class mapConfigController implements Initializable, ControlledScreen {
 		}
 	}
 	
-	public void setMapTwo(ActionEvent event) {
-		if (mapTwoBTN.isSelected()) {
-			map = MapSelection.MAP2;
-			System.out.println("Map 2 selected");
+	public void setMapEastWest(ActionEvent event) {
+		if (mapEastWestBTN.isSelected()) {
+			map = MapSelection.EASTWEST;
+			System.out.println("EAST WEST map selected");
 		}
 	}
 	
@@ -81,6 +81,6 @@ public class mapConfigController implements Initializable, ControlledScreen {
 		
 		// start the game
 		System.out.println("Starting Game!");
-		application.Main.game.runGame();	
+		//application.Main.game.LandPurchaseState();	
 	}
 }

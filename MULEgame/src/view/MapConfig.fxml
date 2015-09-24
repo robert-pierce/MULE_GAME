@@ -27,7 +27,7 @@
               </toggleGroup>
             </RadioButton>
             <RadioButton fx:id="mapThreeBTN" font="$x1" layoutX="860.0" layoutY="213.0" mnemonicParsing="false" onAction="#setMapThree" text="Map 3" textFill="WHITE" toggleGroup="$MapSelectGRP" />
-            <RadioButton fx:id="mapTwoBTN" font="$x1" layoutX="512.0" layoutY="205.0" mnemonicParsing="false" onAction="#setMapTwo" text="Map 2" textFill="WHITE" toggleGroup="$MapSelectGRP" />
+            <RadioButton id="mapTwoBTN" fx:id="mapEastWestBTN" font="$x1" layoutX="512.0" layoutY="205.0" mnemonicParsing="false" onAction="#setMapEastWest" text="EAST WEST" textFill="WHITE" toggleGroup="$MapSelectGRP" />
             <Button fx:id="continueBTN" contentDisplay="LEFT" font="$x1" layoutX="324.0" layoutY="513.0" mnemonicParsing="false" onAction="#nextScreen" prefHeight="61.0" prefWidth="466.0" text="Continue" />
           </children>
         </Pane>

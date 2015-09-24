@@ -59,7 +59,7 @@ public class ScreensController extends StackPane {
 			// check if there is more than one screen
 			if (!getChildren().isEmpty()) {
 				
-				System.out.println("TimeLine Animation");
+				
 				// this block makes the current scene disappear
 				Timeline fade = new Timeline(
 						new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
@@ -71,7 +71,6 @@ public class ScreensController extends StackPane {
 								Timeline fadeIn = new Timeline(
 										new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
 										new KeyFrame(new Duration(800), new KeyValue(opacity, 1.0)));
-								System.out.println("Fade In");
 								fadeIn.play();		
 							}
 						}, new KeyValue(opacity, 0.0)));
