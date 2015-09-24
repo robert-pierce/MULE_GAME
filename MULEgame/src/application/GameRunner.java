@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 
 public class GameRunner {
 	//---------Enum----------------------------------------
-	public enum GameState{LANDPURCHASE, MULEPURCHASE, ENDROUND};
+	public enum GameState{LANDPURCHASE, MULEPURCHASE, ACQUIREGOODS, ENDROUND};
 	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT};
 	public enum ActivePlayer{PLAYER1, PLAYER2, PLAYER3, PLAYER4}; 
 	public enum PlotType {M1, M2, M3, RIVER, PLAIN, TOWN};
@@ -129,6 +129,10 @@ public class GameRunner {
 	
 	public int getNumPlayers() {
 		return playerList.size();
+	}
+	
+	public void setGameState(GameState gmeSte) {
+		gameState = gmeSte;
 	}
 	
 	public Player getActivePlayer() {

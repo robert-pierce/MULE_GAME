@@ -120,10 +120,16 @@ public class Player {
 		this.score = money + energy + smithore + 500 * plotMap.size();
 	}
 	
+	public void payForPlot() {
+		money = money - 300;
+	}
+	
 	public String toString() {
 		String str =  "Player " + playerNum + "\n Name: " + playerName + "\n" + "Race: " + race + "\n" + "Color: " + color;
 		return str;
 	}
+	
+	
 	
 
 }

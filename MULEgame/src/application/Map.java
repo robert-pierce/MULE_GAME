@@ -9,6 +9,7 @@ import controller.ScreensController;
 import controller.playerConfigController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import jfx.messagebox.MessageBox;
 
 public class Map {
 	//----------Enum--------------------------------------
@@ -55,17 +56,50 @@ public class Map {
 	
 	
 	
-	public void purchasePlot(double xCor, double yCor, Player player) {
+	public Plot purchasePlot(double xCor, double yCor, Player player, boolean firstTwoRoundsFlag) {
 		Point plotCoord;
 		Plot plot;
 		int xCoord = (int) (xCor / XOFFSET);
 		int yCoord = (int) (yCor / YOFFSET); 
-		
 		plotCoord = new Point(xCoord, yCoord);
-		
 		plot = getMapPlot(plotCoord);
-		System.out.println(plot);
 		
+		
+		if (plot.getOwner() == null && !plot.getType().equals(PlotType.TOWN)) {
+			if (firstTwoRoundsFlag) {
+				plot.setOwner(player);
+				player.addPlot(plotCoord, plot);
+				System.out.println(plot);
+			} else if (player.getMoney() >= 300) {
+				plot.setOwner(player);
+				player.addPlot(plotCoord, plot);
+				player.payForPlot();
+				System.out.println(plot);
+			} else {
+				System.out.println(plot);
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "Not Enough Money To Purchase a Plot",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK | MessageBox.CANCEL);
+				return null;
+			}
+		} else if (plot.getType().equals(PlotType.TOWN)) {
+			System.out.println(plot);
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "The Town is not for Sale!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK | MessageBox.CANCEL);
+			return null;
+		} else {
+			System.out.println(plot);
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "This Plot is Already Owned",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK | MessageBox.CANCEL);
+			return null;
+		}
+		
+		return plot;
 	}
 	
 	
