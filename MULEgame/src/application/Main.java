@@ -51,7 +51,7 @@ public class Main extends Application {
 		root.getChildren().addAll(mainContainer);
 		scene = new Scene(root);
 		primaryStage.setScene(scene);
-		primaryStage.setResizable(false);
+		//primaryStage.setResizable(false);
 		primaryStage.show();
 		
 		// create a GameRunner object

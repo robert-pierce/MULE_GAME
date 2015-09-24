@@ -12,15 +12,16 @@ import javafx.scene.input.MouseEvent;
 
 public class GameRunner {
 	//---------Enum----------------------------------------
-	private enum GameState{LANDPURCHASE, MULEPURCHASE, ENDROUND};
+	public enum GameState{LANDPURCHASE, MULEPURCHASE, ENDROUND};
 	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT};
-	private enum ActivePlayer{PLAYER1, PLAYER2, PLAYER3, PLAYER4}; 
+	public enum ActivePlayer{PLAYER1, PLAYER2, PLAYER3, PLAYER4}; 
+	public enum PlotType {M1, M2, M3, RIVER, PLAIN, TOWN};
 	//-----------------------------------------------------
 	
 	//----------------Instance Variables-------------------
 	private GameState gameState;
 	private Difficulty difficulty;
-	private boolean FirstTwoRounds = true;
+	private boolean firstTwoRounds = true;
 	private Scene scene;
 	private ActivePlayer activePlayer;
 	private ArrayList<Player> playerList;
@@ -29,6 +30,7 @@ public class GameRunner {
 	private int numRounds;
 	private Map gameMap;
 	private int round = 1;
+	private int numPlayers;
 	int xCor, yCor;
 	final private int XOFFSET = 127;
 	final private int YOFFSET = 141;
@@ -91,28 +93,56 @@ public class GameRunner {
 		return yMouseCoord;
 	}
 	
-
+	public void setLandPurchaseState() {
+		 gameState = GameState.LANDPURCHASE;
+		 System.out.println("LandPurchase State Set");
+	 }
 	
-	//----------------Main GameRunner Class----------------
-		 public void LandPurchaseState() {
-			 Point plotKey;
-			 gameState=GameState.LANDPURCHASE;
-			 System.out.println("Reached LandPurchase State");
-			
-			 while(true) {
-				 // Player One Select Plot
-				 if (activePlayer.equals(ActivePlayer.PLAYER1)) {
-					 plotKey = new Point(xCor, yCor);
-					// System.out.println("Player 1 chose plot:" + plotKey); 
-				 }
-					 
-					
-			 }
-			
-				
-			
-		 }
-		//-----------------------------------------------------
+	public void setActivePlayer(ActivePlayer actPlyr) {
+		activePlayer = actPlyr;
+	}
+	
+	public GameState getGameState() {
+		return gameState;
+	}
+	
+
+	public ActivePlayer getActivePlayerState() {
+		return activePlayer;
+	}
+	
+	public boolean getFirstTwoRoundsFlag() {
+		return firstTwoRounds;
+	}
+	
+	public int getRoundNumber() {
+		return round;
+	}
+	
+	public void incrementRound() {
+		round++;
+	}
+	
+	public Map getMap() {
+		return gameMap;
+	}
+	
+	public int getNumPlayers() {
+		return playerList.size();
+	}
+	
+	public Player getActivePlayer() {
+		if (activePlayer.equals(ActivePlayer.PLAYER1)) {
+			return playerList.get(0);	
+		} else if (activePlayer.equals(ActivePlayer.PLAYER2)) {
+			return playerList.get(1);	
+		} else if (activePlayer.equals(ActivePlayer.PLAYER3)) {
+			return playerList.get(2);	
+		} else {
+			return playerList.get(3);	
+		} 
+		
+	}
 	
 	
 }

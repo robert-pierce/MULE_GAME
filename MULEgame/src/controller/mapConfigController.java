@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
-
+import application.GameRunner.ActivePlayer;
 import application.Map.MapSelection;
 
 public class mapConfigController implements Initializable, ControlledScreen {
@@ -81,6 +81,7 @@ public class mapConfigController implements Initializable, ControlledScreen {
 		
 		// start the game
 		System.out.println("Starting Game!");
-		//application.Main.game.LandPurchaseState();	
+		 application.Main.game.setLandPurchaseState();
+		application.Main.game.setActivePlayer(ActivePlayer.PLAYER1);	
 	}
 }
