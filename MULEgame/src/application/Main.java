@@ -25,20 +25,20 @@ public class Main extends Application {
 	public static String mapConfigFile = "/view/MapConfig.fxml";
 	public static String playerConfigID = "playerConfigScreen";
 	public static String playerConfigFile = "/view/PlayerConfig.fxml";
-	public static String map1ID = "map1Screen";
-	public static String map1File = "/view/Map1.fxml";
+	public static String standardMapID = "StandardScreen";
+	public static String standardMapFile = "/view/StandardMap.fxml";
 	
 	public static GameRunner game;
-	 
+	private ScreensController mainContainer;
 	
 	@Override
 	public void start(Stage primaryStage) {
-		ScreensController mainContainer = new ScreensController();
+		mainContainer = new ScreensController();
 		mainContainer.loadScreen(startScreenID, startScreenFile);
 		mainContainer.loadScreen(gameConfigID, gameConfigFile);
 		mainContainer.loadScreen(mapConfigID, mapConfigFile);
 		mainContainer.loadScreen(playerConfigID,  playerConfigFile);
-		mainContainer.loadScreen(map1ID, map1File);
+		mainContainer.loadScreen(standardMapID, standardMapFile);
 		
 		
 		
@@ -51,22 +51,27 @@ public class Main extends Application {
 		//primaryStage.setResizable(false);
 		primaryStage.show();
 		
-		game = new GameRunner();
+		// create a GameRunner object
+		game = new GameRunner(mainContainer);
 		 
 	
+		// listen for mouse clicks
 		 scene.setOnMousePressed(new EventHandler<MouseEvent>() { 
 			@Override
 			public void handle(MouseEvent mouseEvent) {
 				game.setXCoord(mouseEvent.getX());
 				game.setYCoord(mouseEvent.getY());
 			}
-		 });
-		 
-		 
-		 
+		 }); 
 	}
 	
 	
+ 	public static String getPlayerConfigID() {
+ 		return playerConfigID;
+ 	}
+	
+	
+	// Don't necessarily need this
 	public static void main(String[] args) {
 		launch(args);
 	}

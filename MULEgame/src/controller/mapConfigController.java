@@ -68,6 +68,9 @@ public class mapConfigController implements Initializable, ControlledScreen {
 		}
 	}
 	
+	public ScreensController getMapConfigController() {
+		return myController;
+	}
 	
 	public void nextScreen(ActionEvent event) {
 		System.out.println("Coninue Button Pressed");
@@ -76,15 +79,8 @@ public class mapConfigController implements Initializable, ControlledScreen {
 		application.Main.game.addMap(map);
 		System.out.println("Map set to " + map.toString() + ".");
 		
-		if (map == MapSelection.STANDARD) {
-			System.out.println("Loading " + map + " map");
-			myController.setScreen(application.Main.map1ID);	
-		} else if (map == MapSelection.MAP2) {
-			System.out.println("Loading " + map + " map");
-			myController.setScreen(application.Main.map1ID);
-		} else if (map == MapSelection.MAP3) {
-			System.out.println("Loading " + map + " map");
-			myController.setScreen(application.Main.map1ID);
-		}
+		// start the game
+		System.out.println("Starting Game!");
+		application.Main.game.runGame();	
 	}
 }

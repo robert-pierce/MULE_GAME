@@ -142,10 +142,7 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	public void nextScreen(ActionEvent event) {
 		System.out.println("Continue Button Pressed");
 		
-	//	if (playerName.isEmpty()) {
-		//	System.out.println("Please enter a player name!");
-		//	return;
-		//} else 	
+	
 			
 		if (playerName == null || playerName.equals("")) {
 			System.out.println("Please enter a player name!");

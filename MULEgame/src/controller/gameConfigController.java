@@ -2,12 +2,15 @@ package controller;
 
 import java.net.URL;
 import application.GameRunner.Difficulty;
+import application.Main;
+
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -16,6 +19,8 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	//--------------Instance Variables---------------------------------
 	private ScreensController myController;
 	private Difficulty difficulty = Difficulty.STANDARD;
+	ScreensController mainController;
+	Node playerConfigCntrl;
 	int numPlayers = 1;
 	//-----------------------------------------------------------------
 	
@@ -119,6 +124,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 		
 		
 		// This block will get the playerConfigController and pass to it the number of players
+		
 		try{
 			FXMLLoader loader = new FXMLLoader( getClass().getResource("/view/PlayerConfig.fxml"));
 			Parent loadScreen = (Parent) loader.load();
