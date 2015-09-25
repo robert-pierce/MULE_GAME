@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.townController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <ImageView id="town.jpg" fitHeight="705.0" fitWidth="1140.0" layoutX="0.0" layoutY="0.0">
+      <image>
+        <Image url="@../../images/town.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <Button id="returnToMapBTN" fx:id="returnToMapLeftBTN" layoutX="0.0" layoutY="610.0" mnemonicParsing="false" onAction="#returnToMap" text="MAP" textFill="BLACK">
+      <font>
+        <Font size="20.0" fx:id="x1" />
+      </font>
+    </Button>
+    <Button id="returnToMapBTN" fx:id="returnToMapRightBTN" font="$x1" layoutX="1063.0" layoutY="610.0" mnemonicParsing="false" onAction="#returnToMap" text="MAP" textFill="BLACK" />
+  </children>
+</AnchorPane>

@@ -29,6 +29,8 @@ public class Main extends Application {
 	public static String standardMapFile = "/view/StandardMap.fxml";
 	public static String eastWestMapID = "EastWestScreen";
 	public static String eastWestMapFile = "/view/EastWestMap.fxml";
+	public static String townID = "TownScreen";
+	public static String townFile = "/view/TownScreen.fxml";
 	
 	public static GameRunner game;
 	private ScreensController mainContainer;
@@ -43,7 +45,7 @@ public class Main extends Application {
 		mainContainer.loadScreen(playerConfigID,  playerConfigFile);
 		mainContainer.loadScreen(standardMapID, standardMapFile);
 		mainContainer.loadScreen(eastWestMapID, eastWestMapFile);
-		
+		mainContainer.loadScreen(townID, townFile);
 		
 		mainContainer.setScreen(startScreenID);
 		

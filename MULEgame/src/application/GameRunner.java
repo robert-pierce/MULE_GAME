@@ -31,7 +31,8 @@ public class GameRunner {
 	private Map gameMap;
 	private int round = 1;
 	private int numPlayers;
-	int xCor, yCor;
+	private int xCor, yCor;
+	private boolean playerPass = false;
 	final private int XOFFSET = 127;
 	final private int YOFFSET = 141;
 	
@@ -144,8 +145,15 @@ public class GameRunner {
 			return playerList.get(2);	
 		} else {
 			return playerList.get(3);	
-		} 
-		
+		} 	
+	}
+	
+	public boolean isPlayerPassing() {
+		return playerPass;
+	}
+	
+	public void setPlayerPassing(boolean isPassing) {
+		 playerPass = isPassing;
 	}
 	
 	

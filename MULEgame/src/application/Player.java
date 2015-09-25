@@ -2,11 +2,12 @@ package application;
 
 import java.awt.Point;
 import java.util.HashMap;
+import javafx.scene.paint.Color;
 
 public class Player {
 	//-------------enums-----------------------------
 	public enum Race {HUMAN, FLAPPER, BONZOID, UGAITE, BUZZITE};
-	public enum Color {RED, GREEN, PINK, PURPLE};
+	//public enum Color {RED, GREEN, PINK, PURPLE};
 	
 	
 	//--------------Instance Variables---------------
@@ -48,11 +49,11 @@ public class Player {
 		updateScore();
 	}
 
-	public application.Player.Race getRace() {
+	public Race getRace() {
 		return race;
 	}
 
-	public application.Player.Color getColor() {
+	public Color getColor() {
 		return color;
 	}
 

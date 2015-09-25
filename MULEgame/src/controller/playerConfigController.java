@@ -4,8 +4,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.scene.paint.Color;
 import application.Player;
-import application.Player.Color;
 import application.Player.Race;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,12 +19,12 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	private static int numPlayers;
 	
 	private application.Player.Race race = Race.HUMAN;
-	private application.Player.Color color = Color.RED;
+	private Color color = Color.RED;
 	private int playerINDEX = 1;
 	private String playerName;
 	
 	private ArrayList<Player.Race> takenRaceList = new ArrayList<Player.Race>();
-	private ArrayList<Player.Color> takenColorList = new ArrayList<Player.Color>();
+	private ArrayList<Color> takenColorList = new ArrayList<Color>();
 	
 	
 	//--------------Instance Variables---------------------------------
@@ -120,22 +120,22 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	
 	
 	public void setColorRed(ActionEvent event) {
-		color = application.Player.Color.RED;
+		color = Color.RED;
 		System.out.println("Player color set to: " + color.toString());
 	}
 	
 	public void setColorGreen(ActionEvent event) {
-		color = application.Player.Color.GREEN;
+		color = Color.GREEN;
 		System.out.println("Player color set to: " + color.toString());
 	}
 	
 	public void setColorPink(ActionEvent event) {
-		color = application.Player.Color.PINK;
+		color = Color.PINK;
 		System.out.println("Player color set to: " + color.toString());
 	}
 	
 	public void setColorPurple(ActionEvent event) {
-		color = application.Player.Color.PURPLE;
+		color = Color.PURPLE;
 		System.out.println("Player color set to: " + color.toString());
 	}
 	

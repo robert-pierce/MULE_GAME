@@ -45,6 +45,7 @@ public class Map {
 	public void showMap(MapSelection mapSlct) {
 		activePlayer = Main.game.getActivePlayerState();
 		int currPlayer;
+		int msgBoxRslt;
 		
 		switch (activePlayer) {
 			case PLAYER1: 
@@ -67,10 +68,18 @@ public class Map {
 				mainController.setScreen(application.Main.standardMapID);	
 				
 				
-				MessageBox.show(Main.game.getScene().getWindow(),
-				         "Player " + currPlayer + " please select a plot to purchase ... plots are FREE",
-				         "Information dialog",
-				         MessageBox.ICON_INFORMATION | MessageBox.OK | MessageBox.CANCEL);
+				
+				msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
+				                "Player " + currPlayer + " would you like to buy a plot? Plots are FREE!",
+				                 "Information dialog",
+				                  MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
+				
+				if (msgBoxRslt == MessageBox.NO) {
+					Main.game.setPlayerPassing(true);
+				} else {
+					Main.game.setPlayerPassing(false);
+				}
+					
 				
 			} else if (mapSelection == MapSelection.EASTWEST) {
 				System.out.println("Loading " + mapSelection + " map");
@@ -93,6 +102,7 @@ public class Map {
 		plot = getMapPlot(plotCoord);
 		
 		
+		
 		if (plot.getOwner() == null && !plot.getType().equals(PlotType.TOWN)) {
 			if (firstTwoRoundsFlag) {
 				plot.setOwner(player);
@@ -108,7 +118,7 @@ public class Map {
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "Not Enough Money To Purchase a Plot",
 				         "Information dialog",
-				         MessageBox.ICON_INFORMATION | MessageBox.OK | MessageBox.CANCEL);
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 				return null;
 			}
 		} else if (plot.getType().equals(PlotType.TOWN)) {
@@ -116,14 +126,14 @@ public class Map {
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "The Town is not for Sale!",
 			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK | MessageBox.CANCEL);
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 			return null;
 		} else {
 			System.out.println(plot);
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "This Plot is Already Owned",
 			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK | MessageBox.CANCEL);
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 			return null;
 		}
 		
@@ -132,6 +142,28 @@ public class Map {
 	
 	
 	
+	public Plot placeMule(double xCor, double yCor, Player player) {
+		Point plotCoord;
+		Plot plot;
+		int xCoord = (int) (xCor / XOFFSET);
+		int yCoord = (int) (yCor / YOFFSET); 
+		plotCoord = new Point(xCoord, yCoord);
+		plot = getMapPlot(plotCoord);
+		
+		System.out.println("Trying to place mule on: " + plot);
+		
+		if (plot.getType().equals(PlotType.TOWN)) {
+			System.out.println("Loading Town");
+			showTown();
+		}
+		return plot;
+	}
+	
+	
+	
+	private void showTown() {
+		mainController.setScreen(application.Main.townID);
+	}
 	
 	private Plot getMapPlot (Point pltCrd) {
 		return plotMap.get(pltCrd);

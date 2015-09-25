@@ -1,6 +1,6 @@
 package application;
 
-import java.awt.Point;
+import java.awt.*;
 
 import application.GameRunner.PlotType;
 
@@ -33,6 +33,14 @@ public class Plot {
 		str.append("Plot owner: " + owner + "\n");
 		str.append("Plot type: " + type);
 		return str.toString();
+	}
+	
+	public Point getCenter() {
+		double x = plotCoord.getX();
+	    double y = plotCoord.getY();
+	    int centerX = (int) Math.floor((x * 127) + 63.5);
+	    int centerY = (int) Math.floor((y * 141) + 70.5);
+	    return new Point(centerX, centerY);
 	}
 	
 }
