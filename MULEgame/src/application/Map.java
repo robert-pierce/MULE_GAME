@@ -3,6 +3,7 @@ package application;
 import java.awt.Point;
 import java.util.HashMap;
 
+import application.GameRunner.ActivePlayer;
 import application.GameRunner.PlotType;
 import application.Map.MapSelection;
 import controller.ScreensController;
@@ -22,6 +23,7 @@ public class Map {
 	final private int XOFFSET = 127;
 	final private int YOFFSET = 141;
 	private HashMap<Point, Plot> plotMap;
+	private ActivePlayer activePlayer;
 
 	Point point;
 	
@@ -41,9 +43,35 @@ public class Map {
 	
 	
 	public void showMap(MapSelection mapSlct) {
+		activePlayer = Main.game.getActivePlayerState();
+		int currPlayer;
+		
+		switch (activePlayer) {
+			case PLAYER1: 
+				currPlayer = 1;
+				break;
+			case PLAYER2:  
+				currPlayer = 2;
+				break;
+			case PLAYER3:
+				currPlayer = 3;
+				break;
+			case PLAYER4:
+				currPlayer = 4;
+			default:
+				currPlayer = 1;
+		}
+		
 			if (mapSelection == MapSelection.STANDARD) {
 				System.out.println("Loading " + mapSelection + " map");
 				mainController.setScreen(application.Main.standardMapID);	
+				
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "Player " + currPlayer + " please select a plot to purchase ... plots are FREE",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK | MessageBox.CANCEL);
+				
 			} else if (mapSelection == MapSelection.EASTWEST) {
 				System.out.println("Loading " + mapSelection + " map");
 				mainController.setScreen(application.Main.eastWestMapID);
