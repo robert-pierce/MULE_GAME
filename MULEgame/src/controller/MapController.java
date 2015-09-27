@@ -2,10 +2,8 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import application.Main;
 import application.Map;
-import application.Player;
 import application.Plot;
 import application.GameRunner.ActivePlayer;
 import application.GameRunner.GameState;
@@ -16,8 +14,6 @@ import jfx.messagebox.MessageBox;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import java.awt.*;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class MapController implements Initializable, ControlledScreen {
 	ScreensController myController;
@@ -62,223 +58,62 @@ public class MapController implements Initializable, ControlledScreen {
 		
 		
 		//-------------------LAND PURCHASE STATE----------------------------------------
-		if (gameState.equals(GameState.LANDPURCHASE)) {
-			GraphicsContext gc = plotMarkerCanvas.getGraphicsContext2D();
-			
-			
+		if (gameState.equals(GameState.LANDPURCHASE)) {	
 			if (activePlayerState.equals(ActivePlayer.PLAYER1)) {
-				
 				if (!Main.game.isPlayerPassing()) {	
 					currentPlot = map.purchasePlot(xCor, yCor, application.Main.game.getActivePlayer(), firstTwoRoundsFlag);	
 					if (currentPlot != null) {
-						gc.setFill(application.Main.game.getActivePlayer().getColor());
-	                 	Point center = currentPlot.getCenter();
-	                    gc.fillRect(center.getX(), center.getY(), 10, 10);
+						markPlot(currentPlot);
 						
-						                   
 	                    Main.game.setActivePlayer(ActivePlayer.PLAYER2);
-						if (numPlayers > 1) {
-							if (firstTwoRoundsFlag) {
-								msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
-															"Player 2 would you like to buy a plot? Plots are FREE!",
-															"Information dialog",
-															MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-							} else {
-								msgBoxRslt= MessageBox.show(Main.game.getScene().getWindow(),
-															"Player 2 would you like to buy a plot? Plots are $300",
-															"Information dialog",
-															MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-							}
-							updatePlayerPass(msgBoxRslt);
-							
-						} else {
-							Main.game.setGameState(GameState.MULEPURCHASE);
-							Main.game.setActivePlayer(ActivePlayer.PLAYER1);
-							MessageBox.show(Main.game.getScene().getWindow(),
-							         "End of Land Purchase Phase",
-							         "Information dialog",
-							         MessageBox.ICON_INFORMATION | MessageBox.OK);
-							return;
-						}
+	                    msgBoxRslt = makeAnnoucement();
+	                    updatePlayerPass(msgBoxRslt);						
 					}
 				} else {
 					 Main.game.setActivePlayer(ActivePlayer.PLAYER2);
-						
-						
-					 if (numPlayers > 1) {
-							if (firstTwoRoundsFlag) {
-								msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
-															"Player 2 would you like to buy a plot? Plots are FREE!",
-															"Information dialog",
-															MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-							} else {
-								msgBoxRslt= MessageBox.show(Main.game.getScene().getWindow(),
-															"Player 2 would you like to buy a plot? Plots are $300",
-															"Information dialog",
-															MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-							}
-							
-							
-							updatePlayerPass(msgBoxRslt);
-							
-							
-						} else {
-							Main.game.setGameState(GameState.MULEPURCHASE);
-							Main.game.setActivePlayer(ActivePlayer.PLAYER1);
-							MessageBox.show(Main.game.getScene().getWindow(),
-							         "End of Land Purchase Phase",
-							         "Information dialog",
-							         MessageBox.ICON_INFORMATION | MessageBox.OK);
-							return;
-						}
+					 msgBoxRslt = makeAnnoucement();
+	                 updatePlayerPass(msgBoxRslt);	
 				}
 			} else if (activePlayerState.equals(ActivePlayer.PLAYER2) && numPlayers >= 2) {
 				if (!Main.game.isPlayerPassing()) {	
-				
 					currentPlot = map.purchasePlot(xCor, yCor, application.Main.game.getActivePlayer(), firstTwoRoundsFlag);
 					if(currentPlot != null) {
-	                    gc.setFill(application.Main.game.getActivePlayer().getColor());
-	                    Point center = currentPlot.getCenter();
-	                    gc.fillRect(center.getX(), center.getY(), 10, 10);
-		
-	
-	                    
+						markPlot(currentPlot);
+						
 						Main.game.setActivePlayer(ActivePlayer.PLAYER3);
-					
-						if (numPlayers > 2) {
-							if (firstTwoRoundsFlag) {
-								msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
-															"Player 3 would you like to buy a plot? Plots are FREE!",
-															"Information dialog",
-															MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-							} else {
-								msgBoxRslt= MessageBox.show(Main.game.getScene().getWindow(),
-															"Player 3 would you like to buy a plot? Plots are $300",
-															"Information dialog",
-															MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-							}
-							updatePlayerPass(msgBoxRslt);
-							
-						} else {
-								Main.game.setGameState(GameState.MULEPURCHASE);
-								Main.game.setActivePlayer(ActivePlayer.PLAYER1);
-								MessageBox.show(Main.game.getScene().getWindow(),
-								         "End of Land Purchase Phase",
-								         "Information dialog",
-								         MessageBox.ICON_INFORMATION | MessageBox.OK);
-								return;
-							}
+						msgBoxRslt = makeAnnoucement();
+	                    updatePlayerPass(msgBoxRslt);		
 					}
 				} else {
 					Main.game.setActivePlayer(ActivePlayer.PLAYER3);
-					
-					if (numPlayers > 2) {
-						if (firstTwoRoundsFlag) {
-							msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
-														"Player 3 would you like to buy a plot? Plots are FREE!",
-														"Information dialog",
-														MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-						} else {
-							msgBoxRslt= MessageBox.show(Main.game.getScene().getWindow(),
-														"Player 3 would you like to buy a plot? Plots are $300",
-														"Information dialog",
-														MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-						}
-						updatePlayerPass(msgBoxRslt);
-						
-					} else {
-							Main.game.setGameState(GameState.MULEPURCHASE);
-							Main.game.setActivePlayer(ActivePlayer.PLAYER1);
-							MessageBox.show(Main.game.getScene().getWindow(),
-							         "End of Land Purchase Phase",
-							         "Information dialog",
-							         MessageBox.ICON_INFORMATION | MessageBox.OK);
-							return;
-						}
+					msgBoxRslt = makeAnnoucement();
+	                updatePlayerPass(msgBoxRslt);			
+	                
 				}
 			} else if (activePlayerState.equals(ActivePlayer.PLAYER3) && numPlayers >= 3) {
 				if (!Main.game.isPlayerPassing()) {	
-					 currentPlot = map.purchasePlot(xCor, yCor, application.Main.game.getActivePlayer(), firstTwoRoundsFlag);
+					currentPlot = map.purchasePlot(xCor, yCor, application.Main.game.getActivePlayer(), firstTwoRoundsFlag);
 	                 if(currentPlot != null) {
-	                     gc.setFill(application.Main.game.getActivePlayer().getColor());
-	                     Point center = currentPlot.getCenter();
-	                     gc.fillRect(center.getX(), center.getY(), 10, 10);
-						
-						
+	                    markPlot(currentPlot);
 						
 						Main.game.setActivePlayer(ActivePlayer.PLAYER4);
-					
-						if (numPlayers > 3) {
-							if (firstTwoRoundsFlag) {
-								msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
-															"Player 4 would you like to buy a plot? Plots are FREE!",
-															"Information dialog",
-															MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-							} else {
-								msgBoxRslt= MessageBox.show(Main.game.getScene().getWindow(),
-															"Player 4 would you like to buy a plot? Plots are $300",
-															"Information dialog",
-															MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-							}
-							updatePlayerPass(msgBoxRslt);
-							
-						} else {
-								Main.game.setGameState(GameState.MULEPURCHASE);
-								Main.game.setActivePlayer(ActivePlayer.PLAYER1);
-								MessageBox.show(Main.game.getScene().getWindow(),
-								         "End of Land Purchase Phase",
-								         "Information dialog",
-								         MessageBox.ICON_INFORMATION | MessageBox.OK);
-								return;
-							}
+						msgBoxRslt = makeAnnoucement();
+	                    updatePlayerPass(msgBoxRslt);			
 					}
 				} else {
 					Main.game.setActivePlayer(ActivePlayer.PLAYER4);
-					
-					if (numPlayers > 3) {
-						if (firstTwoRoundsFlag) {
-							msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
-														"Player 4 would you like to buy a plot? Plots are FREE!",
-														"Information dialog",
-														MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-						} else {
-							msgBoxRslt= MessageBox.show(Main.game.getScene().getWindow(),
-														"Player 4 would you like to buy a plot? Plots are $300",
-														"Information dialog",
-														MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-						}
-						updatePlayerPass(msgBoxRslt);
-						
-					} else {
-							Main.game.setGameState(GameState.MULEPURCHASE);
-							Main.game.setActivePlayer(ActivePlayer.PLAYER1);
-							MessageBox.show(Main.game.getScene().getWindow(),
-							         "End of Land Purchase Phase",
-							         "Information dialog",
-							         MessageBox.ICON_INFORMATION | MessageBox.OK);
-							return;
-						}
+					msgBoxRslt = makeAnnoucement();
+	                updatePlayerPass(msgBoxRslt);	
 				}
 			} else {
 				if (!Main.game.isPlayerPassing()) {	
 					currentPlot = map.purchasePlot(xCor, yCor, application.Main.game.getActivePlayer(), firstTwoRoundsFlag);
 	                if(currentPlot != null) {
-	                    gc.setFill(application.Main.game.getActivePlayer().getColor());
-	                    Point center = currentPlot.getCenter();
-	                    gc.fillRect(center.getX(), center.getY(), 10, 10);
-	                    Main.game.setActivePlayer(ActivePlayer.PLAYER3);
-						
-						
-						
-						Main.game.setGameState(GameState.MULEPURCHASE);
-						Main.game.setActivePlayer(ActivePlayer.PLAYER1);
-						
-						MessageBox.show(Main.game.getScene().getWindow(),
-						         "End of Land Purchase Phase",
-						         "Information dialog",
-						         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	                	markPlot(currentPlot);
+	                	
+	                    msgBoxRslt = makeAnnoucement();
 					}
-				}
+				} else {msgBoxRslt = makeAnnoucement(); }	
 			}
 		}
 		
@@ -292,7 +127,7 @@ public class MapController implements Initializable, ControlledScreen {
 			activePlayerState = retrieveActivePlayerState();
 			numPlayers = retrieveNumPlayers();
 			map = Main.game.getMap();
-			firstTwoRoundsFlag = application.Main.game.getFirstTwoRoundsFlag();
+			firstTwoRoundsFlag = Main.game.getFirstTwoRoundsFlag();
 			
 			System.out.println("Game is in " + gameState + " mode");
 			System.out.println("Active Player is: " + activePlayerState);
@@ -335,7 +170,72 @@ public class MapController implements Initializable, ControlledScreen {
 		}
 	}
 	
+	private int makeAnnoucement() {
+		int msgBoxRslt;
+		int nextPlayerNum;
+		int ENDPURCHASEPHASE = -1;
+		
+		StringBuilder announcement = new StringBuilder();
+		
+		if (gameState.equals(GameState.LANDPURCHASE)) {
+			
+			switch (activePlayerState) {
+			case PLAYER4:
+				nextPlayerNum = 5;
+				break;
+			case PLAYER3:
+				nextPlayerNum = 4;
+				break;
+			case PLAYER2:
+				nextPlayerNum = 3;
+				break;
+			default:
+				nextPlayerNum = 2;	
+		}
+		
+		
+		if (firstTwoRoundsFlag) {
+			announcement.append("Player " + nextPlayerNum + " would you like to buy a plot? Plots are FREE!");
+													
+		} else {
+			announcement.append("Player " + nextPlayerNum +  " would you like to buy a plot? Plots are $300");
+		}
+		
+		
+			
+		if (numPlayers >= nextPlayerNum) {
+			
+			msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
+										announcement.toString(),
+										"Information dialog",
+										MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
+			return msgBoxRslt;
+			
+		} else {
+			endPurchasePhase();
+			return ENDPURCHASEPHASE;
+		}
+		
+		}
+		return 0;
+	}
 	
+	private void endPurchasePhase() {
+		Main.game.setGameState(GameState.MULEPURCHASE);
+		Main.game.setActivePlayer(ActivePlayer.PLAYER1);
+		MessageBox.show(Main.game.getScene().getWindow(),
+		         "End of Land Purchase Phase",
+		         "Information dialog",
+		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	}
+	
+	private void markPlot(Plot currentPlot) {
+		GraphicsContext gc = plotMarkerCanvas.getGraphicsContext2D();
+		
+		 gc.setFill(Main.game.getActivePlayer().getColor());
+         Point center = currentPlot.getCenter();
+         gc.fillRect(center.getX(), center.getY(), 10, 10);
+	}
 	
 	
 }
