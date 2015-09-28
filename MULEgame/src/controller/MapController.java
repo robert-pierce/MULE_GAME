@@ -15,7 +15,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import java.awt.*;
 
-public class MapController implements Initializable, ControlledScreen {
+public class MapController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
 	private GameState gameState;
 	boolean firstTwoRoundsFlag = true;
@@ -35,6 +35,13 @@ public class MapController implements Initializable, ControlledScreen {
 	public void setScreenParent(ScreensController screenParent) {
 		myController = screenParent;
 	}
+	
+	@Override
+	public void onLoad() {
+		System.out.println("Yay! on Load Method Works");
+		
+	}
+	
 	
 	@FXML
 	public Canvas plotMarkerCanvas;
@@ -236,6 +243,9 @@ public class MapController implements Initializable, ControlledScreen {
          Point center = currentPlot.getCenter();
          gc.fillRect(center.getX(), center.getY(), 10, 10);
 	}
+
+
+	
 	
 	
 }

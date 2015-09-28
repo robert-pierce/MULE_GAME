@@ -1,13 +1,13 @@
 package application;
 
-import java.awt.Point;
+
 import java.util.ArrayList;
 
 import application.Map.MapSelection;
 import controller.ScreensController;
-import javafx.event.EventHandler;
+
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
+
 
 
 public class GameRunner {
@@ -20,21 +20,16 @@ public class GameRunner {
 	
 	//----------------Instance Variables-------------------
 	private GameState gameState;
-	private Difficulty difficulty;
-	private boolean firstTwoRounds = true;
-	private Scene scene;
 	private ActivePlayer activePlayer;
+	private Difficulty difficulty;
+	private Map gameMap;
+	private Scene scene;
 	private ArrayList<Player> playerList;
-	private ArrayList<Turn> turnList = new ArrayList<Turn>();
 	private ScreensController mainController;
 	private int numRounds;
-	private Map gameMap;
-	private int round = 1;
-	private int numPlayers;
-	private int xCor, yCor;
+	private int round = 0;
 	private boolean playerPass = false;
-	final private int XOFFSET = 127;
-	final private int YOFFSET = 141;
+	private boolean firstTwoRounds = true;
 	
 	//-----------------------------------------------------
 	
@@ -76,23 +71,7 @@ public class GameRunner {
 		return mainController;
 	}
 	
-	public int setXCoord(double xCor) {
-		int xMouseCoord;
-		
-		xMouseCoord = (int) (xCor / XOFFSET); 
-		System.out.println("X: " + xMouseCoord);
-		
-		return xMouseCoord;
-	}
 	
-	public int setYCoord(double yCor) {
-		int yMouseCoord;
-		
-		yMouseCoord = (int) (yCor / YOFFSET); 
-		System.out.println("Y: " + yMouseCoord);
-		
-		return yMouseCoord;
-	}
 	
 	public void setLandPurchaseState() {
 		 gameState = GameState.LANDPURCHASE;
@@ -122,6 +101,7 @@ public class GameRunner {
 	
 	public void incrementRound() {
 		round++;
+		System.out.println("Round incremented to: " + round);
 	}
 	
 	public Map getMap() {

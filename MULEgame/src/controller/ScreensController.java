@@ -17,6 +17,7 @@ import javafx.scene.layout.StackPane;
 public class ScreensController extends StackPane {
 
 	private HashMap<String, Node> screens = new HashMap<>();
+	private HashMap<String, FXMLLoader> loaders = new HashMap<>();
 	
 	/** Constructor */
 	public ScreensController() {
@@ -27,6 +28,12 @@ public class ScreensController extends StackPane {
 	public void addScreen(String name, Node screen) {
 		screens.put(name, screen);
 	}
+	
+	/** adds a loader */
+	public void addLoader(String name, FXMLLoader loader) {
+		loaders.put(name, loader);
+	}
+	
 	
 	/** returns a screen */
 	public Node getScreen(String name) {
@@ -43,10 +50,13 @@ public class ScreensController extends StackPane {
 			ControlledScreen myScreenController = (ControlledScreen) loader.getController();
 			myScreenController.setScreenParent(this);
 			addScreen(name, loadScreen);
+			addLoader(name, loader);
 			
 			return true;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			//System.out.println(e.getMessage());
+			System.out.println(e.toString());
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -54,6 +64,8 @@ public class ScreensController extends StackPane {
 	public boolean setScreen(final String name) {
 		// check if a screen is loaded
 		if (screens.get(name) != null) {
+			
+			
 			final DoubleProperty opacity = opacityProperty();
 			
 			// check if there is more than one screen
@@ -85,6 +97,11 @@ public class ScreensController extends StackPane {
 						new KeyFrame(new Duration(2500), new KeyValue(opacity, 1.0)));
 				fadeIn.play();
 			}
+			
+			
+			//make call to onLoad method for the screen just loaded
+			onLoadScreen(name);
+			
 			return true;
 		} else { 
 			System.out.println("No screen loaded yet! \n");
@@ -101,6 +118,20 @@ public class ScreensController extends StackPane {
 			return true;
 		}
 		
+	}
+	
+	private void onLoadScreen(String name) {
+		try{
+			
+			FXMLLoader loader = loaders.get(name);
+			ControlledScreen controller = loader.getController();
+			if (controller instanceof Loadable) {
+				((Loadable) controller).onLoad();
+			}
+		
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 }
