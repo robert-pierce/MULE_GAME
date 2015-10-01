@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 public class Player implements Comparable<Player>{
 	//-------------enums-----------------------------
 	public enum Race {HUMAN, FLAPPER, BONZOID, UGAITE, BUZZITE};
-	//public enum Color {RED, GREEN, PINK, PURPLE};
+	
 	
 	
 	//--------------Instance Variables---------------
@@ -21,6 +21,7 @@ public class Player implements Comparable<Player>{
 	private int food;
 	private int energy;
 	private int crystite;
+	private Mule playerMule;
 	private HashMap<Point, Plot> plotMap;
 	
 	
@@ -29,25 +30,34 @@ public class Player implements Comparable<Player>{
 
 	
 	//-------------Constructor------------------------
-	public Player(Race rce, Color clr, String plyrName, int plyrNum) {
+	public Player(Race rce, Color clr, String plyrName, int plyrNum, GameRunner.Difficulty difficulty) {
 		race = rce;
 		color = clr;
 		playerName = plyrName;
 		playerNum = plyrNum;
+		playerMule = null;
 		plotMap = new HashMap<Point,Plot>();
 		if (race.equals(Race.FLAPPER)) {
-			money = 1600;
+			money = 16000;
 		} else if (race.equals(Race.HUMAN)) {
 			money = 600;
-		} else {
+		} else  {
 			money = 1000;
 		}
-		food = 8;
-		energy = 4;
-		smithore = 0;
-		crystite = 0;
-		updateScore();
-	}
+		switch (difficulty) {
+					case BEGINNER:
+						food = 8;
+						energy = 4;
+						smithore = 0;
+						crystite = 0;
+					default:
+						food = 4;
+						energy = 2;
+						smithore = 0;
+						crystite = 0;
+				}
+		 		updateScore();
+		 	}
 
 	public Race getRace() {
 		return race;
@@ -125,10 +135,37 @@ public class Player implements Comparable<Player>{
 		money = money - 300;
 	}
 	
+	public boolean buyMule() {
+		int price = 100;  // GET PRICE FROM STORE
+		
+		if (money >= 100) {
+			playerMule = new Mule();
+			money = money - 100;
+			return true;
+		} else {
+			return false;
+		}
+			
+	}
 	
+	public boolean hasMule() {
+		return playerMule == null;
+	}
+	
+	public Mule getMule() {
+		return playerMule;
+	}
+	
+	public boolean isPlotOwner(Point coord) {
+		if (plotMap.containsKey(coord)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	public String toString() {
-		String str =  "Player " + playerNum + "\n Name: " + playerName + "\n" + "Race: " + race + "\n" + "Color: " + color;
+		String str =  "Player " + playerNum + "\n Name: " + playerName + "\n" + "Race: " + race + "\n" + "Color: " + color + "\n" + "Score: " + score ;
 		return str;
 	}
 

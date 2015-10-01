@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.scene.paint.Color;
+import application.GameRunner.Difficulty;
+import application.Main;
 import application.Player;
 import application.Player.Race;
 import javafx.event.ActionEvent;
@@ -14,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
-public class playerConfigController implements Initializable, ControlledScreen{
+public class playerConfigController implements Initializable, ControlledScreen, Loadable{
 	
 	private static int numPlayers;
 	
@@ -22,8 +24,8 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	private Color color = Color.RED;
 	private int playerINDEX = 1;
 	private String playerName;
-	
-	private ArrayList<Player.Race> takenRaceList = new ArrayList<Player.Race>();
+	private Difficulty difficulty;
+	//private ArrayList<Player.Race> takenRaceList = new ArrayList<Player.Race>();
 	private ArrayList<Color> takenColorList = new ArrayList<Color>();
 	
 	
@@ -40,6 +42,12 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
 		myController = screenParent;	
+	}
+	
+	@Override
+	public void onLoad() {
+		difficulty = Main.game.getDifficulty();
+		
 	}
 
 	//---------------FXML IDs------------------------------------------
@@ -151,14 +159,14 @@ public class playerConfigController implements Initializable, ControlledScreen{
 			System.out.println(color.toString() + " has already been chosen. Please pick another color.");
 			return;
 		} else {
-			takenRaceList.add(race);
+			//takenRaceList.add(race);
 			takenColorList.add(color);
 		}
 		
 		
 		
 		if (playerINDEX != numPlayers) {
-			Player player = new Player(race, color, playerName, playerINDEX );
+			Player player = new Player(race, color, playerName, playerINDEX, difficulty);
 			application.Main.game.addPlayer(player);
 			System.out.println("Player " + playerINDEX + " created and added to game");
 			System.out.println(player);
@@ -169,7 +177,7 @@ public class playerConfigController implements Initializable, ControlledScreen{
 			playerName = "";
 			
 		} else {
-			Player player = new Player(race, color, playerName, playerINDEX );
+			Player player = new Player(race, color, playerName, playerINDEX, difficulty );
 			application.Main.game.addPlayer(player);
 			System.out.println("Player " + playerINDEX + " created and added to game");
 			System.out.println(player);
@@ -182,6 +190,8 @@ public class playerConfigController implements Initializable, ControlledScreen{
 	public void setNumPlayers(int numPlyrs) {
 		numPlayers = numPlyrs;
 	}
+
+	
 	
 	
 	

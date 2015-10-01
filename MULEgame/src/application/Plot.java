@@ -9,6 +9,7 @@ public class Plot {
 	private Player owner;
 	private PlotType type;
 	private Point plotCoord;
+	private Mule mule;
 	
 	public Plot(Point pltCrd, PlotType type) {
 		this.type = type;
@@ -27,13 +28,12 @@ public class Plot {
 		return type;
 	}
 	
-	public String toString() {
-		StringBuilder str = new StringBuilder();
-		str.append("Plot Coodinate: " + plotCoord + "\n");
-		str.append("Plot owner: " + owner + "\n");
-		str.append("Plot type: " + type);
-		return str.toString();
+	public void installMule(Mule mul) {
+		mule = mul;
 	}
+	
+	
+	public void generateResources() { }
 	
 	public Point getCenter() {
 		double x = plotCoord.getX();
@@ -41,6 +41,14 @@ public class Plot {
 	    int centerX = (int) Math.floor((x * 127) + 63.5);
 	    int centerY = (int) Math.floor((y * 141) + 70.5);
 	    return new Point(centerX, centerY);
+	}
+
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append("Plot Coodinate: " + plotCoord + "\n");
+		str.append("Plot owner: " + owner + "\n");
+		str.append("Plot type: " + type);
+		return str.toString();
 	}
 	
 }

@@ -152,9 +152,14 @@ public class Map {
 		
 		System.out.println("Trying to place mule on: " + plot);
 		
+		
 		if (plot.getType().equals(PlotType.TOWN)) {
 			System.out.println("Loading Town");
 			showTown();
+		} else if (player.isPlotOwner(plotCoord)) {
+			if (player.hasMule()) {
+				plot.installMule(player.getMule());
+			}
 		}
 		return plot;
 	}
