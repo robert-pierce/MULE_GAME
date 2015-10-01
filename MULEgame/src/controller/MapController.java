@@ -2,17 +2,24 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+
 import application.Main;
 import application.Map;
 import application.Plot;
 import application.GameRunner.ActivePlayer;
 import application.GameRunner.GameState;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import jfx.messagebox.MessageBox;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
+
 import java.awt.*;
 
 public class MapController implements Initializable, ControlledScreen, Loadable {
@@ -53,6 +60,9 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	
 	@FXML
 	public Canvas plotMarkerCanvas;
+	
+	@FXML
+	public ProgressBar timerBar;
 	
 	//----------------End FXML Injections------------------------------------
 	
@@ -241,7 +251,16 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 
 
 	
-	
+	public void setTimer() {
+		MyTimerTask myTimerTask;
+		Timer myTimer;
+		
+		timerBar.setProgress(0);
+        myTimerTask = new MyTimerTask(timerBar);
+       
+         myTimer = new Timer();
+         myTimer.scheduleAtFixedRate(myTimerTask, 0, 100);            
+	}
 	
 	
 	
