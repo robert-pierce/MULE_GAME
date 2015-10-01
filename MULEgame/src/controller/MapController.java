@@ -39,7 +39,19 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	@Override
 	public void onLoad() {
 		System.out.println("Yay! on Load Method Works");
-		
+		System.out.println("Game state is " + Main.game.getGameState());
+		gameState = Main.game.getGameState();
+		if (gameState.equals(GameState.LANDPURCHASE)) {
+			int msgBoxRslt;
+			numPlayers = Main.game.getNumPlayers();
+			firstTwoRoundsFlag = Main.game.getFirstTwoRoundsFlag();
+			Main.game.calculatePlayerOrder();
+			System.out.println("Player Order Calculated");
+			activePlayerState = Main.game.getActivePlayerState();
+			System.out.println("Active player is "  + activePlayerState);
+			msgBoxRslt = makeAnnoucement();
+			updatePlayerPass(msgBoxRslt);
+		}
 	}
 	
 	
@@ -54,7 +66,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		activePlayerState = retrieveActivePlayerState();
 		numPlayers = retrieveNumPlayers();
 		map = Main.game.getMap();
-		firstTwoRoundsFlag = application.Main.game.getFirstTwoRoundsFlag();
+		//firstTwoRoundsFlag = application.Main.game.getFirstTwoRoundsFlag();
 		int msgBoxRslt;
 		
 		System.out.println("Game is in " + gameState + " mode");
@@ -66,62 +78,23 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		
 		//-------------------LAND PURCHASE STATE----------------------------------------
 		if (gameState.equals(GameState.LANDPURCHASE)) {	
-			if (activePlayerState.equals(ActivePlayer.PLAYER1)) {
 				if (!Main.game.isPlayerPassing()) {	
 					currentPlot = map.purchasePlot(xCor, yCor, application.Main.game.getActivePlayer(), firstTwoRoundsFlag);	
 					if (currentPlot != null) {
 						markPlot(currentPlot);
 						
-	                    Main.game.setActivePlayer(ActivePlayer.PLAYER2);
+						Main.game.updateActivePlayerState();
+	                    //Main.game.setActivePlayer(ActivePlayer.PLAYER2);  //***************
 	                    msgBoxRslt = makeAnnoucement();
 	                    updatePlayerPass(msgBoxRslt);						
 					}
 				} else {
-					 Main.game.setActivePlayer(ActivePlayer.PLAYER2);
+					 Main.game.updateActivePlayerState();
+					// Main.game.setActivePlayer(ActivePlayer.PLAYER2);  //*******************
 					 msgBoxRslt = makeAnnoucement();
 	                 updatePlayerPass(msgBoxRslt);	
 				}
-			} else if (activePlayerState.equals(ActivePlayer.PLAYER2) && numPlayers >= 2) {
-				if (!Main.game.isPlayerPassing()) {	
-					currentPlot = map.purchasePlot(xCor, yCor, application.Main.game.getActivePlayer(), firstTwoRoundsFlag);
-					if(currentPlot != null) {
-						markPlot(currentPlot);
-						
-						Main.game.setActivePlayer(ActivePlayer.PLAYER3);
-						msgBoxRslt = makeAnnoucement();
-	                    updatePlayerPass(msgBoxRslt);		
-					}
-				} else {
-					Main.game.setActivePlayer(ActivePlayer.PLAYER3);
-					msgBoxRslt = makeAnnoucement();
-	                updatePlayerPass(msgBoxRslt);			
-	                
-				}
-			} else if (activePlayerState.equals(ActivePlayer.PLAYER3) && numPlayers >= 3) {
-				if (!Main.game.isPlayerPassing()) {	
-					currentPlot = map.purchasePlot(xCor, yCor, application.Main.game.getActivePlayer(), firstTwoRoundsFlag);
-	                 if(currentPlot != null) {
-	                    markPlot(currentPlot);
-						
-						Main.game.setActivePlayer(ActivePlayer.PLAYER4);
-						msgBoxRslt = makeAnnoucement();
-	                    updatePlayerPass(msgBoxRslt);			
-					}
-				} else {
-					Main.game.setActivePlayer(ActivePlayer.PLAYER4);
-					msgBoxRslt = makeAnnoucement();
-	                updatePlayerPass(msgBoxRslt);	
-				}
-			} else {
-				if (!Main.game.isPlayerPassing()) {	
-					currentPlot = map.purchasePlot(xCor, yCor, application.Main.game.getActivePlayer(), firstTwoRoundsFlag);
-	                if(currentPlot != null) {
-	                	markPlot(currentPlot);
-	                	
-	                    msgBoxRslt = makeAnnoucement();
-					}
-				} else {msgBoxRslt = makeAnnoucement(); }	
-			}
+			
 		}
 		
 	//----------------------------End of LANDPURCHASE STATE-----------------------------------	
@@ -178,14 +151,16 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	}
 	
 	private int makeAnnoucement() {
+		System.out.println("Make announcement method has been called");
 		int msgBoxRslt;
 		int nextPlayerNum;
 		int ENDPURCHASEPHASE = -1;
 		
 		StringBuilder announcement = new StringBuilder();
 		
+		System.out.println("makeAnouncement game state is: " + gameState );
 		if (gameState.equals(GameState.LANDPURCHASE)) {
-			
+			System.out.println("makeAnnouncement method activePlayer state is: " + activePlayerState);
 			switch (activePlayerState) {
 			case PLAYER4:
 				nextPlayerNum = 5;
@@ -200,7 +175,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 				nextPlayerNum = 2;	
 		}
 		
-		
+			System.out.println("makeAnnouncement method firstTwoRoundsFlag state is: " + firstTwoRoundsFlag);
 		if (firstTwoRoundsFlag) {
 			announcement.append("Player " + nextPlayerNum + " would you like to buy a plot? Plots are FREE!");
 													
@@ -209,7 +184,8 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		}
 		
 		
-			
+		System.out.println("makeAnnoucement method numPlayers:" + numPlayers);
+		System.out.println("makeAnnoucement method nextPlayerNum:" + nextPlayerNum);
 		if (numPlayers >= nextPlayerNum) {
 			
 			msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
@@ -229,7 +205,8 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	
 	private void endPurchasePhase() {
 		Main.game.setGameState(GameState.MULEPURCHASE);
-		Main.game.setActivePlayer(ActivePlayer.PLAYER1);
+		Main.game.calculatePlayerOrder();;
+		Main.game.updateActivePlayerState();   //**********************
 		MessageBox.show(Main.game.getScene().getWindow(),
 		         "End of Land Purchase Phase",
 		         "Information dialog",

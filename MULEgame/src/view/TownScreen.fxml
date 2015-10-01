@@ -21,7 +21,7 @@
       </font>
     </Button>
     <Button id="returnToMapBTN" fx:id="returnToMapRightBTN" font="$x1" layoutX="1063.0" layoutY="610.0" mnemonicParsing="false" onAction="#returnToMap" text="MAP" textFill="BLACK" />
-    <MenuBar layoutX="0.0" layoutY="0.0" minHeight="14.0" prefHeight="22.0" prefWidth="1140.0">
+    <MenuBar layoutX="0.0" layoutY="0.0" minHeight="14.0" prefHeight="55.0" prefWidth="1140.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>

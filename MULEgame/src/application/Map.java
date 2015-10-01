@@ -43,11 +43,11 @@ public class Map {
 	
 	
 	public void showMap(MapSelection mapSlct) {
-		activePlayer = Main.game.getActivePlayerState();
+		//activePlayer = Main.game.getActivePlayerState();
 		int currPlayer;
 		int msgBoxRslt;
 		
-		switch (activePlayer) {
+		/*switch (activePlayer) {
 			case PLAYER1: 
 				currPlayer = 1;
 				break;
@@ -62,12 +62,12 @@ public class Map {
 			default:
 				currPlayer = 1;
 		}
-		
+		*/
 			if (mapSelection == MapSelection.STANDARD) {
 				System.out.println("Loading " + mapSelection + " map");
 				mainController.setScreen(application.Main.standardMapID);	
 				
-				
+				/*
 				
 				msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
 				                "Player " + currPlayer + " would you like to buy a plot? Plots are FREE!",
@@ -80,7 +80,7 @@ public class Map {
 					Main.game.setPlayerPassing(false);
 				}
 					
-				
+			*/	
 			} else if (mapSelection == MapSelection.EASTWEST) {
 				System.out.println("Loading " + mapSelection + " map");
 				mainController.setScreen(application.Main.eastWestMapID);

@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.util.HashMap;
 import javafx.scene.paint.Color;
 
-public class Player {
+public class Player implements Comparable<Player>{
 	//-------------enums-----------------------------
 	public enum Race {HUMAN, FLAPPER, BONZOID, UGAITE, BUZZITE};
 	//public enum Color {RED, GREEN, PINK, PURPLE};
@@ -125,9 +125,22 @@ public class Player {
 		money = money - 300;
 	}
 	
+	
+	
 	public String toString() {
 		String str =  "Player " + playerNum + "\n Name: " + playerName + "\n" + "Race: " + race + "\n" + "Color: " + color;
 		return str;
+	}
+
+	@Override
+	public int compareTo(Player plyrCmp) {
+		if (this.score < plyrCmp.score) {
+			return -1;
+		} else if (this.score == plyrCmp.score) {
+			return 0;
+		} else {
+			return 1;
+		}
 	}
 	
 	

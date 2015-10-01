@@ -1,7 +1,11 @@
 package application;
 
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Deque;
 
 import application.Map.MapSelection;
 import controller.ScreensController;
@@ -21,6 +25,7 @@ public class GameRunner {
 	//----------------Instance Variables-------------------
 	private GameState gameState;
 	private ActivePlayer activePlayer;
+	private Deque<ActivePlayer> playerOrderDeque;
 	private Difficulty difficulty;
 	private Map gameMap;
 	private Scene scene;
@@ -37,9 +42,10 @@ public class GameRunner {
 	public GameRunner(ScreensController mainCntrl, Scene scne) {
 		scene = scne;
 		playerList = new ArrayList<Player>();
+		playerOrderDeque = new ArrayDeque<ActivePlayer>();
 		mainController = mainCntrl;
-		activePlayer = ActivePlayer.PLAYER1;
-		numRounds = 6;
+		//activePlayer = ActivePlayer.PLAYER1;
+		numRounds = 12;
 		
 		
 		
@@ -78,8 +84,16 @@ public class GameRunner {
 		 System.out.println("LandPurchase State Set");
 	 }
 	
-	public void setActivePlayer(ActivePlayer actPlyr) {
-		activePlayer = actPlyr;
+	//public void setActivePlayer(ActivePlayer actPlyr) {
+		//activePlayer = actPlyr;
+	//}
+	
+	public ActivePlayer updateActivePlayerState() {
+		System.out.println("This is the update active player state method");
+		ActivePlayer nextPlayer = playerOrderDeque.pop();
+		activePlayer = nextPlayer;
+		System.out.println("The activePlayer is " + activePlayer);
+		return nextPlayer;
 	}
 	
 	public GameState getGameState() {
@@ -137,4 +151,38 @@ public class GameRunner {
 	}
 	
 	
+	public void calculatePlayerOrder() {
+		System.out.println("This is the Player Order Method in Game Runnder");
+		int numPlayers = playerList.size();
+		ArrayList<Player> tempPlayerList = new ArrayList<Player>(playerList);
+		Collections.sort(tempPlayerList);
+		Player currPlayer;
+		ActivePlayer currActivePlayer;
+		
+		for (int i = 0; i < numPlayers; ++i) {
+			currPlayer = tempPlayerList.get(i);
+			
+			switch (currPlayer.getPlayerNum()) {
+			case 1: 
+				currActivePlayer = ActivePlayer.PLAYER1;
+				break;
+			case 2:  
+				currActivePlayer = ActivePlayer.PLAYER2;
+				break;
+			case 3:
+				currActivePlayer = ActivePlayer.PLAYER3;
+				break;
+			case 4:
+				currActivePlayer = ActivePlayer.PLAYER4;
+				break;
+			default:
+				currActivePlayer = ActivePlayer.PLAYER1;
+			}
+			System.out.println(currActivePlayer);
+			playerOrderDeque.addLast(currActivePlayer);
+		}
+		System.out.println("update Active Player State is being called in the calculate Player Order method");
+		updateActivePlayerState();
+		
+	}
 }

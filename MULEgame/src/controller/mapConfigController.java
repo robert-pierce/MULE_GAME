@@ -75,13 +75,17 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	public void nextScreen(ActionEvent event) {
 		System.out.println("Coninue Button Pressed");
 		
-		// add the map to the game
-		application.Main.game.addMap(map);
-		System.out.println("Map set to " + map.toString() + ".");
+		
+		//System.out.println("Map set to " + map.toString() + ".");
 		
 		// start the game
 		System.out.println("Starting Game!");
-		 application.Main.game.setLandPurchaseState();
-		application.Main.game.setActivePlayer(ActivePlayer.PLAYER1);	
+		application.Main.game.setLandPurchaseState();
+		System.out.println("Game state in mapConfig set to " + application.Main.game.getGameState());
+		//application.Main.game.setActivePlayer(ActivePlayer.PLAYER1);	
+		
+		// add the map to the game
+		application.Main.game.addMap(map);
+		
 	}
 }
