@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.BuyMuleController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <MenuBar layoutX="0.0" layoutY="0.0" minHeight="44.0" prefHeight="51.0" prefWidth="1140.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <Pane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label alignment="CENTER" layoutX="423.0" layoutY="94.0" prefHeight="72.90234375" prefWidth="267.0" text="Purchase Mule" textAlignment="LEFT" textFill="WHITE">
+          <font>
+            <Font name="Arial Rounded MT Bold" size="30.0" />
+          </font>
+        </Label>
+        <Button id="Buy" fx:id="buyMuleBTN" layoutX="442.0" layoutY="329.0" mnemonicParsing="false" onAction="#buyMuleClick" prefHeight="51.0" prefWidth="258.0" text="Buy Mule" />
+        <Button id="" fx:id="returnToTownBTN" layoutX="441.0" layoutY="511.0" mnemonicParsing="false" onAction="#returnToTown" prefHeight="51.0" prefWidth="258.0" text="TOWN" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

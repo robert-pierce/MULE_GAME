@@ -31,6 +31,13 @@ public class Main extends Application {
 	public static String eastWestMapFile = "/view/EastWestMap.fxml";
 	public static String townID = "TownScreen";
 	public static String townFile = "/view/TownScreen.fxml";
+	public static String buyMuleID = "BuyMuleScreen";
+	public static String buyMuleFile = "/view/BuyMuleScreen.fxml";
+	public static String equipMuleID = "EquipMuleScreen";
+	public static String equipMuleFile = "/view/EquipMuleScreen.fxml";
+	public static String pubID = "PubScreen";
+	public static String pubFile = "/view/PubScreen.fxml";
+	
 	
 	public static GameRunner game;
 	private ScreensController mainContainer;
@@ -46,6 +53,10 @@ public class Main extends Application {
 		mainContainer.loadScreen(standardMapID, standardMapFile);
 		mainContainer.loadScreen(eastWestMapID, eastWestMapFile);
 		mainContainer.loadScreen(townID, townFile);
+		mainContainer.loadScreen(buyMuleID, buyMuleFile);
+		mainContainer.loadScreen(equipMuleID, equipMuleFile);
+		mainContainer.loadScreen(pubID, pubFile);
+		
 		
 		mainContainer.setScreen(startScreenID);
 		

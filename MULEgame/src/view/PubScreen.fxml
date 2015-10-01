@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.PubController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="54.0" prefWidth="1140.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <Label layoutX="377.0" layoutY="130.0" text="Welcome to the Pub" textFill="WHITE">
+      <font>
+        <Font name="Arial Rounded MT Bold" size="40.0" />
+      </font>
+    </Label>
+    <Button fx:id="gambleBTN" layoutX="420.0" layoutY="320.0" mnemonicParsing="false" onAction="#gamble" prefHeight="65.0" prefWidth="300.0" text="GAMBLE" />
+    <Button id="" fx:id="returnToTownBTN" layoutX="420.0" layoutY="484.0" mnemonicParsing="false" onAction="#returnToTown" prefHeight="65.0" prefWidth="300.0" text="TOWN" />
+  </children>
+</AnchorPane>

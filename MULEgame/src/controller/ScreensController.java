@@ -134,4 +134,15 @@ public class ScreensController extends StackPane {
 		}
 	}
 	
+	
+	public ControlledScreen getController(String name) {
+		try{
+			FXMLLoader loader = loaders.get(name);
+			ControlledScreen controller = loader.getController();
+			return controller;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
 }

@@ -217,7 +217,17 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	}
 	
 	// implement end of round method
-	public void endRound() { }
+	public void endRound() {
+		System.out.println("End Round method called in MapController");
+		Main.game.setGameState(GameState.RANDOMEVENT);
+		System.out.println("Game State set to: " + Main.game.getGameState());
+	}
+	
+	// implement end of turn method
+	public void endTurn() {
+		System.out.println("End of Turn method called in MapController");
+		handleMulePurchasePhaseTurn();
+	}
 	
 	
 	// marks a plot with the appropriate color

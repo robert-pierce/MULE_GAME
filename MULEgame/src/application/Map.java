@@ -42,45 +42,10 @@ public class Map {
 	
 	
 	
-	public void showMap(MapSelection mapSlct) {
-		//activePlayer = Main.game.getActivePlayerState();
-		int currPlayer;
-		int msgBoxRslt;
-		
-		/*switch (activePlayer) {
-			case PLAYER1: 
-				currPlayer = 1;
-				break;
-			case PLAYER2:  
-				currPlayer = 2;
-				break;
-			case PLAYER3:
-				currPlayer = 3;
-				break;
-			case PLAYER4:
-				currPlayer = 4;
-			default:
-				currPlayer = 1;
-		}
-		*/
+	public void showMap(MapSelection mapSlct) {		
 			if (mapSelection == MapSelection.STANDARD) {
 				System.out.println("Loading " + mapSelection + " map");
 				mainController.setScreen(application.Main.standardMapID);	
-				
-				/*
-				
-				msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
-				                "Player " + currPlayer + " would you like to buy a plot? Plots are FREE!",
-				                 "Information dialog",
-				                  MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
-				
-				if (msgBoxRslt == MessageBox.NO) {
-					Main.game.setPlayerPassing(true);
-				} else {
-					Main.game.setPlayerPassing(false);
-				}
-					
-			*/	
 			} else if (mapSelection == MapSelection.EASTWEST) {
 				System.out.println("Loading " + mapSelection + " map");
 				mainController.setScreen(application.Main.eastWestMapID);
@@ -172,6 +137,10 @@ public class Map {
 	
 	private Plot getMapPlot (Point pltCrd) {
 		return plotMap.get(pltCrd);
+	}
+	
+	public MapSelection getMapSelection() {
+		return mapSelection; 
 	}
 	
 	private void setMapPlots(MapSelection ms) {

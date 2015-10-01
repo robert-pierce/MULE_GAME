@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.EquipMuleController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <MenuBar layoutX="0.0" layoutY="0.0" minHeight="48.0" prefHeight="53.0" prefWidth="1140.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <Pane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label alignment="CENTER" layoutX="435.0" layoutY="101.0" prefHeight="53.0" prefWidth="272.0" text="Equip Mule" textFill="WHITE">
+          <font>
+            <Font name="Arial Rounded MT Bold" size="40.0" />
+          </font>
+        </Label>
+        <Button fx:id="equipFoodBTN" layoutX="449.0" layoutY="232.0" mnemonicParsing="false" onAction="#equipFood" prefHeight="50.0" prefWidth="243.0" text="FOOD ($25)" />
+        <Button fx:id="equipEnergyBTN" layoutX="449.0" layoutY="335.0" mnemonicParsing="false" onAction="#equipEnergy" prefHeight="50.0" prefWidth="243.0" text="ENERGY ($50)" />
+        <Button fx:id="equipSmithoreBTN" layoutX="449.0" layoutY="433.0" mnemonicParsing="false" onAction="#equipSmithore" prefHeight="50.0" prefWidth="243.0" text="SMITHORE ($75)" />
+        <Button fx:id="equipCrystiteBTN" layoutX="449.0" layoutY="531.0" mnemonicParsing="false" onAction="#equipCrystite" prefHeight="50.0" prefWidth="243.0" text="CRYSTITE ($100)" />
+        <Button id="" fx:id="returnToTownBTN" layoutX="922.0" layoutY="333.0" mnemonicParsing="false" onAction="#returnToTown" prefHeight="62.912109375" prefWidth="139.0" text="TOWN" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

@@ -16,7 +16,7 @@ import javafx.scene.Scene;
 
 public class GameRunner {
 	//---------Enum----------------------------------------
-	public enum GameState{LANDPURCHASE, MULEPURCHASE, ACQUIREGOODS, ENDROUND};
+	public enum GameState{LANDPURCHASE, MULEPURCHASE, RANDOMEVENT, ENDROUND};
 	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT};
 	public enum ActivePlayer{PLAYER1, PLAYER2, PLAYER3, PLAYER4}; 
 	public enum PlotType {M1, M2, M3, RIVER, PLAIN, TOWN};
@@ -49,11 +49,18 @@ public class GameRunner {
 	//----------------End Constructor-----------------------------------------------
 	
 	//----------------Update and Calculate Methods----------------------------------
+	public void startGame(MapSelection mapSlct) {
+		setLandPurchaseState();
+		incrementRound();
+		application.Main.game.addMap(mapSlct);
+	}
+	
 	
 	public void incrementRound() {
 		round++;
 		System.out.println("Round incremented to: " + round);
 	}
+	
 	public void calculatePlayerOrder() {
 		int numPlayers = playerList.size();
 		ArrayList<Player> tempPlayerList = new ArrayList<Player>(playerList);
