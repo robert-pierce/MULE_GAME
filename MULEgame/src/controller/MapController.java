@@ -47,9 +47,9 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 			firstTwoRoundsFlag = Main.game.getFirstTwoRoundsFlag();
 			Main.game.calculatePlayerOrder();
 			System.out.println("Player Order Calculated");
-			activePlayerState = Main.game.getActivePlayerState();
+			//activePlayerState = Main.game.getActivePlayerState();
 			System.out.println("Active player is "  + activePlayerState);
-			msgBoxRslt = makeAnnoucement();
+			msgBoxRslt = handleTurn();
 			updatePlayerPass(msgBoxRslt);
 		}
 	}
@@ -83,15 +83,15 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 					if (currentPlot != null) {
 						markPlot(currentPlot);
 						
-						Main.game.updateActivePlayerState();
+						//Main.game.updateActivePlayerState();
 	                    //Main.game.setActivePlayer(ActivePlayer.PLAYER2);  //***************
-	                    msgBoxRslt = makeAnnoucement();
+	                    msgBoxRslt = handleTurn();
 	                    updatePlayerPass(msgBoxRslt);						
 					}
 				} else {
-					 Main.game.updateActivePlayerState();
+					//Main.game.updateActivePlayerState();
 					// Main.game.setActivePlayer(ActivePlayer.PLAYER2);  //*******************
-					 msgBoxRslt = makeAnnoucement();
+					 msgBoxRslt = handleTurn();
 	                 updatePlayerPass(msgBoxRslt);	
 				}
 			
@@ -150,43 +150,50 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		}
 	}
 	
-	private int makeAnnoucement() {
+	private int handleTurn() {
 		System.out.println("Make announcement method has been called");
 		int msgBoxRslt;
-		int nextPlayerNum;
+		int playerNum;
 		int ENDPURCHASEPHASE = -1;
-		
 		StringBuilder announcement = new StringBuilder();
+		Main.game.updateActivePlayerState();
+		activePlayerState = Main.game.getActivePlayerState();
 		
+		
+		System.out.println("makeAnnouncement ActivePlayer is: " + activePlayerState );
 		System.out.println("makeAnouncement game state is: " + gameState );
 		if (gameState.equals(GameState.LANDPURCHASE)) {
 			System.out.println("makeAnnouncement method activePlayer state is: " + activePlayerState);
-			switch (activePlayerState) {
-			case PLAYER4:
-				nextPlayerNum = 5;
-				break;
-			case PLAYER3:
-				nextPlayerNum = 4;
-				break;
-			case PLAYER2:
-				nextPlayerNum = 3;
-				break;
-			default:
-				nextPlayerNum = 2;	
-		}
+			if (activePlayerState != null) {
+				switch (activePlayerState) {
+					case PLAYER4:
+						playerNum = 4;
+						break;
+					case PLAYER3:
+						playerNum = 3;
+						break;
+					case PLAYER2:
+						playerNum = 2;
+						break;
+					default:
+						playerNum = 1;	
+			}
 		
-			System.out.println("makeAnnouncement method firstTwoRoundsFlag state is: " + firstTwoRoundsFlag);
-		if (firstTwoRoundsFlag) {
-			announcement.append("Player " + nextPlayerNum + " would you like to buy a plot? Plots are FREE!");
-													
-		} else {
-			announcement.append("Player " + nextPlayerNum +  " would you like to buy a plot? Plots are $300");
-		}
+				System.out.println("makeAnnouncement method firstTwoRoundsFlag state is: " + firstTwoRoundsFlag);
+			if (firstTwoRoundsFlag) {
+				announcement.append("Player " + playerNum + " would you like to buy a plot? Plots are FREE!");
+														
+			} else {
+				announcement.append("Player " + playerNum +  " would you like to buy a plot? Plots are $300");
+			}
 		
 		
-		System.out.println("makeAnnoucement method numPlayers:" + numPlayers);
-		System.out.println("makeAnnoucement method nextPlayerNum:" + nextPlayerNum);
-		if (numPlayers >= nextPlayerNum) {
+			//System.out.println("makeAnnoucement method numPlayers:" + numPlayers);
+			//System.out.println("makeAnnoucement method nextPlayerNum:" + playerNum);
+			
+			System.out.println("in makeAnnouncement method activePlayerState is: " + activePlayerState);
+			System.out.println("in makeAnnouncement maethod out of players method returns: " + Main.game.outOfPlayers());
+			
 			
 			msgBoxRslt = MessageBox.show(Main.game.getScene().getWindow(),
 										announcement.toString(),
@@ -204,13 +211,18 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	}
 	
 	private void endPurchasePhase() {
+		System.out.println("End Purchase Method has been called");
 		Main.game.setGameState(GameState.MULEPURCHASE);
-		Main.game.calculatePlayerOrder();;
+		Main.game.calculatePlayerOrder();
 		Main.game.updateActivePlayerState();   //**********************
 		MessageBox.show(Main.game.getScene().getWindow(),
 		         "End of Land Purchase Phase",
 		         "Information dialog",
 		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	}
+	
+	private void beginMulePurchasePhase() {
+		
 	}
 	
 	private void markPlot(Plot currentPlot) {

@@ -89,8 +89,14 @@ public class GameRunner {
 	//}
 	
 	public ActivePlayer updateActivePlayerState() {
+		ActivePlayer nextPlayer;
 		System.out.println("This is the update active player state method");
-		ActivePlayer nextPlayer = playerOrderDeque.pop();
+		
+		if (!playerOrderDeque.isEmpty()) {
+			 nextPlayer = playerOrderDeque.pop();
+		} else {
+			nextPlayer = null;
+		}
 		activePlayer = nextPlayer;
 		System.out.println("The activePlayer is " + activePlayer);
 		return nextPlayer;
@@ -152,7 +158,7 @@ public class GameRunner {
 	
 	
 	public void calculatePlayerOrder() {
-		System.out.println("This is the Player Order Method in Game Runnder");
+		System.out.println("This is the Player Order Method in Game Runner");
 		int numPlayers = playerList.size();
 		ArrayList<Player> tempPlayerList = new ArrayList<Player>(playerList);
 		Collections.sort(tempPlayerList);
@@ -182,7 +188,11 @@ public class GameRunner {
 			playerOrderDeque.addLast(currActivePlayer);
 		}
 		System.out.println("update Active Player State is being called in the calculate Player Order method");
-		updateActivePlayerState();
+		//updateActivePlayerState();
 		
+	}
+	
+	public boolean outOfPlayers() {
+		return playerOrderDeque.isEmpty();
 	}
 }
