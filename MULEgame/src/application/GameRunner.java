@@ -58,7 +58,12 @@ public class GameRunner {
 	
 	public void incrementRound() {
 		round++;
+		if (round > 2) {
+			firstTwoRounds = false;
+		}
+		
 		System.out.println("Round incremented to: " + round);
+		System.out.println("First two rounds flag is " + firstTwoRounds);
 	}
 	
 	public void calculatePlayerOrder() {

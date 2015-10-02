@@ -28,8 +28,13 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	boolean firstTwoRoundsFlag = true;
 	private ActivePlayer activePlayerState;
 	private double xCor, yCor;
+	private MyTimerTask myTimerTask;
+	private Timer myTimer;
+	private int timeLimit;
+	final int TIMERUPDATERATE = 10;   // milliseconds between update
+	final int TIMEFACTOR = 1000 / TIMERUPDATERATE;  // adjust time limit passed to task 
 	//private int numPlayers;
-	Map map;
+	private Map map;
 	
 	
 	@Override
@@ -184,7 +189,6 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	private void beginMulePurchasePhase() {
 		Main.game.setGameState(GameState.MULEPURCHASE);
 		Main.game.calculatePlayerOrder();
-		//Main.game.updateActivePlayerState();
 		
 		MessageBox.show(Main.game.getScene().getWindow(),
 		         "Begin of Mule Purchase Phase",
@@ -199,6 +203,8 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		StringBuilder announcement = new StringBuilder();
 		Main.game.updateActivePlayerState();
 		activePlayerState = Main.game.getActivePlayerState();
+		
+		
 		
 		if (activePlayerState != null) {
 			switch (activePlayerState) {
@@ -220,10 +226,27 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 						announcement.toString(),
 						"Information dialog",
 						MessageBox.ICON_INFORMATION | MessageBox.OK);
+			
+			timeLimit = Main.game.getActivePlayer().computeTime();
+			startTimer();
+			System.out.println("Start Timer Called");
+			
 		} else {  // if we are at the last player the end land purchase round
 			endRound();
 			
 		}	
+	}
+	
+	private void handleRandomEvent() {
+		// HANDLE THE RANDOMNESS!
+		
+		MessageBox.show(Main.game.getScene().getWindow(),
+		         "A Random event is going to happen!",
+		         "Information dialog",
+		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		
+		Main.game.incrementRound();
+		
 	}
 	
 	// implement end of round method
@@ -231,6 +254,9 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		System.out.println("End Round method called in MapController");
 		Main.game.setGameState(GameState.RANDOMEVENT);
 		System.out.println("Game State set to: " + Main.game.getGameState());
+		
+		handleRandomEvent();
+		
 	}
 	
 	// implement end of turn method
@@ -251,18 +277,33 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 
 
 	
-	public void setTimer() {
-		MyTimerTask myTimerTask;
-		Timer myTimer;
-		
+	
+	/**
+	 * starts a timer
+	 * @param timeLimit the number of seconds the timer 
+	 * should run for
+	 */
+	
+	public void startTimer() {
+		myTimer = new Timer();
 		timerBar.setProgress(0);
-        myTimerTask = new MyTimerTask(timerBar);
-       
-         myTimer = new Timer();
-         myTimer.scheduleAtFixedRate(myTimerTask, 0, 100);            
+        myTimerTask = new MyTimerTask(timeLimit*TIMEFACTOR, timerBar, myTimer, this);
+        myTimer.scheduleAtFixedRate(myTimerTask, 0, TIMERUPDATERATE);    
 	}
 	
 	
+	public double stopTimer() {
+		int count = myTimerTask.stopTimer();
+		timerBar.setProgress(0);
+		return timeLimit - (count/TIMEFACTOR);   // returns the number of seconds the timer ran for
+	}
+
+
+	public void timeExpired() {
+		timerBar.setProgress(0);
+		System.out.println("MapController - Time is Up!");
+		endTurn();
+	}
 	
 	private GameState retrieveGameState() {
 		return Main.game.getGameState();
@@ -274,9 +315,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	}
 
 
-	private int retrieveNumPlayers() {
-		return  Main.game.getNumPlayers();
-	}
+	
 
 
 	

@@ -164,6 +164,34 @@ public class Player implements Comparable<Player>{
 		}
 	}
 	
+	public int computeTime() {
+		int roundNum;
+		
+		if (food == 0) {
+			return 5;
+		} else{ 
+			roundNum = Main.game.getRoundNumber();
+			if (roundNum >= 9) {
+				if (food < 5) {
+					return 30;
+				} else { 
+					return 50;
+				}	
+			} else if (roundNum >= 5) {
+				if (food < 4) {
+					return 30;
+				} else {
+					return 50;
+				}
+			} else if (food < 3){
+				return 30;
+			} else {
+				return 50;
+			}
+		}
+	}
+	
+	
 	public String toString() {
 		String str =  "Player " + playerNum + "\n Name: " + playerName + "\n" + "Race: " + race + "\n" + "Color: " + color + "\n" + "Score: " + score ;
 		return str;

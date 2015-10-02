@@ -46,8 +46,7 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 		String mapID = "";
 		MapController mapController;
 		
-		System.out.println("Player is gambling!");
-		dispurseGamblingWinnings();
+		
 		
 		// this block handles the transition to the next player's turn
 		MapSelection mapSelection = Main.game.getMap().getMapSelection();
@@ -62,6 +61,10 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 			mapID = ""; 
 		}
 		mapController = (MapController) myController.getController(mapID);
+		
+		System.out.println("Player is gambling!");
+		dispurseGamblingWinnings(mapController);
+		
 		myController.setScreen(mapID);
 		mapController.endTurn();
 		
@@ -74,17 +77,20 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 	}
 	
 	
-	private void dispurseGamblingWinnings() {
+	private void dispurseGamblingWinnings(MapController mapController) {
 		Random rand = new Random();
 		Player player = Main.game.getActivePlayer();
-		int roundNum = Main.game.getRoundNumber();
-		int timeBonus = getTimeBonus();	
+		int roundBonus = getRoundBonus(Main.game.getRoundNumber());
+		double timeLeft = mapController.stopTimer();
+		int timeBonus = getTimeBonus(timeLeft);	
+		System.out.println(" the time bonus is " + timeBonus);
 		int randomNum = rand.nextInt(timeBonus);
 		System.out.println("the random number in PubController is: " + randomNum);
-		System.out.println("the round num in PubController is: " + roundNum);
+		System.out.println("the round bonus in PubController is: " + roundBonus);
 		
-		int winnings = roundNum*rand.nextInt(timeBonus) ;    // calculate winnings
+		int winnings = roundBonus*randomNum;    // calculate winnings
 		System.out.println("winnings in PubController is: " + winnings);
+	
 		// add winnings
 		player.addMoney(winnings);
 	
@@ -97,7 +103,29 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 	}
 	
 	// THIS METHOD IS NOT IMPLEMENTED FOR TIMER FUNCTIONALITY
-	private int getTimeBonus() {
-		return 150;
+	private int getTimeBonus(double timeLeft) {
+		System.out.println("In Pub Controller, the time Left is: " + timeLeft);
+		
+		if (timeLeft >= 37 ) {
+			return 200;
+		} else if (timeLeft >= 25) {
+			return 150;
+		} else if (timeLeft >= 12) {
+			return 100;
+		} else {
+			return 50;
+		}
+	}
+	
+	private int getRoundBonus(int roundNum) {
+		if (roundNum == 12 ) {
+			return 200;
+		} else if (roundNum >= 8) {
+			return 150;
+		} else if (roundNum >= 4) {
+			return 100;
+		} else {
+			return 50;
+		}
 	}
 }
