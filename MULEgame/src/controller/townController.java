@@ -2,18 +2,24 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+
 //import javax.swing.plaf.synth.SynthSeparatorUI;
 import application.Main;
 import application.Plot;
 import application.Map.MapSelection;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 
 public class townController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
 	private double xCor, yCor;
+	Timer myTimer;
 	//ScreensController mainController;
 	
 	
@@ -25,7 +31,27 @@ public class townController implements Initializable, ControlledScreen, Loadable
 	
 	@Override
 	public void onLoad() {
-		//mainController = Main.game.getMainController();
+		String mapID= "";
+		MapController mapController;
+		MapSelection mapSelection = Main.game.getMap().getMapSelection();
+		
+		switch (mapSelection) {
+		case STANDARD:
+			mapID = Main.standardMapID;
+			break;
+		case EASTWEST:
+			mapID = Main.eastWestMapID;
+			break;
+		case MAP3:
+			mapID = ""; 
+		}
+		mapController = (MapController) myController.getController(mapID);
+		ProgressBar mapBar = mapController.getTimerTask().getTimerBar();
+		DoubleProperty progProp = mapBar.progressProperty();
+		timerBarTown.progressProperty().bind(progProp);
+		
+		
+		
 		
 	}
 
@@ -34,6 +60,9 @@ public class townController implements Initializable, ControlledScreen, Loadable
 		myController = screenParent;	
 	}
 
+	
+	@FXML 
+	public ProgressBar timerBarTown;
 	
 	@FXML 
 	private Button returnToMapLeftBTN;

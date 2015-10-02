@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import application.Main;
 import application.Map;
@@ -252,6 +253,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	// implement end of round method
 	public void endRound() {
 		System.out.println("End Round method called in MapController");
+		timerBar.setProgress(0);
 		Main.game.setGameState(GameState.RANDOMEVENT);
 		System.out.println("Game State set to: " + Main.game.getGameState());
 		
@@ -314,6 +316,13 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		return Main.game.getActivePlayerState();
 	}
 
+	public MyTimerTask getTimerTask() {
+		return myTimerTask;
+	}
+	
+	public Timer getTimer() {
+		return myTimer;
+	}
 
 	
 

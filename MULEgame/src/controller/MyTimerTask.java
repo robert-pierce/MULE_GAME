@@ -22,7 +22,7 @@ public class MyTimerTask extends TimerTask{
         count = 0;
         myTimer = myTmr;
         mapController = mapCntrl;
-       timeLimit = tmeLmt;
+        timeLimit = tmeLmt;
     }
 
     @Override
@@ -42,5 +42,9 @@ public class MyTimerTask extends TimerTask{
     public int stopTimer() {
     	myTimer.cancel();
     	return count;
+    }
+    
+    public ProgressBar getTimerBar() {
+    	return bar;
     }
 }
