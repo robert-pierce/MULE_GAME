@@ -10,6 +10,7 @@ import application.Map;
 import application.Plot;
 import application.GameRunner.ActivePlayer;
 import application.GameRunner.GameState;
+import application.Map.MapSelection;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -263,11 +264,33 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	
 	// implement end of turn method
 	public void endTurn() {
+		String mapID = getMapID();
 		System.out.println("End of Turn method called in MapController");
+		if (!myController.getChildren().get(0).equals(myController.getScreen(mapID))) {
+			myController.setScreen(mapID);
+		}
 		handleMulePurchasePhaseTurn();
 	}
 	
 	
+	private String getMapID() {
+		String mapID= "";
+		MapSelection mapSelection = Main.game.getMap().getMapSelection();
+		
+		switch (mapSelection) {
+		case STANDARD:
+			mapID = Main.standardMapID;
+			break;
+		case EASTWEST:
+			mapID = Main.eastWestMapID;
+			break;
+		case MAP3:
+			mapID = ""; 
+		}
+		return mapID;
+	}
+
+
 	// marks a plot with the appropriate color
 	private void markPlot(Plot currentPlot) {
 		GraphicsContext gc = plotMarkerCanvas.getGraphicsContext2D();
