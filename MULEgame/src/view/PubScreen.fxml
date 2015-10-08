@@ -35,5 +35,6 @@
     </Label>
     <Button fx:id="gambleBTN" layoutX="420.0" layoutY="320.0" mnemonicParsing="false" onAction="#gamble" prefHeight="65.0" prefWidth="300.0" text="GAMBLE" />
     <Button id="" fx:id="returnToTownBTN" layoutX="420.0" layoutY="484.0" mnemonicParsing="false" onAction="#returnToTown" prefHeight="65.0" prefWidth="300.0" text="TOWN" />
+    <ProgressBar fx:id="timerBarPub" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
   </children>
 </AnchorPane>

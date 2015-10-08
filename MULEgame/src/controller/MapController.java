@@ -53,6 +53,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		int msgBoxRslt;
 		gameState = Main.game.getGameState();
 		
+		
 		// what to do if in Land Purchase State
 		if (gameState.equals(GameState.LANDPURCHASE)) {
 			//numPlayers = Main.game.getNumPlayers();

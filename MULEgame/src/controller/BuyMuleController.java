@@ -3,10 +3,14 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
+import application.Map.MapSelection;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
 
 public class BuyMuleController implements Initializable, ControlledScreen, Loadable {
@@ -15,7 +19,14 @@ public class BuyMuleController implements Initializable, ControlledScreen, Loada
 	
 	@Override
 	public void onLoad() {
-		// TODO Auto-generated method stub
+		String mapID = Main.game.getMap().getMapID();
+		MapController mapController;
+		//MapSelection mapSelection = Main.game.getMap().getMapSelection();
+		
+		mapController = (MapController) myController.getController(mapID);
+		ProgressBar mapBar = mapController.getTimerTask().getTimerBar();
+		DoubleProperty progProp = mapBar.progressProperty();
+		timerBarBuyMule.progressProperty().bind(progProp);	
 		
 	}
 
@@ -31,7 +42,8 @@ public class BuyMuleController implements Initializable, ControlledScreen, Loada
 		
 	}
 	
-	
+	@FXML 
+	public ProgressBar timerBarBuyMule;
 	
 	@FXML
 	private Button buyMuleBTN;

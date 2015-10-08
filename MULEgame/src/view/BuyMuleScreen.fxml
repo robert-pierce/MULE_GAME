@@ -37,6 +37,7 @@
         </Label>
         <Button id="Buy" fx:id="buyMuleBTN" layoutX="442.0" layoutY="329.0" mnemonicParsing="false" onAction="#buyMuleClick" prefHeight="51.0" prefWidth="258.0" text="Buy Mule" />
         <Button id="" fx:id="returnToTownBTN" layoutX="441.0" layoutY="511.0" mnemonicParsing="false" onAction="#returnToTown" prefHeight="51.0" prefWidth="258.0" text="TOWN" />
+        <ProgressBar fx:id="timerBarBuyMule" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
       </children>
     </Pane>
   </children>

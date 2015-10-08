@@ -40,6 +40,7 @@
         <Button fx:id="equipSmithoreBTN" layoutX="449.0" layoutY="433.0" mnemonicParsing="false" onAction="#equipSmithore" prefHeight="50.0" prefWidth="243.0" text="SMITHORE ($75)" />
         <Button fx:id="equipCrystiteBTN" layoutX="449.0" layoutY="531.0" mnemonicParsing="false" onAction="#equipCrystite" prefHeight="50.0" prefWidth="243.0" text="CRYSTITE ($100)" />
         <Button id="" fx:id="returnToTownBTN" layoutX="922.0" layoutY="333.0" mnemonicParsing="false" onAction="#returnToTown" prefHeight="62.912109375" prefWidth="139.0" text="TOWN" />
+        <ProgressBar fx:id="timerBarEquipMule" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
       </children>
     </Pane>
   </children>

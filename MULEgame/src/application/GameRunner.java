@@ -118,7 +118,15 @@ public class GameRunner {
 	}
 	
 	public void addMap(MapSelection mapTyp) {
-		gameMap = new Map(mapTyp, mainController);
+		switch (mapTyp) {
+		case STANDARD:
+			gameMap = new StandardMap(mainController);
+			break;
+		case EASTWEST:
+			gameMap = new EastWestMap(mainController);
+			break;
+		}
+		
 	}
 	
 	public void addPlayer(Player plyr) {

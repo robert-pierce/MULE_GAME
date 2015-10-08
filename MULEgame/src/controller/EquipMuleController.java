@@ -3,10 +3,13 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 
 public class EquipMuleController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
@@ -14,7 +17,14 @@ public class EquipMuleController implements Initializable, ControlledScreen, Loa
 	
 	@Override
 	public void onLoad() {
-		// TODO Auto-generated method stub
+		String mapID = Main.game.getMap().getMapID();
+		MapController mapController;
+		//MapSelection mapSelection = Main.game.getMap().getMapSelection();
+		
+		mapController = (MapController) myController.getController(mapID);
+		ProgressBar mapBar = mapController.getTimerTask().getTimerBar();
+		DoubleProperty progProp = mapBar.progressProperty();
+		timerBarEquipMule.progressProperty().bind(progProp);
 		
 	}
 
@@ -29,6 +39,10 @@ public class EquipMuleController implements Initializable, ControlledScreen, Loa
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@FXML 
+	public ProgressBar timerBarEquipMule;
+	
 	
 	@FXML
 	private Button equipFoodBTN;

@@ -7,10 +7,12 @@ import java.util.ResourceBundle;
 import application.Main;
 import application.Map.MapSelection;
 import application.Player;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import jfx.messagebox.MessageBox;
 
 public class PubController implements Initializable, ControlledScreen, Loadable {
@@ -19,7 +21,14 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 	
 	@Override
 	public void onLoad() {
-		// TODO Auto-generated method stub
+		String mapID = Main.game.getMap().getMapID();
+		MapController mapController;
+		MapSelection mapSelection = Main.game.getMap().getMapSelection();
+		
+		mapController = (MapController) myController.getController(mapID);
+		ProgressBar mapBar = mapController.getTimerTask().getTimerBar();
+		DoubleProperty progProp = mapBar.progressProperty();
+		timerBarPub.progressProperty().bind(progProp);	
 		
 	}
 
@@ -35,6 +44,9 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 		
 	}
 	
+	@FXML 
+	public ProgressBar timerBarPub;
+	
 	@FXML
 	private Button gambleBTN;
 	
@@ -43,23 +55,24 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 
 
 	public void gamble(ActionEvent event) {
-		String mapID = "";
+		String mapID = Main.game.getMap().getMapID();
 		MapController mapController;
 		
 		
 		
 		// this block handles the transition to the next player's turn
-		MapSelection mapSelection = Main.game.getMap().getMapSelection();
-		switch (mapSelection) {
-		case STANDARD:
-			mapID = Main.standardMapID;
-			break;
-		case EASTWEST:
-			mapID = Main.eastWestMapID;
-			break;
-		case MAP3:
-			mapID = ""; 
-		}
+//		MapSelection mapSelection = Main.game.getMap().getMapSelection();
+//		switch (mapSelection) {
+//		case STANDARD:
+//			mapID = Main.standardMapID;
+//			break;
+//		case EASTWEST:
+//			mapID = Main.eastWestMapID;
+//			break;
+//		case MAP3:
+//			mapID = ""; 
+//		}
+		
 		mapController = (MapController) myController.getController(mapID);
 		
 		System.out.println("Player is gambling!");

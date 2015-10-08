@@ -31,28 +31,14 @@ public class townController implements Initializable, ControlledScreen, Loadable
 	
 	@Override
 	public void onLoad() {
-		String mapID= "";
+		String mapID = Main.game.getMap().getMapID();
 		MapController mapController;
-		MapSelection mapSelection = Main.game.getMap().getMapSelection();
+		//MapSelection mapSelection = Main.game.getMap().getMapSelection();
 		
-		switch (mapSelection) {
-		case STANDARD:
-			mapID = Main.standardMapID;
-			break;
-		case EASTWEST:
-			mapID = Main.eastWestMapID;
-			break;
-		case MAP3:
-			mapID = ""; 
-		}
 		mapController = (MapController) myController.getController(mapID);
 		ProgressBar mapBar = mapController.getTimerTask().getTimerBar();
 		DoubleProperty progProp = mapBar.progressProperty();
-		timerBarTown.progressProperty().bind(progProp);
-		
-		
-		
-		
+		timerBarTown.progressProperty().bind(progProp);	
 	}
 
 	@Override
