@@ -18,7 +18,7 @@ import javafx.scene.control.RadioButton;
 public class gameConfigController implements Initializable, ControlledScreen {	
 	//--------------Instance Variables---------------------------------
 	private ScreensController myController;
-	private Difficulty difficulty = Difficulty.STANDARD;
+	private Difficulty difficulty = Difficulty.BEGINNER;
 	ScreensController mainController;
 	Node playerConfigCntrl;
 	int numPlayers = 1;
