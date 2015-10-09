@@ -1,9 +1,22 @@
 package application;
 
-public class Mule {
+import application.GameRunner.MuleType;
 
-	
-	public Mule() {
-		
-	}
+public class Mule {
+   private MuleType type;
+   
+   public Mule() {
+	   type = MuleType.EMPTY;
+   }
+   
+   public void setMuleType(MuleType mulType) {
+	   type = mulType;
+   }
+   
+   public MuleType getMuleType() {
+	   return type;
+   }
+
+
+   
 }

@@ -2,7 +2,11 @@ package application;
 
 import java.awt.Point;
 import java.util.HashMap;
+
+import application.GameRunner.Difficulty;
+import application.GameRunner.MuleType;
 import javafx.scene.paint.Color;
+import jfx.messagebox.MessageBox;
 
 public class Player implements Comparable<Player>{
 	//-------------enums-----------------------------
@@ -37,6 +41,7 @@ public class Player implements Comparable<Player>{
 		playerNum = plyrNum;
 		playerMule = null;
 		plotMap = new HashMap<Point,Plot>();
+		
 		if (race.equals(Race.FLAPPER)) {
 			money = 16000;
 		} else if (race.equals(Race.HUMAN)) {
@@ -44,20 +49,23 @@ public class Player implements Comparable<Player>{
 		} else  {
 			money = 1000;
 		}
-		switch (difficulty) {
-					case BEGINNER:
-						food = 8;
-						energy = 4;
-						smithore = 0;
-						crystite = 0;
-					default:
-						food = 4;
-						energy = 2;
-						smithore = 0;
-						crystite = 0;
-				}
-		 		updateScore();
-		 	}
+		
+		initPlayer(difficulty);
+		updateScore();
+	}
+
+	private void initPlayer(Difficulty diff) {
+		food = 4;
+		energy = 2;
+		smithore = 0;
+		crystite = 0;
+		
+		if (diff.equals(Difficulty.BEGINNER)) {
+			food = food + 4;
+			energy = energy + 2;
+			
+		}
+	}
 
 	public Race getRace() {
 		return race;
@@ -136,24 +144,204 @@ public class Player implements Comparable<Player>{
 	}
 	
 	public boolean buyMule() {
-		int price = 100;  // GET PRICE FROM STORE
-		
-		if (money >= 100) {
-			playerMule = new Mule();
-			money = money - 100;
-			return true;
-		} else {
-			return false;
-		}
+		Store store = Main.game.getStore();
+		if (money < store.getMulePrice()) {
 			
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You cannot afford a Mule!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			return false;
+			
+		} else if (store.getMuleStock() == 0) {
+			
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "The store is out of Mules!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			return false;
+			
+		} else if (hasMule()){
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You already own a Mule!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			return false;
+		} else {
+			playerMule = store.sellMule();
+			money = money - store.getMulePrice();
+			
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "Player " + playerNum + " you have bought a Mule",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			return true;
+			
+		}
 	}
 	
+	public boolean equipFood() {
+		Store store = Main.game.getStore();
+		if (hasMule()) {
+			if (money < store.getFoodEquipPrice()) {
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "You cannot afford to equip your Mule for food production!",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return false;
+			} else if(!playerMule.getMuleType().equals(MuleType.EMPTY)) {
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "Your Mule is already equiped",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return false;
+				
+			} else {
+				playerMule.setMuleType(MuleType.FOOD);
+				money = money - store.getFoodEquipPrice();
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "Player " + playerNum + " you have equiped your Mule for food production",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return true;	
+			}
+		} else {
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not own a Mule!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			return false;	
+		}
+	}
+	
+	public boolean equipEnergy() {
+		Store store = Main.game.getStore();
+		if (hasMule()) {
+			if (money < store.getEnergyEquipPrice()) {
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "You cannot afford to equip your Mule for energy production!",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return false;
+				
+			} else if(!playerMule.getMuleType().equals(MuleType.EMPTY)) {
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "Your Mule is already equiped",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return false;
+			
+			} else {
+				playerMule.setMuleType(MuleType.ENERGY);
+				money = money - store.getEnergyEquipPrice();
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "Player " + playerNum + " you have equiped your Mule for energy production",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return true;	
+			}
+		} else {
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not own a Mule!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			return false;	
+		}
+	}
+	
+	public boolean equipSmithore() {
+		Store store = Main.game.getStore();
+		if (hasMule()) {
+			if (money < store.getSmithoreEquipPrice()) {
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "You cannot afford to equip your Mule for smithore production!",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return false;
+				
+			} else if(!playerMule.getMuleType().equals(MuleType.EMPTY)) {
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "Your Mule is already equiped",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return false;
+			
+			} else {
+				playerMule.setMuleType(MuleType.SMITHORE);
+				money = money - store.getSmithoreEquipPrice();
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "Player " + playerNum + " you have equiped your Mule for smithore production",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return true;	
+			}
+		} else {
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not own a Mule!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			return false;	
+		}
+	}
+	
+	public boolean equipCrystite() {
+		Store store = Main.game.getStore();
+		if (hasMule()) {
+			if (money < store.getCrystiteEquipPrice()) {
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "You cannot afford to equip your Mule for crystite mining!",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return false;
+				
+			} else if(!playerMule.getMuleType().equals(MuleType.EMPTY)) {
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "Your Mule is already equiped",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return false;
+			
+			} else {
+				playerMule.setMuleType(MuleType.CRYSTITE);
+				money = money - store.getCrystiteEquipPrice();
+				
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "Player " + playerNum + " you have equiped your Mule for cyrstite mining",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				return true;	
+			}
+		} else {
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not own a Mule!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			return false;	
+		}
+	}
+	
+	
 	public boolean hasMule() {
-		return playerMule == null;
+		return playerMule != null;
 	}
 	
 	public Mule getMule() {
 		return playerMule;
+	}
+	
+	public void removeMule() {
+		playerMule = null;
 	}
 	
 	public boolean isPlotOwner(Point coord) {
@@ -193,8 +381,14 @@ public class Player implements Comparable<Player>{
 	
 	
 	public String toString() {
-		String str =  "Player " + playerNum + "\n Name: " + playerName + "\n" + "Race: " + race + "\n" + "Color: " + color + "\n" + "Score: " + score ;
-		return str;
+		StringBuilder str = new StringBuilder();
+		str.append("Player " + playerNum + " \n");
+		str.append("Name: " + playerName + " \n");
+		str.append("Race: " + race + " \n");
+		str.append("Color: " + color.toString() + " \n");
+		str.append("Score: " + score);
+	
+		return str.toString();
 	}
 
 	@Override

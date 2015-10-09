@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Main;
+import application.Player;
 import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +14,7 @@ import javafx.scene.control.ProgressBar;
 
 public class EquipMuleController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
-	
+	private Player activePlayer;
 	
 	@Override
 	public void onLoad() {
@@ -61,22 +62,26 @@ public class EquipMuleController implements Initializable, ControlledScreen, Loa
 
 
 	public void equipFood(ActionEvent event) {
-		
+		activePlayer = Main.game.getActivePlayer();
+        activePlayer.equipFood();
 	}
 	
 	
 	public void equipEnergy(ActionEvent event) {
-		
+		activePlayer = Main.game.getActivePlayer();
+        activePlayer.equipEnergy();
 	}
 	
 	
 	public void equipSmithore(ActionEvent event) {
-		
+		activePlayer = Main.game.getActivePlayer();
+        activePlayer.equipSmithore();
 	}
 	
 	
 	public void equipCrystite(ActionEvent event) {
-		
+		activePlayer = Main.game.getActivePlayer();
+        activePlayer.equipCrystite();
 	}
 	
 	public void returnToTown() {

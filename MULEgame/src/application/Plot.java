@@ -32,6 +32,9 @@ public class Plot {
 		mule = mul;
 	}
 	
+	public Mule getMule() {
+		return mule;
+	}
 	
 	public void generateResources() { }
 	

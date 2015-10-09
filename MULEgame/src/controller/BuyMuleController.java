@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import application.Main;
 import application.Map.MapSelection;
+import application.Player;
 import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +16,7 @@ import javafx.scene.control.RadioButton;
 
 public class BuyMuleController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
-	
+	private Player activePlayer;
 	
 	@Override
 	public void onLoad() {
@@ -52,7 +53,8 @@ public class BuyMuleController implements Initializable, ControlledScreen, Loada
 	private Button returnToTownBTN;
 
 	public void buyMuleClick(ActionEvent event) {
-		
+		activePlayer = Main.game.getActivePlayer();
+        activePlayer.buyMule();
 	}
 	
 	

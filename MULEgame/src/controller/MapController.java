@@ -10,19 +10,22 @@ import application.Map;
 import application.Plot;
 import application.GameRunner.ActivePlayer;
 import application.GameRunner.GameState;
+import application.GameRunner.MuleType;
 import application.Map.MapSelection;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import jfx.messagebox.MessageBox;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 
-import java.awt.*;
+import java.awt.Point;
 
 public class MapController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
@@ -37,6 +40,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	final int TIMEFACTOR = 1000 / TIMERUPDATERATE;  // adjust time limit passed to task 
 	//private int numPlayers;
 	private Map map;
+	private double rectSize = 30;
 	
 	
 	@Override
@@ -115,7 +119,10 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		
 		//----------------- MULE PURCHASE STATE-------------------------------------------------------------
 		if (gameState.equals(GameState.MULEPURCHASE)) {
-			map.placeMule( xCor,  yCor, Main.game.getActivePlayer());
+			currentPlot = map.placeMule( xCor,  yCor, Main.game.getActivePlayer());
+			if (currentPlot != null) {
+				markPlotMule(currentPlot);
+			}
 			
 		}
 		
@@ -298,9 +305,39 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		
 		 gc.setFill(Main.game.getActivePlayer().getColor());
          Point center = currentPlot.getCenter();
-         gc.fillRect(center.getX(), center.getY(), 10, 10);
+         gc.fillRect(center.getX()-rectSize/2, center.getY()-rectSize/2, rectSize, rectSize);
+         
+         
+         
 	}
 
+	private void markPlotMule(Plot currentPlot) {
+		MuleType muleType = currentPlot.getMule().getMuleType();
+		GraphicsContext gc = plotMarkerCanvas.getGraphicsContext2D();
+		Point center = currentPlot.getCenter();
+		Image img;
+		
+		switch (muleType) {
+			case FOOD:
+				 img = new Image("file:images/wheat.jpg");
+				break;
+			case ENERGY:
+				img = new Image("file:images/energy.png");
+				break;
+			case SMITHORE:
+				img = new Image("file:images/mining.png");
+				break;
+			case CRYSTITE:
+				img = new Image("file:images/diamond.png");
+				break;
+			default:
+				img = new Image("file:images/muleEmpty.png");
+			
+		}
+		
+		gc.clearRect( (center.getX()-rectSize/2)+ 2.5, (center.getY()-rectSize/2) + 2.5, rectSize-5, rectSize-5);
+        gc.drawImage(img, (center.getX()-rectSize/2)+ 2.5, (center.getY()-rectSize/2) + 2.5, rectSize-5, rectSize-5);
+	}
 
 	
 	

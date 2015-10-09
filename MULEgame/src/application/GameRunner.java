@@ -3,7 +3,6 @@ package application;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-//import java.util.Collection;
 import java.util.Collections;
 import java.util.Deque;
 
@@ -16,10 +15,11 @@ import javafx.scene.Scene;
 
 public class GameRunner {
 	//---------Enum----------------------------------------
-	public enum GameState{LANDPURCHASE, MULEPURCHASE, RANDOMEVENT, ENDROUND};
-	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT};
-	public enum ActivePlayer{PLAYER1, PLAYER2, PLAYER3, PLAYER4}; 
-	public enum PlotType {M1, M2, M3, RIVER, PLAIN, TOWN};
+	public enum GameState{LANDPURCHASE, MULEPURCHASE, RANDOMEVENT, ENDROUND}
+	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT}
+	public enum ActivePlayer{PLAYER1, PLAYER2, PLAYER3, PLAYER4} 
+	public enum PlotType {M1, M2, M3, RIVER, PLAIN, TOWN}
+	public enum MuleType {FOOD, ENERGY, SMITHORE, CRYSTITE, EMPTY}
 	//-----------------------------------------------------
 	
 	//----------------Instance Variables-------------------
@@ -29,6 +29,7 @@ public class GameRunner {
 	private Difficulty difficulty;
 	private Map gameMap;
 	private Scene scene;
+	private Store store;
 	private ArrayList<Player> playerList;
 	private ScreensController mainController;
 	private int numRounds;
@@ -52,9 +53,9 @@ public class GameRunner {
 	public void startGame(MapSelection mapSlct) {
 		setLandPurchaseState();
 		incrementRound();
-		application.Main.game.addMap(mapSlct);
+		addMap(mapSlct);
+		createStore();
 	}
-	
 	
 	public void incrementRound() {
 		round++;
@@ -153,6 +154,10 @@ public class GameRunner {
 		return scene;
 	}
 	
+	public Store getStore() {
+		return store;
+	}
+	
 	public ScreensController getMainController() {
 		return mainController;
 	}
@@ -207,6 +212,11 @@ public class GameRunner {
 
 	public boolean outOfPlayers() {
 		return playerOrderDeque.isEmpty();
+	}
+
+	private void createStore() {
+	    store =  new Store(difficulty);
+	    System.out.println(store);
 	}
 	
 	//-------------------End of Query Methods------------------------------------

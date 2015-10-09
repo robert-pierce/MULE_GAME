@@ -60,19 +60,6 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 		
 		
 		
-		// this block handles the transition to the next player's turn
-//		MapSelection mapSelection = Main.game.getMap().getMapSelection();
-//		switch (mapSelection) {
-//		case STANDARD:
-//			mapID = Main.standardMapID;
-//			break;
-//		case EASTWEST:
-//			mapID = Main.eastWestMapID;
-//			break;
-//		case MAP3:
-//			mapID = ""; 
-//		}
-		
 		mapController = (MapController) myController.getController(mapID);
 		
 		System.out.println("Player is gambling!");
