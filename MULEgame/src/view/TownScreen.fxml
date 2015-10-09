@@ -5,6 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane onMouseClicked="#mouseClick" prefHeight="705.0" prefWidth="1140.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.townController">
@@ -41,5 +42,22 @@
       </menus>
     </MenuBar>
     <ProgressBar fx:id="timerBarTown" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
+    <Label id="Player" fx:id="playerIdLBL" layoutX="1050.0" layoutY="37.0" text="1">
+      <font>
+        <Font name="Elephant" size="24.0" fx:id="x2" />
+      </font>
+      <textFill>
+        <Color blue="1.000" green="0.000" red="0.800" fx:id="x3" />
+      </textFill>
+    </Label>
+    <Label fx:id="playerMoneyLBL" font="$x2" layoutX="1050.0" layoutY="72.0" text="100" textFill="$x3" />
+    <Label fx:id="playerFoodLBL" font="$x2" layoutX="1050.0" layoutY="107.0" text="30" textFill="$x3" />
+    <Label fx:id="playerEnergyLBL" font="$x2" layoutX="1050.0" layoutY="142.0" text="16" textFill="$x3" />
+    <Label fx:id="playerSmithoreLBL" font="$x2" layoutX="1050.0" layoutY="177.0" text="16" textFill="$x3" />
+    <Label font="$x2" layoutX="946.0" layoutY="37.0" text="Player" textFill="$x3" />
+    <Label font="$x2" layoutX="940.0" layoutY="72.0" text="Money: $" textFill="$x3" />
+    <Label font="$x2" layoutX="967.0" layoutY="107.0" text="Food:" textFill="$x3" />
+    <Label font="$x2" layoutX="940.0" layoutY="142.0" text="Energy:" textFill="$x3" />
+    <Label font="$x2" layoutX="915.0" layoutY="177.0" text="Smithore:" textFill="$x3" />
   </children>
 </AnchorPane>

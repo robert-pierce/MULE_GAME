@@ -5,8 +5,17 @@ import java.util.HashMap;
 
 import application.GameRunner.Difficulty;
 import application.GameRunner.MuleType;
+import javafx.beans.binding.Binding;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.NumberBinding;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.paint.Color;
 import jfx.messagebox.MessageBox;
+import sun.security.krb5.internal.CredentialsUtil;
 
 public class Player implements Comparable<Player>{
 	//-------------enums-----------------------------
@@ -18,18 +27,23 @@ public class Player implements Comparable<Player>{
 	private Race race;
 	private Color color;
 	private String playerName;
-	private int playerNum;
-	private int money;
-	private int score;
+	//private int playerNum;
+	//private int money;
+	//private int score;
 	private int smithore;
-	private int food;
+	//private int food;
 	private int energy;
 	private int crystite;
 	private Mule playerMule;
 	private HashMap<Point, Plot> plotMap;
-	
-	
-	
+	private SimpleIntegerProperty playerIdProperty ;
+	private SimpleIntegerProperty moneyProperty;
+	private SimpleIntegerProperty foodProperty;
+	private SimpleIntegerProperty energyProperty;
+	private SimpleIntegerProperty smithoreProperty;
+	private SimpleIntegerProperty crystiteProperty;
+	private NumberBinding scoreProperty;
+	private SimpleIntegerProperty numPlotsProperty;
 	
 
 	
@@ -38,34 +52,63 @@ public class Player implements Comparable<Player>{
 		race = rce;
 		color = clr;
 		playerName = plyrName;
-		playerNum = plyrNum;
+		playerIdProperty = new SimpleIntegerProperty(plyrNum);
+		
+		//playerNum = plyrNum;
 		playerMule = null;
 		plotMap = new HashMap<Point,Plot>();
 		
+		
+		
 		if (race.equals(Race.FLAPPER)) {
-			money = 16000;
+			moneyProperty = new SimpleIntegerProperty(1600);
 		} else if (race.equals(Race.HUMAN)) {
-			money = 600;
+			moneyProperty = new SimpleIntegerProperty(600); 
 		} else  {
-			money = 1000;
+			moneyProperty = new SimpleIntegerProperty(1000);
 		}
 		
 		initPlayer(difficulty);
-		updateScore();
+		//updateScore();
 	}
 
 	private void initPlayer(Difficulty diff) {
-		food = 4;
-		energy = 2;
-		smithore = 0;
-		crystite = 0;
+		foodProperty = new SimpleIntegerProperty(4);
+		energyProperty = new SimpleIntegerProperty(2);
+		smithoreProperty = new SimpleIntegerProperty(0);
+		crystiteProperty = new SimpleIntegerProperty(0);
+		numPlotsProperty = new SimpleIntegerProperty(plotMap.size());
+		scoreProperty = Bindings.add(moneyProperty.add(energyProperty), smithoreProperty.add(numPlotsProperty.multiply(500)));
+		
+		
+		System.out.println("Money at plyr init " + moneyProperty.getValue());
+		System.out.println("energy at plyr init " + energyProperty.getValue());
+		System.out.println("smithore at plyr init " + smithoreProperty.getValue());
+		System.out.println("crystitehore at plyr init " + crystiteProperty.getValue());
+		System.out.println("score at plyr init " + scoreProperty.getValue());
+		
+		scoreProperty.addListener(new ChangeListener<Number>() {
+		      @Override
+		      public void changed(ObservableValue<? extends Number> ov, Number oldVal,
+		          Number newVal) {
+		        System.out.println("score old value: "+oldVal);
+		        System.out.println("score new value: "+newVal);
+		      }
+		    });
 		
 		if (diff.equals(Difficulty.BEGINNER)) {
-			food = food + 4;
-			energy = energy + 2;
-			
+			foodProperty.setValue(foodProperty.add(4).getValue());
+			energyProperty.setValue(energyProperty.add(2).getValue());
 		}
 	}
+
+	
+		
+		
+		
+	
+
+	
 
 	public Race getRace() {
 		return race;
@@ -80,72 +123,105 @@ public class Player implements Comparable<Player>{
 	}
 
 	public int getPlayerNum() {
-		return playerNum;
+		return playerIdProperty.get();
+	}
+	
+	public SimpleIntegerProperty getPlayerIdProperty() {
+		return playerIdProperty;
 	}
 
+	
 	public HashMap<Point, Plot> getPlots() {
 		return plotMap;
 	}
 
 	public void addPlot(Point plotCoord, Plot newPlot) {
 		plotMap.put(plotCoord, newPlot);
+		numPlotsProperty.setValue(plotMap.size());
 	}
 
 	public int getMoney() {
-		return money;
+		return moneyProperty.get();
+	}
+	
+	public SimpleIntegerProperty getMoneyProperty() {
+		return moneyProperty;
 	}
 
 	public void addMoney(int moneyChange) {
-		this.money = money + moneyChange;
+		moneyProperty.setValue(moneyProperty.add(moneyChange).getValue());
 	}
 
 	public int getScore() {
-		return score;
+		return (int) scoreProperty.getValue();
+	}
+	
+	public NumberBinding getScoreProperty() {
+		return scoreProperty;
 	}
 
 	public int getSmithore() {
-		return smithore;
+		return smithoreProperty.get();
+	}
+	
+	public SimpleIntegerProperty getSmithoreProperty() {
+		return smithoreProperty;
 	}
 
 	public void addSmithore(int smithoreChange) {
-		this.smithore = smithore + smithoreChange;
+		smithoreProperty.setValue(smithoreProperty.add(smithoreChange).getValue());
 	}
 
 	public int getFood() {
-		return food;
+		return foodProperty.get();
+	}
+	
+	public SimpleIntegerProperty getFoodProperty() {
+		return foodProperty;
 	}
 
 	public void addFood(int foodChange) {
-		this.food = food + foodChange;
+		foodProperty.setValue(foodProperty.add(foodChange).getValue());
+				
 	}
 
 	public int getEnergy() {
-		return energy;
+		return energyProperty.get();
+	}
+	
+	public SimpleIntegerProperty getEnergyProperty() {
+		return energyProperty;
 	}
 
 	public void addEnergy(int energyChange) {
-		this.energy = energy + energyChange;
+		energyProperty.setValue(energyProperty.add(energyChange).getValue());
 	}
 
 	public int getCrystite() {
-		return crystite;
+		return crystiteProperty.get();
+	}
+	
+	public SimpleIntegerProperty getCrystiteProperty() {
+		return crystiteProperty;
 	}
 
 	public void addCrystite(int crystiteChange) {
-		this.crystite = crystite + crystiteChange;
+		crystiteProperty.setValue(crystiteProperty.add(crystiteChange).getValue());
 	}
 
-	public void updateScore() {
-		this.score = money + energy + smithore + 500 * plotMap.size();
-	}
+//	public void updateScore() {
+//		this.score = money + energy + smithore + 500 * plotMap.size();
+//	}
 	
 	public void payForPlot() {
-		money = money - 300;
+		moneyProperty.setValue(moneyProperty.subtract(300).getValue());
 	}
 	
 	public boolean buyMule() {
 		Store store = Main.game.getStore();
-		if (money < store.getMulePrice()) {
+		System.out.println("score: " + scoreProperty.getValue());
+		
+		if (moneyProperty.get() < store.getMulePrice()) {
 			
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "You cannot afford a Mule!",
@@ -169,12 +245,14 @@ public class Player implements Comparable<Player>{
 			return false;
 		} else {
 			playerMule = store.sellMule();
-			money = money - store.getMulePrice();
+			moneyProperty.setValue(moneyProperty.subtract(store.getMulePrice()).getValue());
+			System.out.println("score " + scoreProperty.getValue());
 			
 			MessageBox.show(Main.game.getScene().getWindow(),
-			         "Player " + playerNum + " you have bought a Mule",
+			         "Player " + playerIdProperty.get() + " you have bought a Mule",
 			         "Information dialog",
 			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			
 			return true;
 			
 		}
@@ -183,7 +261,7 @@ public class Player implements Comparable<Player>{
 	public boolean equipFood() {
 		Store store = Main.game.getStore();
 		if (hasMule()) {
-			if (money < store.getFoodEquipPrice()) {
+			if (moneyProperty.get() < store.getFoodEquipPrice()) {
 				
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "You cannot afford to equip your Mule for food production!",
@@ -200,10 +278,10 @@ public class Player implements Comparable<Player>{
 				
 			} else {
 				playerMule.setMuleType(MuleType.FOOD);
-				money = money - store.getFoodEquipPrice();
+				moneyProperty.setValue(moneyProperty.subtract(store.getFoodEquipPrice()).getValue());
 				
 				MessageBox.show(Main.game.getScene().getWindow(),
-				         "Player " + playerNum + " you have equiped your Mule for food production",
+				         "Player " + playerIdProperty.get() + " you have equiped your Mule for food production",
 				         "Information dialog",
 				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 				return true;	
@@ -220,7 +298,7 @@ public class Player implements Comparable<Player>{
 	public boolean equipEnergy() {
 		Store store = Main.game.getStore();
 		if (hasMule()) {
-			if (money < store.getEnergyEquipPrice()) {
+			if (moneyProperty.get() < store.getEnergyEquipPrice()) {
 				
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "You cannot afford to equip your Mule for energy production!",
@@ -238,10 +316,11 @@ public class Player implements Comparable<Player>{
 			
 			} else {
 				playerMule.setMuleType(MuleType.ENERGY);
-				money = money - store.getEnergyEquipPrice();
+				moneyProperty.setValue(moneyProperty.subtract(store.getEnergyEquipPrice()).getValue()) ;
+				
 				
 				MessageBox.show(Main.game.getScene().getWindow(),
-				         "Player " + playerNum + " you have equiped your Mule for energy production",
+				         "Player " + playerIdProperty.get() + " you have equiped your Mule for energy production",
 				         "Information dialog",
 				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 				return true;	
@@ -258,7 +337,7 @@ public class Player implements Comparable<Player>{
 	public boolean equipSmithore() {
 		Store store = Main.game.getStore();
 		if (hasMule()) {
-			if (money < store.getSmithoreEquipPrice()) {
+			if (moneyProperty.get() < store.getSmithoreEquipPrice()) {
 				
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "You cannot afford to equip your Mule for smithore production!",
@@ -276,10 +355,10 @@ public class Player implements Comparable<Player>{
 			
 			} else {
 				playerMule.setMuleType(MuleType.SMITHORE);
-				money = money - store.getSmithoreEquipPrice();
+				moneyProperty.setValue(moneyProperty.subtract(store.getSmithoreEquipPrice()).getValue());
 				
 				MessageBox.show(Main.game.getScene().getWindow(),
-				         "Player " + playerNum + " you have equiped your Mule for smithore production",
+				         "Player " + playerIdProperty.get() + " you have equiped your Mule for smithore production",
 				         "Information dialog",
 				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 				return true;	
@@ -296,7 +375,7 @@ public class Player implements Comparable<Player>{
 	public boolean equipCrystite() {
 		Store store = Main.game.getStore();
 		if (hasMule()) {
-			if (money < store.getCrystiteEquipPrice()) {
+			if (moneyProperty.get() < store.getCrystiteEquipPrice()) {
 				
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "You cannot afford to equip your Mule for crystite mining!",
@@ -314,10 +393,10 @@ public class Player implements Comparable<Player>{
 			
 			} else {
 				playerMule.setMuleType(MuleType.CRYSTITE);
-				money = money - store.getCrystiteEquipPrice();
+				moneyProperty.setValue(moneyProperty.subtract(store.getCrystiteEquipPrice()).getValue());
 				
 				MessageBox.show(Main.game.getScene().getWindow(),
-				         "Player " + playerNum + " you have equiped your Mule for cyrstite mining",
+				         "Player " + playerIdProperty.get() + " you have equiped your Mule for cyrstite mining",
 				         "Information dialog",
 				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 				return true;	
@@ -355,23 +434,23 @@ public class Player implements Comparable<Player>{
 	public int computeTime() {
 		int roundNum;
 		
-		if (food == 0) {
+		if (foodProperty.equals(0)) {
 			return 5;
 		} else{ 
 			roundNum = Main.game.getRoundNumber();
 			if (roundNum >= 9) {
-				if (food < 5) {
+				if (foodProperty.get() < 5) {
 					return 30;
 				} else { 
 					return 50;
 				}	
 			} else if (roundNum >= 5) {
-				if (food < 4) {
+				if (foodProperty.get() < 4) {
 					return 30;
 				} else {
 					return 50;
 				}
-			} else if (food < 3){
+			} else if (foodProperty.get() < 3){
 				return 30;
 			} else {
 				return 50;
@@ -382,20 +461,20 @@ public class Player implements Comparable<Player>{
 	
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("Player " + playerNum + " \n");
+		str.append("Player " + playerIdProperty.get() + " \n");
 		str.append("Name: " + playerName + " \n");
 		str.append("Race: " + race + " \n");
-		str.append("Color: " + color.toString() + " \n");
-		str.append("Score: " + score);
+		str.append("Color: " + color + " \n");
+		str.append("Score: " + scoreProperty.getValue());
 	
 		return str.toString();
 	}
 
 	@Override
 	public int compareTo(Player plyrCmp) {
-		if (this.score < plyrCmp.score) {
+		if (this.scoreProperty.getValue().intValue() < plyrCmp.scoreProperty.getValue().intValue()) {
 			return -1;
-		} else if (this.score == plyrCmp.score) {
+		} else if (this.scoreProperty.getValue().intValue() == plyrCmp.scoreProperty.getValue().intValue()) {
 			return 0;
 		} else {
 			return 1;
