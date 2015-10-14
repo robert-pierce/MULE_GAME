@@ -151,7 +151,7 @@ public class townController implements Initializable, ControlledScreen, Loadable
 				showEquipMuleShop();
 			}
 			if (xCor >= 914 && xCor <= 1116 && yCor >=310 && yCor <= 533) {
-				showLandShop();
+				showShop();
 			}
 		}
 	}
@@ -169,8 +169,8 @@ public class townController implements Initializable, ControlledScreen, Loadable
 		myController.setScreen(application.Main.equipMuleID);
 	}
 	
-	private void showLandShop() {
-		System.out.println("Land Show is not implemented yet");
+	private void showShop() {
+		myController.setScreen(application.Main.generalStoreID);
 	}
 }
 

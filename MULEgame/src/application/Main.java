@@ -37,6 +37,10 @@ public class Main extends Application {
 	public static String equipMuleFile = "/view/EquipMuleScreen.fxml";
 	public static String pubID = "PubScreen";
 	public static String pubFile = "/view/PubScreen.fxml";
+	public static String generalStoreID = "GeneralStoreScreen";
+	public static String generalStoreFile = "/view/GeneralStore.fxml";
+	
+	
 	
 	
 	public static GameRunner game;
@@ -56,7 +60,7 @@ public class Main extends Application {
 		mainContainer.loadScreen(buyMuleID, buyMuleFile);
 		mainContainer.loadScreen(equipMuleID, equipMuleFile);
 		mainContainer.loadScreen(pubID, pubFile);
-		
+		mainContainer.loadScreen(generalStoreID, generalStoreFile);
 		
 		mainContainer.setScreen(startScreenID);
 		

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.GeneralStoreController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="50.0" prefWidth="1140.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="434.0" layoutY="119.0" text="General Store" textFill="WHITE">
+      <font>
+        <Font name="Arial Rounded MT Bold" size="40.0" />
+      </font>
+    </Label>
+    <Button fx:id="sellGoodsBTN" layoutX="225.0" layoutY="332.0" mnemonicParsing="false" onAction="#sellGoodsClick" prefHeight="51.0" prefWidth="258.0" text="Sell Goods" />
+    <Button fx:id="landAuctionBTN" layoutX="685.0" layoutY="332.0" mnemonicParsing="false" onAction="#landAuctionClick" prefHeight="51.0" prefWidth="258.0" text="Land Auction" />
+  </children>
+</AnchorPane>
