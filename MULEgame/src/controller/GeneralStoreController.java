@@ -168,31 +168,52 @@ public class GeneralStoreController implements Initializable, ControlledScreen, 
 	}
 	
 	public void sellEnergyClick() {
+		Player player = Main.game.getActivePlayer();
 		System.out.println("Sell Energy BTN Clicked ");
+		
+		player.sellEnergy();
 	}
 	
 	public void sellSmithoreClick() {
+		Player player = Main.game.getActivePlayer();
 		System.out.println("Sell Smithore BTN Clicked ");
+		
+		player.sellSmithore();
 	}
 	
 	public void sellCrystiteClick() {
+		Player player = Main.game.getActivePlayer();
 		System.out.println("Sell Crystite BTN Clicked ");
+		
+		player.sellCrystite();
 	}
 	
 	public void buyFoodClick() {
+		Player player = Main.game.getActivePlayer();
 		System.out.println("Buy Food BTN Clicked ");
+		
+		player.buyFood();
 	}
 	
 	public void buyEnergyClick() {
+		Player player = Main.game.getActivePlayer();
 		System.out.println("Buy Energy BTN Clicked ");
+		
+		player.buyEnergy();
 	}
 	
 	public void buySmithoreClick() {
+		Player player = Main.game.getActivePlayer();
 		System.out.println("Buy Smithore BTN Clicked ");
+		
+		player.buySmithore();
 	}
 	
 	public void buyCrystiteClick() {
+		Player player = Main.game.getActivePlayer();
 		System.out.println("Buy Crystite BTN Clicked ");
+		
+		player.buyCrystite();
 	}
 	
 	

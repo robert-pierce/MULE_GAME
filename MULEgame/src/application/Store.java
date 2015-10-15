@@ -169,6 +169,10 @@ public class Store {
     	foodStockProperty.setValue(foodStockProperty.add(1).getValue());
     }
     
+    public void decrementFood() {
+    	foodStockProperty.setValue(foodStockProperty.subtract(1).getValue());
+    }
+    
     public int getEnergyPrice() {
     	return energyPriceProperty.get();
     }
@@ -177,12 +181,28 @@ public class Store {
         return energyPriceProperty;
     }
     
-    public int getSmitorePrice() {
+    public void incrementEnergy() {
+    	energyStockProperty.setValue(energyStockProperty.add(1).getValue());
+    }
+    
+    public void decrementEnergy() {
+    	energyStockProperty.setValue(energyStockProperty.subtract(1).getValue());
+    }
+    
+    public int getSmithorePrice() {
     	return smithorePriceProperty.get();
     }
     
     public SimpleIntegerProperty getSmithorePriceProperty() {
         return smithorePriceProperty;
+    }
+    
+    public void incrementSmithore() {
+    	smithoreStockProperty.setValue(smithoreStockProperty.add(1).getValue());
+    }
+
+    public void decrementSmithore() {
+    	smithoreStockProperty.setValue(smithoreStockProperty.subtract(1).getValue());
     }
     
     public int getCrystitePrice() {
@@ -193,6 +213,13 @@ public class Store {
         return crystitePriceProperty;
     }
     
+    public void incrementCrystite() {
+    	crystiteStockProperty.setValue(crystiteStockProperty.add(1).getValue());
+    }
+
+    public void decrementCrystite() {
+    	crystiteStockProperty.setValue(crystiteStockProperty.subtract(1).getValue());
+    }
     
     public String toString() {
 		StringBuilder str = new StringBuilder();

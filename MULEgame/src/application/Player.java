@@ -495,6 +495,120 @@ public class Player implements Comparable<Player>{
 			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 	}
 	
+	public void buyFood() {
+		Store store = Main.game.getStore();
+		if(moneyProperty.get() > store.getFoodPrice()) {
+			if(store.getFoodStock() > 0) {
+				moneyProperty.setValue(moneyProperty.subtract(store.getFoodPrice()).getValue());
+				foodProperty.setValue(foodProperty.add(1).getValue());
+				store.decrementFood();
+			} else 
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "The store does not have any food!",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		} else 
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not have enough money!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	}
 	
+	public void sellEnergy() {
+		Store store = Main.game.getStore();
+		if(energyProperty.get() > 0) {
+			moneyProperty.setValue(moneyProperty.add(store.getEnergyPrice()).getValue());
+			energyProperty.setValue(energyProperty.subtract(1).getValue());
+			store.incrementEnergy();
+		} else 
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not have any energy!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	}
+	
+	public void buyEnergy() {
+		Store store = Main.game.getStore();
+		if(moneyProperty.get() > store.getEnergyPrice()){
+			if(store.getEnergyStock() > 0) {
+				moneyProperty.setValue(moneyProperty.subtract(store.getEnergyPrice()).getValue());
+				energyProperty.setValue(energyProperty.add(1).getValue());
+				store.decrementEnergy();
+			} else 
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "The store does not have any energy!",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		} else 
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not have enough money!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			
+	}
+	
+	public void sellSmithore() {
+		Store store = Main.game.getStore();
+		if(smithoreProperty.get() > 0) {
+			moneyProperty.setValue(moneyProperty.add(store.getSmithorePrice()).getValue());
+			smithoreProperty.setValue(smithoreProperty.subtract(1).getValue());
+			store.incrementSmithore();
+		} else 
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not have any smithore!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	}
+	
+	public void buySmithore() {
+		Store store = Main.game.getStore();
+		if(moneyProperty.get() > store.getSmithorePrice()) {
+			if(store.getSmithoreStock() > 0) {
+				moneyProperty.setValue(moneyProperty.subtract(store.getSmithorePrice()).getValue());
+				smithoreProperty.setValue(smithoreProperty.add(1).getValue());
+				store.decrementSmithore();
+			} else 
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "The store does not have any smithore!",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		} else 
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not have enough money!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	}
+	
+	public void sellCrystite() {
+		Store store = Main.game.getStore();
+		if(crystiteProperty.get() > 0) {
+			moneyProperty.setValue(moneyProperty.add(store.getCrystitePrice()).getValue());
+			crystiteProperty.setValue(crystiteProperty.subtract(1).getValue());
+			store.incrementCrystite();
+		} else 
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not have any crystite!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	}
+	
+	public void buyCrystite() {
+		Store store = Main.game.getStore();
+		if(moneyProperty.get() >  store.getCrystitePrice()) {
+			if(store.getCrystiteStock() > 0) {
+				moneyProperty.setValue(moneyProperty.subtract(store.getCrystitePrice()).getValue());
+				crystiteProperty.setValue(crystiteProperty.add(1).getValue());
+				store.decrementCrystite();
+			} else 
+				MessageBox.show(Main.game.getScene().getWindow(),
+				         "The store does not have any crystite!",
+				         "Information dialog",
+				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		} else 
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not have enough money!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	}
 
 }
