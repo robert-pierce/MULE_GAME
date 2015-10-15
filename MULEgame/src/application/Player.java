@@ -482,6 +482,19 @@ public class Player implements Comparable<Player>{
 	}
 	
 	
+	public void sellFood() {
+		Store store = Main.game.getStore();
+		if(foodProperty.get() > 0) {
+			moneyProperty.setValue(moneyProperty.add(store.getFoodPrice()).getValue());
+			foodProperty.setValue(foodProperty.subtract(1).getValue());
+			store.incrementFood();
+		} else 
+			MessageBox.show(Main.game.getScene().getWindow(),
+			         "You do not have any food!",
+			         "Information dialog",
+			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	}
+	
 	
 
 }

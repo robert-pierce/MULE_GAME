@@ -100,6 +100,14 @@ public class Store {
     	return crystiteEquipPrice;
     }
     
+    public int getFoodPrice() {
+    	return foodPrice;
+    }
+    
+    public void incrementFood() {
+    	foodStock++;
+    }
+    
     public String toString() {
 		StringBuilder str = new StringBuilder();
 		str.append("The store stock is: \n");

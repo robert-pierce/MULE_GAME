@@ -88,9 +88,13 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 		System.out.println("the random number in PubController is: " + randomNum);
 		System.out.println("the round bonus in PubController is: " + roundBonus);
 		
-		int winnings = roundBonus*randomNum;    // calculate winnings
+		int winnings = roundBonus+randomNum;    // calculate winnings
 		System.out.println("winnings in PubController is: " + winnings);
 	
+		if(winnings > 250) {
+			winnings = 250;
+		}
+		
 		// add winnings
 		player.addMoney(winnings);
 	

@@ -33,7 +33,15 @@
         <Font name="Arial Rounded MT Bold" size="40.0" />
       </font>
     </Label>
-    <Button fx:id="sellGoodsBTN" layoutX="225.0" layoutY="332.0" mnemonicParsing="false" onAction="#sellGoodsClick" prefHeight="51.0" prefWidth="258.0" text="Sell Goods" />
-    <Button fx:id="landAuctionBTN" layoutX="685.0" layoutY="332.0" mnemonicParsing="false" onAction="#landAuctionClick" prefHeight="51.0" prefWidth="258.0" text="Land Auction" />
+    <Button id="sellGoodsBTN" fx:id="sellFoodBTN" layoutX="40.0" layoutY="210.0" mnemonicParsing="false" onAction="#sellFoodClick" prefHeight="51.0" prefWidth="258.0" text="Sell Food" />
+    <Button fx:id="returnToTownBTN" layoutX="441.0" layoutY="598.0" mnemonicParsing="false" onAction="#returnToTown" prefHeight="51.0" prefWidth="258.0" text="Town" />
+    <Button fx:id="sellSmithoreBTN" layoutX="40.0" layoutY="410.0" mnemonicParsing="false" onAction="#sellSmithoreClick" prefHeight="51.0" prefWidth="258.0" text="Sell Smithore" />
+    <Button fx:id="sellEnergyBTN" layoutX="40.0" layoutY="310.0" mnemonicParsing="false" onAction="#sellEnergyClick" prefHeight="51.0" prefWidth="258.0" text="Sell Energy" />
+    <Button fx:id="sellCrystiteBTN" layoutX="40.0" layoutY="510.0" mnemonicParsing="false" onAction="#sellCrystiteClick" prefHeight="51.0" prefWidth="258.0" text="Sell Crystite" />
+    <Button fx:id="buyFoodBTN" layoutX="842.0" layoutY="210.0" mnemonicParsing="false" onAction="#buyFoodClick" prefHeight="51.0" prefWidth="258.0" text="Buy Food" />
+    <Button fx:id="buyEnergyBTN" layoutX="842.0" layoutY="310.0" mnemonicParsing="false" onAction="#buyEnergyClick" prefHeight="51.0" prefWidth="258.0" text="Buy Energy" />
+    <Button fx:id="buySmithoreBTN" layoutX="842.0" layoutY="410.0" mnemonicParsing="false" onAction="#buySmithoreClick" prefHeight="51.0" prefWidth="258.0" text="Buy Smithore" />
+    <Button fx:id="buyCrystiteBTN" layoutX="842.0" layoutY="510.0" mnemonicParsing="false" onAction="#buyCrystiteClick" prefHeight="51.0" prefWidth="258.0" text="Buy Crystite" />
+    <ProgressBar fx:id="timerBarGeneralStore" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
   </children>
 </AnchorPane>
