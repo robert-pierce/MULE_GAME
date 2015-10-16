@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -12,6 +13,7 @@ import application.GameRunner.ActivePlayer;
 import application.GameRunner.GameState;
 import application.GameRunner.MuleType;
 import application.Map.MapSelection;
+import application.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -180,12 +182,12 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		return msgBoxRslt;
 		
 		} else {  // if we are at the last player the end land purchase round
-		endPurchasePhase();
+		endLandPurchasePhase();
 		return ENDPURCHASEPHASE;
 		}	
 	}
 	
-	private void endPurchasePhase() {
+	private void endLandPurchasePhase() {
 		MessageBox.show(Main.game.getScene().getWindow(),
 		         "End of Land Purchase Phase",
 		         "Information dialog",
@@ -241,8 +243,8 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 			startTimer();
 			System.out.println("Start Timer Called");
 			
-		} else {  // if we are at the last player the end land purchase round
-			endRound();
+		} else {  // if we are at the last player then end Mule purchase round
+			endMulePurchasePhase();
 			
 		}	
 	}
@@ -260,14 +262,83 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	}
 	
 	// implement end of round method
-	public void endRound() {
+	public void endMulePurchasePhase() {
 		System.out.println("End Round method called in MapController");
 		timerBar.setProgress(0);
-		Main.game.setGameState(GameState.RANDOMEVENT);
+		Main.game.setGameState(GameState.RESOURCEPRODUCTION);
 		System.out.println("Game State set to: " + Main.game.getGameState());
 		
-		handleRandomEvent();
+		handleResourceProductionPhase();
 		
+	}
+	
+	private void handleResourceProductionPhase() {
+		calculateProduction();
+        List<Player> players = Main.game.getPlayerList();
+        
+        MessageBox.show(Main.game.getScene().getWindow(),
+  		         "Calculating Production",
+        		"Calculating Production",
+  		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+        
+        
+        // WOULD LIKE TO SHOW A NEW SCREEN HERE!
+        
+		if (players.size() > 0) {
+        	MessageBox.show(Main.game.getScene().getWindow(),
+   		         "Player 1 - Food: " + players.get(0).getFood() +
+   		         	"  Energy: " + players.get(0).getEnergy() +
+   		         	"  Ore: " + players.get(0).getSmithore() +
+   		         	"  Crystite: " + players.get(0).getCrystite(),
+   		         "Player 1 End of Round",
+   		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+        }
+        if (players.size() > 1) {
+        	MessageBox.show(Main.game.getScene().getWindow(),
+        			"Player 2 - Food: " + players.get(1).getFood() +
+				 		"  Energy: " + players.get(1).getEnergy() +
+				 		"  Ore: " + players.get(1).getSmithore() +
+				 		"  Crystite: " + players.get(1).getCrystite(),
+      		         "Player 2 End of Round",
+      		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+        }
+        if (players.size() > 2) {
+        	MessageBox.show(Main.game.getScene().getWindow(),
+        			"Player 3 - Food: " + players.get(2).getFood() +
+				 		"  Energy: " + players.get(2).getEnergy() +
+				 		"  Ore: " + players.get(2).getSmithore() +
+				 		"  Crystite: " + players.get(2).getCrystite(),
+      		         "Player 3 End of Round",
+      		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+        }
+        if (players.size() > 3) {
+        	MessageBox.show(Main.game.getScene().getWindow(),
+        			"Player 4 - Food: " + players.get(3).getFood() +
+				 		"  Energy: " + players.get(3).getEnergy() +
+				 		"  Ore: " + players.get(3).getSmithore() +
+				 		"  Crystite: " + players.get(3).getCrystite(),
+      		         "Player 4 End of Round",
+      		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+        }
+        
+        endResourceProductionPhase();
+	}
+	
+	public void endResourceProductionPhase() {
+		Main.game.setGameState(GameState.RESOURCEPRODUCTION);
+		
+		MessageBox.show(Main.game.getScene().getWindow(),
+    			"Make a Random Event Happen",
+  		         "Random Event",
+  		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		
+		endRound();
+	}
+	
+	public void endRound() {
+		Main.game.incrementRound();
+		Main.game.setGameState(GameState.LANDPURCHASE);
+		onLoad();
 	}
 	
 	// implement end of turn method
@@ -280,6 +351,12 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		handleMulePurchasePhaseTurn();
 	}
 	
+	private void calculateProduction() {
+        List<Player> players = Main.game.getPlayerList();
+        for (Player player : players) {
+            player.calculateProduction();
+        }
+    }
 	
 	private String getMapID() {
 		String mapID= "";

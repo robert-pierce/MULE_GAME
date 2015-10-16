@@ -459,29 +459,6 @@ public class Player implements Comparable<Player>{
 	}
 	
 	
-	public String toString() {
-		StringBuilder str = new StringBuilder();
-		str.append("Player " + playerIdProperty.get() + " \n");
-		str.append("Name: " + playerName + " \n");
-		str.append("Race: " + race + " \n");
-		str.append("Color: " + color + " \n");
-		str.append("Score: " + scoreProperty.getValue());
-	
-		return str.toString();
-	}
-
-	@Override
-	public int compareTo(Player plyrCmp) {
-		if (this.scoreProperty.getValue().intValue() < plyrCmp.scoreProperty.getValue().intValue()) {
-			return -1;
-		} else if (this.scoreProperty.getValue().intValue() == plyrCmp.scoreProperty.getValue().intValue()) {
-			return 0;
-		} else {
-			return 1;
-		}
-	}
-	
-	
 	public void sellFood() {
 		Store store = Main.game.getStore();
 		if(foodProperty.get() > 0) {
@@ -609,6 +586,118 @@ public class Player implements Comparable<Player>{
 			         "You do not have enough money!",
 			         "Information dialog",
 			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+	}
+
+	public void calculateProduction() {
+	       int foodProduction = 0;
+	       int energyProduction = 0;
+	       int oreProduction = 0;
+	       int crystiteProduction = 0;
+	       for (Plot plot : plotMap.values()) {
+	           GameRunner.PlotType plotType;
+	           GameRunner.MuleType muleType;
+	           if (energyProperty.getValue() != 0) {
+	               plotType = plot.getType();
+	               if (plot.getMule() != null) {
+
+	                   muleType = plot.getMule().getMuleType();
+	                   if (plotType == GameRunner.PlotType.M1) {
+	                       if (muleType == MuleType.CRYSTITE) {
+	                           crystiteProduction += 0;
+	                       } else if (muleType == MuleType.ENERGY) {
+	                           energyProduction += 1;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.FOOD) {
+	                           foodProduction += 1;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.SMITHORE) {
+	                           oreProduction += 2;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       }
+	                   } else if (plotType == GameRunner.PlotType.M2) {
+	                       if (muleType == MuleType.CRYSTITE) {
+	                           crystiteProduction += 0;
+	                       } else if (muleType == MuleType.ENERGY) {
+	                           energyProduction += 1;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.FOOD) {
+	                           foodProduction += 1;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.SMITHORE) {
+	                           oreProduction += 3;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       }
+	                   } else if (plotType == GameRunner.PlotType.M3) {
+	                       if (muleType == MuleType.CRYSTITE) {
+	                           crystiteProduction += 0;
+	                       } else if (muleType == MuleType.ENERGY) {
+	                           energyProduction += 1;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.FOOD) {
+	                           foodProduction += 1;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.SMITHORE) {
+	                           oreProduction += 4;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       }
+	                   } else if (plotType == GameRunner.PlotType.PLAIN) {
+	                       if (muleType == MuleType.CRYSTITE) {
+	                           crystiteProduction += 0;
+	                       } else if (muleType == MuleType.ENERGY) {
+	                           energyProduction += 3;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.FOOD) {
+	                           foodProduction += 2;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.SMITHORE) {
+	                           oreProduction += 1;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       }
+	                   } else if (plotType == GameRunner.PlotType.RIVER) {
+	                       if (muleType == MuleType.CRYSTITE) {
+	                           crystiteProduction += 0;
+	                       } else if (muleType == MuleType.ENERGY) {
+	                           energyProduction += 2;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.FOOD) {
+	                           foodProduction += 4;
+	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.SMITHORE) {
+	                           oreProduction += 0;
+	                       }
+	                   }
+	               }
+	           }
+	       }
+	       foodProperty.setValue(foodProperty.add(foodProduction).getValue());
+	       energyProperty.setValue(energyProperty.add(energyProduction).getValue());
+	       smithoreProperty.setValue(smithoreProperty.add(oreProduction).getValue());
+	       crystiteProperty.setValue(crystiteProperty.add(crystiteProduction).getValue());
+	}
+
+	
+	
+	
+	@Override
+	public int compareTo(Player plyrCmp) {
+		if (this.scoreProperty.getValue().intValue() < plyrCmp.scoreProperty.getValue().intValue()) {
+			return -1;
+		} else if (this.scoreProperty.getValue().intValue() == plyrCmp.scoreProperty.getValue().intValue()) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
+
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append("Player " + playerIdProperty.get() + " \n");
+		str.append("Name: " + playerName + " \n");
+		str.append("Race: " + race + " \n");
+		str.append("Color: " + color + " \n");
+		str.append("Score: " + scoreProperty.getValue());
+	
+		return str.toString();
 	}
 
 }

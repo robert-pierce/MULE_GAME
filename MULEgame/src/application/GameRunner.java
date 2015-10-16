@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 
 public class GameRunner {
 	//---------Enum----------------------------------------
-	public enum GameState{LANDPURCHASE, MULEPURCHASE, RANDOMEVENT, ENDROUND}
+	public enum GameState{LANDPURCHASE, MULEPURCHASE, RESOURCEPRODUCTION, RANDOMEVENT, ENDROUND}
 	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT}
 	public enum ActivePlayer{PLAYER1, PLAYER2, PLAYER3, PLAYER4} 
 	public enum PlotType {M1, M2, M3, RIVER, PLAIN, TOWN}
@@ -202,6 +202,9 @@ public class GameRunner {
 		} 	
 	}
 	
+	public ArrayList<Player> getPlayerList() {
+		return playerList;
+	}
 	//--------------End of Getter Methods----------------------------------------
 	
 	//----------------Query Methods----------------------------------------------
