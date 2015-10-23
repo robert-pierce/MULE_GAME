@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
@@ -9,23 +10,31 @@
 <AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.playerConfigController">
   <!-- TODO Add Nodes -->
   <children>
+    <ImageView id="Player Config Screen.png" fitHeight="681.0" fitWidth="1140.0" layoutX="0.0" layoutY="24.0">
+      <image>
+        <Image url="@../../images/Player%20Config%20Screen.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
     <BorderPane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
         <Pane prefHeight="200.0" prefWidth="200.0">
           <children>
-            <Label fx:id="playerConfigLabel" alignment="CENTER" layoutX="283.0" layoutY="55.0" prefHeight="61.203125" prefWidth="500.0" text="CREATE PLAYERS" textAlignment="LEFT" textFill="WHITE">
+            <Label fx:id="playerConfigLabel" alignment="CENTER" layoutX="291.0" layoutY="14.0" prefHeight="61.203125" prefWidth="500.0" text="CREATE PLAYERS" textAlignment="LEFT" textFill="WHITE">
               <font>
-                <Font size="40.0" />
+                <Font name="Elephant" size="40.0" />
               </font>
             </Label>
             <Button fx:id="continueBTN" layoutX="452.0" layoutY="572.0" mnemonicParsing="false" onAction="#nextScreen" prefHeight="36.0" prefWidth="236.0" text="CONTINUE" />
-            <Label layoutX="94.0" layoutY="165.0" text="PLAYER NAME" textFill="WHITE">
+            <Label layoutX="59.0" layoutY="152.0" text="PLAYER NAME" textFill="WHITE">
+              <font>
+                <Font name="Elephant" size="30.0" fx:id="x2" />
+              </font>
+            </Label>
+            <Label font="$x2" layoutX="455.0" layoutY="170.0" text="RACE" textFill="WHITE" />
+            <RadioButton id="Ra" fx:id="raceHumanBTN" layoutX="455.0" layoutY="226.0" mnemonicParsing="false" onAction="#setRaceHuman" selected="true" text="HUMAN" textFill="WHITE">
               <font>
                 <Font size="20.0" fx:id="x1" />
               </font>
-            </Label>
-            <Label font="$x1" layoutX="474.0" layoutY="170.0" text="RACE" textFill="WHITE" />
-            <RadioButton id="Ra" fx:id="raceHumanBTN" font="$x1" layoutX="455.0" layoutY="226.0" mnemonicParsing="false" onAction="#setRaceHuman" selected="true" text="HUMAN" textFill="WHITE">
               <toggleGroup>
                 <ToggleGroup fx:id="RaceSelectGRP" />
               </toggleGroup>
@@ -33,15 +42,15 @@
             <RadioButton id="raceTwoBTN" fx:id="raceFlapperBTN" font="$x1" layoutX="453.0" layoutY="268.0" mnemonicParsing="false" onAction="#setRaceFlapper" text="FLAPPER" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
             <RadioButton id="raceThreeBTN" fx:id="raceBonziodBTN" font="$x1" layoutX="453.0" layoutY="308.0" mnemonicParsing="false" onAction="#setRaceBonzoid" text="BONZOID" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
             <RadioButton id="raceFourBTN" fx:id="raceUgaiteBTN" font="$x1" layoutX="453.0" layoutY="348.0" mnemonicParsing="false" onAction="#setRaceUgaite" text="UGAITE" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
-            <Label font="$x1" layoutX="936.0" layoutY="170.0" text="COLOR" textFill="WHITE" />
-            <RadioButton id="co" fx:id="colorRedBTN" font="$x1" layoutX="928.0" layoutY="226.0" mnemonicParsing="false" onAction="#setColorRed" selected="true" text="Red" textFill="RED">
+            <Label font="$x2" layoutX="652.0" layoutY="162.0" text="COLOR" textFill="WHITE" />
+            <RadioButton id="co" fx:id="colorRedBTN" font="$x1" layoutX="684.0" layoutY="215.0" mnemonicParsing="false" onAction="#setColorRed" selected="true" text="Red" textFill="RED">
               <toggleGroup>
                 <ToggleGroup fx:id="ColorSelectGRP" />
               </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="colorGreenBTN" font="$x1" layoutX="926.0" layoutY="281.0" mnemonicParsing="false" onAction="#setColorGreen" text="Green" textFill="#00ff29" toggleGroup="$ColorSelectGRP" />
-            <RadioButton fx:id="colorPinkBTN" font="$x1" layoutX="927.0" layoutY="341.0" mnemonicParsing="false" onAction="#setColorPink" text="Pink" textFill="#eb99ff" toggleGroup="$ColorSelectGRP" />
-            <RadioButton fx:id="colorPurpleBTN" font="$x1" layoutX="924.0" layoutY="397.0" mnemonicParsing="false" onAction="#setColorPurple" text="Purple" textFill="#cc00ff" toggleGroup="$ColorSelectGRP" />
+            <RadioButton fx:id="colorGreenBTN" font="$x1" layoutX="684.0" layoutY="268.0" mnemonicParsing="false" onAction="#setColorGreen" text="Green" textFill="#00ff29" toggleGroup="$ColorSelectGRP" />
+            <RadioButton fx:id="colorPinkBTN" font="$x1" layoutX="684.0" layoutY="321.0" mnemonicParsing="false" onAction="#setColorPink" text="Pink" textFill="#eb99ff" toggleGroup="$ColorSelectGRP" />
+            <RadioButton fx:id="colorPurpleBTN" font="$x1" layoutX="684.0" layoutY="371.0" mnemonicParsing="false" onAction="#setColorPurple" text="Purple" textFill="#cc00ff" toggleGroup="$ColorSelectGRP" />
             <TextField fx:id="playerNameTXTFLD" layoutX="59.0" layoutY="215.0" onAction="#getPlayerName" prefWidth="200.0" style="-fx-text-fill: red" />
             <RadioButton fx:id="raceUgaiteBTN" font="$x1" layoutX="453.0" layoutY="384.0" mnemonicParsing="false" onAction="#setRaceBuzzite" text="BUZZITE" textFill="WHITE" toggleGroup="$RaceSelectGRP" />
           </children>

@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.*?>
@@ -10,7 +11,12 @@
 <AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.GeneralStoreController">
   <!-- TODO Add Nodes -->
   <children>
-    <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="50.0" prefWidth="1140.0">
+    <ImageView id="Store.png" fitHeight="724.9998779296875" fitWidth="1140.0" layoutX="0.0" layoutY="30.0">
+      <image>
+        <Image url="@../../images/Store.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="30.0" prefWidth="1140.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -43,42 +49,39 @@
     <Button fx:id="buyEnergyBTN" layoutX="842.0" layoutY="310.0" mnemonicParsing="false" onAction="#buyEnergyClick" prefHeight="51.0" prefWidth="258.0" text="Buy Energy" />
     <Button fx:id="buySmithoreBTN" layoutX="842.0" layoutY="410.0" mnemonicParsing="false" onAction="#buySmithoreClick" prefHeight="51.0" prefWidth="258.0" text="Buy Smithore" />
     <Button fx:id="buyCrystiteBTN" layoutX="842.0" layoutY="510.0" mnemonicParsing="false" onAction="#buyCrystiteClick" prefHeight="51.0" prefWidth="258.0" text="Buy Crystite" />
-    <ProgressBar fx:id="timerBarGeneralStore" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
-    <Label layoutX="360.0" layoutY="220.0" text="Player">
+    <ProgressBar fx:id="timerBarGeneralStore" layoutX="807.0" layoutY="735.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
+    <Label layoutX="360.0" layoutY="220.0" text="Player" textFill="WHITE">
       <font>
         <Font name="Elephant" size="24.0" fx:id="x1" />
       </font>
-      <textFill>
-        <Color blue="1.000" green="0.000" red="0.800" fx:id="x2" />
-      </textFill>
     </Label>
-    <Label font="$x1" layoutX="352.0" layoutY="255.0" text="Money: $" textFill="$x2" />
-    <Label font="$x1" layoutX="372.0" layoutY="290.0" text="Food:" textFill="$x2" />
-    <Label font="$x1" layoutX="345.0" layoutY="325.0" text="Energy:" textFill="$x2" />
-    <Label font="$x1" layoutX="320.0" layoutY="360.0" text="Smithore:" textFill="$x2" />
-    <Label fx:id="playerIdLBL" font="$x1" layoutX="455.0" layoutY="220.0" text="1" textFill="$x2" />
-    <Label fx:id="playerMoneyLBL" font="$x1" layoutX="460.0" layoutY="255.0" text="100" textFill="$x2" />
-    <Label fx:id="playerFoodLBL" font="$x1" layoutX="455.0" layoutY="290.0" text="30" textFill="$x2" />
-    <Label fx:id="playerEnergyLBL" font="$x1" layoutX="455.0" layoutY="325.0" text="16" textFill="$x2" />
-    <Label fx:id="playerSmithoreLBL" font="$x1" layoutX="455.0" layoutY="360.0" text="16" textFill="$x2" />
-    <Label font="$x1" layoutX="726.0" layoutY="221.0" text="Store" textFill="#d633ff" />
-    <Label font="$x1" layoutX="600.0" layoutY="305.0" text="Food:" textFill="$x2" />
-    <Label font="$x1" layoutX="574.0" layoutY="340.0" text="Energy:" textFill="$x2" />
-    <Label font="$x1" layoutX="549.0" layoutY="375.0" text="Smithore:" textFill="$x2" />
-    <Label layoutX="687.0" layoutY="261.0" text="Qty" textFill="$x2">
+    <Label font="$x1" layoutX="352.0" layoutY="255.0" text="Money: $" textFill="WHITE" />
+    <Label font="$x1" layoutX="373.0" layoutY="290.0" text="Food:" textFill="WHITE" />
+    <Label font="$x1" layoutX="345.0" layoutY="325.0" text="Energy:" textFill="WHITE" />
+    <Label font="$x1" layoutX="320.0" layoutY="360.0" text="Smithore:" textFill="WHITE" />
+    <Label fx:id="playerIdLBL" font="$x1" layoutX="455.0" layoutY="220.0" text="1" textFill="WHITE" />
+    <Label fx:id="playerMoneyLBL" font="$x1" layoutX="460.0" layoutY="255.0" text="100" textFill="WHITE" />
+    <Label fx:id="playerFoodLBL" font="$x1" layoutX="455.0" layoutY="290.0" text="30" textFill="WHITE" />
+    <Label fx:id="playerEnergyLBL" font="$x1" layoutX="455.0" layoutY="325.0" text="16" textFill="WHITE" />
+    <Label fx:id="playerSmithoreLBL" font="$x1" layoutX="455.0" layoutY="360.0" text="16" textFill="WHITE" />
+    <Label font="$x1" layoutX="726.0" layoutY="221.0" text="Store" textFill="WHITE" />
+    <Label font="$x1" layoutX="600.0" layoutY="305.0" text="Food:" textFill="WHITE" />
+    <Label font="$x1" layoutX="574.0" layoutY="340.0" text="Energy:" textFill="WHITE" />
+    <Label font="$x1" layoutX="549.0" layoutY="375.0" text="Smithore:" textFill="WHITE" />
+    <Label layoutX="687.0" layoutY="261.0" text="Qty" textFill="WHITE">
       <font>
         <Font name="Elephant" size="18.0" fx:id="x3" />
       </font>
     </Label>
-    <Label font="$x3" layoutX="761.0" layoutY="262.0" text="Price" textFill="$x2" />
-    <Label font="$x1" layoutX="566.0" layoutY="410.0" text="Crystite:" textFill="$x2" />
-    <Label fx:id="storeFoodStockLBL" font="$x1" layoutX="681.0" layoutY="306.0" text="16" textFill="$x2" />
-    <Label fx:id="storeEnergyStockLBL" font="$x1" layoutX="681.0" layoutY="340.0" text="16" textFill="$x2" />
-    <Label id="storeEnergyStockLBL" fx:id="storeSmithoreStockLBL" font="$x1" layoutX="681.0" layoutY="375.0" text="0" textFill="$x2" />
-    <Label id="storeEnergyStockLBL" fx:id="storeCrytiteStockLBL" font="$x1" layoutX="680.0" layoutY="406.0" text="0" textFill="$x2" />
-    <Label id="storeFoodStockLBL" fx:id="storeFoodPriceLBL" font="$x1" layoutX="768.0" layoutY="305.0" text="30" textFill="$x2" />
-    <Label id="storeFoodStockLBL" fx:id="storeEnergyPriceLBL" font="$x1" layoutX="769.0" layoutY="340.0" text="25" textFill="$x2" />
-    <Label id="storeFoodStockLBL" fx:id="storeSmithorePriceLBL" font="$x1" layoutX="768.0" layoutY="375.0" text="50" textFill="$x2" />
-    <Label id="storeFoodStockLBL" fx:id="storeCrystitePriceLBL" font="$x1" layoutX="768.0" layoutY="406.0" text="100" textFill="$x2" />
+    <Label font="$x3" layoutX="761.0" layoutY="262.0" text="Price" textFill="WHITE" />
+    <Label font="$x1" layoutX="566.0" layoutY="410.0" text="Crystite:" textFill="WHITE" />
+    <Label fx:id="storeFoodStockLBL" font="$x1" layoutX="681.0" layoutY="306.0" text="16" textFill="WHITE" />
+    <Label fx:id="storeEnergyStockLBL" font="$x1" layoutX="681.0" layoutY="340.0" text="16" textFill="WHITE" />
+    <Label id="storeEnergyStockLBL" fx:id="storeSmithoreStockLBL" font="$x1" layoutX="681.0" layoutY="375.0" text="0" textFill="WHITE" />
+    <Label id="storeEnergyStockLBL" fx:id="storeCrytiteStockLBL" font="$x1" layoutX="680.0" layoutY="406.0" text="0" textFill="WHITE" />
+    <Label id="storeFoodStockLBL" fx:id="storeFoodPriceLBL" font="$x1" layoutX="768.0" layoutY="305.0" text="30" textFill="WHITE" />
+    <Label id="storeFoodStockLBL" fx:id="storeEnergyPriceLBL" font="$x1" layoutX="769.0" layoutY="340.0" text="25" textFill="WHITE" />
+    <Label id="storeFoodStockLBL" fx:id="storeSmithorePriceLBL" font="$x1" layoutX="768.0" layoutY="375.0" text="50" textFill="WHITE" />
+    <Label id="storeFoodStockLBL" fx:id="storeCrystitePriceLBL" font="$x1" layoutX="768.0" layoutY="406.0" text="100" textFill="WHITE" />
   </children>
 </AnchorPane>
