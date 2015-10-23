@@ -240,6 +240,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 						MessageBox.ICON_INFORMATION | MessageBox.OK);
 			
 			timeLimit = Main.game.getActivePlayer().computeTime();
+			System.out.println("Time Limit is: " + timeLimit);
 			startTimer();
 			System.out.println("Start Timer Called");
 			
@@ -250,14 +251,37 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	}
 	
 	private void handleRandomEvent() {
-		// HANDLE THE RANDOMNESS!
+		System.out.println("handleRandomEvent called in MapController");
 		
-		MessageBox.show(Main.game.getScene().getWindow(),
-		         "A Random event is going to happen!",
-		         "Information dialog",
-		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		int playerIdx = 0;
+        Player currPlayer;
+
+        if (activePlayerState != null) {
+            switch (activePlayerState) {
+                case PLAYER4:
+                    playerIdx = 3;
+                    break;
+                case PLAYER3:
+                    playerIdx = 2;
+                    break;
+                case PLAYER2:
+                    playerIdx = 1;
+                    break;
+                default:
+                    playerIdx = 0;
+            }
+        }
+
+        currPlayer = Main.game.getPlayerList().get(playerIdx);
+        double willRandomEventHappen = Math.random();
+        if (willRandomEventHappen <= 0.27) {
+            String message = currPlayer.runRandomEvent();
+            MessageBox.show(Main.game.getScene().getWindow(),
+                    message,
+                    "Information dialog",
+                    MessageBox.ICON_INFORMATION | MessageBox.OK);
+        }
 		
-		Main.game.incrementRound();
 		
 	}
 	
@@ -327,11 +351,11 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	public void endResourceProductionPhase() {
 		Main.game.setGameState(GameState.RESOURCEPRODUCTION);
 		
-		MessageBox.show(Main.game.getScene().getWindow(),
-    			"Make a Random Event Happen",
-  		         "Random Event",
-  		         MessageBox.ICON_INFORMATION | MessageBox.OK);
-		
+//		MessageBox.show(Main.game.getScene().getWindow(),
+//    			"Make a Random Event Happen",
+//  		         "Random Event",
+//  		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+
 		endRound();
 	}
 	
@@ -345,10 +369,11 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	public void endTurn() {
 		String mapID = getMapID();
 		System.out.println("End of Turn method called in MapController");
+		handleRandomEvent();
 		if (!myController.getChildren().get(0).equals(myController.getScreen(mapID))) {
 			myController.setScreen(mapID);
 		}
-		handleMulePurchasePhaseTurn();
+		handleMulePurchasePhaseTurn(); 
 	}
 	
 	private void calculateProduction() {

@@ -32,6 +32,7 @@ public class GameRunner {
 	private Store store;
 	private ArrayList<Player> playerList;
 	private ScreensController mainController;
+	private ArrayList<RandomEvent> randomEvents;
 	private int numRounds;
 	private int round = 0;
 	private boolean playerPass = false;
@@ -77,6 +78,12 @@ public class GameRunner {
 		for (int i = 0; i < numPlayers; ++i) {
 			currPlayer = tempPlayerList.get(i);
 			
+			if (i == 0) {
+                currPlayer.setLowestPlayer(true);
+            } else {
+                currPlayer.setLowestPlayer(false);
+            }
+
 			switch (currPlayer.getPlayerNum()) {
 			case 1: 
 				currActivePlayer = ActivePlayer.PLAYER1;

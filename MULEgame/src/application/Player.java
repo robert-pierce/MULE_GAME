@@ -15,7 +15,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.paint.Color;
 import jfx.messagebox.MessageBox;
-import sun.security.krb5.internal.CredentialsUtil;
+import java.util.Random;
+
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Player implements Comparable<Player>{
 	//-------------enums-----------------------------
@@ -34,7 +40,10 @@ public class Player implements Comparable<Player>{
 	//private int food;
 	private int energy;
 	private int crystite;
+	private int m;
+	private int round;
 	private Mule playerMule;
+	private boolean isLowestPlayer;
 	private HashMap<Point, Plot> plotMap;
 	private SimpleIntegerProperty playerIdProperty ;
 	private SimpleIntegerProperty moneyProperty;
@@ -45,7 +54,14 @@ public class Player implements Comparable<Player>{
 	private NumberBinding scoreProperty;
 	private SimpleIntegerProperty numPlotsProperty;
 	
-
+	private ArrayList<RandomEvent> randomEvents;
+	private RandomEvent alumniPackage;
+    private RandomEvent wanderingStudent;
+    private RandomEvent antiqueComputer;
+    private RandomEvent deadMooseRat;
+    private RandomEvent roofEaten;
+    private RandomEvent ugaStudents;
+    private RandomEvent spaceGypsies;
 	
 	//-------------Constructor------------------------
 	public Player(Race rce, Color clr, String plyrName, int plyrNum, GameRunner.Difficulty difficulty) {
@@ -58,7 +74,7 @@ public class Player implements Comparable<Player>{
 		playerMule = null;
 		plotMap = new HashMap<Point,Plot>();
 		
-		
+		createRandomEvents();
 		
 		if (race.equals(Race.FLAPPER)) {
 			moneyProperty = new SimpleIntegerProperty(1600);
@@ -102,7 +118,81 @@ public class Player implements Comparable<Player>{
 		}
 	}
 
-	
+	 public void createRandomEvents() {
+	        randomEvents = new ArrayList<>();
+	        alumniPackage = new RandomEvent(false);
+	        randomEvents.add(alumniPackage);
+	        wanderingStudent = new RandomEvent(false);
+	        randomEvents.add(wanderingStudent);
+	        antiqueComputer = new RandomEvent(false);
+	        randomEvents.add(antiqueComputer);
+	        deadMooseRat = new RandomEvent(false);
+	        randomEvents.add(deadMooseRat);
+	        roofEaten = new RandomEvent(true);
+	        randomEvents.add(roofEaten);
+	        ugaStudents = new RandomEvent(true);
+	        randomEvents.add(ugaStudents);
+	        spaceGypsies = new RandomEvent(true);
+	        randomEvents.add(spaceGypsies);
+	    }
+
+	    public String runRandomEvent() {
+
+	        round = Main.game.getRoundNumber();
+	        if (round <= 3) {
+	            m = 25;
+	        } else if (round > 3 && round <= 7) {
+	            m = 50;
+	        } else if (round > 7 && round <= 11) {
+	            m = 75;
+	        } else {
+	            m = 100;
+	        }
+
+	        String message;
+
+	        Random rand = new Random();
+	        int eventIdx = rand.nextInt(7);
+	        RandomEvent event = randomEvents.get(eventIdx);
+
+	        if (isLowestPlayer) {
+	            while (event.isBad()) {
+	                eventIdx = rand.nextInt(7);
+	                event = randomEvents.get(eventIdx);
+	            }
+	        }
+
+	        if (event == alumniPackage) {
+	            foodProperty.setValue(foodProperty.add(3).getValue());
+	            energyProperty.setValue(energyProperty.add(2).getValue());
+	            message = "YOU JUST RECEIVED A PACKAGE FROM THE GT ALUMNI CONTAINING 3 FOOD AND 2 ENERGY UNITS.";
+	        } else if (event == wanderingStudent) {
+	            smithoreProperty.setValue(smithoreProperty.add(2).getValue());
+	            message = "A WANDERING TECH STUDENT REPAID YOUR HOSPITALITY BY LEAVING TWO BARS OF ORE";
+	        } else if (event == antiqueComputer) {
+	            moneyProperty.setValue(moneyProperty.add(8*m).getValue());
+	            message = "THE MUSEUM BOUGHT YOUR ANTIQUE PERSONAL COMPUTER FOR $" + 8*m + ".";
+	        } else if (event == deadMooseRat) {
+	            moneyProperty.setValue(moneyProperty.add(2*m).getValue());
+	            message = "YOU FOUND A DEAD MOOSE RAT AND SOLD THE HIDE FOR $" + 2*m + ".";
+	        } else if (event == roofEaten) {
+	            moneyProperty.setValue(moneyProperty.subtract(4*m).getValue());
+	            if (moneyProperty.getValue() < 0) {
+	                moneyProperty.setValue(0);
+	            }
+	            message = "FLYING CAT-BUGS ATE THE ROOF OFF YOUR HOUSE. REPAIRS COST $" + 4*m + ".";
+	        } else if (event == ugaStudents) {
+	            foodProperty.setValue(foodProperty.getValue() / 2);
+	            message = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
+	        } else {
+	            moneyProperty.setValue(moneyProperty.subtract(6*m).getValue());
+	            if (moneyProperty.getValue() < 0) {
+	                moneyProperty.setValue(0);
+	            }
+	            message = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU " + 6*m + " TO CLEAN IT UP.";
+	        }
+	        return message;
+	    }
 		
 		
 		
@@ -433,8 +523,12 @@ public class Player implements Comparable<Player>{
 	
 	public int computeTime() {
 		int roundNum;
+		System.out.println("Compute Time Called");
+		System.out.println("Food is:" + foodProperty.get());
 		
-		if (foodProperty.equals(0)) {
+		System.out.println("FoodProperty.equals(0) " + foodProperty.equals(0));
+		if (foodProperty.get() == 0) {
+			System.out.println("Food is zero in Compute Time");
 			return 5;
 		} else{ 
 			roundNum = Main.game.getRoundNumber();
@@ -675,7 +769,13 @@ public class Player implements Comparable<Player>{
 	       crystiteProperty.setValue(crystiteProperty.add(crystiteProduction).getValue());
 	}
 
-	
+	public boolean isLowestPlayer() {
+        return isLowestPlayer;
+    }
+
+    public void setLowestPlayer(boolean lowest) {
+        isLowestPlayer = lowest;
+    }
 	
 	
 	@Override
