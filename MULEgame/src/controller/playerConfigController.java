@@ -54,7 +54,6 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 	@FXML
 	private Label playerConfigLabel;
 	
-	
 	@FXML
 	private TextField playerNameTXTFLD;
 	
@@ -72,7 +71,6 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 	
 	@FXML
 	private RadioButton raceBuzziteBTN;
-	
 	
 	@FXML
 	private RadioButton colorRedBTN;
@@ -150,7 +148,6 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 	public void nextScreen(ActionEvent event) {
 		System.out.println("Continue Button Pressed");
 		
-	
 			
 		if (playerName == null || playerName.equals("")) {
 			System.out.println("Please enter a player name!");
@@ -162,7 +159,6 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 			//takenRaceList.add(race);
 			takenColorList.add(color);
 		}
-		
 		
 		
 		if (playerINDEX != numPlayers) {

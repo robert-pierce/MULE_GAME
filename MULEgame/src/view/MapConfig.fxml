@@ -2,8 +2,11 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.mapConfigController">
@@ -13,22 +16,90 @@
       <center>
         <Pane prefHeight="200.0" prefWidth="200.0">
           <children>
-            <Label layoutX="487.0" layoutY="71.0" text="SELECT MAP" textFill="WHITE">
+            <ImageView id="Map Config.png" fitHeight="656.9999694824219" fitWidth="1150.0" layoutX="0.0" layoutY="0.0">
+              <image>
+                <Image url="@../../images/Map%20Config.png" preserveRatio="true" smooth="true" />
+              </image>
+            </ImageView>
+            <Label layoutX="420.0" layoutY="71.0" text="SELECT MAP" textFill="WHITE">
+              <effect>
+                <Lighting diffuseConstant="1.2063492063492063" surfaceScale="4.0476190476190474">
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+                  </light>
+                </Lighting>
+              </effect>
               <font>
-                <Font size="30.0" />
+                <Font name="Elephant" size="40.0" />
               </font>
             </Label>
-            <RadioButton id="mapOneBTN" fx:id="mapStandardBTN" layoutX="183.0" layoutY="205.0" mnemonicParsing="false" onAction="#setMapStandard" selected="true" text="STANDARD" textFill="WHITE">
+            <RadioButton id="mapOneBTN" fx:id="mapStandardBTN" layoutX="64.0" layoutY="362.0" mnemonicParsing="false" onAction="#setMapStandard" selected="true" text="STANDARD">
+              <effect>
+                <Lighting diffuseConstant="1.4603174603174602" specularConstant="0.6492063492063491" surfaceScale="3.9682539682539684">
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+                  </light>
+                </Lighting>
+              </effect>
               <font>
-                <Font size="20.0" fx:id="x1" />
+                <Font name="Elephant" size="30.0" fx:id="x1" />
               </font>
+              <textFill>
+                <Color blue="0.800" green="1.000" red="0.960" fx:id="x2" />
+              </textFill>
               <toggleGroup>
                 <ToggleGroup fx:id="MapSelectGRP" />
               </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="mapThreeBTN" font="$x1" layoutX="860.0" layoutY="213.0" mnemonicParsing="false" onAction="#setMapThree" text="Map 3" textFill="WHITE" toggleGroup="$MapSelectGRP" />
-            <RadioButton id="mapTwoBTN" fx:id="mapEastWestBTN" font="$x1" layoutX="512.0" layoutY="205.0" mnemonicParsing="false" onAction="#setMapEastWest" text="EAST WEST" textFill="WHITE" toggleGroup="$MapSelectGRP" />
-            <Button fx:id="continueBTN" contentDisplay="LEFT" font="$x1" layoutX="324.0" layoutY="513.0" mnemonicParsing="false" onAction="#nextScreen" prefHeight="61.0" prefWidth="466.0" text="Continue" />
+            <RadioButton fx:id="mapThreeBTN" font="$x1" layoutX="854.0" layoutY="362.0" mnemonicParsing="false" onAction="#setMapThree" text="Map 3" textFill="$x2" toggleGroup="$MapSelectGRP">
+              <effect>
+                <Lighting diffuseConstant="1.3333333333333333" specularConstant="0.8396825396825396" specularExponent="12.380952380952383" surfaceScale="7.619047619047619">
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+                  </light>
+                </Lighting>
+              </effect>
+            </RadioButton>
+            <RadioButton id="mapTwoBTN" fx:id="mapEastWestBTN" font="$x1" layoutX="442.0" layoutY="362.0" mnemonicParsing="false" onAction="#setMapEastWest" text="EAST WEST" textFill="$x2" toggleGroup="$MapSelectGRP">
+              <effect>
+                <Lighting diffuseConstant="1.4603174603174602" specularConstant="0.5222222222222221" specularExponent="22.857142857142854" surfaceScale="2.6984126984126986">
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+                  </light>
+                </Lighting>
+              </effect>
+            </RadioButton>
+            <Button fx:id="continueBTN" contentDisplay="LEFT" layoutX="324.0" layoutY="513.0" mnemonicParsing="false" onAction="#nextScreen" opacity="0.68" prefHeight="61.0" prefWidth="466.0" text="Continue">
+              <effect>
+                <SepiaTone>
+                  <input>
+                    <Lighting surfaceScale="5.0">
+                      <bumpInput>
+                        <Shadow />
+                      </bumpInput>
+                      <light>
+                        <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+                      </light>
+                    </Lighting>
+                  </input>
+                </SepiaTone>
+              </effect>
+              <font>
+                <Font size="30.0" />
+              </font>
+            </Button>
           </children>
         </Pane>
       </center>

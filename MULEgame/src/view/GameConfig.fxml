@@ -2,90 +2,188 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.gameConfigController">
   <!-- TODO Add Nodes -->
   <children>
-    <BorderPane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <bottom>
-        <FlowPane alignment="CENTER" prefHeight="134.0" prefWidth="1140.0">
-          <children>
-            <Button fx:id="continueBTN" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nextScreen" prefHeight="61.0" prefWidth="466.0" text="CONTINUE">
-              <font>
-                <Font size="20.0" fx:id="x2" />
-              </font>
-            </Button>
-          </children>
-        </FlowPane>
-      </bottom>
-      <center>
-        <GridPane>
-          <children>
-            <TilePane alignment="CENTER" orientation="VERTICAL" prefHeight="440.0" prefWidth="580.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
-              <children>
-                <Label alignment="CENTER" text="NUMBER OF PLAYERS" textFill="WHITE">
-                  <font>
-                    <Font size="30.0" fx:id="x1" />
-                  </font>
-                </Label>
-                <RadioButton fx:id="onePlayersBTN" alignment="CENTER_LEFT" contentDisplay="LEFT" font="$x2" mnemonicParsing="false" onAction="#setOnePlayers" prefHeight="84.0" prefWidth="192.0" selected="true" text="1 Players" textFill="WHITE">
-                  <toggleGroup>
-                    <ToggleGroup fx:id="NumPlayersGRP" />
-                  </toggleGroup>
-                </RadioButton>
-                <RadioButton fx:id="twoPlayersBTN" font="$x2" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="84.0" prefWidth="192.0" text="2 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
-                <RadioButton fx:id="threePlayersBTN" font="$x2" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="84.0" prefWidth="192.0" text="3 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
-                <RadioButton fx:id="fourPlayersBTN" font="$x2" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="84.0" prefWidth="192.0" text="4 Players" textFill="WHITE" toggleGroup="$NumPlayersGRP" />
-              </children>
-            </TilePane>
-            <TilePane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
-              <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" font="$x1" prefHeight="84.0" prefWidth="313.0" text="DIFFICULTY" textFill="WHITE" />
-                <RadioButton fx:id="difficultyBeginnerBTN" font="$x2" mnemonicParsing="false" onAction="#setBeginnerDifficulty" selected="true" text="BEGINNER" textFill="WHITE">
-                  <toggleGroup>
-                    <ToggleGroup fx:id="DificultyGRP" />
-                  </toggleGroup>
-                </RadioButton>
-                <RadioButton id="difficultyNormalBTN" fx:id="difficultyStandardBTN" font="$x2" mnemonicParsing="false" onAction="#setStandardDifficulty" text="STANDARD" textFill="WHITE" toggleGroup="$DificultyGRP" />
-                <RadioButton fx:id="difficultyTournamentBTN" font="$x2" mnemonicParsing="false" onAction="#setTournamentDifficulty" text="TOURNAMENT" textFill="WHITE" />
-              </children>
-            </TilePane>
-          </children>
-          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          </columnConstraints>
-          <rowConstraints>
-            <RowConstraints maxHeight="452.0" minHeight="10.0" prefHeight="452.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="283.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="217.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
-          </rowConstraints>
-        </GridPane>
-      </center>
-      <top>
-        <MenuBar>
-          <menus>
-            <Menu mnemonicParsing="false" text="File">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Close" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Delete" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-              <items>
-                <MenuItem mnemonicParsing="false" text="About" />
-              </items>
-            </Menu>
-          </menus>
-        </MenuBar>
-      </top>
-    </BorderPane>
+    <ImageView id="Game Config.png" fitHeight="657.0" fitWidth="1140.0" layoutX="0.0" layoutY="48.0">
+      <image>
+        <Image url="@../../images/Game%20Config.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <Pane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="700.0" layoutY="114.0" prefHeight="37.0" prefWidth="313.0" text="DIFFICULTY" textFill="#ff00f5">
+          <effect>
+            <Lighting diffuseConstant="1.4285714285714284" specularConstant="1.1253968253968254" surfaceScale="3.888888888888889">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+          <font>
+            <Font name="Elephant" size="35.0" fx:id="x6" />
+          </font>
+        </Label>
+        <RadioButton fx:id="difficultyBeginnerBTN" layoutX="730.0" layoutY="205.0" mnemonicParsing="false" onAction="#setBeginnerDifficulty" selected="true" text="BEGINNER">
+          <effect>
+            <Lighting diffuseConstant="1.4761904761904763" specularConstant="0.8714285714285714" surfaceScale="4.2857142857142865">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+          <font>
+            <Font name="Elephant" size="30.0" fx:id="x1" />
+          </font>
+          <textFill>
+            <Color blue="0.928" green="1.000" red="0.800" fx:id="x5" />
+          </textFill>
+          <toggleGroup>
+            <ToggleGroup fx:id="difficultyGRP" />
+          </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="difficultyTournamentBTN" font="$x1" layoutX="730.0" layoutY="405.0" mnemonicParsing="false" onAction="#setTournamentDifficulty" text="TOURNAMENT" textFill="$x5" toggleGroup="$difficultyGRP">
+          <effect>
+            <Lighting diffuseConstant="1.4761904761904763" specularConstant="0.8714285714285714" surfaceScale="4.2857142857142865">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </RadioButton>
+        <RadioButton fx:id="onePlayersBTN" alignment="CENTER_LEFT" contentDisplay="LEFT" font="$x1" layoutX="170.0" layoutY="175.0" mnemonicParsing="false" onAction="#setOnePlayers" prefHeight="48.0" prefWidth="192.0" selected="true" text="1 Players">
+          <effect>
+            <Lighting diffuseConstant="1.1428571428571428" surfaceScale="3.5714285714285716">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+          <textFill>
+            <Color blue="0.832" green="1.000" red="0.800" fx:id="x4" />
+          </textFill>
+          <toggleGroup>
+            <ToggleGroup fx:id="numPlayersGRP" />
+          </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="twoPlayersBTN" font="$x1" layoutX="170.0" layoutY="252.0" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="48.0" prefWidth="192.0" text="2 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
+          <effect>
+            <Lighting diffuseConstant="1.1428" surfaceScale="3.5714285714285716">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </RadioButton>
+        <RadioButton fx:id="threePlayersBTN" font="$x1" layoutX="170.0" layoutY="325.0" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="48.0" prefWidth="192.0" text="3 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
+          <effect>
+            <Lighting diffuseConstant="1.1428" surfaceScale="3.5714285714285716">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </RadioButton>
+        <RadioButton id="difficultyNormalBTN" fx:id="difficultyStandardBTN" font="$x1" layoutX="732.0" layoutY="305.0" mnemonicParsing="false" onAction="#setStandardDifficulty" text="STANDARD" textFill="$x5" toggleGroup="$difficultyGRP">
+          <effect>
+            <Lighting diffuseConstant="1.4761904761904763" specularConstant="0.8714285714285714" surfaceScale="4.2857142857142865">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </RadioButton>
+        <Label alignment="CENTER" font="$x6" layoutX="66.0" layoutY="114.0" text="NUMBER OF PLAYERS" textFill="#ffb800">
+          <effect>
+            <Lighting diffuseConstant="1.2063492063492063" specularConstant="0.807936507936508" specularExponent="19.682539682539684" surfaceScale="2.698412698412698">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <RadioButton fx:id="fourPlayersBTN" font="$x1" layoutX="170.0" layoutY="400.0" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="48.0" prefWidth="192.0" text="4 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
+          <effect>
+            <Lighting diffuseConstant="1.1428" surfaceScale="3.5714285714285716">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </RadioButton>
+        <Button fx:id="continueBTN" contentDisplay="LEFT" layoutX="309.0" layoutY="587.0" mnemonicParsing="false" onAction="#nextScreen" opacity="0.68" prefHeight="61.0" prefWidth="466.0" text="Continue">
+          <effect>
+            <SepiaTone>
+              <input>
+                <Lighting surfaceScale="5.0">
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+                  </light>
+                </Lighting>
+              </input>
+            </SepiaTone>
+          </effect>
+          <font>
+            <Font size="30.0" />
+          </font>
+        </Button>
+      </children>
+    </Pane>
+    <MenuBar layoutX="0.0" layoutY="0.0" prefWidth="1140.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
   </children>
 </AnchorPane>
