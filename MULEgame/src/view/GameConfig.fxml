@@ -85,7 +85,7 @@
             <ToggleGroup fx:id="numPlayersGRP" />
           </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="twoPlayersBTN" font="$x1" layoutX="170.0" layoutY="252.0" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="48.0" prefWidth="192.0" text="2 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
+        <RadioButton fx:id="twoPlayersBTN" font="$x1" layoutX="170.0" layoutY="250.0" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="48.0" prefWidth="200.0" text="2 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
           <effect>
             <Lighting diffuseConstant="1.1428" surfaceScale="3.5714285714285716">
               <bumpInput>
@@ -97,7 +97,7 @@
             </Lighting>
           </effect>
         </RadioButton>
-        <RadioButton fx:id="threePlayersBTN" font="$x1" layoutX="170.0" layoutY="325.0" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="48.0" prefWidth="192.0" text="3 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
+        <RadioButton fx:id="threePlayersBTN" font="$x1" layoutX="170.0" layoutY="325.0" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="48.0" prefWidth="200.0" text="3 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
           <effect>
             <Lighting diffuseConstant="1.1428" surfaceScale="3.5714285714285716">
               <bumpInput>
@@ -133,7 +133,7 @@
             </Lighting>
           </effect>
         </Label>
-        <RadioButton fx:id="fourPlayersBTN" font="$x1" layoutX="170.0" layoutY="400.0" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="48.0" prefWidth="192.0" text="4 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
+        <RadioButton fx:id="fourPlayersBTN" font="$x1" layoutX="170.0" layoutY="400.0" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="48.0" prefWidth="200.0" text="4 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
           <effect>
             <Lighting diffuseConstant="1.1428" surfaceScale="3.5714285714285716">
               <bumpInput>
