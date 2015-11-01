@@ -2,6 +2,8 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
@@ -9,6 +11,11 @@
 <AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.PubController">
   <!-- TODO Add Nodes -->
   <children>
+    <ImageView id="saloon.jpg" fitHeight="651.0" fitWidth="1140.0" layoutX="-1.0" layoutY="54.0">
+      <image>
+        <Image url="@../../images/saloon.jpg" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
     <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="54.0" prefWidth="1140.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
@@ -28,13 +35,56 @@
         </Menu>
       </menus>
     </MenuBar>
-    <Label layoutX="377.0" layoutY="130.0" text="Welcome to the Pub" textFill="WHITE">
+    <Label layoutX="377.0" layoutY="130.0" text="Welcome to the Pub" textFill="#00cc21">
+      <effect>
+        <Lighting diffuseConstant="1.2063492063492063" specularConstant="1.284126984126984" specularExponent="13.015873015873016" surfaceScale="3.1746031746031744">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
       <font>
-        <Font name="Arial Rounded MT Bold" size="40.0" />
+        <Font name="Elephant" size="40.0" />
       </font>
     </Label>
-    <Button fx:id="gambleBTN" layoutX="420.0" layoutY="320.0" mnemonicParsing="false" onAction="#gamble" prefHeight="65.0" prefWidth="300.0" text="GAMBLE" />
-    <Button id="" fx:id="returnToTownBTN" layoutX="420.0" layoutY="484.0" mnemonicParsing="false" onAction="#returnToTown" prefHeight="65.0" prefWidth="300.0" text="TOWN" />
+    <Button fx:id="gambleBTN" layoutX="406.0" layoutY="415.0" mnemonicParsing="false" onAction="#gamble" opacity="0.79" prefHeight="65.0" prefWidth="300.0" text="GAMBLE">
+      <effect>
+        <SepiaTone level="0.660377358490566">
+          <input>
+            <Lighting diffuseConstant="0.9206349206349207" specularConstant="0.8238095238095238" specularExponent="22.539682539682538" surfaceScale="3.5714285714285716">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </input>
+        </SepiaTone>
+      </effect>
+      <font>
+        <Font name="Elephant" size="24.0" fx:id="x1" />
+      </font>
+    </Button>
+    <Button id="" fx:id="returnToTownBTN" font="$x1" layoutX="406.0" layoutY="608.0" mnemonicParsing="false" onAction="#returnToTown" opacity="0.85" prefHeight="65.0" prefWidth="300.0" text="TOWN">
+      <effect>
+        <SepiaTone level="0.7672955974842768">
+          <input>
+            <Lighting diffuseConstant="0.8095238095238095" specularConstant="0.680952380952381" specularExponent="21.26984126984127" surfaceScale="3.8095238095238093">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </input>
+        </SepiaTone>
+      </effect>
+    </Button>
     <ProgressBar fx:id="timerBarPub" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
   </children>
 </AnchorPane>
