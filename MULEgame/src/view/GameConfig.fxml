@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.gameConfigController">
   <!-- TODO Add Nodes -->
   <children>
-    <ImageView id="Game Config.png" fitHeight="657.0" fitWidth="1140.0" layoutX="0.0" layoutY="48.0">
+    <ImageView id="Game Config.png" fitHeight="681.0" fitWidth="1140.0" layoutX="0.0" layoutY="24.0">
       <image>
         <Image url="@../../images/Game%20Config.png" preserveRatio="true" smooth="true" />
       </image>
@@ -67,7 +67,7 @@
             </Lighting>
           </effect>
         </RadioButton>
-        <RadioButton fx:id="onePlayersBTN" alignment="CENTER_LEFT" contentDisplay="LEFT" font="$x1" layoutX="170.0" layoutY="175.0" mnemonicParsing="false" onAction="#setOnePlayers" prefHeight="48.0" prefWidth="192.0" selected="true" text="1 Players">
+        <RadioButton fx:id="onePlayersBTN" alignment="CENTER_LEFT" contentDisplay="LEFT" font="$x1" layoutX="170.0" layoutY="175.0" mnemonicParsing="false" onAction="#setOnePlayers" prefHeight="48.0" prefWidth="210.0" selected="true" text="1 Players">
           <effect>
             <Lighting diffuseConstant="1.1428571428571428" surfaceScale="3.5714285714285716">
               <bumpInput>
@@ -85,7 +85,7 @@
             <ToggleGroup fx:id="numPlayersGRP" />
           </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="twoPlayersBTN" font="$x1" layoutX="170.0" layoutY="250.0" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="48.0" prefWidth="200.0" text="2 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
+        <RadioButton fx:id="twoPlayersBTN" font="$x1" layoutX="170.0" layoutY="250.0" mnemonicParsing="false" onAction="#setTwoPlayers" prefHeight="48.0" prefWidth="210.0" text="2 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
           <effect>
             <Lighting diffuseConstant="1.1428" surfaceScale="3.5714285714285716">
               <bumpInput>
@@ -97,7 +97,7 @@
             </Lighting>
           </effect>
         </RadioButton>
-        <RadioButton fx:id="threePlayersBTN" font="$x1" layoutX="170.0" layoutY="325.0" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="48.0" prefWidth="200.0" text="3 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
+        <RadioButton fx:id="threePlayersBTN" font="$x1" layoutX="170.0" layoutY="325.0" mnemonicParsing="false" onAction="#setThreePlayers" prefHeight="48.0" prefWidth="210.0" text="3 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
           <effect>
             <Lighting diffuseConstant="1.1428" surfaceScale="3.5714285714285716">
               <bumpInput>
@@ -133,7 +133,7 @@
             </Lighting>
           </effect>
         </Label>
-        <RadioButton fx:id="fourPlayersBTN" font="$x1" layoutX="170.0" layoutY="400.0" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="48.0" prefWidth="200.0" text="4 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
+        <RadioButton fx:id="fourPlayersBTN" font="$x1" layoutX="170.0" layoutY="400.0" mnemonicParsing="false" onAction="#setFourPlayers" prefHeight="48.0" prefWidth="210.0" text="4 Players" textFill="$x4" toggleGroup="$numPlayersGRP">
           <effect>
             <Lighting diffuseConstant="1.1428" surfaceScale="3.5714285714285716">
               <bumpInput>

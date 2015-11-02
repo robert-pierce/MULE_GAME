@@ -39,8 +39,10 @@ public class Main extends Application {
 	public static String pubFile = "/view/PubScreen.fxml";
 	public static String generalStoreID = "GeneralStoreScreen";
 	public static String generalStoreFile = "/view/GeneralStore.fxml";
-	
-	
+	public static String resourceProductionID = "ResourceProductionScreen";
+	public static String resourceProductionFile = "/view/ResourceProductionScreen.fxml";
+	public static String roundResultsID = "ResultsScreen";
+	public static String roundResultsFile = "/view/ResultsScreen.fxml";
 	
 	
 	public static GameRunner game;
@@ -61,6 +63,8 @@ public class Main extends Application {
 		mainContainer.loadScreen(equipMuleID, equipMuleFile);
 		mainContainer.loadScreen(pubID, pubFile);
 		mainContainer.loadScreen(generalStoreID, generalStoreFile);
+		mainContainer.loadScreen(resourceProductionID, resourceProductionFile);
+		mainContainer.loadScreen(roundResultsID, roundResultsFile);
 		
 		mainContainer.setScreen(startScreenID);
 		

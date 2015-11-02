@@ -62,6 +62,11 @@ public class Player implements Comparable<Player>{
     private RandomEvent roofEaten;
     private RandomEvent ugaStudents;
     private RandomEvent spaceGypsies;
+    
+    private int foodProduction = 0;
+    private int energyProduction = 0;
+    private int oreProduction = 0;
+    private int crystiteProduction = 0;
 	
 	//-------------Constructor------------------------
 	public Player(Race rce, Color clr, String plyrName, int plyrNum, GameRunner.Difficulty difficulty) {
@@ -290,6 +295,20 @@ public class Player implements Comparable<Player>{
 	public int getCrystite() {
 		return crystiteProperty.get();
 	}
+	
+	public int getFoodProduction() {
+		return foodProduction;
+	}
+	
+	public int getEnergyProduction() {
+		return energyProduction;
+	}
+	
+	
+	public int getOreProduction() {
+		return oreProduction;
+	}
+	
 	
 	public SimpleIntegerProperty getCrystiteProperty() {
 		return crystiteProperty;
@@ -683,13 +702,15 @@ public class Player implements Comparable<Player>{
 	}
 
 	public void calculateProduction() {
-	       int foodProduction = 0;
-	       int energyProduction = 0;
-	       int oreProduction = 0;
-	       int crystiteProduction = 0;
-	       for (Plot plot : plotMap.values()) {
+		  foodProduction = 0;
+	      energyProduction = 0;
+	      oreProduction = 0;
+	      crystiteProduction = 0; 
+	      
+	     for (Plot plot : plotMap.values()) {
 	           GameRunner.PlotType plotType;
 	           GameRunner.MuleType muleType;
+	          
 	           if (energyProperty.getValue() != 0) {
 	               plotType = plot.getType();
 	               if (plot.getMule() != null) {
@@ -700,73 +721,104 @@ public class Player implements Comparable<Player>{
 	                           crystiteProduction += 0;
 	                       } else if (muleType == MuleType.ENERGY) {
 	                           energyProduction += 1;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       } else if (muleType == MuleType.FOOD) {
 	                           foodProduction += 1;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       } else if (muleType == MuleType.SMITHORE) {
 	                           oreProduction += 2;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       }
 	                   } else if (plotType == GameRunner.PlotType.M2) {
 	                       if (muleType == MuleType.CRYSTITE) {
 	                           crystiteProduction += 0;
 	                       } else if (muleType == MuleType.ENERGY) {
 	                           energyProduction += 1;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       } else if (muleType == MuleType.FOOD) {
 	                           foodProduction += 1;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       } else if (muleType == MuleType.SMITHORE) {
 	                           oreProduction += 3;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       }
 	                   } else if (plotType == GameRunner.PlotType.M3) {
 	                       if (muleType == MuleType.CRYSTITE) {
 	                           crystiteProduction += 0;
 	                       } else if (muleType == MuleType.ENERGY) {
 	                           energyProduction += 1;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       } else if (muleType == MuleType.FOOD) {
 	                           foodProduction += 1;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       } else if (muleType == MuleType.SMITHORE) {
 	                           oreProduction += 4;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       }
 	                   } else if (plotType == GameRunner.PlotType.PLAIN) {
 	                       if (muleType == MuleType.CRYSTITE) {
 	                           crystiteProduction += 0;
 	                       } else if (muleType == MuleType.ENERGY) {
 	                           energyProduction += 3;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       } else if (muleType == MuleType.FOOD) {
 	                           foodProduction += 2;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       } else if (muleType == MuleType.SMITHORE) {
 	                           oreProduction += 1;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       }
 	                   } else if (plotType == GameRunner.PlotType.RIVER) {
 	                       if (muleType == MuleType.CRYSTITE) {
 	                           crystiteProduction += 0;
 	                       } else if (muleType == MuleType.ENERGY) {
 	                           energyProduction += 2;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       } else if (muleType == MuleType.FOOD) {
 	                           foodProduction += 4;
-	                           energyProperty.setValue(energyProperty.add(-1).getValue());
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       } else if (muleType == MuleType.SMITHORE) {
 	                           oreProduction += 0;
 	                       }
 	                   }
 	               }
 	           }
-	       }
-	       foodProperty.setValue(foodProperty.add(foodProduction).getValue());
-	       energyProperty.setValue(energyProperty.add(energyProduction).getValue());
-	       smithoreProperty.setValue(smithoreProperty.add(oreProduction).getValue());
-	       crystiteProperty.setValue(crystiteProperty.add(crystiteProduction).getValue());
+	     }
+	     
+	     foodSpoilage();
+	     
+	     if (foodProperty.add(foodProduction).getValue() < 0) {
+	    	 foodProperty.setValue(0);
+	     } else {
+	    	 foodProperty.setValue(foodProperty.add(foodProduction).getValue());
+	     }
+         energyProperty.setValue(energyProperty.add(energyProduction).getValue());
+         smithoreProperty.setValue(smithoreProperty.add(oreProduction).getValue());
+         crystiteProperty.setValue(crystiteProperty.add(crystiteProduction).getValue());
+	}
+	
+	private void foodSpoilage() {
+		Random rand = new Random();
+		 for (Plot plot : plotMap.values()) {
+			 if (rand.nextDouble() >= 0.6) {
+				 System.out.println("Some Food Spoiled!");
+				 foodProduction--;
+			 }
+		 }
+		 
 	}
 
 	public boolean isLowestPlayer() {

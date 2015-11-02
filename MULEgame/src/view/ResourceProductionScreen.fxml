@@ -3,15 +3,21 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ResourceProductionController">
   <!-- TODO Add Nodes -->
   <children>
-    <Label layoutX="44.0" layoutY="152.0" text="Player 1">
+    <ImageView id="Resource Production Background.png" fitHeight="705.0" fitWidth="1140.0" layoutX="0.0" layoutY="0.0">
+      <image>
+        <Image url="@../../images/Resource%20Production%20Background.png" preserveRatio="true" smooth="true" />
+      </image>
+    </ImageView>
+    <Label fx:id="player1IdLBL" layoutX="41.0" layoutY="210.0" text="Player 1">
       <effect>
         <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
           <bumpInput>
@@ -29,7 +35,7 @@
         <Color blue="0.200" green="0.968" red="1.000" fx:id="x2" />
       </textFill>
     </Label>
-    <Label font="$x1" layoutX="44.0" layoutY="220.0" text="Food:" textFill="$x2">
+    <Label fx:id="player1FoodTagLBL" font="$x1" layoutX="41.0" layoutY="278.0" text="Food:" textFill="$x2">
       <effect>
         <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
           <bumpInput>
@@ -41,7 +47,7 @@
         </Lighting>
       </effect>
     </Label>
-    <Label font="$x1" layoutX="42.0" layoutY="292.0" text="Energy:" textFill="$x2">
+    <Label fx:id="player1EnergyTagLBL" font="$x1" layoutX="41.0" layoutY="350.0" text="Energy:" textFill="$x2">
       <effect>
         <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
           <bumpInput>
@@ -53,7 +59,7 @@
         </Lighting>
       </effect>
     </Label>
-    <Label layoutX="42.0" layoutY="373.0" text="Smithore:" textFill="$x2">
+    <Label fx:id="player1SmithoreTagLBL" layoutX="41.0" layoutY="431.0" text="Smithore:" textFill="$x2">
       <effect>
         <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
           <bumpInput>
@@ -68,7 +74,7 @@
         <Font name="Elephant" size="30.0" fx:id="x3" />
       </font>
     </Label>
-    <Label id="playerFoodLBL" font="$x1" layoutX="193.0" layoutY="218.0" text="30" textFill="$x2">
+    <Label id="playerFoodLBL" fx:id="player1FoodLBL" font="$x1" layoutX="194.0" layoutY="276.0" text="30" textFill="$x2">
       <effect>
         <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
           <bumpInput>
@@ -80,7 +86,7 @@
         </Lighting>
       </effect>
     </Label>
-    <Label id="playerEnergyLBL" font="$x3" layoutX="202.0" layoutY="373.0" text="16" textFill="$x2">
+    <Label id="playerEnergyLBL" fx:id="player1SmithoreLBL" font="$x3" layoutX="203.0" layoutY="431.0" text="16" textFill="$x2">
       <effect>
         <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
           <bumpInput>
@@ -92,7 +98,7 @@
         </Lighting>
       </effect>
     </Label>
-    <Label id="playerSmithoreLBL" font="$x1" layoutX="200.0" layoutY="292.0" text="16" textFill="$x2">
+    <Label id="playerSmithoreLBL" fx:id="player1EnergyLBL" font="$x1" layoutX="201.0" layoutY="350.0" text="16" textFill="$x2">
       <effect>
         <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
           <bumpInput>
@@ -104,6 +110,315 @@
         </Lighting>
       </effect>
     </Label>
-    <Label font="$x1" layoutX="384.0" layoutY="42.0" text="Resource Production" textFill="#fff500" />
+    <Label font="$x1" layoutX="384.0" layoutY="42.0" text="Net Resource Production" textFill="#fff500">
+      <effect>
+        <Lighting diffuseConstant="1.5555555555555556" specularConstant="0.49047619047619045" specularExponent="14.920634920634921" surfaceScale="3.9682539682539684">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player2IdLBL" font="$x1" layoutX="333.0" layoutY="214.0" text="Player 2" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player2FoodTagLBL" font="$x1" layoutX="333.0" layoutY="282.0" text="Food:" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player2EnergyTagLBL" font="$x1" layoutX="331.0" layoutY="354.0" text="Energy:" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player2SmithoreTagLBL" font="$x3" layoutX="331.0" layoutY="435.0" text="Smithore:" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label id="playerFoodLBL" fx:id="player2FoodLBL" font="$x1" layoutX="482.0" layoutY="280.0" text="30" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label id="playerEnergyLBL" fx:id="player2SmithoreLBL" font="$x3" layoutX="491.0" layoutY="436.0" text="16" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label id="playerSmithoreLBL" fx:id="player2EnergyLBL" font="$x1" layoutX="489.0" layoutY="354.0" text="16" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player3IdLBL" font="$x1" layoutX="611.0" layoutY="219.0" text="Player 3" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player3FoodTagLBL" font="$x1" layoutX="611.0" layoutY="287.0" text="Food:" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player3EnergyTagLBL" font="$x1" layoutX="608.0" layoutY="359.0" text="Energy:" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player3SmithoreTagLBL" font="$x3" layoutX="608.0" layoutY="440.0" text="Smithore:" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label id="playerFoodLBL" fx:id="player3FoodLBL" font="$x1" layoutX="760.0" layoutY="285.0" text="30" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label id="playerEnergyLBL" fx:id="player3SmithoreLBL" font="$x3" layoutX="768.0" layoutY="440.0" text="16" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label id="playerSmithoreLBL" fx:id="player3EnergyLBL" font="$x1" layoutX="766.0" layoutY="359.0" text="16" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player4IdLBL" font="$x1" layoutX="872.0" layoutY="219.0" text="Player 4" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player4FoodTagLBL" font="$x1" layoutX="872.0" layoutY="285.0" text="Food:" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player4EnergyTagLBL" font="$x1" layoutX="872.0" layoutY="359.0" text="Energy:" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label fx:id="player4SmithoreTagLBL" font="$x3" layoutX="872.0" layoutY="440.0" text="Smithore:" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label id="playerFoodLBL" fx:id="player4FoodLBL" font="$x1" layoutX="1049.0" layoutY="285.0" text="30" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label id="playerEnergyLBL" fx:id="player4SmithoreLBL" font="$x3" layoutX="1063.0" layoutY="440.0" text="16" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label id="playerSmithoreLBL" fx:id="player4EnergyLBL" font="$x1" layoutX="1057.0" layoutY="359.0" text="16" textFill="$x2">
+      <effect>
+        <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Label font="$x1" layoutX="482.0" layoutY="100.0" text="Round">
+      <effect>
+        <Lighting diffuseConstant="1.3174603174603174" specularConstant="0.2523809523809524" specularExponent="9.206349206349207" surfaceScale="4.682539682539683">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+      <textFill>
+        <Color blue="0.000" green="1.000" red="0.320" fx:id="x4" />
+      </textFill>
+    </Label>
+    <Label id="playerFoodLBL" fx:id="roundNumLBL" font="$x1" layoutX="625.0" layoutY="100.0" text="1" textFill="$x4">
+      <effect>
+        <Lighting diffuseConstant="1.1428571428571428" specularConstant="0.6492063492063491" specularExponent="11.428571428571427" surfaceScale="3.333333333333333">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+          </light>
+        </Lighting>
+      </effect>
+    </Label>
+    <Button id="" fx:id="continueBTN" layoutX="400.0" layoutY="592.0" mnemonicParsing="false" onAction="#continueBTNClick" opacity="0.7" prefHeight="55.0" prefWidth="300.0" text="CONTINUE">
+      <effect>
+        <SepiaTone level="0.8867924528301887">
+          <input>
+            <Lighting diffuseConstant="0.8095238095238095" specularConstant="0.680952380952381" specularExponent="21.26984126984127" surfaceScale="3.8095238095238093">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </input>
+        </SepiaTone>
+      </effect>
+      <font>
+        <Font name="Elephant" size="24.0" />
+      </font>
+    </Button>
   </children>
 </AnchorPane>

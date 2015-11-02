@@ -61,6 +61,8 @@ public class townController implements Initializable, ControlledScreen, Loadable
 		
 		SimpleIntegerProperty playerSmithoreProperty = player.getSmithoreProperty();
 		playerSmithoreLBL.textProperty().bind(Bindings.convert(playerSmithoreProperty));
+		
+		roundNumLBL.setText(Integer.toString(Main.game.getRoundNumber()));
 	}
 
 	@Override
@@ -77,6 +79,9 @@ public class townController implements Initializable, ControlledScreen, Loadable
 	
 	@FXML 
 	private Button returnToMapRightBTN;
+	
+	@FXML
+	private Label roundNumLBL;
 	
 	@FXML
 	private Label playerIdLBL;

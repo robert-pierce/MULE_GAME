@@ -5,15 +5,10 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 
-public class RecourceProductionController implements Initializable, ControlledScreen, Loadable {
+public class RoundResultsController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController; 
 
-	@Override
-	public void onLoad() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
 		myController = screenParent;
@@ -25,4 +20,11 @@ public class RecourceProductionController implements Initializable, ControlledSc
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public void onLoad() {
+	
+	}
+	
+
 }

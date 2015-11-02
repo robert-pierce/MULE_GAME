@@ -22,7 +22,7 @@
       </font>
     </Button>
     <Button id="returnToMapBTN" fx:id="returnToMapRightBTN" font="$x1" layoutX="1063.0" layoutY="610.0" mnemonicParsing="false" onAction="#returnToMap" text="MAP" textFill="BLACK" />
-    <MenuBar layoutX="0.0" layoutY="0.0" minHeight="14.0" prefHeight="22.0" prefWidth="1140.0">
+    <MenuBar layoutX="0.0" layoutY="0.0" minHeight="14.0" prefHeight="25.0" prefWidth="1140.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -59,5 +59,14 @@
     <Label font="$x2" layoutX="967.0" layoutY="107.0" text="Food:" textFill="$x3" />
     <Label font="$x2" layoutX="940.0" layoutY="142.0" text="Energy:" textFill="$x3" />
     <Label font="$x2" layoutX="915.0" layoutY="177.0" text="Smithore:" textFill="$x3" />
+    <Label layoutX="462.0" layoutY="26.0" text="Round">
+      <font>
+        <Font name="Elephant" size="35.0" fx:id="x4" />
+      </font>
+      <textFill>
+        <Color blue="0.000" green="1.000" red="0.080" fx:id="x5" />
+      </textFill>
+    </Label>
+    <Label id="Player" fx:id="roundNumLBL" font="$x4" layoutX="605.0" layoutY="26.0" text="1" textFill="$x5" />
   </children>
 </AnchorPane>

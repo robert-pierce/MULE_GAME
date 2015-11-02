@@ -12,12 +12,12 @@
 <AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.GeneralStoreController">
   <!-- TODO Add Nodes -->
   <children>
-    <ImageView id="Store.png" fitHeight="724.9998779296875" fitWidth="1140.0" layoutX="0.0" layoutY="30.0">
+    <ImageView id="Store.png" fitHeight="729.9998779296875" fitWidth="1140.0" layoutX="0.0" layoutY="25.0">
       <image>
         <Image url="@../../images/Store.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="30.0" prefWidth="1140.0">
+    <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="25.0" prefWidth="1140.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
