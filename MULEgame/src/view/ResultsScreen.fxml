@@ -2,12 +2,898 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="705.0" prefWidth="1140.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.RoundResultsController">
+<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: black" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.RoundResultsController">
   <!-- TODO Add Nodes -->
   <children>
-    <Pane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <Pane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <ImageView id="End of Round Results Screen.png" fitHeight="705.0" fitWidth="1140.0" layoutX="0.0" layoutY="0.0" opacity="0.79">
+          <image>
+            <Image url="@../../images/End%20of%20Round%20Results%20Screen.png" preserveRatio="true" smooth="true" />
+          </image>
+        </ImageView>
+        <Label fx:id="endOfRoundLBL" layoutX="394.0" layoutY="44.0" text="End of Round" textFill="#fff500">
+          <effect>
+            <Lighting diffuseConstant="1.3174603174603174" specularConstant="0.2523809523809524" specularExponent="9.206349206349207" surfaceScale="4.682539682539683">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+          <font>
+            <Font name="Elephant" size="35.0" fx:id="x1" />
+          </font>
+        </Label>
+        <Label id="player1IdLBL" fx:id="firstPlaceIdTagLBL" font="$x1" layoutX="50.0" layoutY="223.0" text="Player">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+          <textFill>
+            <Color blue="0.200" green="0.968" red="1.000" fx:id="x2" />
+          </textFill>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="firstPlaceFoodTagLBL" layoutX="22.0" layoutY="408.0" text="Food:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+          <font>
+            <Font name="Elephant" size="30.0" fx:id="x3" />
+          </font>
+        </Label>
+        <Label id="player1EnergyTagLBL" fx:id="firstPlaceEnergyTagLBL" font="$x3" layoutX="21.0" layoutY="453.0" text="Energy:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1SmithoreTagLBL" fx:id="firstPlaceSmithoreTagLBL" layoutX="21.0" layoutY="498.0" text="Smithore:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+          <font>
+            <Font name="Elephant" size="27.0" fx:id="x5" />
+          </font>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="firstPlaceFoodLBL" font="$x3" layoutX="159.0" layoutY="408.0" text="30" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerEnergyLBL" fx:id="firstPlaceSmithoreLBL" font="$x3" layoutX="159.0" layoutY="498.0" text="16" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerSmithoreLBL" fx:id="firstPlaceEnergyLBL" font="$x3" layoutX="159.0" layoutY="453.0" text="16" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player2IdLBL" fx:id="secondPlaceIdTagLBL" font="$x1" layoutX="338.0" layoutY="223.0" text="Player" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player3IdLBL" fx:id="thirdPlaceIdTagLBL" font="$x1" layoutX="605.0" layoutY="223.0" text="Player" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player4IdLBL" fx:id="fourthPlaceIdTagLBL" font="$x1" layoutX="900.0" layoutY="223.0" text="Player" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="roundNumLBL" font="$x1" layoutX="650.0" layoutY="44.0" text="1" textFill="#fff500">
+          <effect>
+            <Lighting diffuseConstant="1.1428571428571428" specularConstant="0.6492063492063491" specularExponent="11.428571428571427" surfaceScale="3.333333333333333">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1IdLBL" fx:id="firstPlaceTagLBL" font="$x1" layoutX="53.0" layoutY="146.0" text="1st Place">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+          <textFill>
+            <Color blue="0.200" green="0.969" red="1.000" fx:id="x4" />
+          </textFill>
+        </Label>
+        <Label id="player1IdLBL" fx:id="secondPlaceTagLBL" font="$x1" layoutX="338.0" layoutY="146.0" text="2nd Place" textFill="$x4">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1IdLBL" fx:id="thirdPlaceTagLBL" font="$x1" layoutX="605.0" layoutY="146.0" text="3rd Place" textFill="$x4">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1IdLBL" fx:id="fourthPlaceTagLBL" font="$x1" layoutX="892.0" layoutY="146.0" text="4th Place" textFill="$x4">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1IdLBL" fx:id="firstPlaceIdLBL" font="$x1" layoutX="182.0" layoutY="223.0" text="1" textFill="$x4">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1IdLBL" fx:id="secondPlaceIdLBL" font="$x1" layoutX="468.0" layoutY="223.0" text="2" textFill="$x4">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1IdLBL" fx:id="thirdPlaceIdLBL" font="$x1" layoutX="735.0" layoutY="223.0" text="3" textFill="$x4">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1IdLBL" fx:id="fourthPlaceIdLBL" font="$x1" layoutX="1030.0" layoutY="223.0" text="4" textFill="$x4">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="firstPlaceScoreTagLBL" font="$x3" layoutX="21.0" layoutY="273.0" text="Score:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="firstPlaceScoreLBL" font="$x3" layoutX="159.0" layoutY="275.0" text="5000" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="firstPlaceMoneyTagLBL" font="$x3" layoutX="21.0" layoutY="318.0" text="Money:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="firstPlaceMoneyLBL" font="$x3" layoutX="159.0" layoutY="320.0" text="\$1000" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1SmithoreTagLBL" fx:id="firstPlaceCrystiteTagLBL" font="$x3" layoutX="21.0" layoutY="543.0" text="Crystite:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerEnergyLBL" fx:id="firstPlaceCrystiteLBL" font="$x3" layoutX="159.0" layoutY="543.0" text="0" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="firstPlacePlotsTagLBL" font="$x3" layoutX="21.0" layoutY="363.0" text="Plots:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="firstPlacePlotsLBL" font="$x3" layoutX="159.0" layoutY="365.0" text="3" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="secondPlaceFoodTagLBL" font="$x3" layoutX="302.0" layoutY="408.0" text="Food:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1EnergyTagLBL" fx:id="secondPlaceEnergyTagLBL" font="$x3" layoutX="302.0" layoutY="453.0" text="Energy:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1SmithoreTagLBL" fx:id="secondPlaceSmithoreTagLBL" font="$x5" layoutX="302.0" layoutY="498.0" text="Smithore:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="secondPlaceFoodLBL" font="$x3" layoutX="441.0" layoutY="408.0" text="30" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerEnergyLBL" fx:id="secondPlaceSmithoreLBL" font="$x3" layoutX="441.0" layoutY="498.0" text="16" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerSmithoreLBL" fx:id="secondPlaceEnergyLBL" font="$x3" layoutX="441.0" layoutY="453.0" text="16" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="secondPlaceScoreTagLBL" font="$x3" layoutX="302.0" layoutY="273.0" text="Score:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="secondPlaceScoreLBL" font="$x3" layoutX="441.0" layoutY="275.0" text="5000" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="secondPlaceMoneyTagLBL" font="$x3" layoutX="302.0" layoutY="318.0" text="Money:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="secondPlaceMoneyLBL" font="$x3" layoutX="441.0" layoutY="320.0" text="\$1000" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1SmithoreTagLBL" fx:id="secondPlaceCrystiteTagLBL" font="$x3" layoutX="302.0" layoutY="543.0" text="Crystite:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerEnergyLBL" fx:id="secondPlaceCrystiteLBL" font="$x3" layoutX="441.0" layoutY="543.0" text="0" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="secondPlacePlotsTagLBL" font="$x3" layoutX="302.0" layoutY="363.0" text="Plots:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="secondPlacePlotsLBL" font="$x3" layoutX="441.0" layoutY="365.0" text="3" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="thirdPlaceFoodTagLBL" font="$x3" layoutX="585.0" layoutY="408.0" text="Food:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1EnergyTagLBL" fx:id="thirdPlaceEnergyTagLBL" font="$x3" layoutX="585.0" layoutY="453.0" text="Energy:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1SmithoreTagLBL" fx:id="thirdPlaceSmithoreTagLBL" font="$x5" layoutX="585.0" layoutY="498.0" text="Smithore:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="thirdPlaceFoodLBL" font="$x3" layoutX="724.0" layoutY="408.0" text="30" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerEnergyLBL" fx:id="thirdPlaceSmithoreLBL" font="$x3" layoutX="724.0" layoutY="498.0" text="16" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerSmithoreLBL" fx:id="thirdPlaceEnergyLBL" font="$x3" layoutX="724.0" layoutY="453.0" text="16" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="thirdPlaceScoreTagLBL" font="$x3" layoutX="585.0" layoutY="273.0" text="Score:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="thirdPlaceScoreLBL" font="$x3" layoutX="724.0" layoutY="275.0" text="5000" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="thirdPlaceMoneyTagLBL" font="$x3" layoutX="585.0" layoutY="318.0" text="Money:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="thirdPlaceMoneyLBL" font="$x3" layoutX="724.0" layoutY="320.0" text="\$1000" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1SmithoreTagLBL" fx:id="thirdPlaceCrystiteTagLBL" font="$x3" layoutX="585.0" layoutY="543.0" text="Crystite:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerEnergyLBL" fx:id="thirdPlaceCrystiteLBL" font="$x3" layoutX="724.0" layoutY="543.0" text="0" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="thirdPlacePlotsTagLBL" font="$x3" layoutX="585.0" layoutY="363.0" text="Plots:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="thirdPlacePlotsLBL" font="$x3" layoutX="724.0" layoutY="365.0" text="3" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="fourthPlaceFoodTagLBL" font="$x3" layoutX="866.0" layoutY="408.0" text="Food:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1EnergyTagLBL" fx:id="fourthPlaceEnergyTagLBL" font="$x3" layoutX="866.0" layoutY="453.0" text="Energy:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1SmithoreTagLBL" fx:id="fourthPlaceSmithoreTagLBL" font="$x5" layoutX="866.0" layoutY="498.0" text="Smithore:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="fourthPlaceFoodLBL" font="$x3" layoutX="1004.0" layoutY="408.0" text="30" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerEnergyLBL" fx:id="fourthPlaceSmithoreLBL" font="$x3" layoutX="1004.0" layoutY="498.0" text="16" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerSmithoreLBL" fx:id="fourthPlaceEnergyLBL" font="$x3" layoutX="1004.0" layoutY="453.0" text="16" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="fourthPlaceScoreTagLBL" font="$x3" layoutX="866.0" layoutY="273.0" text="Score:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="fourthPlaceScoreLBL" font="$x3" layoutX="1004.0" layoutY="275.0" text="5000" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="fourthPlaceMoneyTagLBL" font="$x3" layoutX="866.0" layoutY="318.0" text="Money:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="fourthPlaceMoneyLBL" font="$x3" layoutX="1004.0" layoutY="320.0" text="\$1000" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1SmithoreTagLBL" fx:id="fourthPlaceCrystiteTagLBL" font="$x3" layoutX="866.0" layoutY="543.0" text="Crystite:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerEnergyLBL" fx:id="fourthPlaceCrystiteLBL" font="$x3" layoutX="1004.0" layoutY="543.0" text="0" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="player1FoodTagLBL" fx:id="fourthPlacePlotsTagLBL" font="$x3" layoutX="866.0" layoutY="363.0" text="Plots:" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Label id="playerFoodLBL" fx:id="fourthPlacePlotsLBL" font="$x3" layoutX="1004.0" layoutY="365.0" text="3" textFill="$x2">
+          <effect>
+            <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </effect>
+        </Label>
+        <Button id="" fx:id="continueBTN" layoutX="420.0" layoutY="615.0" mnemonicParsing="false" onAction="#continueBTNClick" opacity="0.7" prefHeight="55.0" prefWidth="300.0" text="CONTINUE">
+          <effect>
+            <SepiaTone level="0.8867924528301887">
+              <input>
+                <Lighting diffuseConstant="0.8095238095238095" specularConstant="0.680952380952381" specularExponent="21.26984126984127" surfaceScale="3.8095238095238093">
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+                  </light>
+                </Lighting>
+              </input>
+            </SepiaTone>
+          </effect>
+          <font>
+            <Font name="Elephant" size="24.0" />
+          </font>
+        </Button>
+      </children>
+    </Pane>
   </children>
 </AnchorPane>

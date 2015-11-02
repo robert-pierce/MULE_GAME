@@ -189,6 +189,10 @@ public class GameRunner {
 		return round;
 	}
 	
+	public int getNumRounds() {
+		return numRounds;
+	}
+	
 	public Map getMap() {
 		return gameMap;
 	}

@@ -70,6 +70,11 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 			msgBoxRslt = handleLandPurchaseTurn();
 			updatePlayerPass(msgBoxRslt);
 		}
+		
+		// what to do if in Resource Production Phase
+		if (gameState.equals(GameState.RESOURCEPRODUCTION)) {
+			endResourceProductionPhase();
+		}
 	}
 	
 	//-----------------FXML Injections---------------------------------------
