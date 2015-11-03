@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 /**
  * Created by KillDogg on 10/8/2015.
  */
-public class Store {
+public class Store implements Saveable {
     private GameRunner.Difficulty difficulty;
     private Deque<Mule> muleDeque;
     private int initialMuleStock;
@@ -34,12 +34,25 @@ public class Store {
     private SimpleIntegerProperty smithoreStockProperty;
     private SimpleIntegerProperty crystiteStockProperty;
     
+    private int muleStockBacking;
+    private int foodStockBacking;
+    private int energyStockBacking;
+    private int smithoreStockBacking;
+    private int crystiteStockBacking;
+    
     private SimpleIntegerProperty mulePriceProperty;
     private SimpleIntegerProperty foodPriceProperty;
     private SimpleIntegerProperty energyPriceProperty;
     private SimpleIntegerProperty smithorePriceProperty;
     private SimpleIntegerProperty crystitePriceProperty;
+   
+    private int mulePricePropertyBacking;
+    private int foodPricePropertyBacking;
+    private int energyPricePropertyBacking;
+    private int smithorePricePropertyBacking;
+    private int crystitePricePropertyBacking;
     
+    //------------------------Constructor----------------------------------------//
     public Store(Difficulty difficulty) {
         this.difficulty = difficulty;
         System.out.println("The store thinks difficulty is:" + difficulty);
@@ -55,7 +68,8 @@ public class Store {
         this.smithoreEquipPrice = 75;
         this.crystiteEquipPrice = 100;
     }
-
+    //--------------------End Constructor----------------------------------------//
+    
     private void fillStore() {
         if(difficulty.equals(Difficulty.BEGINNER)) {
         	initialMuleStock = 25;
@@ -75,7 +89,6 @@ public class Store {
         createMules();
     }
 
-    
     private void createMules() {
         for (int i = 0; i < initialMuleStock; i++) {
             muleDeque.add(new Mule());
@@ -232,5 +245,28 @@ public class Store {
     	return str.toString();
     	
     }
+
+	@Override
+	public void prepSave() {
+		muleStockBacking = muleStockProperty.get();
+	    foodStockBacking = foodStockProperty.get();
+	    energyStockBacking = energyStockProperty.get();
+	    smithoreStockBacking = smithoreStockProperty.get();
+	    crystiteStockBacking = crystiteStockProperty.get();
+	    
+	    
+	    mulePricePropertyBacking = mulePriceProperty.get();
+	    foodPricePropertyBacking = foodPriceProperty.get();
+	    energyPricePropertyBacking = energyPriceProperty.get();
+	    smithorePricePropertyBacking = smithorePriceProperty.get();
+	    crystitePricePropertyBacking = crystitePriceProperty.get();
+	    
+	}
+
+	@Override
+	public void restoreSave() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import application.GameRunner.Difficulty;
 import application.GameRunner.MuleType;
+import application.Map.MapSelection;
 import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
@@ -81,6 +82,8 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
     private int oreProduction = 0;
     private int crystiteProduction = 0;
 	
+    private MapSelection mapSelection;
+    
 	//-------------Constructor------------------------
 	public Player(Race rce, Color clr, String plyrName, int plyrNum, GameRunner.Difficulty difficulty) {
 		race = rce;
@@ -862,6 +865,9 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 
 	@Override
 	public void prepSave() {
+		round = Main.game.getRoundNumber();
+		mapSelection = Main.game.getMap().getMapSelection();
+		
 		playerIdPropertyBacking = playerIdProperty.get();
 		foodPropertyBacking = foodProperty.get();
 		energyPropertyBacking = energyProperty.get();
@@ -872,6 +878,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 		colorRedBacking = color.getRed();
 		colorBlueBacking = color.getBlue();
 		colorGreenBacking = color.getGreen();
+		
 		
 	}
 
