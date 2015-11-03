@@ -1,11 +1,13 @@
 package application;
 
 import java.awt.*;
+import java.io.Serializable;
 
 import application.GameRunner.PlotType;
 
-public class Plot {
+public class Plot implements Serializable{
 	
+	private static final long serialVersionUID = -4259329797261826661L;
 	private Player owner;
 	private PlotType type;
 	private Point plotCoord;

@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.HashMap;
 
 import application.GameRunner.Difficulty;
@@ -16,14 +17,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.paint.Color;
 import jfx.messagebox.MessageBox;
 import java.util.Random;
-
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Player implements Comparable<Player>{
+public class Player implements Comparable<Player>, Serializable, Saveable {
+
+	private static final long serialVersionUID = 7585487069641759509L;
+
 	//-------------enums-----------------------------
 	public enum Race {HUMAN, FLAPPER, BONZOID, UGAITE, BUZZITE};
 	
@@ -31,7 +32,10 @@ public class Player implements Comparable<Player>{
 	
 	//--------------Instance Variables---------------
 	private Race race;
-	private Color color;
+	private transient Color color;
+	private double colorRedBacking;
+	private double colorBlueBacking;
+	private double colorGreenBacking;
 	private String playerName;
 	//private int playerNum;
 	//private int money;
@@ -45,14 +49,23 @@ public class Player implements Comparable<Player>{
 	private Mule playerMule;
 	private boolean isLowestPlayer;
 	private HashMap<Point, Plot> plotMap;
-	private SimpleIntegerProperty playerIdProperty ;
-	private SimpleIntegerProperty moneyProperty;
-	private SimpleIntegerProperty foodProperty;
-	private SimpleIntegerProperty energyProperty;
-	private SimpleIntegerProperty smithoreProperty;
-	private SimpleIntegerProperty crystiteProperty;
-	private NumberBinding scoreProperty;
-	private SimpleIntegerProperty numPlotsProperty;
+	private transient SimpleIntegerProperty playerIdProperty;
+	private transient SimpleIntegerProperty moneyProperty;
+	private transient SimpleIntegerProperty foodProperty;
+	private transient SimpleIntegerProperty energyProperty;
+	private transient SimpleIntegerProperty smithoreProperty;
+	private transient SimpleIntegerProperty crystiteProperty;
+	private transient NumberBinding scoreProperty;
+	private transient SimpleIntegerProperty numPlotsProperty;
+	
+	private int playerIdPropertyBacking;
+	private int moneyPropertyBacking;
+	private int foodPropertyBacking;
+	private int energyPropertyBacking;
+	private int smithorePropertyBacking;
+	private int crystitePropertyBacking;
+	private int numPlotsPropertyBacking;
+	
 	
 	private ArrayList<RandomEvent> randomEvents;
 	private RandomEvent alumniPackage;
@@ -845,6 +858,42 @@ public class Player implements Comparable<Player>{
 		str.append("Score: " + scoreProperty.getValue());
 	
 		return str.toString();
+	}
+
+	@Override
+	public void prepSave() {
+		playerIdPropertyBacking = playerIdProperty.get();
+		foodPropertyBacking = foodProperty.get();
+		energyPropertyBacking = energyProperty.get();
+		smithorePropertyBacking = smithoreProperty.get();
+		crystitePropertyBacking = crystiteProperty.get();
+		numPlotsPropertyBacking = numPlotsProperty.get();
+		moneyPropertyBacking = moneyProperty.get();
+		colorRedBacking = color.getRed();
+		colorBlueBacking = color.getBlue();
+		colorGreenBacking = color.getGreen();
+		
+	}
+
+	@Override
+	public void restoreSave() {
+		playerIdProperty = new SimpleIntegerProperty();
+		foodProperty = new SimpleIntegerProperty();
+		energyProperty = new SimpleIntegerProperty();
+		smithoreProperty = new SimpleIntegerProperty();
+		crystiteProperty = new SimpleIntegerProperty();
+		numPlotsProperty = new SimpleIntegerProperty();
+		moneyProperty = new SimpleIntegerProperty();
+		color = new Color(colorRedBacking, colorGreenBacking, colorBlueBacking, 1);
+		
+		playerIdProperty.setValue(playerIdPropertyBacking);
+		foodProperty.setValue(foodPropertyBacking);
+		energyProperty.setValue(energyPropertyBacking);
+		smithoreProperty.setValue(smithorePropertyBacking);
+		crystiteProperty.setValue(crystitePropertyBacking);
+		numPlotsProperty.setValue(numPlotsPropertyBacking);
+		moneyProperty.setValue(moneyPropertyBacking);
+		scoreProperty = Bindings.add(moneyProperty.add(energyProperty), smithoreProperty.add(numPlotsProperty.multiply(500)));
 	}
 
 }

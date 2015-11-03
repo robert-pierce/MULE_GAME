@@ -12,14 +12,14 @@ import java.util.Deque;
 import com.google.gson.Gson;
 
 import application.Map.MapSelection;
-import controller.GameSaver;
+
 import controller.ScreensController;
 
 import javafx.scene.Scene;
 
 
 
-public class GameRunner implements Saveable{
+public class GameRunner  {
 	//---------Enum----------------------------------------
 	public enum GameState{LANDPURCHASE, MULEPURCHASE, RESOURCEPRODUCTION, RANDOMEVENT, ENDROUND}
 	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT}
@@ -241,10 +241,9 @@ public class GameRunner implements Saveable{
 	
 	//-------------------End of Query Methods------------------------------------
 
-	//-------------------Interface Methods---------------------------------------
-	@Override
 	public void saveState() {
 		GameSaver gameSave = new GameSaver();
 		gameSave.saveState();
 	}
+	
 }

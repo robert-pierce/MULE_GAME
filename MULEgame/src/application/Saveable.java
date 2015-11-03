@@ -2,5 +2,7 @@ package application;
 
 public interface Saveable {
 
-	public void saveState();
+	public void prepSave();
+	
+	public void restoreSave();
 }
