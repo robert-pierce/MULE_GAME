@@ -12,6 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.event.Event;
+import java.io.FileWriter;
+import java.io.IOException;
+import com.google.gson.Gson;
 
 
 public class Main extends Application {
@@ -81,17 +84,14 @@ public class Main extends Application {
 	
 	}
 	
-	
-	
-	
-	
  	public static String getPlayerConfigID() {
  		return playerConfigID;
  	}
-	
 	
 	// Don't necessarily need this
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	
 }

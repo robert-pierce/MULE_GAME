@@ -1,19 +1,25 @@
 package application;
 
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Deque;
 
+import com.google.gson.Gson;
+
 import application.Map.MapSelection;
+import controller.GameSaver;
 import controller.ScreensController;
 
 import javafx.scene.Scene;
 
 
 
-public class GameRunner {
+public class GameRunner implements Saveable{
 	//---------Enum----------------------------------------
 	public enum GameState{LANDPURCHASE, MULEPURCHASE, RESOURCEPRODUCTION, RANDOMEVENT, ENDROUND}
 	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT}
@@ -234,4 +240,11 @@ public class GameRunner {
 	}
 	
 	//-------------------End of Query Methods------------------------------------
+
+	//-------------------Interface Methods---------------------------------------
+	@Override
+	public void saveState() {
+		GameSaver gameSave = new GameSaver();
+		gameSave.saveState();
+	}
 }

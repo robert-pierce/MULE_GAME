@@ -6,6 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane id="mapRoot" onMouseClicked="#mouseClick" prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.MapController">
@@ -18,10 +19,11 @@
     </ImageView>
     <Canvas fx:id="plotMarkerCanvas" height="705.0" width="1140.0" />
     <ProgressBar fx:id="timerBar" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
-    <MenuBar layoutX="0.0" layoutY="0.0" minHeight="27.0" prefHeight="25.0" prefWidth="1140.0">
+    <MenuBar fx:id="menuBar" layoutX="0.0" layoutY="0.0" minHeight="27.0" prefHeight="25.0" prefWidth="1140.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
+            <MenuItem mnemonicParsing="false" onAction="#saveState" text="Save" fx:id="saveMenuItem" />
             <MenuItem mnemonicParsing="false" text="Close" />
           </items>
         </Menu>
@@ -37,11 +39,14 @@
         </Menu>
       </menus>
     </MenuBar>
-    <Label layoutX="898.0" layoutY="36.0" opacity="0.5" prefHeight="31.0" prefWidth="101.0" text="Round" textFill="#ff8b66">
+    <Label layoutX="946.0" layoutY="35.0" opacity="0.5" prefHeight="50.0" prefWidth="139.0" text="Round">
       <font>
-        <Font name="Elephant" size="25.0" fx:id="x1" />
+        <Font name="Elephant" size="40.0" fx:id="x1" />
       </font>
+      <textFill>
+        <Color blue="0.400" green="0.545" red="1.000" fx:id="x2" />
+      </textFill>
     </Label>
-    <Label fx:id="roundNumLBL" font="$x1" layoutX="999.0" layoutY="36.0" opacity="0.5" prefHeight="31.0" prefWidth="16.0" text="1" textFill="#ff8b66" />
+    <Label fx:id="roundNumLBL" font="$x1" layoutX="1093.0" layoutY="35.0" opacity="0.5" prefHeight="31.0" prefWidth="16.0" text="1" textFill="$x2" />
   </children>
 </AnchorPane>

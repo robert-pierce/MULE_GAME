@@ -198,12 +198,7 @@ public class Player implements Comparable<Player>{
 	        }
 	        return message;
 	    }
-		
-		
-		
-	
-
-	
+			
 
 	public Race getRace() {
 		return race;

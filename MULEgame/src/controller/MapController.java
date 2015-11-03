@@ -25,13 +25,14 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
-
 import java.awt.Point;
 
 public class MapController implements Initializable, ControlledScreen, Loadable {
-	ScreensController myController;
+    ScreensController myController;
 	private GameState gameState;
 	boolean firstTwoRoundsFlag = true;
 	private ActivePlayer activePlayerState;
@@ -88,8 +89,11 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	@FXML
 	public ProgressBar timerBar;
 	
+	@FXML
+	public MenuBar menuBar;
 	
-	
+	@FXML
+	public MenuItem saveMenuItem;
 	//----------------End FXML Injections------------------------------------
 	
 	//-------------FXML On-Action Methods------------------------------------
@@ -293,8 +297,6 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
                     "Information dialog",
                     MessageBox.ICON_INFORMATION | MessageBox.OK);
         }
-		
-		
 	}
 	
 	// implement end of round method
@@ -304,8 +306,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		Main.game.setGameState(GameState.RESOURCEPRODUCTION);
 		System.out.println("Game State set to: " + Main.game.getGameState());
 		
-		handleResourceProductionPhase();
-		
+		handleResourceProductionPhase();	
 	}
 	
 	private void handleResourceProductionPhase() {
@@ -377,7 +378,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		onLoad();
 	}
 	
-	// implement end of turn method
+	// implement http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=150end of turn method
 	public void endTurn() {
 		String mapID = getMapID();
 		System.out.println("End of Turn method called in MapController");
@@ -419,10 +420,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		
 		 gc.setFill(Main.game.getActivePlayer().getColor());
          Point center = currentPlot.getCenter();
-         gc.fillRect(center.getX()-rectSize/2, center.getY()-rectSize/2, rectSize, rectSize);
-         
-         
-         
+         gc.fillRect(center.getX()-rectSize/2, center.getY()-rectSize/2, rectSize, rectSize);   
 	}
 
 	private void markPlotMule(Plot currentPlot) {
@@ -454,7 +452,6 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	}
 
 	
-	
 	/**
 	 * starts a timer
 	 * @param timeLimit the number of seconds the timer 
@@ -468,13 +465,11 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
         myTimer.scheduleAtFixedRate(myTimerTask, 0, TIMERUPDATERATE);    
 	}
 	
-	
 	public double stopTimer() {
 		int count = myTimerTask.stopTimer();
 		timerBar.setProgress(0);
 		return timeLimit - (count/TIMEFACTOR);   // returns the number of seconds the timer ran for
 	}
-
 
 	public void timeExpired() {
 		timerBar.setProgress(0);
@@ -485,7 +480,6 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	private GameState retrieveGameState() {
 		return Main.game.getGameState();
 	}
-
 
 	private ActivePlayer retrieveActivePlayerState() {
 		return Main.game.getActivePlayerState();
@@ -499,7 +493,9 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		return myTimer;
 	}
 
-	
+	public void saveState() {
+		Main.game.saveState();
+	}
 
 
 	
