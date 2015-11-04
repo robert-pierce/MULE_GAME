@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 
 import application.GameSaver.EOFClass;
 import application.Map.MapSelection;
-
+import controller.MapController;
 import controller.ScreensController;
 
 import javafx.scene.Scene;
@@ -302,9 +302,15 @@ public class GameRunner  {
      
      for (Player plyr : playerList) {
     	  Main.game.getMap().getPlots().putAll(plyr.getPlots());
+    	  
+    	  for (Plot plot : plyr.getPlots().values()) {
+    		 MapController mapCntrl = (MapController) mainController.getController(Main.game.getMap().getMapID());
+    		 mapCntrl.markPlot(plot);
+    		 mapCntrl.markPlotMule(plot);
+    	  }
      }
      
-     //gameMap.showMap();
+    
      
     
 	

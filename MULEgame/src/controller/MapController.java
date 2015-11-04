@@ -426,15 +426,17 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 
 
 	// marks a plot with the appropriate color
-	private void markPlot(Plot currentPlot) {
+	public void markPlot(Plot currentPlot) {
 		GraphicsContext gc = plotMarkerCanvas.getGraphicsContext2D();
 		
-		 gc.setFill(Main.game.getActivePlayer().getColor());
+		 
+		gc.setFill(currentPlot.getOwner().getColor());
+		//gc.setFill(Main.game.getActivePlayer().getColor());
          Point center = currentPlot.getCenter();
          gc.fillRect(center.getX()-rectSize/2, center.getY()-rectSize/2, rectSize, rectSize);   
 	}
 
-	private void markPlotMule(Plot currentPlot) {
+	public void markPlotMule(Plot currentPlot) {
 		MuleType muleType = currentPlot.getMule().getMuleType();
 		GraphicsContext gc = plotMarkerCanvas.getGraphicsContext2D();
 		Point center = currentPlot.getCenter();
