@@ -7,7 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import jfx.messagebox.MessageBox;
 import application.Main;
 import application.GameRunner.ActivePlayer;
 import application.Map.MapSelection;
@@ -46,6 +49,13 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	@FXML 
 	private Button continueBTN;
 	
+	@FXML
+	public MenuBar menuBar;
+	
+	@FXML
+	public MenuItem saveMenuItem;
+	
+	
 	//--------------Event Handler Methods------------------------------
 	
 	public void setMapStandard(ActionEvent event) {
@@ -82,5 +92,13 @@ public class mapConfigController implements Initializable, ControlledScreen {
 		// start the game
 		System.out.println("Starting Game!");
 		Main.game.startGame(map);
+	}
+	
+	public void saveState() {
+		MessageBox.show(Main.game.getScene().getWindow(),
+   			 "Game Saves are only allowed at the End of a Round",
+ 		         "Save Game",
+ 		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		//Main.game.saveState();
 	}
 }

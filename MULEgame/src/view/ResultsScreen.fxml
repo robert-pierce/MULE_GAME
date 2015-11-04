@@ -19,7 +19,7 @@
             <Image url="@../../images/End%20of%20Round%20Results%20Screen.png" preserveRatio="true" smooth="true" />
           </image>
         </ImageView>
-        <Label fx:id="endOfRoundLBL" layoutX="394.0" layoutY="44.0" text="End of Round" textFill="#fff500">
+        <Label fx:id="endOfRoundLBL" layoutX="394.0" layoutY="44.0" text="End of Round">
           <effect>
             <Lighting diffuseConstant="1.3174603174603174" specularConstant="0.2523809523809524" specularExponent="9.206349206349207" surfaceScale="4.682539682539683">
               <bumpInput>
@@ -33,6 +33,9 @@
           <font>
             <Font name="Elephant" size="35.0" fx:id="x1" />
           </font>
+          <textFill>
+            <Color blue="0.000" green="0.961" red="1.000" fx:id="x7" />
+          </textFill>
         </Label>
         <Label id="player1IdLBL" fx:id="firstPlaceIdTagLBL" font="$x1" layoutX="50.0" layoutY="223.0" text="Player">
           <effect>
@@ -163,7 +166,7 @@
             </Lighting>
           </effect>
         </Label>
-        <Label id="playerFoodLBL" fx:id="roundNumLBL" font="$x1" layoutX="650.0" layoutY="44.0" text="1" textFill="#fff500">
+        <Label id="playerFoodLBL" fx:id="roundNumLBL" font="$x1" layoutX="650.0" layoutY="44.0" text="1" textFill="$x7">
           <effect>
             <Lighting diffuseConstant="1.1428571428571428" specularConstant="0.6492063492063491" specularExponent="11.428571428571427" surfaceScale="3.333333333333333">
               <bumpInput>
@@ -874,7 +877,7 @@
             </Lighting>
           </effect>
         </Label>
-        <Button id="" fx:id="continueBTN" layoutX="420.0" layoutY="615.0" mnemonicParsing="false" onAction="#continueBTNClick" opacity="0.7" prefHeight="55.0" prefWidth="300.0" text="CONTINUE">
+        <Button id="" fx:id="continueBTN" layoutX="380.0" layoutY="615.0" mnemonicParsing="false" onAction="#continueBTNClick" opacity="0.7" prefHeight="55.0" prefWidth="300.0" text="CONTINUE">
           <effect>
             <SepiaTone level="0.8867924528301887">
               <input>
@@ -890,8 +893,44 @@
             </SepiaTone>
           </effect>
           <font>
-            <Font name="Elephant" size="24.0" />
+            <Font name="Elephant" size="24.0" fx:id="x6" />
           </font>
+        </Button>
+        <MenuBar fx:id="menuBar" layoutX="0.0" layoutY="0.0" minHeight="27.0" prefHeight="25.0" prefWidth="1140.0">
+          <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#saveState" text="Save" fx:id="saveMenuItem" />
+                <MenuItem mnemonicParsing="false" text="Close" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Delete" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" text="About" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+        <Button id="" fx:id="saveGameBTN" font="$x6" layoutX="777.0" layoutY="615.0" mnemonicParsing="false" onAction="#saveState" opacity="0.7" prefHeight="55.0" prefWidth="207.0" text="SAVE GAME">
+          <effect>
+            <SepiaTone level="0.8867924528301887">
+              <input>
+                <Lighting diffuseConstant="0.8095238095238095" specularConstant="0.680952380952381" specularExponent="21.26984126984127" surfaceScale="3.8095238095238093">
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+                  </light>
+                </Lighting>
+              </input>
+            </SepiaTone>
+          </effect>
         </Button>
       </children>
     </Pane>

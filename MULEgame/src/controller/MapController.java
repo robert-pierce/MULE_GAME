@@ -437,31 +437,33 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	}
 
 	public void markPlotMule(Plot currentPlot) {
-		MuleType muleType = currentPlot.getMule().getMuleType();
-		GraphicsContext gc = plotMarkerCanvas.getGraphicsContext2D();
-		Point center = currentPlot.getCenter();
-		Image img;
-		
-		switch (muleType) {
-			case FOOD:
-				 img = new Image("file:images/wheat.jpg");
-				break;
-			case ENERGY:
-				img = new Image("file:images/energy.png");
-				break;
-			case SMITHORE:
-				img = new Image("file:images/mining.png");
-				break;
-			case CRYSTITE:
-				img = new Image("file:images/diamond.png");
-				break;
-			default:
-				img = new Image("file:images/muleEmpty.png");
+		if (currentPlot.getMule() != null) {
+			MuleType muleType = currentPlot.getMule().getMuleType();
+			GraphicsContext gc = plotMarkerCanvas.getGraphicsContext2D();
+			Point center = currentPlot.getCenter();
+			Image img;
 			
-		}
-		
-		gc.clearRect( (center.getX()-rectSize/2)+ 2.5, (center.getY()-rectSize/2) + 2.5, rectSize-5, rectSize-5);
-        gc.drawImage(img, (center.getX()-rectSize/2)+ 2.5, (center.getY()-rectSize/2) + 2.5, rectSize-5, rectSize-5);
+			switch (muleType) {
+				case FOOD:
+					 img = new Image("file:images/wheat.jpg");
+					break;
+				case ENERGY:
+					img = new Image("file:images/energy.png");
+					break;
+				case SMITHORE:
+					img = new Image("file:images/mining.png");
+					break;
+				case CRYSTITE:
+					img = new Image("file:images/diamond.png");
+					break;
+				default:
+					img = new Image("file:images/muleEmpty.png");
+				
+			}
+			
+			gc.clearRect( (center.getX()-rectSize/2)+ 2.5, (center.getY()-rectSize/2) + 2.5, rectSize-5, rectSize-5);
+	        gc.drawImage(img, (center.getX()-rectSize/2)+ 2.5, (center.getY()-rectSize/2) + 2.5, rectSize-5, rectSize-5);
+		} 
 	}
 
 	
@@ -507,7 +509,12 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	}
 
 	public void saveState() {
-		Main.game.saveState();
+		MessageBox.show(Main.game.getScene().getWindow(),
+    			 "Game Saves are only allowed at the End of a Round",
+  		         "Save Game",
+  		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		
+		//Main.game.saveState();
 	}
 
 

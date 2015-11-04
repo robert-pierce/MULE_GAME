@@ -10,6 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import jfx.messagebox.MessageBox;
 
 public class ResourceProductionController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController; 
@@ -90,7 +93,6 @@ public class ResourceProductionController implements Initializable, ControlledSc
 	@FXML
 	private Label roundNumLBL;
 	
-	
 	@FXML
 	private Label player1IdLBL;
 	
@@ -111,7 +113,6 @@ public class ResourceProductionController implements Initializable, ControlledSc
 	
 	@FXML
 	private Label player1SmithoreTagLBL;
-	
 	
 	@FXML
 	private Label player2IdLBL;
@@ -134,11 +135,8 @@ public class ResourceProductionController implements Initializable, ControlledSc
 	@FXML
 	private Label player2SmithoreTagLBL;
 	
-	
-	
 	@FXML
 	private Label player3IdLBL;
-	
 	
 	@FXML
 	private Label player3FoodLBL;
@@ -157,8 +155,7 @@ public class ResourceProductionController implements Initializable, ControlledSc
 	
 	@FXML
 	private Label player3SmithoreTagLBL;
-	
-	
+
 	@FXML
 	private Label player4IdLBL;
 	
@@ -180,14 +177,30 @@ public class ResourceProductionController implements Initializable, ControlledSc
 	@FXML
 	private Label player4SmithoreTagLBL;
 	
-	
 	@FXML
 	private Button continueBTN;
+	
+	@FXML
+	private Button saveGameBTN;
+	
+	@FXML
+	public MenuBar menuBar;
+	
+	@FXML
+	public MenuItem saveMenuItem;
 
 	
 	public void continueBTNClick() {
 		System.out.println("Continue Button Pressed in Resource Production Screen");
 		myController.setScreen(Main.roundResultsID);
+	}
+	
+	public void saveState() {
+		MessageBox.show(Main.game.getScene().getWindow(),
+   			 "Game Saves are only allowed at the End of a Round",
+ 		         "Save Game",
+ 		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		//Main.game.saveState();
 	}
 	
 }

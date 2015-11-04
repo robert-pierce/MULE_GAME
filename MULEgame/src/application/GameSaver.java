@@ -7,8 +7,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
+import jfx.messagebox.MessageBox;
 
 public class GameSaver  {
 	
@@ -16,9 +21,11 @@ public class GameSaver  {
 	
 	public void saveState() {
 		ArrayList<Player> plyrList = Main.game.getPlayerList();
+		String fileName = new SimpleDateFormat("yyyy-MM-dd-hh-mm'.ser'").format(new Date());
+		
 		
 		try {
-	         FileOutputStream fileOut = new FileOutputStream("./SavedStates/test.ser");
+	         FileOutputStream fileOut = new FileOutputStream("./SavedStates/" + fileName);
 	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
 	         
 	         //write the map
@@ -42,7 +49,13 @@ public class GameSaver  {
 	         out.close();
 	         fileOut.close();
 	         System.out.printf("Serialized data is saved");
+	         System.out.println("file name:" + fileName);
 	      
+	         MessageBox.show(Main.game.getScene().getWindow(),
+	        			"Game Saved Successfully",
+	      		         "Successful Game Save",
+	      		         MessageBox.ICON_INFORMATION | MessageBox.OK); 
+	         
 		} catch(IOException e) {
 	          e.printStackTrace();
 	      }

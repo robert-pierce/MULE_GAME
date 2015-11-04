@@ -16,7 +16,7 @@
       <center>
         <Pane prefHeight="200.0" prefWidth="200.0">
           <children>
-            <ImageView id="Map Config.png" fitHeight="681.0" fitWidth="1140.0" layoutX="0.0" layoutY="0.0">
+            <ImageView id="Map Config.png" fitHeight="678.0" fitWidth="1146.0" layoutX="0.0" layoutY="27.0">
               <image>
                 <Image url="@../../images/Map%20Config.png" preserveRatio="true" smooth="true" />
               </image>
@@ -81,7 +81,7 @@
                 </Lighting>
               </effect>
             </RadioButton>
-            <Button fx:id="continueBTN" contentDisplay="LEFT" layoutX="324.0" layoutY="513.0" mnemonicParsing="false" onAction="#nextScreen" opacity="0.68" prefHeight="61.0" prefWidth="466.0" text="Continue">
+            <Button fx:id="continueBTN" contentDisplay="LEFT" font="$x1" layoutX="324.0" layoutY="513.0" mnemonicParsing="false" onAction="#nextScreen" opacity="0.68" prefHeight="61.0" prefWidth="466.0" text="Continue">
               <effect>
                 <SepiaTone>
                   <input>
@@ -96,34 +96,30 @@
                   </input>
                 </SepiaTone>
               </effect>
-              <font>
-                <Font size="30.0" />
-              </font>
             </Button>
+            <MenuBar fx:id="menuBar" layoutX="0.0" layoutY="0.0" minHeight="27.0" prefHeight="25.0" prefWidth="1140.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#saveState" text="Save" fx:id="saveMenuItem" />
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
           </children>
         </Pane>
       </center>
-      <top>
-        <MenuBar>
-          <menus>
-            <Menu mnemonicParsing="false" text="File">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Close" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Delete" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-              <items>
-                <MenuItem mnemonicParsing="false" text="About" />
-              </items>
-            </Menu>
-          </menus>
-        </MenuBar>
-      </top>
     </BorderPane>
   </children>
 </AnchorPane>

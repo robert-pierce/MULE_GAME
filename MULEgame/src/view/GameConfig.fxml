@@ -17,11 +17,11 @@
         <Image url="@../../images/Game%20Config.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Pane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <Pane id="menuBar" prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="700.0" layoutY="114.0" prefHeight="37.0" prefWidth="313.0" text="DIFFICULTY" textFill="#ff00f5">
           <effect>
-            <Lighting diffuseConstant="1.4285714285714284" specularConstant="1.1253968253968254" surfaceScale="3.888888888888889">
+            <Lighting diffuseConstant="1.4285714285714284" specularConstant="0.7444444444444445" surfaceScale="3.888888888888889">
               <bumpInput>
                 <Shadow />
               </bumpInput>
@@ -123,7 +123,7 @@
         </RadioButton>
         <Label alignment="CENTER" font="$x6" layoutX="66.0" layoutY="114.0" text="NUMBER OF PLAYERS" textFill="#ffb800">
           <effect>
-            <Lighting diffuseConstant="1.2063492063492063" specularConstant="0.807936507936508" specularExponent="19.682539682539684" surfaceScale="2.698412698412698">
+            <Lighting diffuseConstant="1.2063492063492063" specularConstant="0.7920634920634921" specularExponent="19.682539682539684" surfaceScale="2.698412698412698">
               <bumpInput>
                 <Shadow />
               </bumpInput>
@@ -164,26 +164,27 @@
             <Font size="30.0" />
           </font>
         </Button>
+        <MenuBar fx:id="menuBar" layoutX="0.0" layoutY="0.0" minHeight="27.0" prefHeight="25.0" prefWidth="1140.0">
+          <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#saveState" text="Save" fx:id="saveMenuItem" />
+                <MenuItem mnemonicParsing="false" text="Close" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Delete" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" text="About" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
       </children>
     </Pane>
-    <MenuBar layoutX="0.0" layoutY="0.0" prefWidth="1140.0">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Close" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Delete" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
   </children>
 </AnchorPane>

@@ -14,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import jfx.messagebox.MessageBox;
 
 public class RoundResultsController implements Initializable, ControlledScreen, Loadable {
@@ -365,7 +367,13 @@ public class RoundResultsController implements Initializable, ControlledScreen, 
 	@FXML
 	private Button continueBTN;
 	
+	@FXML
+	public MenuBar menuBar;
 	
+	@FXML
+	public MenuItem saveMenuItem;
+	
+	//-------------------------------------------------------------------------------//
 	public void continueBTNClick() {
 		System.out.println("Continue Button Pressed in Round Results Screen");
 		
@@ -378,5 +386,9 @@ public class RoundResultsController implements Initializable, ControlledScreen, 
 		} else {
 			myController.setScreen(Main.game.getMap().getMapID());
 		}
+	}
+	
+	public void saveState() {
+		Main.game.saveState();
 	}
 }

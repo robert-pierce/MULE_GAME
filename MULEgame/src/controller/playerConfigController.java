@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.scene.paint.Color;
+import jfx.messagebox.MessageBox;
 import application.GameRunner.Difficulty;
 import application.Main;
 import application.Player;
@@ -13,6 +14,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
@@ -84,8 +87,14 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 	@FXML
 	private RadioButton colorPurpleBTN;
 	
+	@FXML
+	public MenuBar menuBar;
 	
+	@FXML
+	public MenuItem saveMenuItem;
 	
+	@FXML
+	private Label playerNumLBL;
 	
 	//--------------Event Handler Methods------------------------------
 
@@ -149,11 +158,20 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 		System.out.println("Continue Button Pressed");
 		
 			
-		if (playerName == null || playerName.equals("")) {
+		if (playerNameTXTFLD.getText() == null || playerNameTXTFLD.getText().equals("")) {
 			System.out.println("Please enter a player name!");
+			MessageBox.show(Main.game.getScene().getWindow(),
+        			"Please Enter a Player Name.",
+      		         "Enter a Player Name",
+      		         MessageBox.ICON_INFORMATION | MessageBox.OK);
 				return;
 		} else if (takenColorList.contains(color)) {
 			System.out.println(color.toString() + " has already been chosen. Please pick another color.");
+			MessageBox.show(Main.game.getScene().getWindow(),
+        			"That color has already been chosen. Please pick another color.",
+      		         "Pick Another Color",
+      		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+        
 			return;
 		} else {
 			//takenRaceList.add(race);
@@ -171,6 +189,7 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 			playerNameTXTFLD.setText("");
 			playerNameTXTFLD.setStyle("-fx-text-fill: red");
 			playerName = "";
+			playerNumLBL.setText(Integer.toString(playerINDEX));
 			
 		} else {
 			Player player = new Player(race, color, playerName, playerINDEX, difficulty );
@@ -179,6 +198,14 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 			System.out.println(player);
 			myController.setScreen(application.Main.mapConfigID);
 		}
+	}
+	
+	public void saveState() {
+		MessageBox.show(Main.game.getScene().getWindow(),
+   			 "Game Saves are only allowed at the End of a Round",
+ 		         "Save Game",
+ 		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		//Main.game.saveState();
 	}
 	
 	

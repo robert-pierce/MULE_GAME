@@ -1,6 +1,7 @@
 package application;
 
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,6 +20,8 @@ import controller.MapController;
 import controller.ScreensController;
 
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 
 
@@ -249,17 +252,23 @@ public class GameRunner  {
 	//-------------------End of Query Methods------------------------------------
 
 	public void saveState() {
+		//incrementRound();
 		GameSaver gameSave = new GameSaver();
 		gameSave.saveState();
 	}
 	
 	public void loadState() {
-	  //Store store = null;
+	  final FileChooser fileChooser = new FileChooser();
       Player player = null;
-      //ArrayList<Player> plyrList = new ArrayList<>();
-		
+     
+      fileChooser.getExtensionFilters().add(new  FileChooser.ExtensionFilter("SER", "*.ser"));
+      fileChooser.setInitialDirectory(
+              new File("./SavedStates/")
+          ); 
+      File file = fileChooser.showOpenDialog( Main.game.getScene().getWindow());
+      
       try (
-    		  FileInputStream fileIn = new FileInputStream("./SavedStates/test.ser");
+    		  FileInputStream fileIn = new FileInputStream(file);
     		  ObjectInputStream in = new ObjectInputStream(fileIn)  
     	) {  
         Object obj = in.readObject();

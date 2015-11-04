@@ -13,7 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import jfx.messagebox.MessageBox;
 
 public class gameConfigController implements Initializable, ControlledScreen {	
 	//--------------Instance Variables---------------------------------
@@ -61,6 +64,12 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	@FXML 
 	private Button continueBTN;
+	
+	@FXML
+	public MenuBar menuBar;
+	
+	@FXML
+	public MenuItem saveMenuItem;
 	
 	//-----------------------------------------------------------------
 	
@@ -140,6 +149,14 @@ public class gameConfigController implements Initializable, ControlledScreen {
 		
 		// close this screens and open the next screen
 		myController.setScreen(application.Main.playerConfigID);	
+	}
+	
+	public void saveState() {
+		MessageBox.show(Main.game.getScene().getWindow(),
+   			 "Game Saves are only allowed at the End of a Round",
+ 		         "Save Game",
+ 		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		//Main.game.saveState();
 	}
 	
 	//------------------Getter Methods--------------------------------

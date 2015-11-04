@@ -873,6 +873,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 	@Override
 	public void prepSave() {
 		round = Main.game.getRoundNumber();
+		round++;
 		mapSelection = Main.game.getMap().getMapSelection();
 		
 		playerIdPropertyBacking = playerIdProperty.get();
