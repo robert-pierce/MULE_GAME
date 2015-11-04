@@ -1,8 +1,10 @@
 package application;
 
 
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +13,7 @@ import java.util.Deque;
 
 import com.google.gson.Gson;
 
+import application.GameSaver.EOFClass;
 import application.Map.MapSelection;
 
 import controller.ScreensController;
@@ -139,6 +142,10 @@ public class GameRunner  {
 		case EASTWEST:
 			gameMap = new EastWestMap(mainController);
 			break;
+		case MAP3:
+			break;
+		default:
+			break;
 		}
 		
 	}
@@ -245,5 +252,65 @@ public class GameRunner  {
 		GameSaver gameSave = new GameSaver();
 		gameSave.saveState();
 	}
+	
+	public void loadState() {
+	  //Store store = null;
+      Player player = null;
+      //ArrayList<Player> plyrList = new ArrayList<>();
+		
+      try (
+    		  FileInputStream fileIn = new FileInputStream("./SavedStates/test.ser");
+    		  ObjectInputStream in = new ObjectInputStream(fileIn)  
+    	) {  
+        Object obj = in.readObject();
+        while ( !(obj instanceof EOFClass) ) {
+        	if (obj instanceof Map) {
+        		gameMap = (Map) obj;
+        		gameMap.restoreSave();
+        		
+        		obj = in.readObject();
+        	} else if (obj instanceof Store) {
+        		store = (Store) obj;
+        		store.restoreSave();
+      
+        		obj = in.readObject();
+        	
+        	} else if (obj instanceof Player) { 
+	        	 player = (Player) obj;
+	        	 player.restoreSave();
+	        	 playerList.add(player); 
+	        	 
+	        	 obj = in.readObject();
+        	}
+        }
+         
+         in.close();
+         fileIn.close();
+      
+      } catch(IOException e) {
+         e.printStackTrace();
+         return;
+      
+      } catch(ClassNotFoundException c) {
+         c.printStackTrace();
+         return;
+      }
+      
+     setLandPurchaseState(); 
+     round = playerList.get(0).getRound();
+     addMap(playerList.get(0).getMapSelction());
+     
+     for (Player plyr : playerList) {
+    	  Main.game.getMap().getPlots().putAll(plyr.getPlots());
+     }
+     
+     //gameMap.showMap();
+     
+    
+	
+     
+      
+	}
+	
 	
 }

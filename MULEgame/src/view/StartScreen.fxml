@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,9 +15,23 @@
         <Image url="@../../images/StartScreen.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Button fx:id="startBTN" layoutX="354.0" layoutY="614.0" minHeight="61.0" mnemonicParsing="false" onAction="#startGame" opacity="1.0" prefHeight="53.000099999997474" prefWidth="466.0" text="Start">
+    <Button id="startBTN" fx:id="newGameBTN" layoutX="337.0" layoutY="614.0" minHeight="61.0" mnemonicParsing="false" onAction="#startGame" opacity="0.58" prefHeight="53.000099999997474" prefWidth="466.0" text="New Game">
+      <effect>
+        <SepiaTone level="0.33962264150943394">
+          <input>
+            <Lighting diffuseConstant="1.0476190476190477" specularConstant="0.3476190476190476" specularExponent="20.317460317460316" surfaceScale="5.079365079365079">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </input>
+        </SepiaTone>
+      </effect>
       <font>
-        <Font size="30.0" />
+        <Font name="Elephant" size="30.0" fx:id="x1" />
       </font>
     </Button>
     <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="25.0" prefWidth="1140.0">
@@ -38,5 +53,21 @@
         </Menu>
       </menus>
     </MenuBar>
+    <Button id="startBTN" fx:id="loadGameBTN" font="$x1" layoutX="337.0" layoutY="524.0" minHeight="61.0" mnemonicParsing="false" onAction="#loadGame" opacity="0.58" prefHeight="53.000099999997474" prefWidth="466.0" text="Load Game">
+      <effect>
+        <SepiaTone level="0.33962264150943394">
+          <input>
+            <Lighting diffuseConstant="1.0476190476190477" specularConstant="0.3476190476190476" specularExponent="20.317460317460316" surfaceScale="5.079365079365079">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </input>
+        </SepiaTone>
+      </effect>
+    </Button>
   </children>
 </AnchorPane>

@@ -839,7 +839,14 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
     public void setLowestPlayer(boolean lowest) {
         isLowestPlayer = lowest;
     }
+    
+    public int getRound() {
+    	return round;
+    }
 	
+    public MapSelection getMapSelction() {
+    	return mapSelection;
+    }
 	
 	@Override
 	public int compareTo(Player plyrCmp) {

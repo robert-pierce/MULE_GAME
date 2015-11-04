@@ -21,12 +21,24 @@ public class GameSaver  {
 	         FileOutputStream fileOut = new FileOutputStream("./SavedStates/test.ser");
 	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
 	         
+	         //write the map
+	         //out.writeObject(Main.game.getMap());
+	         
+	         // write the store
+	         Main.game.getStore().prepSave();
+	         out.writeObject(Main.game.getStore());
+	         
+	         // write all of the players (in order)
 	         for (Player plyr : plyrList) {
 	        	  plyr.prepSave();
 	        	  out.writeObject(plyr);  
 	         }
 	         
+	         // write and EOF object as last element
 	         out.writeObject(new EOFClass());
+	         out.close();
+	         
+	         // terminate stream and close file
 	         out.close();
 	         fileOut.close();
 	         System.out.printf("Serialized data is saved");
@@ -36,7 +48,7 @@ public class GameSaver  {
 	      }
 		}
 	
-	public static class EOFClass implements Serializable {
+	public static class EOFClass implements Serializable { 
 		private static final long serialVersionUID = 4773733498081494931L;
 
 		public EOFClass() {};

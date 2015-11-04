@@ -7,6 +7,7 @@ import application.Map.MapSelection;
 import controller.ScreensController;
 
 public class StandardMap extends Map {
+	private static final long serialVersionUID = -2896605728493845436L;
 
 	public StandardMap(ScreensController mainCntrl) {
 		super(mainCntrl);
@@ -14,6 +15,7 @@ public class StandardMap extends Map {
 		showMap();
 	}
 
+	@Override
 	public void showMap() {		
 		System.out.println("Loading Standard map");
 		mainController.setScreen(application.Main.standardMapID);	
@@ -77,5 +79,7 @@ public class StandardMap extends Map {
 	public String getMapID() {
 		return Main.standardMapID;
 	}
+
+	
 	
 }

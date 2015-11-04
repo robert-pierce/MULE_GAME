@@ -1,5 +1,6 @@
 package application;
 
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -10,8 +11,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 /**
  * Created by KillDogg on 10/8/2015.
  */
-public class Store implements Saveable {
-    private GameRunner.Difficulty difficulty;
+public class Store implements Serializable, Saveable {
+	private static final long serialVersionUID = -4938173949110663527L;
+	private GameRunner.Difficulty difficulty;
     private Deque<Mule> muleDeque;
     private int initialMuleStock;
     //private int foodStock;
@@ -28,11 +30,11 @@ public class Store implements Saveable {
     private int smithoreEquipPrice;
     private int crystiteEquipPrice;
 
-    private SimpleIntegerProperty muleStockProperty;
-    private SimpleIntegerProperty foodStockProperty;
-    private SimpleIntegerProperty energyStockProperty;
-    private SimpleIntegerProperty smithoreStockProperty;
-    private SimpleIntegerProperty crystiteStockProperty;
+    private transient SimpleIntegerProperty muleStockProperty;
+    private transient SimpleIntegerProperty foodStockProperty;
+    private transient SimpleIntegerProperty energyStockProperty;
+    private transient SimpleIntegerProperty smithoreStockProperty;
+    private transient SimpleIntegerProperty crystiteStockProperty;
     
     private int muleStockBacking;
     private int foodStockBacking;
@@ -40,11 +42,11 @@ public class Store implements Saveable {
     private int smithoreStockBacking;
     private int crystiteStockBacking;
     
-    private SimpleIntegerProperty mulePriceProperty;
-    private SimpleIntegerProperty foodPriceProperty;
-    private SimpleIntegerProperty energyPriceProperty;
-    private SimpleIntegerProperty smithorePriceProperty;
-    private SimpleIntegerProperty crystitePriceProperty;
+    private transient SimpleIntegerProperty mulePriceProperty;
+    private transient SimpleIntegerProperty foodPriceProperty;
+    private transient SimpleIntegerProperty energyPriceProperty;
+    private transient SimpleIntegerProperty smithorePriceProperty;
+    private transient SimpleIntegerProperty crystitePriceProperty;
    
     private int mulePricePropertyBacking;
     private int foodPricePropertyBacking;
@@ -265,7 +267,31 @@ public class Store implements Saveable {
 
 	@Override
 	public void restoreSave() {
-		// TODO Auto-generated method stub
+		muleStockProperty = new SimpleIntegerProperty();
+	    foodStockProperty = new SimpleIntegerProperty();
+	    energyStockProperty = new SimpleIntegerProperty();
+	    smithoreStockProperty = new SimpleIntegerProperty();
+	    crystiteStockProperty = new SimpleIntegerProperty(); 
+	    mulePriceProperty = new SimpleIntegerProperty();
+	    foodPriceProperty = new SimpleIntegerProperty();
+	    energyPriceProperty = new SimpleIntegerProperty();
+	    smithorePriceProperty = new SimpleIntegerProperty();
+	    crystitePriceProperty = new SimpleIntegerProperty();
+		
+		
+		muleStockProperty.setValue(muleStockBacking);
+	    foodStockProperty.setValue(foodStockBacking);
+	    energyStockProperty.setValue(energyStockBacking);
+	    smithoreStockProperty.setValue(smithorePricePropertyBacking);
+	    crystiteStockProperty.setValue(crystitePricePropertyBacking);
+	    
+	    
+	    mulePriceProperty.setValue(mulePricePropertyBacking);
+	    foodPriceProperty.setValue(foodPricePropertyBacking);
+	    energyPriceProperty.setValue(energyPricePropertyBacking);
+	    smithorePriceProperty.setValue(smithorePricePropertyBacking);
+	    crystitePriceProperty.setValue(crystitePricePropertyBacking);
+	    
 		
 	}
 

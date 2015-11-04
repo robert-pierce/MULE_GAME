@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,13 +25,19 @@ public class startScreenController implements Initializable, ControlledScreen {
 	}
 	
 	@FXML 
-	private Button startBTN;
+	private Button newGameBTN;
+	
+	@FXML 
+	private Button loadGameBTN;
 	
 	public void startGame(ActionEvent event) {
 		myController.setScreen(application.Main.gameConfigID);
 	}
 
-	
+	public void loadGame(ActionEvent event) {
+		Main.game.loadState();
+	}
+
 	
 }
 

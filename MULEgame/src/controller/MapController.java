@@ -195,6 +195,17 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 									announcement.toString(),
 									"Information dialog",
 									MessageBox.ICON_INFORMATION | MessageBox.YES | MessageBox.NO);
+		
+		if (!firstTwoRoundsFlag && Main.game.getActivePlayer().getMoney() < 300 && msgBoxRslt == MessageBox.YES) {
+			MessageBox.show(Main.game.getScene().getWindow(),
+							"Sorry, you do not have enough money to purchase a plot",
+							"Information dialog",
+							MessageBox.ICON_INFORMATION | MessageBox.OK);
+			
+			msgBoxRslt = MessageBox.NO;
+
+		}
+		
 		return msgBoxRslt;
 		
 		} else {  // if we are at the last player the end land purchase round

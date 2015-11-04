@@ -84,9 +84,11 @@ public class Main extends Application {
 	
 	}
 	
- 	public static String getPlayerConfigID() {
- 		return playerConfigID;
- 	}
+
+	
+// 	public static String getPlayerConfigID() {
+// 		return playerConfigID;
+// 	}
 	
 	// Don't necessarily need this
 	public static void main(String[] args) {

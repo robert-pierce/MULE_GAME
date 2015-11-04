@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.HashMap;
 
 import application.GameRunner.ActivePlayer;
@@ -12,13 +13,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import jfx.messagebox.MessageBox;
 
-public abstract class Map {
+public abstract class Map implements Saveable, Serializable {
+	private static final long serialVersionUID = 291293001557426873L;
+
 	//----------Enum--------------------------------------
-	public enum MapSelection {STANDARD, EASTWEST, MAP3};
+	public enum MapSelection  {STANDARD, EASTWEST, MAP3};
 	//----------------------------------------------------
 	
 	//--------------Instance Variables--------------------
-	protected ScreensController mainController;
+	protected transient ScreensController mainController;
 	//final private MapSelection mapSelection;
 	final private int XOFFSET = 127;
 	final private int YOFFSET = 141;
@@ -137,9 +140,26 @@ public abstract class Map {
 		return plotMap.get(pltCrd);
 	}
 	
+	public HashMap<Point, Plot> getPlots() {
+		return plotMap;
+	}
+	
+	@Override
+	public void prepSave() {
+		// nothing to do here	
+	}
+
+	@Override
+	public void restoreSave() {
+		mainController = Main.game.getMainController();
+		
+	}
+	
 	public abstract MapSelection getMapSelection();
 	
 	public abstract String getMapID();
+	
+	public abstract void showMap();
 									
 }
 	
