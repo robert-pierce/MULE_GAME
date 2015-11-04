@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,31 +17,41 @@
         <Image url="@../../images/Town.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Button id="returnToMapBTN" fx:id="returnToMapLeftBTN" layoutX="0.0" layoutY="610.0" mnemonicParsing="false" onAction="#returnToMap" text="MAP" textFill="BLACK">
+    <Button id="returnToMapBTN" fx:id="returnToMapLeftBTN" layoutX="0.0" layoutY="612.0" mnemonicParsing="false" onAction="#returnToMap" opacity="0.55" text="MAP" textFill="BLACK">
+      <effect>
+        <SepiaTone>
+          <input>
+            <Lighting surfaceScale="5.0">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </input>
+        </SepiaTone>
+      </effect>
       <font>
-        <Font size="20.0" fx:id="x1" />
+        <Font name="Elephant" size="20.0" fx:id="x1" />
       </font>
     </Button>
-    <Button id="returnToMapBTN" fx:id="returnToMapRightBTN" font="$x1" layoutX="1063.0" layoutY="610.0" mnemonicParsing="false" onAction="#returnToMap" text="MAP" textFill="BLACK" />
-    <MenuBar layoutX="0.0" layoutY="0.0" minHeight="14.0" prefHeight="25.0" prefWidth="1140.0">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Close" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Delete" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
+    <Button id="returnToMapBTN" fx:id="returnToMapRightBTN" font="$x1" layoutX="1053.0" layoutY="612.0" mnemonicParsing="false" onAction="#returnToMap" opacity="0.55" text="MAP" textFill="BLACK">
+      <effect>
+        <SepiaTone>
+          <input>
+            <Lighting surfaceScale="5.0">
+              <bumpInput>
+                <Shadow />
+              </bumpInput>
+              <light>
+                <javafx.scene.effect.Light.Distant azimuth="-135.0" />
+              </light>
+            </Lighting>
+          </input>
+        </SepiaTone>
+      </effect>
+    </Button>
     <ProgressBar fx:id="timerBarTown" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
     <Label id="Player" fx:id="playerIdLBL" layoutX="1050.0" layoutY="37.0" text="1">
       <font>
@@ -68,5 +79,25 @@
       </textFill>
     </Label>
     <Label id="Player" fx:id="roundNumLBL" font="$x4" layoutX="605.0" layoutY="26.0" text="1" textFill="$x5" />
+    <MenuBar fx:id="menuBar" layoutX="0.0" layoutY="1.0" minHeight="27.0" prefHeight="25.0" prefWidth="1140.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#saveState" text="Save" fx:id="saveMenuItem" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
   </children>
 </AnchorPane>

@@ -12,6 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import jfx.messagebox.MessageBox;
 
@@ -52,6 +54,12 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 	
 	@FXML
 	private Button returnToTownBTN;
+	
+	@FXML
+	public MenuBar menuBar;
+	
+	@FXML
+	public MenuItem saveMenuItem;
 
 
 	public void gamble(ActionEvent event) {
@@ -131,5 +139,13 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 		} else {
 			return 50;
 		}
+	}
+	
+	public void saveState() {
+		MessageBox.show(Main.game.getScene().getWindow(),
+   			 "Game Saves are only allowed at the End of a Round",
+ 		         "Save Game",
+ 		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		//Main.game.saveState();
 	}
 }

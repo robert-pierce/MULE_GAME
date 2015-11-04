@@ -14,7 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import jfx.messagebox.MessageBox;
 
 public class GeneralStoreController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
@@ -73,7 +76,6 @@ public class GeneralStoreController implements Initializable, ControlledScreen, 
 		
 		SimpleIntegerProperty storeCrystitePriceProperty = store.getCrystitePriceProperty();
 		storeCrystitePriceLBL.textProperty().bind(Bindings.convert(storeCrystitePriceProperty));
-		
 	}
 
 	@Override
@@ -90,7 +92,6 @@ public class GeneralStoreController implements Initializable, ControlledScreen, 
 
 	@FXML 
 	public ProgressBar timerBarGeneralStore;
-	
 	
 	@FXML 
 	private Button sellFoodBTN;
@@ -158,6 +159,12 @@ public class GeneralStoreController implements Initializable, ControlledScreen, 
 	@FXML
 	private Label storeCrystitePriceLBL;
 	
+	@FXML
+	public MenuBar menuBar;
+	
+	@FXML
+	public MenuItem saveMenuItem;
+	
 	
 	public void sellFoodClick() {
 		Player player = Main.game.getActivePlayer();
@@ -220,5 +227,13 @@ public class GeneralStoreController implements Initializable, ControlledScreen, 
 	public void returnToTown() {
 		System.out.println("Returning to the town");
 		myController.setScreen(application.Main.townID);
+	}
+	
+	public void saveState() {
+		MessageBox.show(Main.game.getScene().getWindow(),
+   			 "Game Saves are only allowed at the End of a Round",
+ 		         "Save Game",
+ 		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		//Main.game.saveState();
 	}
 }

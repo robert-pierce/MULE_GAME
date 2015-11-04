@@ -368,10 +368,10 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 			moneyProperty.setValue(moneyProperty.subtract(store.getMulePrice()).getValue());
 			System.out.println("score " + scoreProperty.getValue());
 			
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "Player " + playerIdProperty.get() + " you have bought a Mule",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "Player " + playerIdProperty.get() + " you have bought a Mule",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 			
 			return true;
 			

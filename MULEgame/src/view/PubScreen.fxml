@@ -16,28 +16,9 @@
         <Image url="@../../images/saloon.jpg" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="25.0" prefWidth="1140.0">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Close" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Delete" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-    <Label layoutX="377.0" layoutY="130.0" text="Welcome to the Pub" textFill="#00cc21">
+    <Label layoutX="370.0" layoutY="63.0" text="Welcome to the Pub" textFill="#fff733">
       <effect>
-        <Lighting diffuseConstant="1.2063492063492063" specularConstant="1.284126984126984" specularExponent="13.015873015873016" surfaceScale="3.1746031746031744">
+        <Lighting diffuseConstant="1.619047619047619" specularConstant="0.7444444444444444" specularExponent="15.555555555555555" surfaceScale="4.206349206349206">
           <bumpInput>
             <Shadow />
           </bumpInput>
@@ -86,5 +67,25 @@
       </effect>
     </Button>
     <ProgressBar fx:id="timerBarPub" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
+    <MenuBar fx:id="menuBar" layoutX="-1.0" layoutY="-2.0" minHeight="27.0" prefHeight="25.0" prefWidth="1140.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#saveState" text="Save" fx:id="saveMenuItem" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
   </children>
 </AnchorPane>

@@ -17,25 +17,6 @@
         <Image url="@../../images/Store.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <MenuBar layoutX="0.0" layoutY="0.0" prefHeight="25.0" prefWidth="1140.0">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Close" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Delete" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="434.0" layoutY="78.0" text="General Store" textFill="WHITE">
       <effect>
         <Lighting diffuseConstant="1.2063492063492063" specularConstant="1.3158730158730159" specularExponent="21.26984126984127" surfaceScale="3.7301587301587302">
@@ -510,5 +491,25 @@
     </Label>
     <Pane blendMode="SOFT_LIGHT" cache="true" cacheHint="DEFAULT" depthTest="INHERIT" focusTraversable="false" layoutX="312.0" layoutY="214.0" opacity="1.0" prefHeight="187.0" prefWidth="214.0" style="-fx-background-color: black&#10;" />
     <Pane blendMode="SOFT_LIGHT" layoutX="545.0" layoutY="208.0" prefHeight="237.0" prefWidth="274.0" style="-fx-background-color: black" />
+    <MenuBar fx:id="menuBar" layoutX="0.0" layoutY="-2.0" minHeight="27.0" prefHeight="25.0" prefWidth="1140.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#saveState" text="Save" fx:id="saveMenuItem" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
   </children>
 </AnchorPane>

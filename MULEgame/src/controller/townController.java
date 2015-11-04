@@ -19,8 +19,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
+import jfx.messagebox.MessageBox;
 
 public class townController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
@@ -98,6 +101,14 @@ public class townController implements Initializable, ControlledScreen, Loadable
 	@FXML
 	private Label playerSmithoreLBL;
 	
+	@FXML
+	public MenuBar menuBar;
+	
+	@FXML
+	public MenuItem saveMenuItem;
+	
+	//--------------------------------------------------------------------------//
+	
 	public void returnToMap() {
 		String mapID = "";
 		MapController mapController;
@@ -159,6 +170,15 @@ public class townController implements Initializable, ControlledScreen, Loadable
 				showShop();
 			}
 		}
+	}
+	
+	
+	public void saveState() {
+		MessageBox.show(Main.game.getScene().getWindow(),
+   			 "Game Saves are only allowed at the End of a Round",
+ 		         "Save Game",
+ 		         MessageBox.ICON_INFORMATION | MessageBox.OK);
+		//Main.game.saveState();
 	}
 	
 	

@@ -6,38 +6,20 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.BuyMuleController">
   <!-- TODO Add Nodes -->
   <children>
-    <ImageView id="Stable Screen.png" fitHeight="675.0" fitWidth="1140.0" layoutX="0.0" layoutY="30.0">
+    <ImageView id="Stable Screen.png" fitHeight="678.0" fitWidth="1140.0" layoutX="0.0" layoutY="27.0">
       <image>
         <Image url="@../../images/Stable%20Screen.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <MenuBar layoutX="0.0" layoutY="0.0" minHeight="30.0" prefHeight="25.0" prefWidth="1140.0">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Close" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Delete" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-    <Pane prefHeight="705.0" prefWidth="1140.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+    <Pane prefHeight="678.0" prefWidth="1140.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
       <children>
-        <Button id="Buy" fx:id="buyMuleBTN" layoutX="443.0" layoutY="520.0" mnemonicParsing="false" onAction="#buyMuleClick" opacity="0.7" prefHeight="51.0" prefWidth="258.0" text="Buy Mule">
+        <Button id="Buy" fx:id="buyMuleBTN" layoutX="443.0" layoutY="520.0" mnemonicParsing="false" onAction="#buyMuleClick" opacity="0.55" prefHeight="51.0" prefWidth="258.0" text="Buy Mule">
           <effect>
             <SepiaTone>
               <input>
@@ -56,7 +38,7 @@
             <Font name="Elephant" size="25.0" fx:id="x1" />
           </font>
         </Button>
-        <Button id="" fx:id="returnToTownBTN" font="$x1" layoutX="443.0" layoutY="614.0" mnemonicParsing="false" onAction="#returnToTown" opacity="0.7" prefHeight="51.0" prefWidth="258.0" text="TOWN">
+        <Button id="" fx:id="returnToTownBTN" font="$x1" layoutX="443.0" layoutY="614.0" mnemonicParsing="false" onAction="#returnToTown" opacity="0.55" prefHeight="51.0" prefWidth="258.0" text="TOWN">
           <effect>
             <SepiaTone>
               <input>
@@ -72,8 +54,54 @@
             </SepiaTone>
           </effect>
         </Button>
-        <ProgressBar fx:id="timerBarBuyMule" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
+        <ProgressBar fx:id="timerBarBuyMule" layoutX="811.0" layoutY="658.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
+        <Label id="Player" fx:id="playerIdLBL" layoutX="1051.0" layoutY="30.0" text="1">
+          <font>
+            <Font name="Elephant" size="24.0" fx:id="x2" />
+          </font>
+          <textFill>
+            <Color blue="0.800" green="1.000" red="0.864" fx:id="x3" />
+          </textFill>
+        </Label>
+        <Label fx:id="playerMoneyLBL" font="$x2" layoutX="1056.0" layoutY="65.0" text="100" textFill="$x3" />
+        <Label fx:id="playerFoodLBL" font="$x2" layoutX="1051.0" layoutY="100.0" text="30" textFill="$x3" />
+        <Label fx:id="playerEnergyLBL" font="$x2" layoutX="1051.0" layoutY="135.0" text="16" textFill="$x3" />
+        <Label fx:id="playerSmithoreLBL" font="$x2" layoutX="1051.0" layoutY="170.0" text="16" textFill="$x3" />
+        <Label font="$x2" layoutX="956.0" layoutY="30.0" text="Player" textFill="$x3" />
+        <Label font="$x2" layoutX="948.0" layoutY="65.0" text="Money: $" textFill="$x3" />
+        <Label font="$x2" layoutX="968.0" layoutY="100.0" text="Food:" textFill="$x3" />
+        <Label font="$x2" layoutX="941.0" layoutY="135.0" text="Energy:" textFill="$x3" />
+        <Label font="$x2" layoutX="916.0" layoutY="170.0" text="Smithore:" textFill="#e9ffcc" />
+        <Label layoutX="477.0" layoutY="44.0" text="Round">
+          <font>
+            <Font name="Elephant" size="35.0" fx:id="x4" />
+          </font>
+          <textFill>
+            <Color blue="0.400" green="0.832" red="1.000" fx:id="x5" />
+          </textFill>
+        </Label>
+        <Label id="Player" fx:id="roundNumLBL" font="$x4" layoutX="620.0" layoutY="44.0" text="1" textFill="$x5" />
       </children>
     </Pane>
+    <MenuBar fx:id="menuBar" layoutX="0.0" layoutY="0.0" minHeight="27.0" prefHeight="25.0" prefWidth="1140.0">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#saveState" text="Save" fx:id="saveMenuItem" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Delete" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
   </children>
 </AnchorPane>
