@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import application.GameRunner.Difficulty;
 import application.Main;
@@ -16,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import javafx.scene.media.AudioClip;
 import jfx.messagebox.MessageBox;
 
 public class gameConfigController implements Initializable, ControlledScreen {	
@@ -25,6 +27,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	ScreensController mainController;
 	Node playerConfigCntrl;
 	int numPlayers = 1;
+	AudioClip click;
 	//-----------------------------------------------------------------
 	
 	
@@ -130,7 +133,8 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	public void nextScreen(ActionEvent event) {
 		System.out.println("Continue Button Pressed");
-		
+		click = new AudioClip(new File(Main.game.getClickURL()).toURI().toString());
+		click.play();
 		
 		// This block will get the playerConfigController and pass to it the number of players
 		

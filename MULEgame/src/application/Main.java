@@ -14,9 +14,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.event.Event;
 import java.io.FileWriter;
 import java.io.IOException;
-import com.google.gson.Gson;
-
-
 public class Main extends Application {
 	// Initialize Screen names and files
 	

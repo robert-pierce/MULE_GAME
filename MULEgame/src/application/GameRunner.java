@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Deque;
-
-import com.google.gson.Gson;
-
 import application.GameSaver.EOFClass;
 import application.Map.MapSelection;
 import controller.MapController;
@@ -49,6 +46,7 @@ public class GameRunner  {
 	private int round = 0;
 	private boolean playerPass = false;
 	private boolean firstTwoRounds = true;
+	private String clickURL = "Sounds/BTN_click.mp3";
 	
 	//------------------------------------------------------------------------------
 	
@@ -232,6 +230,12 @@ public class GameRunner  {
 	public ArrayList<Player> getPlayerList() {
 		return playerList;
 	}
+	
+	
+	public String getClickURL() {
+		return clickURL;
+	}
+	
 	//--------------End of Getter Methods----------------------------------------
 	
 	//----------------Query Methods----------------------------------------------

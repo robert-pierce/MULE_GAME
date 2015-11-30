@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -18,22 +19,20 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.media.AudioClip;
 
 public class playerConfigController implements Initializable, ControlledScreen, Loadable{
-	
 	private static int numPlayers;
-	
 	private application.Player.Race race = Race.HUMAN;
 	private Color color = Color.RED;
 	private int playerINDEX = 1;
 	private String playerName;
 	private Difficulty difficulty;
-	//private ArrayList<Player.Race> takenRaceList = new ArrayList<Player.Race>();
 	private ArrayList<Color> takenColorList = new ArrayList<Color>();
 	
+	ScreensController myController;
+	AudioClip click;
 	
-	//--------------Instance Variables---------------------------------
-		ScreensController myController;
 	//-----------------------------------------------------------------
 		
 	//--------------Interface Overrides--------------------------------
@@ -156,7 +155,8 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 	
 	public void nextScreen(ActionEvent event) {
 		System.out.println("Continue Button Pressed");
-		
+		click = new AudioClip(new File(Main.game.getClickURL()).toURI().toString());
+		click.play();
 			
 		if (playerNameTXTFLD.getText() == null || playerNameTXTFLD.getText().equals("")) {
 			System.out.println("Please enter a player name!");

@@ -246,20 +246,6 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		
 		
 		if (activePlayerState != null) {
-//			switch (activePlayerState) {
-//			case PLAYER4:
-//				playerNum = 4;
-//				break;
-//			case PLAYER3:
-//				playerNum = 3;
-//				break;
-//			case PLAYER2:
-//				playerNum = 2;
-//				break;
-//			default:
-//				playerNum = 1;	
-//			}
-			
 			announcement.append("Player " + Main.game.getActivePlayer().getPlayerNum() +  " it is your turn to acquire goods!");
 			MessageBox.show(Main.game.getScene().getWindow(),
 						announcement.toString(),
@@ -322,56 +308,9 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	
 	private void handleResourceProductionPhase() {
 		calculateProduction();
-       // List<Player> players = Main.game.getPlayerList();
-        
-//        MessageBox.show(Main.game.getScene().getWindow(),
-//  		         "Calculating Production",
-//        		"Calculating Production",
-//  		         MessageBox.ICON_INFORMATION | MessageBox.OK);
-        
-        
+                
         // WOULD LIKE TO SHOW A NEW SCREEN HERE!
         myController.setScreen(Main.resourceProductionID);
-        
-        
-//		if (players.size() > 0) {
-//        	MessageBox.show(Main.game.getScene().getWindow(),
-//   		         "Player 1 - Food: " + players.get(0).getFood() +
-//   		         	"  Energy: " + players.get(0).getEnergy() +
-//   		         	"  Ore: " + players.get(0).getSmithore() +
-//   		         	"  Crystite: " + players.get(0).getCrystite(),
-//   		         "Player 1 End of Round",
-//   		         MessageBox.ICON_INFORMATION | MessageBox.OK);
-//        }
-//        if (players.size() > 1) {
-//        	MessageBox.show(Main.game.getScene().getWindow(),
-//        			"Player 2 - Food: " + players.get(1).getFood() +
-//				 		"  Energy: " + players.get(1).getEnergy() +
-//				 		"  Ore: " + players.get(1).getSmithore() +
-//				 		"  Crystite: " + players.get(1).getCrystite(),
-//      		         "Player 2 End of Round",
-//      		         MessageBox.ICON_INFORMATION | MessageBox.OK);
-//        }
-//        if (players.size() > 2) {
-//        	MessageBox.show(Main.game.getScene().getWindow(),
-//        			"Player 3 - Food: " + players.get(2).getFood() +
-//				 		"  Energy: " + players.get(2).getEnergy() +
-//				 		"  Ore: " + players.get(2).getSmithore() +
-//				 		"  Crystite: " + players.get(2).getCrystite(),
-//      		         "Player 3 End of Round",
-//      		         MessageBox.ICON_INFORMATION | MessageBox.OK);
-//        }
-//        if (players.size() > 3) {
-//        	MessageBox.show(Main.game.getScene().getWindow(),
-//        			"Player 4 - Food: " + players.get(3).getFood() +
-//				 		"  Energy: " + players.get(3).getEnergy() +
-//				 		"  Ore: " + players.get(3).getSmithore() +
-//				 		"  Crystite: " + players.get(3).getCrystite(),
-//      		         "Player 4 End of Round",
-//      		         MessageBox.ICON_INFORMATION | MessageBox.OK);
-//        }
-        
-        //endResourceProductionPhase();
 	}
 	
 	public void endResourceProductionPhase() {

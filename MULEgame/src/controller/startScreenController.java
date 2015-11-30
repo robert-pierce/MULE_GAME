@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,10 +9,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
-public class startScreenController implements Initializable, ControlledScreen {
-	
+public class startScreenController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
+	Media introMusic;
+	MediaPlayer soundPlayer;
+	AudioClip click;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -24,6 +30,14 @@ public class startScreenController implements Initializable, ControlledScreen {
 		myController = screenParent;	
 	}
 	
+	@Override
+	public void onLoad() {
+		File soundFile = new File("Sounds/Intro_Music.mp3");
+		introMusic = new Media(soundFile.toURI().toString());
+		soundPlayer = new MediaPlayer(introMusic);
+		soundPlayer.play();
+	}
+	
 	@FXML 
 	private Button newGameBTN;
 	
@@ -31,12 +45,24 @@ public class startScreenController implements Initializable, ControlledScreen {
 	private Button loadGameBTN;
 	
 	public void startGame(ActionEvent event) {
+		click = new AudioClip(new File(Main.game.getClickURL()).toURI().toString());
+		click.play();
 		myController.setScreen(application.Main.gameConfigID);
 	}
 
 	public void loadGame(ActionEvent event) {
+		click = new AudioClip(new File(Main.game.getClickURL()).toURI().toString());
+		click.play();
 		Main.game.loadState();
+		stopMusic();
 	}
+	
+	public void stopMusic() {
+		soundPlayer.stop();
+		
+	}
+
+	
 
 	
 }
