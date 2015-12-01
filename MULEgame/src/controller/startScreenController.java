@@ -15,9 +15,9 @@ import javafx.scene.media.MediaPlayer;
 
 public class startScreenController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
-	Media introMusic;
-	MediaPlayer soundPlayer;
-	AudioClip click;
+	private Media introMusic;
+	private MediaPlayer soundPlayer;
+	private AudioClip click;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -36,6 +36,7 @@ public class startScreenController implements Initializable, ControlledScreen, L
 		introMusic = new Media(soundFile.toURI().toString());
 		soundPlayer = new MediaPlayer(introMusic);
 		soundPlayer.play();
+		soundPlayer.setCycleCount(soundPlayer.INDEFINITE);
 	}
 	
 	@FXML 
@@ -51,14 +52,13 @@ public class startScreenController implements Initializable, ControlledScreen, L
 	}
 
 	public void loadGame(ActionEvent event) {
-		click = new AudioClip(new File(Main.game.getClickURL()).toURI().toString());
-		click.play();
+		new AudioClip(new File(Main.game.getClickURL()).toURI().toString()).play();
 		Main.game.loadState();
-		stopMusic();
+		Main.game.stopThemeMusic();
 	}
 	
-	public void stopMusic() {
-		soundPlayer.stop();
+	public MediaPlayer getSoundPlayer() {
+		return soundPlayer;
 		
 	}
 

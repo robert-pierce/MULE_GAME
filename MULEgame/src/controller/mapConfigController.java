@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import javafx.scene.media.AudioClip;
 import jfx.messagebox.MessageBox;
 import application.Main;
 import application.GameRunner.ActivePlayer;
@@ -23,6 +25,8 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	//--------------Instance Variables---------------------------------
 			ScreensController myController;
 			MapSelection map = MapSelection.STANDARD;
+			
+			AudioClip click, radio_Click;
 	//-----------------------------------------------------------------
 			
 	//--------------Interface Overrides--------------------------------
@@ -60,6 +64,7 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	
 	public void setMapStandard(ActionEvent event) {
 		if (mapStandardBTN.isSelected()) {
+			playRadioClick();
 			map = MapSelection.STANDARD;
 			System.out.println("STANDARD map selected");
 		}
@@ -67,6 +72,7 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	
 	public void setMapEastWest(ActionEvent event) {
 		if (mapEastWestBTN.isSelected()) {
+			playRadioClick();
 			map = MapSelection.EASTWEST;
 			System.out.println("EAST WEST map selected");
 		}
@@ -74,6 +80,7 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	
 	public void setMapThree(ActionEvent event) {
 		if (mapThreeBTN.isSelected()) {
+			playRadioClick();
 			map = MapSelection.MAP3;
 			System.out.println("Map 3 selected");
 		}
@@ -84,15 +91,21 @@ public class mapConfigController implements Initializable, ControlledScreen {
 	}
 	
 	public void nextScreen(ActionEvent event) {
+		new AudioClip(new File(Main.game.getClickURL()).toURI().toString()).play();
 		System.out.println("Coninue Button Pressed");
+		Main.game.stopThemeMusic();
 		
-		
-		//System.out.println("Map set to " + map.toString() + ".");
 		
 		// start the game
 		System.out.println("Starting Game!");
 		Main.game.startGame(map);
 	}
+	
+	public void playRadioClick() {
+		radio_Click = new AudioClip(new File(Main.game.getRadioClickURL()).toURI().toString());
+		radio_Click.play();
+	}
+	
 	
 	public void saveState() {
 		MessageBox.show(Main.game.getScene().getWindow(),

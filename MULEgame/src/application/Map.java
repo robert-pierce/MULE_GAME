@@ -7,6 +7,7 @@ import java.util.HashMap;
 import application.GameRunner.ActivePlayer;
 import application.GameRunner.PlotType;
 import application.Map.MapSelection;
+import controller.MapController;
 import controller.ScreensController;
 import controller.playerConfigController;
 import javafx.fxml.FXMLLoader;
@@ -131,8 +132,9 @@ public abstract class Map implements Saveable, Serializable {
 	}
 	
 	
-	
 	private void showTown() {
+		MapController mapCntrl = (MapController) Main.game.getMainController().getController(Main.game.getMap().getMapID());
+		mapCntrl.silenceMusic();
 		mainController.setScreen(application.Main.townID);
 	}
 	

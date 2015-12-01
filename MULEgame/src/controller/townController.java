@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -9,6 +10,9 @@ import application.Main;
 import application.Plot;
 import application.Map.MapSelection;
 import application.Player;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
@@ -23,13 +27,19 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import jfx.messagebox.MessageBox;
 
 public class townController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
 	private double xCor, yCor;
 	Timer myTimer;
-	
+	MediaPlayer soundPlayer;
+	AudioClip click;
+	File soundFile;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -39,6 +49,17 @@ public class townController implements Initializable, ControlledScreen, Loadable
 	
 	@Override
 	public void onLoad() {
+		if (soundPlayer == null) {
+			soundFile = new File(Main.game.getTownMusicURL());
+			soundPlayer = new MediaPlayer(new Media(soundFile.toURI().toString()));
+			soundPlayer.setCycleCount(soundPlayer.INDEFINITE);
+			soundPlayer.setVolume(0);
+			soundPlayer.play();
+		} 
+		startMusic();
+		
+			
+		
 		String mapID = Main.game.getMap().getMapID();
 		MapController mapController;
 		//MapSelection mapSelection = Main.game.getMap().getMapSelection();
@@ -110,25 +131,28 @@ public class townController implements Initializable, ControlledScreen, Loadable
 	//--------------------------------------------------------------------------//
 	
 	public void returnToMap() {
-		String mapID = "";
-		MapController mapController;
-		System.out.println("Player is gambling!");
-		MapSelection mapSelection = Main.game.getMap().getMapSelection();
+		new AudioClip(new File(Main.game.getClickURL()).toURI().toString()).play();
+		silenceMusic();
+		//String mapID = "";
+		//MapController mapController;
+		//System.out.println("Player is gambling!");
+		//MapSelection mapSelection = Main.game.getMap().getMapSelection();
 		
-		switch (mapSelection) {
-		case STANDARD:
-			mapID = Main.standardMapID;
-			break;
-		case EASTWEST:
-			mapID = Main.eastWestMapID;
-			break;
-		case MAP3:
-			mapID = ""; 
-		}
-		mapController = (MapController) myController.getController(mapID);
+//		switch (mapSelection) {
+//		case STANDARD:
+//			mapID = Main.standardMapID;
+//			break;
+//		case EASTWEST:
+//			mapID = Main.eastWestMapID;
+//			break;
+//		case MAP3:
+//			mapID = ""; 
+//		}
+		
+		//mapController = (MapController) myController.getController(mapID);
 		
 		System.out.println("Returning to the map");
-		myController.setScreen(mapID);
+		myController.setScreen(Main.game.getMap().getMapID());
 		
 		
 		//myController.setScreen(application.Main.standardMapID);
@@ -196,6 +220,26 @@ public class townController implements Initializable, ControlledScreen, Loadable
 	
 	private void showShop() {
 		myController.setScreen(application.Main.generalStoreID);
+	}
+	
+	
+	private void startMusic() {
+		final DoubleProperty volume = soundPlayer.volumeProperty();
+		Timeline fadeMusic = new Timeline(
+				new KeyFrame(Duration.ZERO, new KeyValue(volume, 0)),
+				new KeyFrame(new Duration(2000), new KeyValue(volume, 1.0)));
+		
+		fadeMusic.play();
+	}
+	
+	
+	public void silenceMusic() {
+		final DoubleProperty volume = soundPlayer.volumeProperty();		
+		Timeline fadeMusic = new Timeline(
+				new KeyFrame(Duration.ZERO, new KeyValue(volume, 1.0)),
+				new KeyFrame(new Duration(2000), new KeyValue(volume, 0.0)));
+		
+		fadeMusic.play();
 	}
 }
 

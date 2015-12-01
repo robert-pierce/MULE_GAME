@@ -31,7 +31,8 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 	private ArrayList<Color> takenColorList = new ArrayList<Color>();
 	
 	ScreensController myController;
-	AudioClip click;
+	AudioClip click, radio_Click;
+
 	
 	//-----------------------------------------------------------------
 		
@@ -102,53 +103,73 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 	}
 	
 	public void getPlayerName(ActionEvent event) {
+		new AudioClip(new File(Main.game.getTextBarClickURL()).toURI().toString()).play();
 		playerName = playerNameTXTFLD.getText();
-		playerNameTXTFLD.setStyle("-fx-text-fill: green");
+		
+		if (color == color.RED) {
+			playerNameTXTFLD.setStyle("-fx-text-fill: red");
+		} else if (color == color.GREEN) {
+			playerNameTXTFLD.setStyle("-fx-text-fill: green");
+		} else if (color == color.PINK) {
+			playerNameTXTFLD.setStyle("-fx-text-fill: pink");
+		} else if (color == color.PURPLE) {
+			playerNameTXTFLD.setStyle("-fx-text-fill: purple");
+		}
+		
 		System.out.println("Player name set to: " + playerName);
 	}
 	
 	public void setRaceHuman(ActionEvent event) {
+		playRadioClick();
 		race = application.Player.Race.HUMAN;
 		System.out.println("Player race set to: " + race.toString());
 	}
 	
 	public void setRaceFlapper(ActionEvent event) {
+		playRadioClick();
 		race = application.Player.Race.FLAPPER;
 		System.out.println("Player race set to: " + race.toString());
 	}
 	
 	public void setRaceBonzoid(ActionEvent event) {
+		playRadioClick();
 		race = application.Player.Race.BONZOID;
 		System.out.println("Player race set to: " + race.toString());
 	}
 	
 	public void setRaceUgaite(ActionEvent event) {
+		playRadioClick();
 		race = application.Player.Race.UGAITE;
 		System.out.println("Player race set to: " + race.toString());
 	}
 	
 	public void setRaceBuzzite(ActionEvent event) {
+		playRadioClick();
 		race = application.Player.Race.BUZZITE;
 		System.out.println("Player race set to: " + race.toString());
 	}
 	
 	
 	public void setColorRed(ActionEvent event) {
+		playRadioClick();
 		color = Color.RED;
 		System.out.println("Player color set to: " + color.toString());
 	}
 	
 	public void setColorGreen(ActionEvent event) {
+		playRadioClick();
 		color = Color.GREEN;
 		System.out.println("Player color set to: " + color.toString());
 	}
 	
 	public void setColorPink(ActionEvent event) {
+		playRadioClick();
 		color = Color.PINK;
 		System.out.println("Player color set to: " + color.toString());
 	}
 	
 	public void setColorPurple(ActionEvent event) {
+		playRadioClick();
 		color = Color.PURPLE;
 		System.out.println("Player color set to: " + color.toString());
 	}
@@ -176,6 +197,17 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 		} else {
 			//takenRaceList.add(race);
 			takenColorList.add(color);
+			
+			if (color == color.RED) {
+				colorRedBTN.setOpacity(0);
+			} else if (color == color.GREEN) {
+				colorGreenBTN.setOpacity(0);
+			} else if (color == color.PINK) {
+				colorPinkBTN.setOpacity(0);
+			} else if (color == color.PURPLE) {
+				colorPurpleBTN.setOpacity(0);
+			}
+			
 		}
 		
 		
@@ -187,7 +219,7 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 			playerINDEX++;
 			
 			playerNameTXTFLD.setText("");
-			playerNameTXTFLD.setStyle("-fx-text-fill: red");
+			playerNameTXTFLD.setStyle("-fx-text-fill: black");
 			playerName = "";
 			playerNumLBL.setText(Integer.toString(playerINDEX));
 			
@@ -199,6 +231,12 @@ public class playerConfigController implements Initializable, ControlledScreen, 
 			myController.setScreen(application.Main.mapConfigID);
 		}
 	}
+	
+	public void playRadioClick() {
+		radio_Click = new AudioClip(new File(Main.game.getRadioClickURL()).toURI().toString());
+		radio_Click.play();
+	}
+	
 	
 	public void saveState() {
 		MessageBox.show(Main.game.getScene().getWindow(),

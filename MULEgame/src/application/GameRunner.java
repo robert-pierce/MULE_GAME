@@ -15,10 +15,18 @@ import application.GameSaver.EOFClass;
 import application.Map.MapSelection;
 import controller.MapController;
 import controller.ScreensController;
-
+import controller.startScreenController;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
+import javafx.util.Duration;
 
 
 
@@ -47,6 +55,14 @@ public class GameRunner  {
 	private boolean playerPass = false;
 	private boolean firstTwoRounds = true;
 	private String clickURL = "Sounds/BTN_click.mp3";
+	private String radioClickURL = "Sounds/Radio_Click.wav";
+	private String textBarClickURL = "Sounds/TextBar_Click.mp3";
+	private String swooshURL = "Sounds/swoosh.mp3";
+	private String clankURL = "Sounds/Clank.mp3"; 
+	private String townMusicURL = "Sounds/Town_Music.mp3";
+	private String dingURL = "Sounds/ding.wav";
+	private String desertAmbianceURL = "Sounds/DesertAmbiance.mp3";
+	
 	
 	//------------------------------------------------------------------------------
 	
@@ -234,6 +250,48 @@ public class GameRunner  {
 	
 	public String getClickURL() {
 		return clickURL;
+	}
+	
+	public String getRadioClickURL() {
+		return radioClickURL;
+	}
+	
+	public String getTextBarClickURL() {
+		return textBarClickURL;
+	}
+	
+	public String getSwooshURL() {
+		return swooshURL;
+	}
+	
+	public String getClankURL() {
+		return clankURL;
+	}
+	
+	public String getTownMusicURL() {
+		return townMusicURL;
+	}
+	
+	public String getDingURL() {
+		return dingURL;
+	}
+	
+	public String getDesertAmbianceURL() {
+		return desertAmbianceURL;
+	}
+	
+	public void stopThemeMusic() {
+		startScreenController startScreenCntrl = (startScreenController) mainController.getController(Main.startScreenID);
+		final DoubleProperty volume = startScreenCntrl.getSoundPlayer().volumeProperty();
+		
+		Timeline fadeMusic = new Timeline(
+				new KeyFrame(Duration.ZERO, new KeyValue(volume, 1.0)),
+				new KeyFrame(new Duration(2000), new KeyValue(volume, 0.0)));
+		
+		fadeMusic.play();
+		
+		
+		//startScreenCntrl.stopMusic();
 	}
 	
 	//--------------End of Getter Methods----------------------------------------

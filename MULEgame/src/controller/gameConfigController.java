@@ -27,7 +27,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	ScreensController mainController;
 	Node playerConfigCntrl;
 	int numPlayers = 1;
-	AudioClip click;
+	AudioClip click, radio_Click;
 	//-----------------------------------------------------------------
 	
 	
@@ -81,6 +81,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	public void setOnePlayers(ActionEvent event) {
 		if (onePlayersBTN.isSelected()) {
+			playRadioClick();
 			numPlayers = 1;
 			System.out.println("Number of Players: " + numPlayers);
 		}
@@ -88,6 +89,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	public void setTwoPlayers(ActionEvent event) {
 		if (twoPlayersBTN.isSelected()) {
+			playRadioClick();
 			numPlayers = 2;
 			System.out.println("Number of Players: " + numPlayers);
 		}
@@ -96,6 +98,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	public void setThreePlayers(ActionEvent event) {
 		if (threePlayersBTN.isSelected()) {
+			playRadioClick();
 			numPlayers = 3;
 			System.out.println("Number of Players: " + numPlayers);
 		}
@@ -104,6 +107,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	public void setFourPlayers(ActionEvent event) {
 		if (fourPlayersBTN.isSelected()) {
+			playRadioClick();
 			numPlayers = 4;
 			System.out.println("Number of Players: " + numPlayers);
 		}
@@ -111,6 +115,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	public void setBeginnerDifficulty(ActionEvent event) {
 		if (difficultyBeginnerBTN.isSelected()) {
+			playRadioClick();
 			difficulty = Difficulty.BEGINNER;
 			System.out.println("Beginner Difficulty Set");
 		}
@@ -118,6 +123,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	public void setStandardDifficulty(ActionEvent event) {
 		if (difficultyStandardBTN.isSelected()) {
+			playRadioClick();
 			difficulty = Difficulty.STANDARD;
 			System.out.println("Standard Difficulty Set");
 		}
@@ -125,6 +131,7 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	public void setTournamentDifficulty(ActionEvent event) {
 		if (difficultyTournamentBTN.isSelected()) {
+			playRadioClick();
 			difficulty = Difficulty.TOURNAMENT;
 			System.out.println("Tournament Difficulty Set");
 		}
@@ -133,8 +140,8 @@ public class gameConfigController implements Initializable, ControlledScreen {
 	
 	public void nextScreen(ActionEvent event) {
 		System.out.println("Continue Button Pressed");
-		click = new AudioClip(new File(Main.game.getClickURL()).toURI().toString());
-		click.play();
+		new AudioClip(new File(Main.game.getClickURL()).toURI().toString()).play();
+		
 		
 		// This block will get the playerConfigController and pass to it the number of players
 		
@@ -153,6 +160,10 @@ public class gameConfigController implements Initializable, ControlledScreen {
 		
 		// close this screens and open the next screen
 		myController.setScreen(application.Main.playerConfigID);	
+	}
+	
+	public void playRadioClick() {
+		new AudioClip(new File(Main.game.getRadioClickURL()).toURI().toString()).play();
 	}
 	
 	public void saveState() {

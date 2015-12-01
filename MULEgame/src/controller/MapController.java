@@ -14,12 +14,20 @@ import application.GameRunner.GameState;
 import application.GameRunner.MuleType;
 import application.Map.MapSelection;
 import application.Player;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import jfx.messagebox.MessageBox;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -30,6 +38,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import java.awt.Point;
+import java.io.File;
 
 public class MapController implements Initializable, ControlledScreen, Loadable {
     ScreensController myController;
@@ -45,6 +54,9 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	//private int numPlayers;
 	private Map map;
 	private double rectSize = 30;
+	private MediaPlayer soundPlayer;
+	private AudioClip click;
+	private File soundFile;
 	
 	
 	@Override
@@ -76,8 +88,35 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		if (gameState.equals(GameState.RESOURCEPRODUCTION)) {
 			endResourceProductionPhase();
 		}
+		
+		if (soundPlayer == null) {
+			soundFile = new File(Main.game.getDesertAmbianceURL());
+			soundPlayer = new MediaPlayer(new Media(soundFile.toURI().toString()));
+			soundPlayer.setCycleCount(soundPlayer.INDEFINITE);
+			soundPlayer.setVolume(0);
+			soundPlayer.play();
+		} 
+		startMusic();
+		
 	}
 	
+	private void startMusic() {
+		final DoubleProperty volume = soundPlayer.volumeProperty();
+		Timeline fadeMusic = new Timeline(
+				new KeyFrame(Duration.ZERO, new KeyValue(volume, 0)),
+				new KeyFrame(new Duration(2000), new KeyValue(volume, 1.0)));
+		
+		fadeMusic.play();	
+	}
+
+	public void silenceMusic() {
+		final DoubleProperty volume = soundPlayer.volumeProperty();		
+		Timeline fadeMusic = new Timeline(
+				new KeyFrame(Duration.ZERO, new KeyValue(volume, 1.0)),
+				new KeyFrame(new Duration(2000), new KeyValue(volume, 0.0)));
+		
+		fadeMusic.play();
+	}
 	//-----------------FXML Injections---------------------------------------
 	
 	@FXML
@@ -328,9 +367,9 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		onLoad();
 	}
 	
-	// implement http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=150end of turn method
+	// implement end of turn method
 	public void endTurn() {
-		String mapID = getMapID();
+		String mapID = Main.game.getMap().getMapID();
 		System.out.println("End of Turn method called in MapController");
 		handleRandomEvent();
 		if (!myController.getChildren().get(0).equals(myController.getScreen(mapID))) {
@@ -346,37 +385,41 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
         }
     }
 	
-	private String getMapID() {
-		String mapID= "";
-		MapSelection mapSelection = Main.game.getMap().getMapSelection();
-		
-		switch (mapSelection) {
-		case STANDARD:
-			mapID = Main.standardMapID;
-			break;
-		case EASTWEST:
-			mapID = Main.eastWestMapID;
-			break;
-		case MAP3:
-			mapID = ""; 
-		}
-		return mapID;
-	}
+//	private String getMapID() {
+//		String mapID= "";
+//		MapSelection mapSelection = Main.game.getMap().getMapSelection();
+//		
+//		switch (mapSelection) {
+//		case STANDARD:
+//			mapID = Main.standardMapID;
+//			break;
+//		case EASTWEST:
+//			mapID = Main.eastWestMapID;
+//			break;
+//		case MAP3:
+//			mapID = ""; 
+//		}
+//		return mapID;
+//	}
 
 
 	// marks a plot with the appropriate color
 	public void markPlot(Plot currentPlot) {
 		GraphicsContext gc = plotMarkerCanvas.getGraphicsContext2D();
-		
+		new AudioClip(new File(Main.game.getSwooshURL()).toURI().toString()).play();
 		 
 		gc.setFill(currentPlot.getOwner().getColor());
 		//gc.setFill(Main.game.getActivePlayer().getColor());
          Point center = currentPlot.getCenter();
          gc.fillRect(center.getX()-rectSize/2, center.getY()-rectSize/2, rectSize, rectSize);   
 	}
+	
+	
 
 	public void markPlotMule(Plot currentPlot) {
 		if (currentPlot.getMule() != null) {
+			new AudioClip(new File(Main.game.getClankURL()).toURI().toString()).play();
+			
 			MuleType muleType = currentPlot.getMule().getMuleType();
 			GraphicsContext gc = plotMarkerCanvas.getGraphicsContext2D();
 			Point center = currentPlot.getCenter();
@@ -428,6 +471,8 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	public void timeExpired() {
 		timerBar.setProgress(0);
 		System.out.println("MapController - Time is Up!");
+		townController townCntrl = (townController)Main.game.getMainController().getController(Main.townID);
+		townCntrl.silenceMusic();
 		endTurn();
 	}
 	
