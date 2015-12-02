@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Point;
+import java.io.File;
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -15,6 +16,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import jfx.messagebox.MessageBox;
 import java.util.Random;
@@ -343,6 +345,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 		
 		if (moneyProperty.get() < store.getMulePrice()) {
 			
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "You cannot afford a Mule!",
 			         "Information dialog",
@@ -351,6 +354,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 			
 		} else if (store.getMuleStock() == 0) {
 			
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "The store is out of Mules!",
 			         "Information dialog",
@@ -358,12 +362,15 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 			return false;
 			
 		} else if (hasMule()){
+			
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "You already own a Mule!",
 			         "Information dialog",
 			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 			return false;
 		} else {
+			new AudioClip(new File(Main.game.getCashRegisterSoundURL()).toURI().toString()).play();
 			playerMule = store.sellMule();
 			moneyProperty.setValue(moneyProperty.subtract(store.getMulePrice()).getValue());
 			System.out.println("score " + scoreProperty.getValue());
@@ -382,7 +389,8 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 		Store store = Main.game.getStore();
 		if (hasMule()) {
 			if (moneyProperty.get() < store.getFoodEquipPrice()) {
-				
+
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "You cannot afford to equip your Mule for food production!",
 				         "Information dialog",
@@ -390,6 +398,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 				return false;
 			} else if(!playerMule.getMuleType().equals(MuleType.EMPTY)) {
 				
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "Your Mule is already equiped",
 				         "Information dialog",
@@ -397,16 +406,18 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 				return false;
 				
 			} else {
+				new AudioClip(new File(Main.game.getClankURL()).toURI().toString()).play();
 				playerMule.setMuleType(MuleType.FOOD);
 				moneyProperty.setValue(moneyProperty.subtract(store.getFoodEquipPrice()).getValue());
 				
-				MessageBox.show(Main.game.getScene().getWindow(),
-				         "Player " + playerIdProperty.get() + " you have equiped your Mule for food production",
-				         "Information dialog",
-				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+//				MessageBox.show(Main.game.getScene().getWindow(),
+//				         "Player " + playerIdProperty.get() + " you have equiped your Mule for food production",
+//				         "Information dialog",
+//				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 				return true;	
 			}
 		} else {
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "You do not own a Mule!",
 			         "Information dialog",
@@ -420,6 +431,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 		if (hasMule()) {
 			if (moneyProperty.get() < store.getEnergyEquipPrice()) {
 				
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "You cannot afford to equip your Mule for energy production!",
 				         "Information dialog",
@@ -428,6 +440,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 				
 			} else if(!playerMule.getMuleType().equals(MuleType.EMPTY)) {
 				
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "Your Mule is already equiped",
 				         "Information dialog",
@@ -435,17 +448,19 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 				return false;
 			
 			} else {
+				new AudioClip(new File(Main.game.getClankURL()).toURI().toString()).play();
 				playerMule.setMuleType(MuleType.ENERGY);
 				moneyProperty.setValue(moneyProperty.subtract(store.getEnergyEquipPrice()).getValue()) ;
 				
 				
-				MessageBox.show(Main.game.getScene().getWindow(),
-				         "Player " + playerIdProperty.get() + " you have equiped your Mule for energy production",
-				         "Information dialog",
-				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+//				MessageBox.show(Main.game.getScene().getWindow(),
+//				         "Player " + playerIdProperty.get() + " you have equiped your Mule for energy production",
+//				         "Information dialog",
+//				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 				return true;	
 			}
 		} else {
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "You do not own a Mule!",
 			         "Information dialog",
@@ -459,6 +474,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 		if (hasMule()) {
 			if (moneyProperty.get() < store.getSmithoreEquipPrice()) {
 				
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "You cannot afford to equip your Mule for smithore production!",
 				         "Information dialog",
@@ -467,6 +483,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 				
 			} else if(!playerMule.getMuleType().equals(MuleType.EMPTY)) {
 				
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "Your Mule is already equiped",
 				         "Information dialog",
@@ -474,16 +491,18 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 				return false;
 			
 			} else {
+				new AudioClip(new File(Main.game.getClankURL()).toURI().toString()).play();
 				playerMule.setMuleType(MuleType.SMITHORE);
 				moneyProperty.setValue(moneyProperty.subtract(store.getSmithoreEquipPrice()).getValue());
 				
-				MessageBox.show(Main.game.getScene().getWindow(),
-				         "Player " + playerIdProperty.get() + " you have equiped your Mule for smithore production",
-				         "Information dialog",
-				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+//				MessageBox.show(Main.game.getScene().getWindow(),
+//				         "Player " + playerIdProperty.get() + " you have equiped your Mule for smithore production",
+//				         "Information dialog",
+//				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 				return true;	
 			}
 		} else {
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "You do not own a Mule!",
 			         "Information dialog",
@@ -497,6 +516,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 		if (hasMule()) {
 			if (moneyProperty.get() < store.getCrystiteEquipPrice()) {
 				
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "You cannot afford to equip your Mule for crystite mining!",
 				         "Information dialog",
@@ -505,6 +525,7 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 				
 			} else if(!playerMule.getMuleType().equals(MuleType.EMPTY)) {
 				
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "Your Mule is already equiped",
 				         "Information dialog",
@@ -512,16 +533,18 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 				return false;
 			
 			} else {
+				new AudioClip(new File(Main.game.getClankURL()).toURI().toString()).play();
 				playerMule.setMuleType(MuleType.CRYSTITE);
 				moneyProperty.setValue(moneyProperty.subtract(store.getCrystiteEquipPrice()).getValue());
 				
-				MessageBox.show(Main.game.getScene().getWindow(),
-				         "Player " + playerIdProperty.get() + " you have equiped your Mule for cyrstite mining",
-				         "Information dialog",
-				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+//				MessageBox.show(Main.game.getScene().getWindow(),
+//				         "Player " + playerIdProperty.get() + " you have equiped your Mule for cyrstite mining",
+//				         "Information dialog",
+//				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 				return true;	
 			}
 		} else {
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "You do not own a Mule!",
 			         "Information dialog",
@@ -586,130 +609,150 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 	public void sellFood() {
 		Store store = Main.game.getStore();
 		if(foodProperty.get() > 0) {
+			new AudioClip(new File(Main.game.getCashRegisterSoundURL()).toURI().toString()).play();
 			moneyProperty.setValue(moneyProperty.add(store.getFoodPrice()).getValue());
 			foodProperty.setValue(foodProperty.subtract(1).getValue());
 			store.incrementFood();
 		} else 
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "You do not have any food!",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "You do not have any food!",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 	}
 	
 	public void buyFood() {
 		Store store = Main.game.getStore();
 		if(moneyProperty.get() > store.getFoodPrice()) {
 			if(store.getFoodStock() > 0) {
+				new AudioClip(new File(Main.game.getCashRegisterSoundURL()).toURI().toString()).play();
 				moneyProperty.setValue(moneyProperty.subtract(store.getFoodPrice()).getValue());
 				foodProperty.setValue(foodProperty.add(1).getValue());
 				store.decrementFood();
 			} else 
-				MessageBox.show(Main.game.getScene().getWindow(),
-				         "The store does not have any food!",
-				         "Information dialog",
-				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//				MessageBox.show(Main.game.getScene().getWindow(),
+//				         "The store does not have any food!",
+//				         "Information dialog",
+//				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 		} else 
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "You do not have enough money!",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "You do not have enough money!",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 	}
 	
 	public void sellEnergy() {
 		Store store = Main.game.getStore();
 		if(energyProperty.get() > 0) {
+			new AudioClip(new File(Main.game.getCashRegisterSoundURL()).toURI().toString()).play();
 			moneyProperty.setValue(moneyProperty.add(store.getEnergyPrice()).getValue());
 			energyProperty.setValue(energyProperty.subtract(1).getValue());
 			store.incrementEnergy();
 		} else 
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "You do not have any energy!",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "You do not have any energy!",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 	}
 	
 	public void buyEnergy() {
 		Store store = Main.game.getStore();
 		if(moneyProperty.get() > store.getEnergyPrice()){
 			if(store.getEnergyStock() > 0) {
+				new AudioClip(new File(Main.game.getCashRegisterSoundURL()).toURI().toString()).play();
 				moneyProperty.setValue(moneyProperty.subtract(store.getEnergyPrice()).getValue());
 				energyProperty.setValue(energyProperty.add(1).getValue());
 				store.decrementEnergy();
 			} else 
-				MessageBox.show(Main.game.getScene().getWindow(),
-				         "The store does not have any energy!",
-				         "Information dialog",
-				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//				MessageBox.show(Main.game.getScene().getWindow(),
+//				         "The store does not have any energy!",
+//				         "Information dialog",
+//				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 		} else 
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "You do not have enough money!",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "You do not have enough money!",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 			
 	}
 	
 	public void sellSmithore() {
 		Store store = Main.game.getStore();
 		if(smithoreProperty.get() > 0) {
+			new AudioClip(new File(Main.game.getCashRegisterSoundURL()).toURI().toString()).play();
 			moneyProperty.setValue(moneyProperty.add(store.getSmithorePrice()).getValue());
 			smithoreProperty.setValue(smithoreProperty.subtract(1).getValue());
 			store.incrementSmithore();
 		} else 
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "You do not have any smithore!",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "You do not have any smithore!",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 	}
 	
 	public void buySmithore() {
 		Store store = Main.game.getStore();
 		if(moneyProperty.get() > store.getSmithorePrice()) {
 			if(store.getSmithoreStock() > 0) {
+				new AudioClip(new File(Main.game.getCashRegisterSoundURL()).toURI().toString()).play();
 				moneyProperty.setValue(moneyProperty.subtract(store.getSmithorePrice()).getValue());
 				smithoreProperty.setValue(smithoreProperty.add(1).getValue());
 				store.decrementSmithore();
 			} else 
-				MessageBox.show(Main.game.getScene().getWindow(),
-				         "The store does not have any smithore!",
-				         "Information dialog",
-				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//				MessageBox.show(Main.game.getScene().getWindow(),
+//				         "The store does not have any smithore!",
+//				         "Information dialog",
+//				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 		} else 
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "You do not have enough money!",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "You do not have enough money!",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 	}
 	
 	public void sellCrystite() {
 		Store store = Main.game.getStore();
 		if(crystiteProperty.get() > 0) {
+			new AudioClip(new File(Main.game.getCashRegisterSoundURL()).toURI().toString()).play();
 			moneyProperty.setValue(moneyProperty.add(store.getCrystitePrice()).getValue());
 			crystiteProperty.setValue(crystiteProperty.subtract(1).getValue());
 			store.incrementCrystite();
 		} else 
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "You do not have any crystite!",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "You do not have any crystite!",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 	}
 	
 	public void buyCrystite() {
 		Store store = Main.game.getStore();
 		if(moneyProperty.get() >  store.getCrystitePrice()) {
 			if(store.getCrystiteStock() > 0) {
+				new AudioClip(new File(Main.game.getCashRegisterSoundURL()).toURI().toString()).play();
 				moneyProperty.setValue(moneyProperty.subtract(store.getCrystitePrice()).getValue());
 				crystiteProperty.setValue(crystiteProperty.add(1).getValue());
 				store.decrementCrystite();
 			} else 
-				MessageBox.show(Main.game.getScene().getWindow(),
-				         "The store does not have any crystite!",
-				         "Information dialog",
-				         MessageBox.ICON_INFORMATION | MessageBox.OK);
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//				MessageBox.show(Main.game.getScene().getWindow(),
+//				         "The store does not have any crystite!",
+//				         "Information dialog",
+//				         MessageBox.ICON_INFORMATION | MessageBox.OK);
 		} else 
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "You do not have enough money!",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "You do not have enough money!",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 	}
 
 	public void calculateProduction() {

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.media.AudioClip;
 import jfx.messagebox.MessageBox;
 
 public class GeneralStoreController implements Initializable, ControlledScreen, Loadable {
@@ -225,6 +227,7 @@ public class GeneralStoreController implements Initializable, ControlledScreen, 
 	
 	
 	public void returnToTown() {
+		new AudioClip(new File(Main.game.getClickURL()).toURI().toString()).play();
 		System.out.println("Returning to the town");
 		myController.setScreen(application.Main.townID);
 	}

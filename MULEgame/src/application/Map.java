@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Point;
+import java.io.File;
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -12,6 +13,7 @@ import controller.ScreensController;
 import controller.playerConfigController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.media.AudioClip;
 import jfx.messagebox.MessageBox;
 
 public abstract class Map implements Saveable, Serializable {
@@ -65,6 +67,7 @@ public abstract class Map implements Saveable, Serializable {
 				System.out.println(plot);
 			} else {
 				System.out.println(plot);
+				new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "Not Enough Money To Purchase a Plot",
 				         "Information dialog",
@@ -73,17 +76,19 @@ public abstract class Map implements Saveable, Serializable {
 			}
 		} else if (plot.getType().equals(PlotType.TOWN)) {
 			System.out.println(plot);
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "The Town is not for Sale!",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "The Town is not for Sale!",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 			return null;
 		} else {
 			System.out.println(plot);
-			MessageBox.show(Main.game.getScene().getWindow(),
-			         "This Plot is Already Owned",
-			         "Information dialog",
-			         MessageBox.ICON_INFORMATION | MessageBox.OK);
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
+//			MessageBox.show(Main.game.getScene().getWindow(),
+//			         "This Plot is Already Owned",
+//			         "Information dialog",
+//			         MessageBox.ICON_INFORMATION | MessageBox.OK);
 			return null;
 		}
 		
@@ -113,7 +118,9 @@ public abstract class Map implements Saveable, Serializable {
 				player.removeMule();
 				return plot;
 			} else {
+				
 				player.removeMule();
+				new AudioClip(new File(Main.game.getDonkeyBrayURL()).toURI().toString()).play();
 				MessageBox.show(Main.game.getScene().getWindow(),
 				         "Your Mule has run away",
 				         "Information dialog",
@@ -121,6 +128,7 @@ public abstract class Map implements Saveable, Serializable {
 				return null;
 			}
 		} else {
+			new AudioClip(new File(Main.game.getErrorSoundURL()).toURI().toString()).play();
 			MessageBox.show(Main.game.getScene().getWindow(),
 			         "You do not own a Mule",
 			         "Information dialog",

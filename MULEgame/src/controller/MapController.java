@@ -101,12 +101,14 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 	}
 	
 	private void startMusic() {
-		final DoubleProperty volume = soundPlayer.volumeProperty();
-		Timeline fadeMusic = new Timeline(
-				new KeyFrame(Duration.ZERO, new KeyValue(volume, 0)),
-				new KeyFrame(new Duration(2000), new KeyValue(volume, 1.0)));
-		
-		fadeMusic.play();	
+		if (soundPlayer.getVolume() == 0.0) {
+			final DoubleProperty volume = soundPlayer.volumeProperty();
+			Timeline fadeMusic = new Timeline(
+					new KeyFrame(Duration.ZERO, new KeyValue(volume, 0)),
+					new KeyFrame(new Duration(2000), new KeyValue(volume, 1.0)));
+			
+			fadeMusic.play();	
+		}
 	}
 
 	public void silenceMusic() {

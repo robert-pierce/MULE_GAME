@@ -1,10 +1,14 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Main;
 import application.Player;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -16,14 +20,32 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import jfx.messagebox.MessageBox;
 
 public class EquipMuleController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
 	private Player activePlayer;
+	MediaPlayer soundPlayer;
+	AudioClip click;
+	File soundFile;
+	
 	
 	@Override
 	public void onLoad() {
+		if (soundPlayer == null) {
+			soundFile = new File(Main.game.getFactoryAmbianceURL());
+			soundPlayer = new MediaPlayer(new Media(soundFile.toURI().toString()));
+			soundPlayer.setCycleCount(soundPlayer.INDEFINITE);
+			soundPlayer.setVolume(0);
+			soundPlayer.play();
+		} 
+		startMusic();
+		
+		
 		String mapID = Main.game.getMap().getMapID();
 		MapController mapController;
 		//MapSelection mapSelection = Main.game.getMap().getMapSelection();
@@ -134,9 +156,31 @@ public class EquipMuleController implements Initializable, ControlledScreen, Loa
 	}
 	
 	public void returnToTown() {
+		new AudioClip(new File(Main.game.getClickURL()).toURI().toString()).play();
+		silenceMusic();
 		System.out.println("Returning to the town");
 		myController.setScreen(application.Main.townID);
 	}
+	
+	private void startMusic() {
+		final DoubleProperty volume = soundPlayer.volumeProperty();
+		Timeline fadeMusic = new Timeline(
+				new KeyFrame(Duration.ZERO, new KeyValue(volume, 0)),
+				new KeyFrame(new Duration(2000), new KeyValue(volume, 0.5)));
+		
+		fadeMusic.play();
+	}
+	
+	
+	public void silenceMusic() {
+		final DoubleProperty volume = soundPlayer.volumeProperty();		
+		Timeline fadeMusic = new Timeline(
+				new KeyFrame(Duration.ZERO, new KeyValue(volume, 0.5)),
+				new KeyFrame(new Duration(2000), new KeyValue(volume, 0.0)));
+		
+		fadeMusic.play();
+	}
+	
 	
 	public void saveState() {
 		MessageBox.show(Main.game.getScene().getWindow(),

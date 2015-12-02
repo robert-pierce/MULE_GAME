@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -7,6 +8,9 @@ import java.util.ResourceBundle;
 import application.Main;
 import application.Map.MapSelection;
 import application.Player;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,14 +19,31 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import jfx.messagebox.MessageBox;
 
 public class PubController implements Initializable, ControlledScreen, Loadable {
 	ScreensController myController;
-	
+	MediaPlayer soundPlayer;
+	AudioClip click;
+	File soundFile;
 	
 	@Override
 	public void onLoad() {
+		if (soundPlayer == null) {
+			soundFile = new File(Main.game.getPubMusicURL());
+			soundPlayer = new MediaPlayer(new Media(soundFile.toURI().toString()));
+			soundPlayer.setCycleCount(soundPlayer.INDEFINITE);
+			soundPlayer.setVolume(0);
+			soundPlayer.play();
+		} 
+		startMusic();
+		
+		
+		
 		String mapID = Main.game.getMap().getMapID();
 		MapController mapController;
 		MapSelection mapSelection = Main.game.getMap().getMapSelection();
@@ -63,6 +84,9 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 
 
 	public void gamble(ActionEvent event) {
+		new AudioClip(new File(Main.game.getRouletteSoundURL()).toURI().toString()).play();
+		new AudioClip(new File(Main.game.getClickURL()).toURI().toString()).play();
+		silenceMusic();
 		String mapID = Main.game.getMap().getMapID();
 		MapController mapController;
 		
@@ -80,6 +104,9 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 	
 	
 	public void returnToTown() {
+		new AudioClip(new File(Main.game.getClickURL()).toURI().toString()).play();
+		silenceMusic();
+		
 		System.out.println("Returning to the town");
 		myController.setScreen(application.Main.townID);
 	}
@@ -140,6 +167,25 @@ public class PubController implements Initializable, ControlledScreen, Loadable 
 			return 50;
 		}
 	}
+	
+	private void startMusic() {
+		final DoubleProperty volume = soundPlayer.volumeProperty();
+		Timeline fadeMusic = new Timeline(
+				new KeyFrame(Duration.ZERO, new KeyValue(volume, 0)),
+				new KeyFrame(new Duration(2000), new KeyValue(volume, 1.0)));
+		
+		fadeMusic.play();
+	}
+	
+	public void silenceMusic() {
+		final DoubleProperty volume = soundPlayer.volumeProperty();		
+		Timeline fadeMusic = new Timeline(
+				new KeyFrame(Duration.ZERO, new KeyValue(volume, 1.0)),
+				new KeyFrame(new Duration(2000), new KeyValue(volume, 0.0)));
+		
+		fadeMusic.play();
+	}
+	
 	
 	public void saveState() {
 		MessageBox.show(Main.game.getScene().getWindow(),

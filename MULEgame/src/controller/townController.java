@@ -207,18 +207,22 @@ public class townController implements Initializable, ControlledScreen, Loadable
 	
 	
 	private void showPub() {
+		silenceMusic();
 		myController.setScreen(application.Main.pubID);
 	}
 	
 	private void showBuyMuleShop() {
+		silenceMusic();
 		myController.setScreen(application.Main.buyMuleID);
 	}
 	
 	private void showEquipMuleShop() {
+		silenceMusic();
 		myController.setScreen(application.Main.equipMuleID);
 	}
 	
 	private void showShop() {
+		silenceMusic();
 		myController.setScreen(application.Main.generalStoreID);
 	}
 	

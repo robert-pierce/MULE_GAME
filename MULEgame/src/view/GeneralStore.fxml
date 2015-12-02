@@ -9,10 +9,10 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.GeneralStoreController">
+<AnchorPane minHeight="705.0" prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.GeneralStoreController">
   <!-- TODO Add Nodes -->
   <children>
-    <ImageView id="Store.png" fitHeight="729.9998779296875" fitWidth="1140.0" layoutX="0.0" layoutY="25.0">
+    <ImageView id="Store.png" fitHeight="680.0" fitWidth="1140.0" layoutX="0.0" layoutY="25.0">
       <image>
         <Image url="@../../images/Store.png" preserveRatio="true" smooth="true" />
       </image>
@@ -182,7 +182,7 @@
         </SepiaTone>
       </effect>
     </Button>
-    <ProgressBar fx:id="timerBarGeneralStore" layoutX="807.0" layoutY="735.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
+    <ProgressBar fx:id="timerBarGeneralStore" layoutX="807.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
     <Label font="$x1" layoutX="360.0" layoutY="220.0" text="Player">
       <effect>
         <Lighting diffuseConstant="1.4" specularConstant="0.6" specularExponent="32.0" surfaceScale="2.1">

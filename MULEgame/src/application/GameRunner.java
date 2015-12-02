@@ -62,8 +62,13 @@ public class GameRunner  {
 	private String townMusicURL = "Sounds/Town_Music.mp3";
 	private String dingURL = "Sounds/ding.wav";
 	private String desertAmbianceURL = "Sounds/DesertAmbiance.mp3";
-	
-	
+	private String pubMusicURL = "Sounds/Saloon Music.mp3";
+	private String factoryAmbianceURL = "Sounds/FactoryAmbiance.mp3";
+	private String cashRegisterSoundURL = "Sounds/cash_register.wav";
+	private String errorSoundURL = "Sounds/errorSound.wav";
+	private String donkey_brayURL = "Sounds/donkey_bray.mp3";
+	private String rouletteSoundURL = "Sounds/rouletteSound.mp3";
+	private String powerUpSoundURL = "Sounds/powerUpSound.mp3";
 	//------------------------------------------------------------------------------
 	
 	//--------------Constructor-----------------------------------------------------
@@ -280,6 +285,33 @@ public class GameRunner  {
 		return desertAmbianceURL;
 	}
 	
+	public String getPubMusicURL() {
+		return pubMusicURL;
+	}
+	
+	public String getFactoryAmbianceURL() {
+		return factoryAmbianceURL;
+	}
+	
+	public String getCashRegisterSoundURL() {
+		return cashRegisterSoundURL;
+	}
+	
+	public String getErrorSoundURL() {
+		return errorSoundURL;
+	}
+	
+	public String getDonkeyBrayURL() {
+		return donkey_brayURL;
+	}
+	
+	public String getRouletteSoundURL() {
+		return rouletteSoundURL;
+	}
+	
+	public String getPowerUpSoundURL() {
+		return powerUpSoundURL;
+	}
 	public void stopThemeMusic() {
 		startScreenController startScreenCntrl = (startScreenController) mainController.getController(Main.startScreenID);
 		final DoubleProperty volume = startScreenCntrl.getSoundPlayer().volumeProperty();
