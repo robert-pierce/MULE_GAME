@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -12,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.media.AudioClip;
 import jfx.messagebox.MessageBox;
 
 public class ResourceProductionController implements Initializable, ControlledScreen, Loadable {
@@ -191,6 +193,7 @@ public class ResourceProductionController implements Initializable, ControlledSc
 
 	
 	public void continueBTNClick() {
+		new AudioClip(new File(Main.game.getClickURL()).toURI().toString()).play();
 		System.out.println("Continue Button Pressed in Resource Production Screen");
 		myController.setScreen(Main.roundResultsID);
 	}

@@ -78,11 +78,11 @@ public class mapConfigController implements Initializable, ControlledScreen {
 		}
 	}
 	
-	public void setMapThree(ActionEvent event) {
+	public void setMapVolcanic(ActionEvent event) {
 		if (mapThreeBTN.isSelected()) {
 			playRadioClick();
-			map = MapSelection.MAP3;
-			System.out.println("Map 3 selected");
+			map = MapSelection.VOLCANIC;
+			System.out.println("Volcanic Map selected");
 		}
 	}
 	

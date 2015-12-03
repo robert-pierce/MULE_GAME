@@ -151,6 +151,7 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		// get (x,y) coordinates
 		xCor = mouseEvent.getX();
 		yCor = mouseEvent.getY();	
+		System.out.println(xCor);
 		
 		
 		//-------------------LAND PURCHASE STATE------------------------------------------------------------
@@ -330,6 +331,8 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
         double willRandomEventHappen = Math.random();
         if (willRandomEventHappen <= 0.27) {
             String message = currPlayer.runRandomEvent();
+           
+            new AudioClip(new File(Main.game.getDingURL()).toURI().toString()).play();
             MessageBox.show(Main.game.getScene().getWindow(),
                     message,
                     "Information dialog",

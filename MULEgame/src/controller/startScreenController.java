@@ -46,8 +46,8 @@ public class startScreenController implements Initializable, ControlledScreen, L
 	private Button loadGameBTN;
 	
 	public void startGame(ActionEvent event) {
-		click = new AudioClip(new File(Main.game.getClickURL()).toURI().toString());
-		click.play();
+		new AudioClip(new File(Main.game.getClickURL()).toURI().toString()).play();
+		//click.play();
 		myController.setScreen(application.Main.gameConfigID);
 	}
 

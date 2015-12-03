@@ -35,7 +35,7 @@ public class GameRunner  {
 	public enum GameState{LANDPURCHASE, MULEPURCHASE, RESOURCEPRODUCTION, RANDOMEVENT, ENDROUND}
 	public enum Difficulty {BEGINNER, STANDARD, TOURNAMENT}
 	public enum ActivePlayer{PLAYER1, PLAYER2, PLAYER3, PLAYER4} 
-	public enum PlotType {M1, M2, M3, RIVER, PLAIN, TOWN}
+	public enum PlotType {M1, M2, M3, RIVER, PLAIN, TOWN, VOLCANO, SWAMP}
 	public enum MuleType {FOOD, ENERGY, SMITHORE, CRYSTITE, EMPTY}
 	//-----------------------------------------------------
 	
@@ -164,7 +164,8 @@ public class GameRunner  {
 		case EASTWEST:
 			gameMap = new EastWestMap(mainController);
 			break;
-		case MAP3:
+		case VOLCANIC:
+			gameMap = new VolcanicMap(mainController);
 			break;
 		default:
 			break;

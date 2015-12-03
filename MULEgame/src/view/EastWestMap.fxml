@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane onMouseClicked="#mouseClick" prefHeight="705.0" prefWidth="1140.0" style="-fx-background-color: blue" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.MapController">
@@ -15,5 +17,16 @@
         <Image url="@../../images/EastWestMap.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
+    <Label layoutX="944.0" layoutY="14.0" opacity="0.5" prefHeight="50.0" prefWidth="139.0" text="Round">
+      <font>
+        <Font name="Elephant" size="40.0" fx:id="x1" />
+      </font>
+      <textFill>
+        <Color blue="0.400" green="0.545" red="1.000" fx:id="x2" />
+      </textFill>
+    </Label>
+    <Label fx:id="roundNumLBL" font="$x1" layoutX="1091.0" layoutY="14.0" opacity="0.5" prefHeight="31.0" prefWidth="16.0" text="1" textFill="$x2" />
+    <ProgressBar fx:id="timerBar" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
+    <Canvas fx:id="plotMarkerCanvas" height="705.0" layoutX="0.0" layoutY="0.0" width="1140.0" />
   </children>
 </AnchorPane>

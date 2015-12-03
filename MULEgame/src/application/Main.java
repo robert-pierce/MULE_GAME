@@ -29,6 +29,8 @@ public class Main extends Application {
 	public static String standardMapFile = "/view/StandardMap.fxml";
 	public static String eastWestMapID = "EastWestScreen";
 	public static String eastWestMapFile = "/view/EastWestMap.fxml";
+	public static String volcanicMapID = "VolcanicMapScreen";
+	public static String volcanicMapFile = "/view/VolcanicMap.fxml";
 	public static String townID = "TownScreen";
 	public static String townFile = "/view/TownScreen.fxml";
 	public static String buyMuleID = "BuyMuleScreen";
@@ -58,6 +60,7 @@ public class Main extends Application {
 		mainContainer.loadScreen(playerConfigID,  playerConfigFile);
 		mainContainer.loadScreen(standardMapID, standardMapFile);
 		mainContainer.loadScreen(eastWestMapID, eastWestMapFile);
+		mainContainer.loadScreen(volcanicMapID, volcanicMapFile);
 		mainContainer.loadScreen(townID, townFile);
 		mainContainer.loadScreen(buyMuleID, buyMuleFile);
 		mainContainer.loadScreen(equipMuleID, equipMuleFile);

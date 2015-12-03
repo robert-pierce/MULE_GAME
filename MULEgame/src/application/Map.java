@@ -20,7 +20,7 @@ public abstract class Map implements Saveable, Serializable {
 	private static final long serialVersionUID = 291293001557426873L;
 
 	//----------Enum--------------------------------------
-	public enum MapSelection  {STANDARD, EASTWEST, MAP3};
+	public enum MapSelection  {STANDARD, EASTWEST, VOLCANIC};
 	//----------------------------------------------------
 	
 	//--------------Instance Variables--------------------

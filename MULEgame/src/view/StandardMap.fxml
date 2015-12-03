@@ -17,7 +17,6 @@
         <Image url="@../../images/Standard%20Map%20Grid.png" preserveRatio="true" smooth="true" />
       </image>
     </ImageView>
-    <Canvas fx:id="plotMarkerCanvas" height="705.0" width="1140.0" />
     <ProgressBar fx:id="timerBar" layoutX="811.0" layoutY="685.0" prefHeight="20.0" prefWidth="329.0" progress="0.0" />
     <MenuBar fx:id="menuBar" layoutX="0.0" layoutY="0.0" minHeight="27.0" prefHeight="25.0" prefWidth="1140.0">
       <menus>
@@ -48,5 +47,6 @@
       </textFill>
     </Label>
     <Label fx:id="roundNumLBL" font="$x1" layoutX="1093.0" layoutY="35.0" opacity="0.5" prefHeight="31.0" prefWidth="16.0" text="1" textFill="$x2" />
+    <Canvas fx:id="plotMarkerCanvas" height="705.0" width="1140.0" />
   </children>
 </AnchorPane>

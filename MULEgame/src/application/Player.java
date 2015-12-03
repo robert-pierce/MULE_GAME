@@ -322,6 +322,10 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 		return oreProduction;
 	}
 	
+	public int getCrystiteProduction() {
+		return crystiteProduction;
+	}
+	
 	
 	public SimpleIntegerProperty getCrystiteProperty() {
 		return crystiteProperty;
@@ -834,6 +838,34 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
 	                       }
 	                   } else if (plotType == GameRunner.PlotType.RIVER) {
+	                       if (muleType == MuleType.CRYSTITE) {
+	                           crystiteProduction += 0;
+	                       } else if (muleType == MuleType.ENERGY) {
+	                           energyProduction += 2;
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.FOOD) {
+	                           foodProduction += 4;
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.SMITHORE) {
+	                           oreProduction += 0;
+	                       }
+	                   } else if (plotType == GameRunner.PlotType.VOLCANO) {
+	                       if (muleType == MuleType.CRYSTITE) {
+	                           crystiteProduction += 0;
+	                       } else if (muleType == MuleType.ENERGY) {
+	                           energyProduction += 5;
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.FOOD) {
+	                           foodProduction += 0;
+	                           energyProduction--;
+	                           //energyProperty.setValue(energyProperty.add(-1).getValue());
+	                       } else if (muleType == MuleType.SMITHORE) {
+	                           oreProduction += 3;
+	                       }
+	                   } else if (plotType == GameRunner.PlotType.SWAMP) {
 	                       if (muleType == MuleType.CRYSTITE) {
 	                           crystiteProduction += 0;
 	                       } else if (muleType == MuleType.ENERGY) {
