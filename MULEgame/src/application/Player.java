@@ -78,6 +78,11 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
     private RandomEvent roofEaten;
     private RandomEvent ugaStudents;
     private RandomEvent spaceGypsies;
+    private RandomEvent marsOutlaws;
+    private RandomEvent bribe;
+    private RandomEvent lightsOn;
+    private RandomEvent birthday;
+    
     
     private int foodProduction = 0;
     private int energyProduction = 0;
@@ -157,6 +162,14 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 	        randomEvents.add(ugaStudents);
 	        spaceGypsies = new RandomEvent(true);
 	        randomEvents.add(spaceGypsies);
+	        marsOutlaws = new RandomEvent(true);
+	        randomEvents.add(marsOutlaws);
+	        bribe = new RandomEvent(false);
+	        randomEvents.add(bribe);
+	        lightsOn = new RandomEvent(true);
+	        randomEvents.add(lightsOn);
+	        birthday = new RandomEvent(false);
+	        
 	    }
 
 	    public String runRandomEvent() {
@@ -207,13 +220,41 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
 	        } else if (event == ugaStudents) {
 	            foodProperty.setValue(foodProperty.getValue() / 2);
 	            message = "MISCHIEVOUS UGA STUDENTS BROKE INTO YOUR STORAGE SHED AND STOLE HALF YOUR FOOD.";
-	        } else {
+	        } else if (event == spaceGypsies) {
 	            moneyProperty.setValue(moneyProperty.subtract(6*m).getValue());
 	            if (moneyProperty.getValue() < 0) {
 	                moneyProperty.setValue(0);
 	            }
 	            message = "YOUR SPACE GYPSY INLAWS MADE A MESS OF THE TOWN. IT COST YOU " + 6*m + " TO CLEAN IT UP.";
-	        }
+	        
+	        
+	       //EXTRA CREDIT RANDOM EVENTS----------------------------------------------------------------------------------
+	        } else if (event == marsOutlaws){
+                moneyProperty.setValue(moneyProperty.subtract(2*m).getValue());
+                smithoreProperty.setValue(smithoreProperty.subtract(2).getValue());
+                if (smithoreProperty.getValue() < 0) {
+                    smithoreProperty.setValue(0);
+                }
+                message = "YOU GOT HELD UP BY MARTIAN OUTLAWS ON THE WAY TO THE STORE. THEY TOOK $" + 2*m + " AND 2 BARS OF SMITHORE";
+            } else if (event == bribe) {
+                moneyProperty.setValue(moneyProperty.add(8 * m).getValue());
+                message = "YOU CATCH YOUR NEIGHBOR WITH THE SHERIFF'S WIFE. HE GIVES YOU A FRIENDLY GIFT OF $" + 8 * m + ".";
+            } else if (event == lightsOn) {
+                energyProperty.setValue(energyProperty.subtract(3).getValue());
+                message = "YOU GO ON A WEEK LONG VACATION BUT LEAVE ALL YOUR LIGHTS ON. YOU LOSE 3 ENERGY UNITS";
+            } else if (event == birthday) {
+                moneyProperty.setValue(moneyProperty.getValue() + m);
+                foodProperty.setValue(foodProperty.getValue() + 1);
+                energyProperty.setValue(energyProperty.getValue() + 1);
+                smithoreProperty.setValue(smithoreProperty.getValue() + 1);
+                message = "IT'S YOUR BIRTHDAY! YOUR FRIENDS GIVE YOU $" + m + ", 1 FOOD UNIT, 1 ENERGY UNIT, AND 1 BAR OF SMITHORE";
+
+            } else {
+                message = "";
+            }
+	        
+	        
+	        
 	        return message;
 	    }
 			
@@ -922,6 +963,18 @@ public class Player implements Comparable<Player>, Serializable, Saveable {
     public MapSelection getMapSelction() {
     	return mapSelection;
     }
+    
+    public void changeFoodProperty(int change) {
+        foodProperty.setValue(foodProperty.getValue() + change);
+    }
+
+    public void changeMoneyProperty(int change) {
+        moneyProperty.setValue(moneyProperty.getValue() + change);
+        if (moneyProperty.getValue() < 0) {
+            moneyProperty.setValue(0);
+        }
+    }
+    
 	
 	@Override
 	public int compareTo(Player plyrCmp) {

@@ -347,6 +347,27 @@ public class MapController implements Initializable, ControlledScreen, Loadable 
 		Main.game.setGameState(GameState.RESOURCEPRODUCTION);
 		System.out.println("Game State set to: " + Main.game.getGameState());
 		
+		String message;
+		double willRoundRandomHappen = Math.random();
+        if (willRoundRandomHappen > 0.9) {
+            if (willRoundRandomHappen > 0.95) {
+                for (Player player : Main.game.getPlayerList()) {
+                    player.changeFoodProperty(1);
+                }
+                message = "A FREAK STORM DROPPED FISH ALL OVER THE TOWN! EVERYONE GAINS 1 FOOD UNIT";
+            } else {
+                for (Player player : Main.game.getPlayerList()) {
+                    player.changeMoneyProperty(-100);
+                }
+                message = "THE STOCK MARKET CRASHED! EVERYONE LOSES $100";
+            }
+            MessageBox.show(Main.game.getScene().getWindow(),
+                    message,
+                    "Information dialog",
+                    MessageBox.ICON_INFORMATION | MessageBox.OK);
+        }
+		
+		
 		handleResourceProductionPhase();	
 	}
 	
